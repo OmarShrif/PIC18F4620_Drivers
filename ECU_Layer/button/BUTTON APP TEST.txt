@@ -122,7 +122,7 @@ int main()
             btn_low_valid = 0;
             btn_low_valid_status = BUTTON_RELEASED;
         }
-        //Magic button (1 press == toggle the led status)
+        //Program control button (1 press == increments the program counter)
         if(btn_low_valid_status != btn_low_last_valid_status)
         {
             btn_low_last_valid_status = btn_low_valid_status;
