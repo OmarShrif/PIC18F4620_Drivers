@@ -14,12 +14,13 @@
 
 
 
+
 # 1 "./Application1.h" 1
-# 11 "./Application1.h"
+# 13 "./Application1.h"
 # 1 "./ECU_Layer/LED/ecu_led.h" 1
-# 11 "./ECU_Layer/LED/ecu_led.h"
+# 12 "./ECU_Layer/LED/ecu_led.h"
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4232,12 +4233,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 1
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h"
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 
 
@@ -4408,7 +4409,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdlib.h" 1 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdlib.h" 3
@@ -4487,11 +4488,11 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4652,29 +4653,218 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 11 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+
+
+
+typedef unsigned char uint8 ;
+typedef unsigned short uint16 ;
+typedef unsigned long uint32 ;
+
+typedef signed char sint8 ;
+typedef signed short sint16 ;
+typedef signed long sint32 ;
+
+typedef uint8 Std_ReturnType ;
+# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 11 "./ECU_Layer/LED/ecu_led.h" 2
-# 11 "./Application1.h" 2
-# 8 "Application1.c" 2
+# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 32 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+typedef enum
+{
+    GPIO_PORTA_INDEX = 0,
+    GPIO_PORTB_INDEX,
+    GPIO_PORTC_INDEX,
+    GPIO_PORTD_INDEX,
+    GPIO_PORTE_INDEX,
+}port_index_t;
+
+typedef enum
+{
+    GPIO_PIN0_INDEX = 0,
+    GPIO_PIN1_INDEX,
+    GPIO_PIN2_INDEX,
+    GPIO_PIN3_INDEX,
+    GPIO_PIN4_INDEX,
+    GPIO_PIN5_INDEX,
+    GPIO_PIN6_INDEX,
+    GPIO_PIN7_INDEX,
+}pin_index_t;
+
+typedef enum
+{
+    GPIO_DIRECTION_OUTPUT = 0,
+    GPIO_DIRECTION_INPUT
+}direction_t;
+
+typedef enum
+{
+    GPIO_LOGIC_LOW = 0,
+    GPIO_LOGIC_HIGH
+}logic_t;
+
+typedef struct
+{
+    uint8 port :3 ;
+    uint8 pin :3 ;
+    uint8 direction :1 ;
+    uint8 logic :1 ;
+
+}pin_config_t;
+
+
+Std_ReturnType gpio_pin_direction_initialize(const pin_config_t *_pin_config);
+Std_ReturnType gpio_pin_get_direction_status(const pin_config_t *_pin_config ,direction_t *direction_status);
+Std_ReturnType gpio_pin_write_logic(const pin_config_t *_pin_config , logic_t logic);
+Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config , logic_t *logic);
+Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config);
+Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config);
+
+
+Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 direction);
+Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *direction_status);
+Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic);
+Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic);
+Std_ReturnType gpio_port_toggle_logic(port_index_t port);
+# 12 "./ECU_Layer/LED/ecu_led.h" 2
+
+# 1 "./ECU_Layer/LED/ecu_led_cfg.h" 1
+# 13 "./ECU_Layer/LED/ecu_led.h" 2
+# 22 "./ECU_Layer/LED/ecu_led.h"
+typedef enum
+{
+    LED_OFF,
+    LED_ON
+}led_status_t;
+
+typedef struct
+{
+    uint8 port :3;
+    uint8 pin :3;
+    uint8 led_status :1;
+    uint8 reserved :1;
+}led_t;
+
+
+Std_ReturnType led_initialize(const led_t *led);
+Std_ReturnType led_turn_on(const led_t *led);
+Std_ReturnType led_turn_off(const led_t *led);
+Std_ReturnType led_turn_toggle(const led_t *led);
+# 13 "./Application1.h" 2
+
+# 1 "./ECU_Layer/button/ecu_button.h" 1
+# 13 "./ECU_Layer/button/ecu_button.h"
+# 1 "./ECU_Layer/button/ecu_button_cfg.h" 1
+# 13 "./ECU_Layer/button/ecu_button.h" 2
 
 
 
+
+
+
+
+
+typedef enum
+{
+    BUTTON_PRESSED = 0,
+    BUTTON_RELEASED
+}button_state_t;
+
+typedef enum
+{
+    BUTTON_ACRIVE_HIGH = 0,
+    BUTTON_ACTIVE_LOW
+}button_active_t;
+
+typedef struct
+{
+    pin_config_t button_pin;
+    button_state_t button_status;
+    button_active_t button_connection;
+}button_t;
+# 50 "./ECU_Layer/button/ecu_button.h"
+Std_ReturnType button_initialize(const button_t *button);
+# 60 "./ECU_Layer/button/ecu_button.h"
+Std_ReturnType button_read_status(const button_t *button,button_state_t *button_status);
+# 14 "./Application1.h" 2
+# 33 "./Application1.h"
+void application_initialize(void);
+# 9 "Application1.c" 2
+# 30 "Application1.c"
+button_t btn_high = {
+    .button_pin.port = GPIO_PORTD_INDEX,
+    .button_pin.pin = GPIO_PIN0_INDEX,
+    .button_pin.direction = GPIO_DIRECTION_INPUT,
+    .button_pin.logic = GPIO_LOGIC_LOW,
+    .button_connection = BUTTON_ACRIVE_HIGH,
+    .button_status = BUTTON_RELEASED
+};
+
+button_t btn_low = {
+    .button_pin.port = GPIO_PORTD_INDEX,
+    .button_pin.pin = GPIO_PIN1_INDEX,
+    .button_pin.direction = GPIO_DIRECTION_INPUT,
+    .button_pin.logic = GPIO_LOGIC_HIGH,
+    .button_connection = BUTTON_ACTIVE_LOW,
+    .button_status = BUTTON_RELEASED
+};
+
+led_t led1 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN0_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t led2 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN1_INDEX,.led_status = GPIO_LOGIC_LOW};
+
+button_state_t btn_high_status = BUTTON_RELEASED;
+button_state_t btn_low_status = BUTTON_RELEASED;
+uint8 btn_high_flag = 0;
+
+
+Std_ReturnType ret = (Std_ReturnType)0x00;
 
 
 int main()
 {
-    (*((unsigned char *)0xF92)) = 0x00;
+    application_initialize();
+
     while(1)
     {
-        (*((unsigned char *)0xF89)) = 0x55;
-        _delay((unsigned long)((1000)*(_XTAL_FREQ/4000.0)));
-        (*((unsigned char *)0xF89)) = 0xAA;
-        _delay((unsigned long)((1000)*(_XTAL_FREQ/4000.0)));
+# 93 "Application1.c"
+        ret = button_read_status(&btn_high,&btn_high_status);
+        ret = button_read_status(&btn_low,&btn_low_status);
+        if((BUTTON_PRESSED == btn_high_status) && (0 == btn_high_flag))
+        {
+            ret = led_turn_on(&led1);
+            btn_high_flag = 1;
+        }
+        else if ((BUTTON_PRESSED == btn_high_status) && (1 == btn_high_flag))
+        {
+            ret = led_turn_off(&led1);
+            btn_high_flag = 0;
+        }
+        if(BUTTON_PRESSED == btn_low_status)
+        {
+            ret = led_turn_on(&led2);
+        }
+        else
+        {
+            ret = led_turn_off(&led2);
+        }
+
     }
+
     return (0);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = (Std_ReturnType)0x00;
+# 138 "Application1.c"
+    ret_init = button_initialize(&btn_high);
+    ret_init = button_initialize(&btn_low);
+    ret_init = led_initialize(&led1);
+    ret_init = led_initialize(&led2);
+
 }

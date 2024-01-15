@@ -1,0 +1,56 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+ 
+/* Section : Global Variables Definition */
+
+pin_config_t led_1 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN0_INDEX,.direction = GPIO_DIRECTION_OUTPUT,.logic = GPIO_LOGIC_LOW};
+pin_config_t led_2 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN1_INDEX,.direction = GPIO_DIRECTION_OUTPUT,.logic = GPIO_LOGIC_LOW};
+pin_config_t led_3 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN2_INDEX,.direction = GPIO_DIRECTION_OUTPUT,.logic = GPIO_LOGIC_LOW};
+pin_config_t btn_1 = {.port = GPIO_PORTD_INDEX,.pin = GPIO_PIN0_INDEX,.direction = GPIO_DIRECTION_INPUT,.logic = GPIO_LOGIC_LOW};
+ 
+direction_t led_1_st;
+logic_t btn_1_log;
+
+
+Std_ReturnType ret = E_NOT_OK;
+
+/* Section : Functions Definition */
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        ret = gpio_pin_read_logic(&btn_1,&btn_1_log);
+        if(btn_1_log == GPIO_LOGIC_HIGH)
+        {
+            ret = gpio_pin_toggle_logic(&led_2);
+        __delay_ms(250);
+        }
+        else
+        {
+            ret = gpio_pin_toggle_logic(&led_1);
+            ret = gpio_pin_toggle_logic(&led_3);
+        __delay_ms(250);
+        }
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_NOT_OK;
+    ret_init = gpio_pin_initialize(&btn_1);
+    ret_init = gpio_pin_initialize(&led_1);
+    ret_init = gpio_pin_initialize(&led_2);
+    ret_init = gpio_pin_initialize(&led_3);
+
+}

@@ -4785,18 +4785,71 @@ typedef struct
 {
     pin_config_t button_pin;
     button_state_t button_status;
-    button_active_t button_active;
+    button_active_t button_connection;
 }button_t;
-
-
-
-Std_ReturnType button_initialize(button_t *button);
-Std_ReturnType button_read_status(button_t *button,button_state_t button_status);
+# 50 "./ECU_Layer/button/ecu_button.h"
+Std_ReturnType button_initialize(const button_t *button);
+# 60 "./ECU_Layer/button/ecu_button.h"
+Std_ReturnType button_read_status(const button_t *button,button_state_t *button_status);
 # 14 "./Application1.h" 2
-# 31 "./Application1.h"
+# 33 "./Application1.h"
 void application_initialize(void);
 # 9 "Application1.c" 2
-# 29 "Application1.c"
+# 30 "Application1.c"
+button_t btn_high = {
+    .button_pin.port = GPIO_PORTD_INDEX,
+    .button_pin.pin = GPIO_PIN0_INDEX,
+    .button_pin.direction = GPIO_DIRECTION_INPUT,
+    .button_pin.logic = GPIO_LOGIC_LOW,
+    .button_connection = BUTTON_ACRIVE_HIGH,
+    .button_status = BUTTON_RELEASED
+};
+
+button_t btn_low = {
+    .button_pin.port = GPIO_PORTD_INDEX,
+    .button_pin.pin = GPIO_PIN1_INDEX,
+    .button_pin.direction = GPIO_DIRECTION_INPUT,
+    .button_pin.logic = GPIO_LOGIC_HIGH,
+    .button_connection = BUTTON_ACTIVE_LOW,
+    .button_status = BUTTON_RELEASED
+};
+
+led_t led1 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN0_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t led2 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN1_INDEX,.led_status = GPIO_LOGIC_LOW};
+
+button_state_t btn_high_status = BUTTON_RELEASED;
+uint32 btn_high_valid = 0;
+button_state_t btn_high_valid_status = BUTTON_RELEASED;
+button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
+
+button_state_t btn_low_status = BUTTON_RELEASED;
+uint32 btn_low_valid = 0;
+button_state_t btn_low_valid_status = BUTTON_RELEASED;
+button_state_t btn_low_last_valid_status = BUTTON_RELEASED;
+
+led_status_t led1_status = LED_OFF;
+uint8 program_selected = 0 ;
+
+void program1(void)
+{
+    led_turn_on(&led2);
+    _delay((unsigned long)((500)*(4000000.0/4000.0)));
+    led_turn_off(&led2);
+    _delay((unsigned long)((500)*(4000000.0/4000.0)));
+}
+void program2(void)
+{
+    led_turn_on(&led2);
+    _delay((unsigned long)((500)*(4000000.0/4000.0)));
+    led_turn_off(&led2);
+    _delay((unsigned long)((500)*(4000000.0/4000.0)));
+    led_turn_on(&led2);
+    _delay((unsigned long)((500)*(4000000.0/4000.0)));
+    led_turn_off(&led2);
+    _delay((unsigned long)((500)*(4000000.0/4000.0)));
+}
+
+
 Std_ReturnType ret = (Std_ReturnType)0x00;
 
 
@@ -4806,7 +4859,77 @@ int main()
 
     while(1)
     {
-# 64 "Application1.c"
+# 121 "Application1.c"
+        ret = button_read_status(&btn_high,&btn_high_status);
+        ret = button_read_status(&btn_low,&btn_low_status);
+
+
+        if(BUTTON_PRESSED == btn_high_status)
+        {
+            btn_high_valid++;
+            if(btn_high_valid>500)
+            {
+                btn_high_valid_status = BUTTON_PRESSED;
+            }
+        }
+        else
+        {
+            btn_high_valid = 0;
+            btn_high_valid_status = BUTTON_RELEASED;
+        }
+
+        if(btn_high_valid_status != btn_high_last_valid_status)
+        {
+            btn_high_last_valid_status = btn_high_valid_status;
+            if(BUTTON_PRESSED == btn_high_valid_status)
+            {
+                if(LED_OFF == led1_status)
+                {
+                    led_turn_on(&led1);
+                    led1_status = LED_ON;
+                }
+                else
+                {
+                    led_turn_off(&led1);
+                    led1_status = LED_OFF;
+                }
+            }
+        }
+
+
+        if(BUTTON_PRESSED == btn_low_status)
+        {
+            btn_low_valid++;
+            if(btn_low_valid>500)
+            {
+                btn_low_valid_status = BUTTON_PRESSED;
+            }
+        }
+        else
+        {
+            btn_low_valid = 0;
+            btn_low_valid_status = BUTTON_RELEASED;
+        }
+
+        if(btn_low_valid_status != btn_low_last_valid_status)
+        {
+            btn_low_last_valid_status = btn_low_valid_status;
+            if(BUTTON_PRESSED == btn_low_valid_status)
+            {
+                if(2 == program_selected)
+                {
+                    program_selected = 0;
+                }
+                program_selected++;
+                switch (program_selected)
+                {
+                    case 1: program1();break;
+                    case 2: program2();break;
+                    default : break;
+                }
+            }
+        }
+
     }
 
     return (0);
@@ -4815,5 +4938,10 @@ int main()
 void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x00;
-# 85 "Application1.c"
+# 215 "Application1.c"
+    ret_init = button_initialize(&btn_high);
+    ret_init = led_initialize(&led1);
+    ret_init = button_initialize(&btn_low);
+    ret_init = led_initialize(&led2);
+
 }

@@ -20,6 +20,8 @@
 #define DISABLE     0
 #define GPIO_TEST   DISABLE
 #define LED_TEST    DISABLE
+#define BUTTON_TEST    ENABLE
+
 
 /* Section : Macro Functions Declarations */
 

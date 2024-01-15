@@ -1,0 +1,155 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+ 
+/* Section : Global Variables Definition */
+
+button_t btn_high = {
+    .button_pin.port = GPIO_PORTD_INDEX,
+    .button_pin.pin = GPIO_PIN0_INDEX,
+    .button_pin.direction = GPIO_DIRECTION_INPUT,
+    .button_pin.logic = GPIO_LOGIC_LOW,
+    .button_connection = BUTTON_ACRIVE_HIGH,
+    .button_status = BUTTON_RELEASED
+};
+
+button_t btn_low = {
+    .button_pin.port = GPIO_PORTD_INDEX,
+    .button_pin.pin = GPIO_PIN1_INDEX,
+    .button_pin.direction = GPIO_DIRECTION_INPUT,
+    .button_pin.logic = GPIO_LOGIC_HIGH,
+    .button_connection = BUTTON_ACTIVE_LOW,
+    .button_status = BUTTON_RELEASED
+};
+
+led_t  led1 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN0_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t  led2 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN1_INDEX,.led_status = GPIO_LOGIC_LOW};
+
+button_state_t btn_high_status = BUTTON_RELEASED;
+uint32 btn_high_valid = 0;
+button_state_t btn_high_valid_status = BUTTON_RELEASED;
+button_state_t btn_high_last_valid_status = BUTTON_RELEASED;
+
+button_state_t btn_low_status = BUTTON_RELEASED;
+uint32 btn_low_valid = 0;
+button_state_t btn_low_valid_status = BUTTON_RELEASED;
+button_state_t btn_low_last_valid_status = BUTTON_RELEASED;
+
+led_status_t led1_status = LED_OFF;
+uint8 program_selected = 0 ;
+
+void program1(void)
+{
+    led_turn_on(&led2);
+    __delay_ms(500);
+    led_turn_off(&led2);
+    __delay_ms(500);
+}
+void program2(void)
+{
+    led_turn_on(&led2);
+    __delay_ms(500);
+    led_turn_off(&led2);
+    __delay_ms(500);
+    led_turn_on(&led2);
+    __delay_ms(500);
+    led_turn_off(&led2);
+    __delay_ms(500);
+}
+
+Std_ReturnType ret = E_NOT_OK;
+
+/* Section : Functions Definition */
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        ret = button_read_status(&btn_high,&btn_high_status);
+        ret = button_read_status(&btn_low,&btn_low_status);
+        
+        // Debouncing
+        if(BUTTON_PRESSED == btn_high_status)
+        {
+            btn_high_valid++;
+            if(btn_high_valid>500)
+            {
+                btn_high_valid_status = BUTTON_PRESSED;
+            }
+        }
+        else
+        {
+            btn_high_valid = 0;
+            btn_high_valid_status = BUTTON_RELEASED;
+        }
+        //Magic button (1 press == toggle the led status)
+        if(btn_high_valid_status != btn_high_last_valid_status)
+        {
+            btn_high_last_valid_status = btn_high_valid_status;
+            if(BUTTON_PRESSED == btn_high_valid_status)
+            {
+                if(LED_OFF == led1_status)
+                {
+                    led_turn_on(&led1);
+                    led1_status = LED_ON;
+                }
+                else
+                {
+                    led_turn_off(&led1);
+                    led1_status = LED_OFF;
+                }
+            }
+        }
+        
+        // Debouncing
+        if(BUTTON_PRESSED == btn_low_status)
+        {
+            btn_low_valid++;
+            if(btn_low_valid>500)
+            {
+                btn_low_valid_status = BUTTON_PRESSED;
+            }
+        }
+        else
+        {
+            btn_low_valid = 0;
+            btn_low_valid_status = BUTTON_RELEASED;
+        }
+        //Magic button (1 press == toggle the led status)
+        if(btn_low_valid_status != btn_low_last_valid_status)
+        {
+            btn_low_last_valid_status = btn_low_valid_status;
+            if(BUTTON_PRESSED == btn_low_valid_status)
+            {
+                if(2 == program_selected)
+                {
+                    program_selected = 0;
+                }
+                program_selected++;
+                switch (program_selected)
+                {
+                    case 1: program1();break;
+                    case 2: program2();break;
+                    default : break;
+                }
+            }
+        }
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    ret_init = button_initialize(&btn_high);
+    ret_init = led_initialize(&led1);
+    ret_init = button_initialize(&btn_low);
+    ret_init = led_initialize(&led2);
+}
