@@ -18,7 +18,7 @@
 /* Section : Functions Definition */
 
 /**
- * @brief Initialize the assigned pin to be output and turn the led off
+ * @brief Initialize the assigned pin to be output and turn the led off or on
  * @param led : pointer to the led module configurations
  * @return Status of the function 
  *          (E_OK) : The function done successfully
@@ -29,7 +29,7 @@ Std_ReturnType led_initialize(const led_t *led)
     Std_ReturnType ret = E_OK;
     if(led != NULL)
     {
-        pin_config_t pin = {.port = led->port ,.pin = led->pin , 
+        pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin , 
                             .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
         ret = gpio_pin_initialize(&pin);
     }
@@ -50,7 +50,7 @@ Std_ReturnType led_turn_on(const led_t *led)
     Std_ReturnType ret = E_OK;
     if(led != NULL)
     {
-        pin_config_t pin = {.port = led->port ,.pin = led->pin , 
+        pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin , 
                             .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
         ret = gpio_pin_write_logic(&pin,GPIO_LOGIC_HIGH);
     }
@@ -71,7 +71,7 @@ Std_ReturnType led_turn_off(const led_t *led)
     Std_ReturnType ret = E_OK;
     if(led != NULL)
     {
-        pin_config_t pin = {.port = led->port ,.pin = led->pin , 
+        pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin , 
                             .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
         ret = gpio_pin_write_logic(&pin,GPIO_LOGIC_LOW);
     }
@@ -92,7 +92,7 @@ Std_ReturnType led_turn_toggle(const led_t *led)
     Std_ReturnType ret = E_OK;
     if(led != NULL)
     {
-        pin_config_t pin = {.port = led->port ,.pin = led->pin , 
+        pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin , 
                             .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
         ret = gpio_pin_toggle_logic(&pin);
     }

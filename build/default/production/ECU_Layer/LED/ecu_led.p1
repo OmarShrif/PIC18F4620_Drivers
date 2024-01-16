@@ -2,13 +2,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29 ECU_Layer/LED/ecu_led.h
 [; ;ECU_Layer/LED/ecu_led.h: 29: {
 [s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S273 . port pin led_status reserved ]
+[n S273 . led_port led_pin led_status reserved ]
 "66 ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h
 [; ;ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 66: {
 [s S272 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S272 . port pin direction logic ]
 "32 ECU_Layer/LED/ecu_led.c
-[; ;ECU_Layer/LED/ecu_led.c: 32:         pin_config_t pin = {.port = led->port ,.pin = led->pin ,
+[; ;ECU_Layer/LED/ecu_led.c: 32:         pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin ,
 [c E2828 0 1 .. ]
 [n E2828 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
 "80 ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h
@@ -463,7 +463,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 "32
-[; ;ECU_Layer/LED/ecu_led.c: 32:         pin_config_t pin = {.port = led->port ,.pin = led->pin ,
+[; ;ECU_Layer/LED/ecu_led.c: 32:         pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin ,
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -524,7 +524,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 "53
-[; ;ECU_Layer/LED/ecu_led.c: 53:         pin_config_t pin = {.port = led->port ,.pin = led->pin ,
+[; ;ECU_Layer/LED/ecu_led.c: 53:         pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin ,
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -585,7 +585,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 "74
-[; ;ECU_Layer/LED/ecu_led.c: 74:         pin_config_t pin = {.port = led->port ,.pin = led->pin ,
+[; ;ECU_Layer/LED/ecu_led.c: 74:         pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin ,
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -646,7 +646,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 "95
-[; ;ECU_Layer/LED/ecu_led.c: 95:         pin_config_t pin = {.port = led->port ,.pin = led->pin ,
+[; ;ECU_Layer/LED/ecu_led.c: 95:         pin_config_t pin = {.port = led->led_port ,.pin = led->led_pin ,
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc

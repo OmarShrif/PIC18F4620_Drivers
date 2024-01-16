@@ -10,4 +10,6 @@ ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h  \
 ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h  \
 ECU_Layer/LED/ecu_led_cfg.h  \
 ECU_Layer/button/ecu_button.h  \
-ECU_Layer/button/ecu_button_cfg.h 
+ECU_Layer/button/ecu_button_cfg.h  \
+ECU_Layer/relay/ecu_relay.h  \
+ECU_Layer/relay/ecu_relay_cfg.h 

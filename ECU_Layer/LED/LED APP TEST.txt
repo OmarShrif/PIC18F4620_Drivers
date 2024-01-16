@@ -10,10 +10,10 @@
  
 /* Section : Global Variables Definition */
 
-led_t  led1 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN0_INDEX,.led_status = GPIO_LOGIC_LOW};
-led_t  led2 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN1_INDEX,.led_status = GPIO_LOGIC_LOW};
-led_t  led3 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN2_INDEX,.led_status = GPIO_LOGIC_LOW};
-led_t  led4 = {.port = GPIO_PORTC_INDEX,.pin = GPIO_PIN3_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t  led1 = {.led_port = GPIO_PORTC_INDEX,.led_pin = GPIO_PIN0_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t  led2 = {.led_port = GPIO_PORTC_INDEX,.led_pin = GPIO_PIN1_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t  led3 = {.led_port = GPIO_PORTC_INDEX,.led_pin = GPIO_PIN2_INDEX,.led_status = GPIO_LOGIC_LOW};
+led_t  led4 = {.led_port = GPIO_PORTC_INDEX,.led_pin = GPIO_PIN3_INDEX,.led_status = GPIO_LOGIC_LOW};
 
 
 Std_ReturnType ret = E_NOT_OK;

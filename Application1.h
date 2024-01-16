@@ -12,15 +12,10 @@
 /* Section : Includes */
 #include "ECU_Layer/LED/ecu_led.h"
 #include "ECU_Layer/button/ecu_button.h"
+#include "ECU_Layer/relay/ecu_relay.h"
 
 /* Section : Macro Declarations */
-#define _XTAL_FREQ  4000000.0
-
-#define ENABLE      1
-#define DISABLE     0
-#define GPIO_TEST   DISABLE
-#define LED_TEST    DISABLE
-#define BUTTON_TEST    ENABLE
+#define _XTAL_FREQ  8000000.0
 
 
 /* Section : Macro Functions Declarations */

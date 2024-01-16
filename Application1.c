@@ -7,8 +7,15 @@
 
 /* Section : Includes */
 #include "Application1.h"
+#include "ECU_Layer/relay/ecu_relay.h"
  
 /* Section : Global Variables Definition */
+
+relay_t relay1 = {
+    .relay_port = GPIO_PORTA_INDEX,
+    .relay_pin = GPIO_PIN0_INDEX,
+    .relay_state = RELAY_OFF
+};
 
 Std_ReturnType ret = E_NOT_OK;
 
@@ -19,6 +26,10 @@ int main()
     
     while(1)
     {
+        ret = relay_turn_on(&relay1);
+        __delay_ms(1000);
+        ret = relay_turn_off(&relay1);
+        __delay_ms(1000);
     }
     
     return (EXIT_SUCCESS);
@@ -27,4 +38,5 @@ int main()
 void application_initialize(void)
 {
     Std_ReturnType ret_init = E_NOT_OK;
+    ret_init = relay_initialize(&relay1);
 }
