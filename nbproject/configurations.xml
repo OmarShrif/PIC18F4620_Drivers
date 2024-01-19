@@ -5,15 +5,19 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="ECU_Layer" displayName="ECU_Layer" projectFiles="true">
-        <logicalFolder name="button" displayName="button" projectFiles="true">
+        <logicalFolder name="button" displayName="Button" projectFiles="true">
           <itemPath>ECU_Layer/button/ecu_button.h</itemPath>
           <itemPath>ECU_Layer/button/ecu_button_cfg.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="LED" displayName="LED" projectFiles="true">
+        <logicalFolder name="DC_Motor" displayName="DC_Motor" projectFiles="true">
+          <itemPath>ECU_Layer/DC_Motor/ecu_dc_motor.h</itemPath>
+          <itemPath>ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="LED" displayName="Led" projectFiles="true">
           <itemPath>ECU_Layer/LED/ecu_led.h</itemPath>
           <itemPath>ECU_Layer/LED/ecu_led_cfg.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="relay" displayName="relay" projectFiles="true">
+        <logicalFolder name="relay" displayName="Relay" projectFiles="true">
           <itemPath>ECU_Layer/relay/ecu_relay.h</itemPath>
           <itemPath>ECU_Layer/relay/ecu_relay_cfg.h</itemPath>
         </logicalFolder>
@@ -38,13 +42,16 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="ECU_Layer" displayName="ECU_Layer" projectFiles="true">
-        <logicalFolder name="button" displayName="button" projectFiles="true">
+        <logicalFolder name="button" displayName="Button" projectFiles="true">
           <itemPath>ECU_Layer/button/ecu_button.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="LED" displayName="LED" projectFiles="true">
+        <logicalFolder name="DC_Motor" displayName="DC_Motor" projectFiles="true">
+          <itemPath>ECU_Layer/DC_Motor/ecu_dc_motor.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="LED" displayName="Led" projectFiles="true">
           <itemPath>ECU_Layer/LED/ecu_led.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="relay" displayName="relay" projectFiles="true">
+        <logicalFolder name="relay" displayName="Relay" projectFiles="true">
           <itemPath>ECU_Layer/relay/ecu_relay.c</itemPath>
         </logicalFolder>
       </logicalFolder>

@@ -1,4 +1,4 @@
-# 1 "Application1.c"
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,21 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Application1.c" 2
-
-
-
-
-
-
-
-
-# 1 "./Application1.h" 1
-# 13 "./Application1.h"
-# 1 "./ECU_Layer/LED/ecu_led.h" 1
-# 12 "./ECU_Layer/LED/ecu_led.h"
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
+# 10 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
+# 13 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4233,12 +4224,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_Liberates.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_Liberates.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 
 
@@ -4409,7 +4400,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdlib.h" 1 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdlib.h" 3
@@ -4488,11 +4479,11 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 13 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4653,8 +4644,8 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 13 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4667,14 +4658,14 @@ typedef signed short sint16 ;
 typedef signed long sint32 ;
 
 typedef uint8 Std_ReturnType ;
-# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 14 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 32 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 32 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
     GPIO_PORTA_INDEX = 0,
@@ -4731,110 +4722,11 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *directi
 Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 12 "./ECU_Layer/LED/ecu_led.h" 2
+# 13 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
 
-# 1 "./ECU_Layer/LED/ecu_led_cfg.h" 1
-# 13 "./ECU_Layer/LED/ecu_led.h" 2
-# 22 "./ECU_Layer/LED/ecu_led.h"
-typedef enum
-{
-    LED_OFF = 0,
-    LED_ON
-}led_status_t;
-
-typedef struct
-{
-    uint8 led_port :3;
-    uint8 led_pin :3;
-    uint8 led_status :1;
-    uint8 reserved :1;
-}led_t;
-# 45 "./ECU_Layer/LED/ecu_led.h"
-Std_ReturnType led_initialize(const led_t *led);
-# 54 "./ECU_Layer/LED/ecu_led.h"
-Std_ReturnType led_turn_on(const led_t *led);
-# 63 "./ECU_Layer/LED/ecu_led.h"
-Std_ReturnType led_turn_off(const led_t *led);
-# 72 "./ECU_Layer/LED/ecu_led.h"
-Std_ReturnType led_turn_toggle(const led_t *led);
-# 13 "./Application1.h" 2
-
-# 1 "./ECU_Layer/button/ecu_button.h" 1
-# 13 "./ECU_Layer/button/ecu_button.h"
-# 1 "./ECU_Layer/button/ecu_button_cfg.h" 1
-# 13 "./ECU_Layer/button/ecu_button.h" 2
-
-
-
-
-
-
-
-
-typedef enum
-{
-    BUTTON_PRESSED = 0,
-    BUTTON_RELEASED
-}button_state_t;
-
-typedef enum
-{
-    BUTTON_ACRIVE_HIGH = 0,
-    BUTTON_ACTIVE_LOW
-}button_active_t;
-
-typedef struct
-{
-    pin_config_t button_pin;
-    button_state_t button_status;
-    button_active_t button_connection;
-}button_t;
-# 50 "./ECU_Layer/button/ecu_button.h"
-Std_ReturnType button_initialize(const button_t *button);
-# 60 "./ECU_Layer/button/ecu_button.h"
-Std_ReturnType button_read_status(const button_t *button,button_state_t *button_status);
-# 14 "./Application1.h" 2
-
-# 1 "./ECU_Layer/relay/ecu_relay.h" 1
-# 14 "./ECU_Layer/relay/ecu_relay.h"
-# 1 "./ECU_Layer/relay/ecu_relay_cfg.h" 1
-# 14 "./ECU_Layer/relay/ecu_relay.h" 2
-
-
-
-
-
-
-
-
-typedef enum
-{
-    RELAY_OFF = 0,
-    RELAY_ON
-
-}relay_state_t;
-
-typedef struct
-{
-    uint8 relay_port :3;
-    uint8 relay_pin :3;
-    uint8 relay_state :1;
-    uint8 reserved :1;
-
-}relay_t;
-# 47 "./ECU_Layer/relay/ecu_relay.h"
-Std_ReturnType relay_initialize(const relay_t *relay);
-# 56 "./ECU_Layer/relay/ecu_relay.h"
-Std_ReturnType relay_turn_on(const relay_t *relay);
-# 65 "./ECU_Layer/relay/ecu_relay.h"
-Std_ReturnType relay_turn_off(const relay_t *relay);
-# 15 "./Application1.h" 2
-
-# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
-# 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
-# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
-# 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 23 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
+# 14 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+# 23 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef enum
 {
     DC_MOTOR_OFF = 0,
@@ -4846,79 +4738,67 @@ typedef struct
 {
     pin_config_t dc_motor[2];
 }dc_motor_t;
-# 44 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 44 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
-# 53 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 53 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
-# 62 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 62 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
-# 71 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 71 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
-# 16 "./Application1.h" 2
-# 29 "./Application1.h"
-void application_initialize(void);
-# 9 "Application1.c" 2
-
-
-
-
-
-dc_motor_t dc_motor1 = {
-    .dc_motor[0].port = GPIO_PORTB_INDEX,
-    .dc_motor[0].pin = GPIO_PIN0_INDEX,
-    .dc_motor[0].direction = GPIO_DIRECTION_OUTPUT,
-    .dc_motor[0].logic = DC_MOTOR_OFF,
-
-    .dc_motor[1].port = GPIO_PORTB_INDEX,
-    .dc_motor[1].pin = GPIO_PIN1_INDEX,
-    .dc_motor[1].direction = GPIO_DIRECTION_OUTPUT,
-    .dc_motor[1].logic = DC_MOTOR_OFF,
-};
-
-dc_motor_t dc_motor2 = {
-    .dc_motor[0].port = GPIO_PORTB_INDEX,
-    .dc_motor[0].pin = GPIO_PIN2_INDEX,
-    .dc_motor[0].direction = GPIO_DIRECTION_OUTPUT,
-    .dc_motor[0].logic = DC_MOTOR_OFF,
-
-    .dc_motor[1].port = GPIO_PORTB_INDEX,
-    .dc_motor[1].pin = GPIO_PIN3_INDEX,
-    .dc_motor[1].direction = GPIO_DIRECTION_OUTPUT,
-    .dc_motor[1].logic = DC_MOTOR_OFF,
-};
-
-Std_ReturnType ret = (Std_ReturnType)0x00;
-
-
-int main()
+# 10 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
+# 27 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor)
 {
-    application_initialize();
-
-    while(1)
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(_dc_motor != ((void*)0))
     {
-        dc_motor_move_right(&dc_motor1);
-        dc_motor_move_right(&dc_motor2);
-        _delay((unsigned long)((1000)*(8000000.0/4000.0)));
-        dc_motor_move_left(&dc_motor1);
-        dc_motor_move_left(&dc_motor2);
-        _delay((unsigned long)((1000)*(8000000.0/4000.0)));
-        dc_motor_move_right(&dc_motor1);
-        dc_motor_move_left(&dc_motor2);
-        _delay((unsigned long)((1000)*(8000000.0/4000.0)));
-        dc_motor_move_left(&dc_motor1);
-        dc_motor_move_right(&dc_motor2);
-        _delay((unsigned long)((1000)*(8000000.0/4000.0)));
-        dc_motor_stop(&dc_motor1);
-        dc_motor_stop(&dc_motor2);
-        _delay((unsigned long)((1000)*(8000000.0/4000.0)));
+
+        ret = gpio_pin_initialize(&_dc_motor->dc_motor[0]);
+        ret = gpio_pin_initialize(&_dc_motor->dc_motor[1]);
     }
+    else{ret = (Std_ReturnType)0x00;}
 
-    return (0);
+    return ret;
 }
-
-void application_initialize(void)
+# 48 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor)
 {
-    Std_ReturnType ret_init = (Std_ReturnType)0x00;
-    ret_init = dc_motor_initialize(&dc_motor1);
-    ret_init = dc_motor_initialize(&dc_motor2);
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(_dc_motor != ((void*)0))
+    {
+
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0],GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[1],GPIO_LOGIC_LOW);
+    }
+    else{ret = (Std_ReturnType)0x00;}
+
+    return ret;
+}
+# 69 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(_dc_motor != ((void*)0))
+    {
+
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[1],GPIO_LOGIC_HIGH);
+    }
+    else{ret = (Std_ReturnType)0x00;}
+
+    return ret;
+}
+# 90 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(_dc_motor != ((void*)0))
+    {
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[1],GPIO_LOGIC_LOW);
+    }
+    else{ret = (Std_ReturnType)0x00;}
+
+    return ret;
 }

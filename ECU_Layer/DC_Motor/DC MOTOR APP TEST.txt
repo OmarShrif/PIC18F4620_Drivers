@@ -1,0 +1,72 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "ECU_Layer/relay/ecu_relay.h"
+ 
+/* Section : Global Variables Definition */
+
+dc_motor_t dc_motor1 = {
+    .dc_motor[0].port        = GPIO_PORTB_INDEX,
+    .dc_motor[0].pin         = GPIO_PIN0_INDEX,
+    .dc_motor[0].direction   = GPIO_DIRECTION_OUTPUT,
+    .dc_motor[0].logic       = DC_MOTOR_OFF,
+    
+    .dc_motor[1].port        = GPIO_PORTB_INDEX,
+    .dc_motor[1].pin         = GPIO_PIN1_INDEX,
+    .dc_motor[1].direction   = GPIO_DIRECTION_OUTPUT,
+    .dc_motor[1].logic       = DC_MOTOR_OFF,
+};
+
+dc_motor_t dc_motor2 = {
+    .dc_motor[0].port        = GPIO_PORTB_INDEX,
+    .dc_motor[0].pin         = GPIO_PIN2_INDEX,
+    .dc_motor[0].direction   = GPIO_DIRECTION_OUTPUT,
+    .dc_motor[0].logic       = DC_MOTOR_OFF,
+    
+    .dc_motor[1].port        = GPIO_PORTB_INDEX,
+    .dc_motor[1].pin         = GPIO_PIN3_INDEX,
+    .dc_motor[1].direction   = GPIO_DIRECTION_OUTPUT,
+    .dc_motor[1].logic       = DC_MOTOR_OFF,
+};
+
+Std_ReturnType ret = E_NOT_OK;
+
+/* Section : Functions Definition */
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        dc_motor_move_right(&dc_motor1);
+        dc_motor_move_right(&dc_motor2);
+        __delay_ms(1000);
+        dc_motor_move_left(&dc_motor1);
+        dc_motor_move_left(&dc_motor2);
+        __delay_ms(1000);
+        dc_motor_move_right(&dc_motor1);
+        dc_motor_move_left(&dc_motor2);
+        __delay_ms(1000);
+        dc_motor_move_left(&dc_motor1);
+        dc_motor_move_right(&dc_motor2);
+        __delay_ms(1000);
+        dc_motor_stop(&dc_motor1);
+        dc_motor_stop(&dc_motor2);
+        __delay_ms(1000);
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_NOT_OK;
+    ret_init = dc_motor_initialize(&dc_motor1);
+    ret_init = dc_motor_initialize(&dc_motor2);
+}
