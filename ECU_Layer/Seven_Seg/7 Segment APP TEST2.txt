@@ -10,7 +10,7 @@
 #include "ECU_Layer/relay/ecu_relay.h"
  
 /* Section : Global Variables Definition */
-
+uint8 number=0,number_bcd=0; 
 
 Std_ReturnType ret = E_NOT_OK;
 
@@ -21,7 +21,14 @@ int main()
     
     while(1)
     {
-        
+        number_bcd = ((uint8)(number%10)) | ((uint8)((number/10)<<4));
+        ret = gpio_port_write_logic(GPIO_PORTC_INDEX,number_bcd);//using BCD 
+        number++;
+        __delay_ms(250);
+        if(number == 100)
+        {
+            number = 0;
+        }
     }
     
     return (EXIT_SUCCESS);
@@ -30,4 +37,5 @@ int main()
 void application_initialize(void)
 {
     Std_ReturnType ret_init = E_NOT_OK;
+    ret_init = gpio_port_direction_initialize(GPIO_PORTC_INDEX,0x00);
 }

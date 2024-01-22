@@ -1,5 +1,5 @@
 /* 
- * File:   ecu_dc_motor.h
+ * File:   ecu_dc_motor.c
  * Author: Omar Shrif Mohamed
  * https://www.linkedin.com/in/omar-shrif-982413213/
  * Created on January 19, 2024, 2:47 PM

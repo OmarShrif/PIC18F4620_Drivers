@@ -1,5 +1,5 @@
 /* 
- * File:   ecu_relay.h
+ * File:   ecu_relay.c
  * Author: Omar Shrif Mohamed
  * https://www.linkedin.com/in/omar-shrif-982413213/
  * Created on January 16, 2024, 10:08 AM

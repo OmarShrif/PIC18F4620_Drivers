@@ -1,0 +1,85 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "ECU_Layer/relay/ecu_relay.h"
+ 
+/* Section : Global Variables Definition */
+segment_t seg1 = 
+{
+    .segment_pins[0].port = GPIO_PORTC_INDEX, 
+    .segment_pins[0].pin = GPIO_PIN0_INDEX,
+    .segment_pins[0].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[0].logic = GPIO_LOGIC_LOW,
+    .segment_pins[1].port = GPIO_PORTC_INDEX, 
+    .segment_pins[1].pin = GPIO_PIN1_INDEX,
+    .segment_pins[1].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[1].logic = GPIO_LOGIC_LOW,
+    .segment_pins[2].port = GPIO_PORTC_INDEX, 
+    .segment_pins[2].pin = GPIO_PIN2_INDEX,
+    .segment_pins[2].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[2].logic = GPIO_LOGIC_LOW,
+    .segment_pins[3].port = GPIO_PORTC_INDEX, 
+    .segment_pins[3].pin = GPIO_PIN3_INDEX,
+    .segment_pins[3].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[3].logic = GPIO_LOGIC_LOW,
+    .segment_type = SEGMENT_COMMON_ANODE
+};
+pin_config_t seg1_enable = 
+{
+    .port = GPIO_PORTD_INDEX,
+    .pin = GPIO_PIN0_INDEX,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOGIC_HIGH
+};
+
+pin_config_t seg2_enable = 
+{
+    .port = GPIO_PORTD_INDEX,
+    .pin = GPIO_PIN1_INDEX,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOGIC_HIGH
+};
+uint8 counter = 0,number = 0;
+
+Std_ReturnType ret = E_NOT_OK;
+
+/* Section : Functions Definition */
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        for(number=0 ; number<100 ; number++)
+        {
+            for(counter=0 ; counter<20 ; counter++)
+            {
+                ret = seven_segment_write_number(&seg1,(uint8)(number/10));
+                ret = gpio_pin_write_logic(&seg1_enable,GPIO_LOGIC_LOW);
+                __delay_ms(10);
+                ret = gpio_pin_write_logic(&seg1_enable,GPIO_LOGIC_HIGH);
+                
+                ret = seven_segment_write_number(&seg1,(uint8)(number%10));
+                ret = gpio_pin_write_logic(&seg2_enable,GPIO_LOGIC_LOW);
+                __delay_ms(10);
+                ret = gpio_pin_write_logic(&seg2_enable,GPIO_LOGIC_HIGH);
+            }
+        }
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_NOT_OK;
+    ret_init = seven_segment_initialize(&seg1);
+    ret_init = gpio_pin_initialize(&seg1_enable);
+    ret_init = gpio_pin_initialize(&seg2_enable);
+}

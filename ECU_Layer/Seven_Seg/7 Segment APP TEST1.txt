@@ -1,0 +1,45 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "ECU_Layer/relay/ecu_relay.h"
+ 
+/* Section : Global Variables Definition */
+uint8 seg_commn_anode_values[10] = {0XC0,0XF9,0XA4,0XB0,0X99,0X92,0X82,0XF8,0X80,0X90};
+uint8 seg_commn_cathode_values[10] = {0X3F,0X06,0X5B,0X4F,0X66,0X6D,0X7D,0X07,0X7F,0X6F};
+uint8 ones=0, tens=0; 
+
+Std_ReturnType ret = E_NOT_OK;
+
+/* Section : Functions Definition */
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        for(tens=0 ; tens<10 ; tens++)
+        {
+            ret = gpio_port_write_logic(GPIO_PORTD_INDEX,tens);//using BCD 
+            for(ones=0 ; ones<10 ; ones++)
+            {
+                ret = gpio_port_write_logic(GPIO_PORTC_INDEX,seg_commn_anode_values[ones]);//without BCD
+                __delay_ms(500);
+            }
+        }
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_NOT_OK;
+    ret_init = gpio_port_direction_initialize(GPIO_PORTC_INDEX,0x80);
+    ret_init = gpio_port_direction_initialize(GPIO_PORTD_INDEX,0x80);
+}

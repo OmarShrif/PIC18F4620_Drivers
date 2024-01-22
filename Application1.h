@@ -14,6 +14,7 @@
 #include "ECU_Layer/button/ecu_button.h"
 #include "ECU_Layer/relay/ecu_relay.h"
 #include "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+#include "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 
 /* Section : Macro Declarations */
 #define _XTAL_FREQ  8000000.0

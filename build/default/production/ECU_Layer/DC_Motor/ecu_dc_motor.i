@@ -4754,8 +4754,8 @@ Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor)
     if(_dc_motor != ((void*)0))
     {
 
-        ret = gpio_pin_initialize(&_dc_motor->dc_motor[0]);
-        ret = gpio_pin_initialize(&_dc_motor->dc_motor[1]);
+        ret = gpio_pin_initialize(&_dc_motor->dc_motor[0x00U]);
+        ret = gpio_pin_initialize(&_dc_motor->dc_motor[0x01U]);
     }
     else{ret = (Std_ReturnType)0x00;}
 
@@ -4768,8 +4768,8 @@ Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor)
     if(_dc_motor != ((void*)0))
     {
 
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0],GPIO_LOGIC_HIGH);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[1],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x00U],GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x01U],GPIO_LOGIC_LOW);
     }
     else{ret = (Std_ReturnType)0x00;}
 
@@ -4782,8 +4782,8 @@ Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor)
     if(_dc_motor != ((void*)0))
     {
 
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0],GPIO_LOGIC_LOW);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[1],GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x00U],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x01U],GPIO_LOGIC_HIGH);
     }
     else{ret = (Std_ReturnType)0x00;}
 
@@ -4795,8 +4795,8 @@ Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor)
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(_dc_motor != ((void*)0))
     {
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0],GPIO_LOGIC_LOW);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[1],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x00U],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x01U],GPIO_LOGIC_LOW);
     }
     else{ret = (Std_ReturnType)0x00;}
 

@@ -17,6 +17,11 @@ BUTTON_ACTIVE_LOW 1
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
+"54 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[e E2832 . `uc
+GPIO_LOGIC_LOW 0
+GPIO_LOGIC_HIGH 1
+]
 "32 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/LED/ecu_led.c
 [e E2828 . `uc
 GPIO_DIRECTION_OUTPUT 0
@@ -55,7 +60,11 @@ GPIO_PORTC_INDEX 2
 GPIO_PORTD_INDEX 3
 GPIO_PORTE_INDEX 4
 ]
-"14 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"13 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+[e E2938 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
 [e E2811 . `uc
 GPIO_PORTA_INDEX 0
 GPIO_PORTB_INDEX 1
@@ -77,19 +86,28 @@ GPIO_PIN7_INDEX 7
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
-[e E2923 . `uc
-DC_MOTOR_OFF 0
-DC_MOTOR_ON 1
-]
-"54 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/DC_Motor/ecu_dc_motor.c
 [e E2832 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
-"41 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"28 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Seven_Seg/ecu_seven_seg.c
+[e E2871 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
+"56
+[e E2832 . `uc
+GPIO_LOGIC_LOW 0
+GPIO_LOGIC_HIGH 1
+]
+"53 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
 [v _main main `(i  1 e 2 0 ]
-"67
+"79
 [v _application_initialize application_initialize `(v  1 e 1 0 ]
+"7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\float.c
@@ -114,14 +132,10 @@ GPIO_LOGIC_HIGH 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"27 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/DC_Motor/ecu_dc_motor.c
-[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
-"48
-[v _dc_motor_move_right dc_motor_move_right `(uc  1 e 1 0 ]
-"69
-[v _dc_motor_move_left dc_motor_move_left `(uc  1 e 1 0 ]
-"90
-[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
+"28 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Seven_Seg/ecu_seven_seg.c
+[v _seven_segment_initialize seven_segment_initialize `(uc  1 e 1 0 ]
+"51
+[v _seven_segment_write_number seven_segment_write_number `(uc  1 e 1 0 ]
 "34 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_initialize gpio_pin_direction_initialize `(uc  1 e 1 0 ]
 "86
@@ -137,11 +151,18 @@ GPIO_LOGIC_HIGH 1
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"14 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
-[s S349 . 2 `[2]S24 1 dc_motor 2 0 ]
-[v _dc_motor1 dc_motor1 `S349  1 e 2 0 ]
-"26
-[v _dc_motor2 dc_motor2 `S349  1 e 2 0 ]
+"13 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+[s S380 . 5 `[4]S24 1 segment_pins 4 0 `E2938 1 segment_type 1 4 ]
+[v _seg1 seg1 `S380  1 e 5 0 ]
+"33
+[v _seg1_enable seg1_enable `S24  1 e 1 0 ]
+"41
+[v _seg2_enable seg2_enable `S24  1 e 1 0 ]
+"48
+[v _counter counter `uc  1 e 1 0 ]
+[v _number number `uc  1 e 1 0 ]
+"50
+[v _ret ret `uc  1 e 1 0 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -178,75 +199,46 @@ GPIO_LOGIC_HIGH 1
 [v _lat_registers lat_registers `[5]*.39VEuc  1 e 10 0 ]
 "19
 [v _port_registers port_registers `[5]*.39VEuc  1 e 10 0 ]
-"41 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"53 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
 [v _main main `(i  1 e 2 0 ]
 {
-"65
+"77
 } 0
-"90 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/DC_Motor/ecu_dc_motor.c
-[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
+"51 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Seven_Seg/ecu_seven_seg.c
+[v _seven_segment_write_number seven_segment_write_number `(uc  1 e 1 0 ]
 {
-"92
-[v dc_motor_stop@ret ret `uc  1 a 1 9 ]
+"53
+[v seven_segment_write_number@ret ret `uc  1 a 1 10 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"90
-[s S349 . 2 `[2]S24 1 dc_motor 2 0 ]
-[v dc_motor_stop@_dc_motor _dc_motor `*.30CS349  1 p 1 8 ]
-"101
+"51
+[s S380 . 5 `[4]S24 1 segment_pins 4 0 `E2938 1 segment_type 1 4 ]
+[v seven_segment_write_number@seg seg `*.30CS380  1 p 1 8 ]
+[v seven_segment_write_number@number number `uc  1 p 1 9 ]
+"64
 } 0
-"48
-[v _dc_motor_move_right dc_motor_move_right `(uc  1 e 1 0 ]
-{
-"50
-[v dc_motor_move_right@ret ret `uc  1 a 1 9 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"48
-[s S349 . 2 `[2]S24 1 dc_motor 2 0 ]
-[v dc_motor_move_right@_dc_motor _dc_motor `*.30CS349  1 p 1 8 ]
-"60
-} 0
-"69
-[v _dc_motor_move_left dc_motor_move_left `(uc  1 e 1 0 ]
-{
-"71
-[v dc_motor_move_left@ret ret `uc  1 a 1 9 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"69
-[s S349 . 2 `[2]S24 1 dc_motor 2 0 ]
-[v dc_motor_move_left@_dc_motor _dc_motor `*.30CS349  1 p 1 8 ]
-"81
-} 0
-"67 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"79 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
 [v _application_initialize application_initialize `(v  1 e 1 0 ]
 {
-"72
+"85
 } 0
-"27 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/DC_Motor/ecu_dc_motor.c
-[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
+"28 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Seven_Seg/ecu_seven_seg.c
+[v _seven_segment_initialize seven_segment_initialize `(uc  1 e 1 0 ]
 {
-"29
-[v dc_motor_initialize@ret ret `uc  1 a 1 12 ]
+"30
+[v seven_segment_initialize@ret ret `uc  1 a 1 12 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"27
-[s S349 . 2 `[2]S24 1 dc_motor 2 0 ]
-[v dc_motor_initialize@_dc_motor _dc_motor `*.30CS349  1 p 1 11 ]
-"39
+"28
+[s S380 . 5 `[4]S24 1 segment_pins 4 0 `E2938 1 segment_type 1 4 ]
+[v seven_segment_initialize@seg seg `*.30CS380  1 p 1 11 ]
+"41
 } 0
 "160 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
@@ -290,4 +282,28 @@ GPIO_LOGIC_HIGH 1
 "34
 [v gpio_pin_direction_initialize@_pin_config _pin_config `*.30CS24  1 p 1 0 ]
 "53
+} 0
+"7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 0 ]
+[v ___awmod@divisor divisor `i  1 p 2 2 ]
+"34
+} 0
+"7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 0 ]
+[v ___awdiv@divisor divisor `i  1 p 2 2 ]
+"41
 } 0
