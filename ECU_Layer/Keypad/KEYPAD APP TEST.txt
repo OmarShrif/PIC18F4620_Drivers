@@ -10,6 +10,7 @@
 #include "ECU_Layer/relay/ecu_relay.h"
  
 /* Section : Global Variables Definition */
+uint8 keypad_value = ZERO_INIT;
 
 Std_ReturnType ret = E_NOT_OK;
 
@@ -20,7 +21,19 @@ int main()
     
     while(1)
     {
-        
+        ret = keypad_get_value(&keypad1,&keypad_value);
+        if('5' == keypad_value)
+        {
+            led_turn_on(&led1);
+        }
+        else if('=' == keypad_value)
+        {
+            led_turn_off(&led1);
+        }
+        else
+        {
+            
+        }
     }
     
     return (EXIT_SUCCESS);

@@ -1,6 +1,5 @@
-build/default/production/Application1.p1:  \
-Application1.c  \
-Application1.h  \
+build/default/production/ECU_Layer/ecu_layer_init.p1:  \
+ECU_Layer/ecu_layer_init.c  \
 ECU_Layer/ecu_layer_init.h  \
 ECU_Layer/LED/ecu_led.h  \
 ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h  \
