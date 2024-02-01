@@ -4489,6 +4489,65 @@ typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
 # 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 421 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+
+
+
+
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_Liberates.h" 2
 # 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 # 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
@@ -4895,6 +4954,62 @@ Std_ReturnType keypad_initialize(const keypad_t *_keypad);
 Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
 # 17 "ECU_Layer/ecu_layer_init.h" 2
 
+# 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 1
+# 13 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
+# 13 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
+# 47 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+typedef struct
+{
+  pin_config_t lcd_rs;
+  pin_config_t lcd_en;
+  pin_config_t lcd_data[4];
+}chr_lcd_4bit_t;
+
+typedef struct
+{
+  pin_config_t lcd_rs;
+  pin_config_t lcd_en;
+  pin_config_t lcd_data[8];
+}chr_lcd_8bit_t;
+# 70 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_initialize(const chr_lcd_4bit_t *lcd);
+# 80 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_send_command(const chr_lcd_4bit_t *lcd,uint8 command);
+# 90 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_send_char_data(const chr_lcd_4bit_t *lcd,uint8 data);
+# 102 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_send_char_data_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 data);
+# 112 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_send_string(const chr_lcd_4bit_t *lcd,uint8 *str);
+# 124 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_send_string_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 *str);
+# 137 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_4bit_send_custom_char_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,
+                                              const uint8 _char[],uint8 mem_pos);
+# 148 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_initialize(const chr_lcd_8bit_t *lcd);
+# 158 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_send_command(const chr_lcd_8bit_t *lcd,uint8 command);
+# 168 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_send_char_data(const chr_lcd_8bit_t *lcd,uint8 data);
+# 180 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_send_char_data_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 data);
+# 190 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_send_string(const chr_lcd_8bit_t *lcd,uint8 *str);
+# 202 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_send_string_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 *str);
+# 215 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType lcd_8bit_send_custom_char_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,
+                                              const uint8 _char[],uint8 mem_pos);
+# 226 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str);
+# 236 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType convert_short_to_string(uint16 value,uint8 *str);
+# 246 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
+# 18 "ECU_Layer/ecu_layer_init.h" 2
+
 
 
 
@@ -4904,6 +5019,8 @@ Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
 
 extern keypad_t keypad1;
 extern led_t led1;
+extern chr_lcd_4bit_t lcd1;
+extern chr_lcd_8bit_t lcd2;
 
 
 Std_ReturnType ecu_layer_initialize(void);
@@ -4948,12 +5065,95 @@ keypad_t keypad1 = {
     .keypad_column_pins[3].direction = GPIO_DIRECTION_INPUT,
     .keypad_column_pins[3].logic = GPIO_LOGIC_LOW,
 };
+chr_lcd_4bit_t lcd1 =
+{
+    .lcd_rs.port = GPIO_PORTC_INDEX,
+    .lcd_rs.pin = GPIO_PIN0_INDEX,
+    .lcd_rs.direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_rs.logic = GPIO_LOGIC_LOW,
 
+    .lcd_en.port = GPIO_PORTC_INDEX,
+    .lcd_en.pin = GPIO_PIN1_INDEX,
+    .lcd_en.direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_en.logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[0].port = GPIO_PORTC_INDEX,
+    .lcd_data[0].pin = GPIO_PIN2_INDEX,
+    .lcd_data[0].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[0].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[1].port = GPIO_PORTC_INDEX,
+    .lcd_data[1].pin = GPIO_PIN3_INDEX,
+    .lcd_data[1].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[1].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[2].port = GPIO_PORTC_INDEX,
+    .lcd_data[2].pin = GPIO_PIN4_INDEX,
+    .lcd_data[2].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[2].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[3].port = GPIO_PORTC_INDEX,
+    .lcd_data[3].pin = GPIO_PIN5_INDEX,
+    .lcd_data[3].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[3].logic = GPIO_LOGIC_LOW,
+};
+chr_lcd_8bit_t lcd2 =
+{
+    .lcd_rs.port = GPIO_PORTC_INDEX,
+    .lcd_rs.pin = GPIO_PIN6_INDEX,
+    .lcd_rs.direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_rs.logic = GPIO_LOGIC_LOW,
+
+    .lcd_en.port = GPIO_PORTC_INDEX,
+    .lcd_en.pin = GPIO_PIN7_INDEX,
+    .lcd_en.direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_en.logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[0].port = GPIO_PORTD_INDEX,
+    .lcd_data[0].pin = GPIO_PIN0_INDEX,
+    .lcd_data[0].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[0].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[1].port = GPIO_PORTD_INDEX,
+    .lcd_data[1].pin = GPIO_PIN1_INDEX,
+    .lcd_data[1].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[1].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[2].port = GPIO_PORTD_INDEX,
+    .lcd_data[2].pin = GPIO_PIN2_INDEX,
+    .lcd_data[2].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[2].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[3].port = GPIO_PORTD_INDEX,
+    .lcd_data[3].pin = GPIO_PIN3_INDEX,
+    .lcd_data[3].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[3].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[4].port = GPIO_PORTD_INDEX,
+    .lcd_data[4].pin = GPIO_PIN4_INDEX,
+    .lcd_data[4].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[4].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[5].port = GPIO_PORTD_INDEX,
+    .lcd_data[5].pin = GPIO_PIN5_INDEX,
+    .lcd_data[5].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[5].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[6].port = GPIO_PORTD_INDEX,
+    .lcd_data[6].pin = GPIO_PIN6_INDEX,
+    .lcd_data[6].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[6].logic = GPIO_LOGIC_LOW,
+
+    .lcd_data[7].port = GPIO_PORTD_INDEX,
+    .lcd_data[7].pin = GPIO_PIN7_INDEX,
+    .lcd_data[7].direction = GPIO_DIRECTION_OUTPUT,
+    .lcd_data[7].logic = GPIO_LOGIC_LOW,
+};
 
 Std_ReturnType ecu_layer_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x00;
-    ret_init = keypad_initialize(&keypad1);
-    ret_init = led_initialize(&led1);
+    ret_init = lcd_4bit_initialize(&lcd1);
+    ret_init = lcd_8bit_initialize(&lcd2);
     return ret_init;
 }

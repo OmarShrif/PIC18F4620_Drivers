@@ -18,4 +18,6 @@ ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h  \
 ECU_Layer/Seven_Seg/ecu_seven_seg.h  \
 ECU_Layer/Seven_Seg/ecu_seven_seg_cfg.h  \
 ECU_Layer/Keypad/ecu_keypad.h  \
-ECU_Layer/Keypad/ecu_keypad_cfg.h 
+ECU_Layer/Keypad/ecu_keypad_cfg.h  \
+ECU_Layer/Chr_LCD/ecu_chr_lcd.h  \
+ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h 

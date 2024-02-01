@@ -1,36 +1,52 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"66 ./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h
+[s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S273 . port pin direction logic ]
+"48 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 48: {
+[s S280 `S273 1 `S273 1 `S273 -> 4 `i ]
+[n S280 . lcd_rs lcd_en lcd_data ]
+"124
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 124: Std_ReturnType lcd_4bit_send_string_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 *str);
+[v _lcd_4bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS280`uc`uc`*uc ]
+"28 ./ECU_Layer/ecu_layer_init.h
+[; ;./ECU_Layer/ecu_layer_init.h: 28: extern chr_lcd_4bit_t lcd1;
+[v _lcd1 `S280 ~T0 @X0 0 e ]
+[v F2948 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF2948 ~T0 @X0 0 e ]
+[p i __delay ]
+"80 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 80: Std_ReturnType lcd_4bit_send_command(const chr_lcd_4bit_t *lcd,uint8 command);
+[v _lcd_4bit_send_command `(uc ~T0 @X0 0 ef2`*CS280`uc ]
+"55
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 55: {
+[s S281 `S273 1 `S273 1 `S273 -> 8 `i ]
+[n S281 . lcd_rs lcd_en lcd_data ]
+"202
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 202: Std_ReturnType lcd_8bit_send_string_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 *str);
+[v _lcd_8bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS281`uc`uc`*uc ]
+"29 ./ECU_Layer/ecu_layer_init.h
+[; ;./ECU_Layer/ecu_layer_init.h: 29: extern chr_lcd_8bit_t lcd2;
+[v _lcd2 `S281 ~T0 @X0 0 e ]
+"168 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 168: Std_ReturnType lcd_8bit_send_char_data(const chr_lcd_8bit_t *lcd,uint8 data);
+[v _lcd_8bit_send_char_data `(uc ~T0 @X0 0 ef2`*CS281`uc ]
+"158
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 158: Std_ReturnType lcd_8bit_send_command(const chr_lcd_8bit_t *lcd,uint8 command);
+[v _lcd_8bit_send_command `(uc ~T0 @X0 0 ef2`*CS281`uc ]
+"215
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 215: Std_ReturnType lcd_8bit_send_custom_char_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,
+[v _lcd_8bit_send_custom_char_pos `(uc ~T0 @X0 0 ef5`*CS281`uc`uc`*Cuc`uc ]
+"137
+[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 137: Std_ReturnType lcd_4bit_send_custom_char_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,
+[v _lcd_4bit_send_custom_char_pos `(uc ~T0 @X0 0 ef5`*CS280`uc`uc`*Cuc`uc ]
 [p mainexit ]
 "26 ./Application1.h
 [; ;./Application1.h: 26: void application_initialize(void);
 [v _application_initialize `(v ~T0 @X0 0 ef ]
-"66 ./ECU_Layer/Keypad/../../MCAL_Layer/GPIO/hal_gpio.h
-[s S272 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S272 . port pin direction logic ]
-"26 ./ECU_Layer/Keypad/ecu_keypad.h
-[; ;./ECU_Layer/Keypad/ecu_keypad.h: 26: {
-[s S278 `S272 -> 4 `i `S272 -> 4 `i ]
-[n S278 . keypad_row_pins keypad_column_pins ]
-"51
-[; ;./ECU_Layer/Keypad/ecu_keypad.h: 51: Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
-[v _keypad_get_value `(uc ~T0 @X0 0 ef2`*CS278`*uc ]
-"25 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 25: extern keypad_t keypad1;
-[v _keypad1 `S278 ~T0 @X0 0 e ]
-"29 ./ECU_Layer/LED/ecu_led.h
-[; ;./ECU_Layer/LED/ecu_led.h: 29: {
-[s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S273 . led_port led_pin led_status reserved ]
-"54
-[; ;./ECU_Layer/LED/ecu_led.h: 54: Std_ReturnType led_turn_on(const led_t *led);
-[v _led_turn_on `(uc ~T0 @X0 0 ef1`*CS273 ]
-"26 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 26: extern led_t led1;
-[v _led1 `S273 ~T0 @X0 0 e ]
-"63 ./ECU_Layer/LED/ecu_led.h
-[; ;./ECU_Layer/LED/ecu_led.h: 63: Std_ReturnType led_turn_off(const led_t *led);
-[v _led_turn_off `(uc ~T0 @X0 0 ef1`*CS273 ]
-"29 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 29: Std_ReturnType ecu_layer_initialize(void);
+"32 ./ECU_Layer/ecu_layer_init.h
+[; ;./ECU_Layer/ecu_layer_init.h: 32: Std_ReturnType ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(uc ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
@@ -443,107 +459,367 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"13 Application1.c
-[; ;Application1.c: 13: uint8 keypad_value = 0;
-[v _keypad_value `uc ~T0 @X0 1 e ]
-[i _keypad_value
--> -> 0 `i `uc
-]
-"15
-[; ;Application1.c: 15: Std_ReturnType ret = (Std_ReturnType)0x00;
+"14 Application1.c
+[; ;Application1.c: 14: Std_ReturnType ret = (Std_ReturnType)0x00;
 [v _ret `uc ~T0 @X0 1 e ]
 [i _ret
 -> -> 0 `i `uc
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
+"15
+[; ;Application1.c: 15: uint8 customChar1[] = {0x0E,0x0A,0x11,0x11,0x11,0x11,0x1F,0x00};
+[v _customChar1 `uc ~T0 @X0 -> 8 `i e ]
+[i _customChar1
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"16
+[; ;Application1.c: 16: uint8 customChar2[] = {0x0E,0x0A,0x11,0x11,0x11,0x1F,0x1F,0x00};
+[v _customChar2 `uc ~T0 @X0 -> 8 `i e ]
+[i _customChar2
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"17
+[; ;Application1.c: 17: uint8 customChar3[] = {0x0E,0x0A,0x11,0x11,0x1F,0x1F,0x1F,0x00};
+[v _customChar3 `uc ~T0 @X0 -> 8 `i e ]
+[i _customChar3
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
 "18
-[; ;Application1.c: 18: int main()
-[v _main `(i ~T0 @X0 1 ef ]
+[; ;Application1.c: 18: uint8 customChar4[] = {0x0E,0x0A,0x11,0x1F,0x1F,0x1F,0x1F,0x00};
+[v _customChar4 `uc ~T0 @X0 -> 8 `i e ]
+[i _customChar4
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 17 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
 "19
-[; ;Application1.c: 19: {
+[; ;Application1.c: 19: uint8 customChar5[] = {0x0E,0x0A,0x1F,0x1F,0x1F,0x1F,0x1F,0x00};
+[v _customChar5 `uc ~T0 @X0 -> 8 `i e ]
+[i _customChar5
+:U ..
+-> -> 14 `i `uc
+-> -> 10 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"20
+[; ;Application1.c: 20: uint8 customChar6[] = {0x0E,0x0E,0x1F,0x1F,0x1F,0x1F,0x1F,0x00};
+[v _customChar6 `uc ~T0 @X0 -> 8 `i e ]
+[i _customChar6
+:U ..
+-> -> 14 `i `uc
+-> -> 14 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 31 `i `uc
+-> -> 0 `i `uc
+..
+]
+"22
+[; ;Application1.c: 22: void welcome_message(void)
+[v _welcome_message `(v ~T0 @X0 1 ef ]
+"23
+[; ;Application1.c: 23: {
+{
+[e :U _welcome_message ]
+[f ]
+"24
+[; ;Application1.c: 24:     Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"25
+[; ;Application1.c: 25:     uint8 l_lcd1_counter = 0;
+[v _l_lcd1_counter `uc ~T0 @X0 1 a ]
+[e = _l_lcd1_counter -> -> 0 `i `uc ]
+"27
+[; ;Application1.c: 27:     for(l_lcd1_counter = 1; l_lcd1_counter<=5 ; l_lcd1_counter++)
+{
+[e = _l_lcd1_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd1_counter `i -> 5 `i 283  ]
+[e $U 284  ]
+[e :U 283 ]
+"28
+[; ;Application1.c: 28:     {
+{
+"29
+[; ;Application1.c: 29:         ret = lcd_4bit_send_string_pos(&lcd1,1,7,"Hello All");
+[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 7 `i `uc :s 1C ]
+"30
+[; ;Application1.c: 30:         _delay((unsigned long)((500)*(8000000.0/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / .8000000.0 .4000.0 `ul ]
+"31
+[; ;Application1.c: 31:         ret = lcd_4bit_send_command(&lcd1,0X01);
+[e = _ret ( _lcd_4bit_send_command (2 , -> &U _lcd1 `*CS280 -> -> 1 `i `uc ]
+"32
+[; ;Application1.c: 32:         _delay((unsigned long)((500)*(8000000.0/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / .8000000.0 .4000.0 `ul ]
+"33
+[; ;Application1.c: 33:     }
+}
+[e ++ _l_lcd1_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd1_counter `i -> 5 `i 283  ]
+[e :U 284 ]
+}
+"34
+[; ;Application1.c: 34: }
+[e :UE 282 ]
+}
+"36
+[; ;Application1.c: 36: void loading_screen(void)
+[v _loading_screen `(v ~T0 @X0 1 ef ]
+"37
+[; ;Application1.c: 37: {
+{
+[e :U _loading_screen ]
+[f ]
+"38
+[; ;Application1.c: 38:     Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"39
+[; ;Application1.c: 39:     uint8 l_lcd2_counter = 0;
+[v _l_lcd2_counter `uc ~T0 @X0 1 a ]
+[e = _l_lcd2_counter -> -> 0 `i `uc ]
+"40
+[; ;Application1.c: 40:     ret = lcd_8bit_send_string_pos(&lcd2,1,1,"Loading");
+[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 1 `i `uc :s 2C ]
+"42
+[; ;Application1.c: 42:     for(l_lcd2_counter = 1; l_lcd2_counter<=8 ; l_lcd2_counter++)
+{
+[e = _l_lcd2_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd2_counter `i -> 8 `i 287  ]
+[e $U 288  ]
+[e :U 287 ]
+"43
+[; ;Application1.c: 43:     {
+{
+"44
+[; ;Application1.c: 44:         ret = lcd_8bit_send_char_data(&lcd2,'.');
+[e = _ret ( _lcd_8bit_send_char_data (2 , -> &U _lcd2 `*CS281 -> -> 46 `ui `uc ]
+"45
+[; ;Application1.c: 45:         _delay((unsigned long)((500)*(8000000.0/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / .8000000.0 .4000.0 `ul ]
+"46
+[; ;Application1.c: 46:     }
+}
+[e ++ _l_lcd2_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd2_counter `i -> 8 `i 287  ]
+[e :U 288 ]
+}
+"47
+[; ;Application1.c: 47:     ret = lcd_8bit_send_command(&lcd2,0X01);
+[e = _ret ( _lcd_8bit_send_command (2 , -> &U _lcd2 `*CS281 -> -> 1 `i `uc ]
+"48
+[; ;Application1.c: 48: }
+[e :UE 286 ]
+}
+"49
+[; ;Application1.c: 49: void battary_charging(void)
+[v _battary_charging `(v ~T0 @X0 1 ef ]
+"50
+[; ;Application1.c: 50: {
+{
+[e :U _battary_charging ]
+[f ]
+"51
+[; ;Application1.c: 51:     uint8 l_lcd2_counter = 0;
+[v _l_lcd2_counter `uc ~T0 @X0 1 a ]
+[e = _l_lcd2_counter -> -> 0 `i `uc ]
+"52
+[; ;Application1.c: 52:     for(l_lcd2_counter = 1; l_lcd2_counter<=8 ; l_lcd2_counter++)
+{
+[e = _l_lcd2_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd2_counter `i -> 8 `i 291  ]
+[e $U 292  ]
+[e :U 291 ]
+"53
+[; ;Application1.c: 53:     {
+{
+"54
+[; ;Application1.c: 54:         ret = lcd_8bit_send_custom_char_pos(&lcd2,1,20,customChar1,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_8bit_send_custom_char_pos (4 , , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar1 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"55
+[; ;Application1.c: 55:         ret = lcd_8bit_send_custom_char_pos(&lcd2,1,20,customChar2,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_8bit_send_custom_char_pos (4 , , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar2 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"56
+[; ;Application1.c: 56:         ret = lcd_8bit_send_custom_char_pos(&lcd2,1,20,customChar3,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_8bit_send_custom_char_pos (4 , , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar3 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"57
+[; ;Application1.c: 57:         ret = lcd_8bit_send_custom_char_pos(&lcd2,1,20,customChar4,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_8bit_send_custom_char_pos (4 , , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar4 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"58
+[; ;Application1.c: 58:         ret = lcd_8bit_send_custom_char_pos(&lcd2,1,20,customChar5,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_8bit_send_custom_char_pos (4 , , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar5 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"59
+[; ;Application1.c: 59:         ret = lcd_8bit_send_custom_char_pos(&lcd2,1,20,customChar6,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_8bit_send_custom_char_pos (4 , , , , -> &U _lcd2 `*CS281 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar6 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"60
+[; ;Application1.c: 60:     }
+}
+[e ++ _l_lcd2_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd2_counter `i -> 8 `i 291  ]
+[e :U 292 ]
+}
+"61
+[; ;Application1.c: 61: }
+[e :UE 290 ]
+}
+"62
+[; ;Application1.c: 62: void battary_charging2(void)
+[v _battary_charging2 `(v ~T0 @X0 1 ef ]
+"63
+[; ;Application1.c: 63: {
+{
+[e :U _battary_charging2 ]
+[f ]
+"64
+[; ;Application1.c: 64:     uint8 l_lcd1_counter = 0;
+[v _l_lcd1_counter `uc ~T0 @X0 1 a ]
+[e = _l_lcd1_counter -> -> 0 `i `uc ]
+"65
+[; ;Application1.c: 65:     for(l_lcd1_counter = 1; l_lcd1_counter<=8 ; l_lcd1_counter++)
+{
+[e = _l_lcd1_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd1_counter `i -> 8 `i 295  ]
+[e $U 296  ]
+[e :U 295 ]
+"66
+[; ;Application1.c: 66:     {
+{
+"67
+[; ;Application1.c: 67:         ret = lcd_4bit_send_custom_char_pos(&lcd1,1,20,customChar1,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_4bit_send_custom_char_pos (4 , , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar1 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"68
+[; ;Application1.c: 68:         ret = lcd_4bit_send_custom_char_pos(&lcd1,1,20,customChar2,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_4bit_send_custom_char_pos (4 , , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar2 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"69
+[; ;Application1.c: 69:         ret = lcd_4bit_send_custom_char_pos(&lcd1,1,20,customChar3,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_4bit_send_custom_char_pos (4 , , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar3 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"70
+[; ;Application1.c: 70:         ret = lcd_4bit_send_custom_char_pos(&lcd1,1,20,customChar4,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_4bit_send_custom_char_pos (4 , , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar4 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"71
+[; ;Application1.c: 71:         ret = lcd_4bit_send_custom_char_pos(&lcd1,1,20,customChar5,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_4bit_send_custom_char_pos (4 , , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar5 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"72
+[; ;Application1.c: 72:         ret = lcd_4bit_send_custom_char_pos(&lcd1,1,20,customChar6,0);_delay((unsigned long)((250)*(8000000.0/4000.0)));
+[e = _ret ( _lcd_4bit_send_custom_char_pos (4 , , , , -> &U _lcd1 `*CS280 -> -> 1 `i `uc -> -> 20 `i `uc -> &U _customChar6 `*Cuc -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 250 `i `d / .8000000.0 .4000.0 `ul ]
+"73
+[; ;Application1.c: 73:     }
+}
+[e ++ _l_lcd1_counter -> -> 1 `i `uc ]
+[e $ <= -> _l_lcd1_counter `i -> 8 `i 295  ]
+[e :U 296 ]
+}
+"74
+[; ;Application1.c: 74: }
+[e :UE 294 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"77
+[; ;Application1.c: 77: int main()
+[v _main `(i ~T0 @X0 1 ef ]
+"78
+[; ;Application1.c: 78: {
 {
 [e :U _main ]
 [f ]
-"20
-[; ;Application1.c: 20:     application_initialize();
+"79
+[; ;Application1.c: 79:     application_initialize();
 [e ( _application_initialize ..  ]
-"22
-[; ;Application1.c: 22:     while(1)
-[e :U 281 ]
-"23
-[; ;Application1.c: 23:     {
+"82
+[; ;Application1.c: 82:     battary_charging2();
+[e ( _battary_charging2 ..  ]
+"83
+[; ;Application1.c: 83:     while(1)
+[e :U 300 ]
+"84
+[; ;Application1.c: 84:     {
 {
-"24
-[; ;Application1.c: 24:         ret = keypad_get_value(&keypad1,&keypad_value);
-[e = _ret ( _keypad_get_value (2 , -> &U _keypad1 `*CS278 &U _keypad_value ]
-"25
-[; ;Application1.c: 25:         if('5' == keypad_value)
-[e $ ! == -> 53 `ui -> _keypad_value `ui 283  ]
-"26
-[; ;Application1.c: 26:         {
-{
-"27
-[; ;Application1.c: 27:             led_turn_on(&led1);
-[e ( _led_turn_on (1 -> &U _led1 `*CS273 ]
-"28
-[; ;Application1.c: 28:         }
+"86
+[; ;Application1.c: 86:     }
 }
-[e $U 284  ]
-"29
-[; ;Application1.c: 29:         else if('=' == keypad_value)
-[e :U 283 ]
-[e $ ! == -> 61 `ui -> _keypad_value `ui 285  ]
-"30
-[; ;Application1.c: 30:         {
-{
-"31
-[; ;Application1.c: 31:             led_turn_off(&led1);
-[e ( _led_turn_off (1 -> &U _led1 `*CS273 ]
-"32
-[; ;Application1.c: 32:         }
-}
-[e $U 286  ]
-"33
-[; ;Application1.c: 33:         else
-[e :U 285 ]
-"34
-[; ;Application1.c: 34:         {
-{
-"36
-[; ;Application1.c: 36:         }
-}
-[e :U 286 ]
-[e :U 284 ]
-"37
-[; ;Application1.c: 37:     }
-}
-[e :U 280 ]
-[e $U 281  ]
-[e :U 282 ]
-"39
-[; ;Application1.c: 39:     return (0);
+[e :U 299 ]
+[e $U 300  ]
+[e :U 301 ]
+"88
+[; ;Application1.c: 88:     return (0);
 [e ) -> 0 `i ]
-[e $UE 279  ]
-"40
-[; ;Application1.c: 40: }
-[e :UE 279 ]
+[e $UE 298  ]
+"89
+[; ;Application1.c: 89: }
+[e :UE 298 ]
 }
-"42
-[; ;Application1.c: 42: void application_initialize(void)
+"91
+[; ;Application1.c: 91: void application_initialize(void)
 [v _application_initialize `(v ~T0 @X0 1 ef ]
-"43
-[; ;Application1.c: 43: {
+"92
+[; ;Application1.c: 92: {
 {
 [e :U _application_initialize ]
 [f ]
-"44
-[; ;Application1.c: 44:     Std_ReturnType ret_init = (Std_ReturnType)0x00;
+"93
+[; ;Application1.c: 93:     Std_ReturnType ret_init = (Std_ReturnType)0x00;
 [v _ret_init `uc ~T0 @X0 1 a ]
 [e = _ret_init -> -> 0 `i `uc ]
-"45
-[; ;Application1.c: 45:     ret_init = ecu_layer_initialize();
+"94
+[; ;Application1.c: 94:     ret_init = ecu_layer_initialize();
 [e = _ret_init ( _ecu_layer_initialize ..  ]
-"46
-[; ;Application1.c: 46: }
-[e :UE 287 ]
+"95
+[; ;Application1.c: 95: }
+[e :UE 302 ]
 }
+[a 1C 72 101 108 108 111 32 65 108 108 0 ]
+[a 2C 76 111 97 100 105 110 103 0 ]

@@ -25,6 +25,8 @@
 /* Section : Data Type Declarations */
 extern keypad_t keypad1;
 extern led_t led1;
+extern chr_lcd_4bit_t lcd1;
+extern chr_lcd_8bit_t lcd2;
 
 /* Section : Functions Declarations */
 Std_ReturnType ecu_layer_initialize(void);

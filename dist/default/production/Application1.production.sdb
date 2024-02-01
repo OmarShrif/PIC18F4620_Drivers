@@ -4,86 +4,68 @@
 [d chip 18F4620 ]
 [d frameptr 4065 ]
 "25 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/button/ecu_button.c
-[e E2871 . `uc
+[e E3038 . `uc
 BUTTON_PRESSED 0
 BUTTON_RELEASED 1
 ]
-[e E2875 . `uc
+[e E3042 . `uc
 BUTTON_ACRIVE_HIGH 0
 BUTTON_ACTIVE_LOW 1
 ]
 "48
-[e E2832 . `uc
+[e E2999 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
 "54 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/DC_Motor/ecu_dc_motor.c
-[e E2832 . `uc
+[e E2999 . `uc
+GPIO_LOGIC_LOW 0
+GPIO_LOGIC_HIGH 1
+]
+"64 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Keypad/ecu_keypad.c
+[e E2999 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
 "32 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/LED/ecu_led.c
-[e E2828 . `uc
+[e E2995 . `uc
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
 "55
-[e E2832 . `uc
+[e E2999 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
 "31 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/relay/ecu_relay.c
-[e E2828 . `uc
+[e E2995 . `uc
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
 "54
-[e E2832 . `uc
+[e E2999 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
 "28 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Seven_Seg/ecu_seven_seg.c
-[e E2871 . `uc
+[e E3038 . `uc
 SEGMENT_COMMON_ANODE 0
 SEGMENT_COMMON_CATHODE 1
 ]
 "56
-[e E2832 . `uc
-GPIO_LOGIC_LOW 0
-GPIO_LOGIC_HIGH 1
-]
-"48 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
-[e E2828 . `uc
-GPIO_DIRECTION_OUTPUT 0
-GPIO_DIRECTION_INPUT 1
-]
-"86
-[e E2832 . `uc
-GPIO_LOGIC_LOW 0
-GPIO_LOGIC_HIGH 1
-]
-"182
-[e E2811 . `uc
-GPIO_PORTA_INDEX 0
-GPIO_PORTB_INDEX 1
-GPIO_PORTC_INDEX 2
-GPIO_PORTD_INDEX 3
-GPIO_PORTE_INDEX 4
-]
-"64 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Keypad/ecu_keypad.c
-[e E2832 . `uc
+[e E2999 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
 "13 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
-[e E2811 . `uc
+[e E2978 . `uc
 GPIO_PORTA_INDEX 0
 GPIO_PORTB_INDEX 1
 GPIO_PORTC_INDEX 2
 GPIO_PORTD_INDEX 3
 GPIO_PORTE_INDEX 4
 ]
-[e E2818 . `uc
+[e E2985 . `uc
 GPIO_PIN0_INDEX 0
 GPIO_PIN1_INDEX 1
 GPIO_PIN2_INDEX 2
@@ -93,22 +75,47 @@ GPIO_PIN5_INDEX 5
 GPIO_PIN6_INDEX 6
 GPIO_PIN7_INDEX 7
 ]
-[e E2871 . `uc
+[e E3038 . `uc
 LED_OFF 0
 LED_ON 1
 ]
 "15
-[e E2828 . `uc
+[e E2995 . `uc
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
-[e E2832 . `uc
+[e E2999 . `uc
 GPIO_LOGIC_LOW 0
 GPIO_LOGIC_HIGH 1
 ]
-"18 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"48 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
+[e E2995 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"86
+[e E2999 . `uc
+GPIO_LOGIC_LOW 0
+GPIO_LOGIC_HIGH 1
+]
+"182
+[e E2978 . `uc
+GPIO_PORTA_INDEX 0
+GPIO_PORTB_INDEX 1
+GPIO_PORTC_INDEX 2
+GPIO_PORTD_INDEX 3
+GPIO_PORTE_INDEX 4
+]
+"86 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
+[e E2999 . `uc
+GPIO_LOGIC_LOW 0
+GPIO_LOGIC_HIGH 1
+]
+"62 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+[v _battary_charging2 battary_charging2 `(v  1 e 1 0 ]
+"77
 [v _main main `(i  1 e 2 0 ]
-"42
+"91
 [v _application_initialize application_initialize `(v  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -122,6 +129,10 @@ GPIO_LOGIC_HIGH 1
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
 "19 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
+"3 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\memset.c
+[v _memset memset `(*.2v  1 e 2 0 ]
+"9 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
@@ -134,18 +145,46 @@ GPIO_LOGIC_HIGH 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"51 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
+"32 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
+[v _lcd_4bit_initialize lcd_4bit_initialize `(uc  1 e 1 0 ]
+"79
+[v _lcd_4bit_send_command lcd_4bit_send_command `(uc  1 e 1 0 ]
+"109
+[v _lcd_4bit_send_char_data lcd_4bit_send_char_data `(uc  1 e 1 0 ]
+"141
+[v _lcd_4bit_send_char_data_pos lcd_4bit_send_char_data_pos `(uc  1 e 1 0 ]
+"162
+[v _lcd_4bit_send_string lcd_4bit_send_string `(uc  1 e 1 0 ]
+"187
+[v _lcd_4bit_send_string_pos lcd_4bit_send_string_pos `(uc  1 e 1 0 ]
+"211
+[v _lcd_4bit_send_custom_char_pos lcd_4bit_send_custom_char_pos `(uc  1 e 1 0 ]
+"238
+[v _lcd_8bit_initialize lcd_8bit_initialize `(uc  1 e 1 0 ]
+"285
+[v _lcd_8bit_send_command lcd_8bit_send_command `(uc  1 e 1 0 ]
+"315
+[v _lcd_8bit_send_char_data lcd_8bit_send_char_data `(uc  1 e 1 0 ]
+"347
+[v _lcd_8bit_send_char_data_pos lcd_8bit_send_char_data_pos `(uc  1 e 1 0 ]
+"368
+[v _lcd_8bit_send_string lcd_8bit_send_string `(uc  1 e 1 0 ]
+"393
+[v _lcd_8bit_send_string_pos lcd_8bit_send_string_pos `(uc  1 e 1 0 ]
+"417
+[v _lcd_8bit_send_custom_char_pos lcd_8bit_send_custom_char_pos `(uc  1 e 1 0 ]
+"502
+[v _lcd_send_4bits lcd_send_4bits `(uc  1 s 1 lcd_send_4bits ]
+"518
+[v _lcd_4bit_send_enable_signal lcd_4bit_send_enable_signal `(uc  1 s 1 lcd_4bit_send_enable_signal ]
+"532
+[v _lcd_8bit_send_enable_signal lcd_8bit_send_enable_signal `(uc  1 s 1 lcd_8bit_send_enable_signal ]
+"546
+[v _lcd_4bit_set_cursor lcd_4bit_set_cursor `(uc  1 s 1 lcd_4bit_set_cursor ]
+"566
+[v _lcd_8bit_set_cursor lcd_8bit_set_cursor `(uc  1 s 1 lcd_8bit_set_cursor ]
+"134 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(uc  1 e 1 0 ]
-"32 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Keypad/ecu_keypad.c
-[v _keypad_initialize keypad_initialize `(uc  1 e 1 0 ]
-"60
-[v _keypad_get_value keypad_get_value `(uc  1 e 1 0 ]
-"27 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/LED/ecu_led.c
-[v _led_initialize led_initialize `(uc  1 e 1 0 ]
-"48
-[v _led_turn_on led_turn_on `(uc  1 e 1 0 ]
-"69
-[v _led_turn_off led_turn_off `(uc  1 e 1 0 ]
 "34 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_initialize gpio_pin_direction_initialize `(uc  1 e 1 0 ]
 "86
@@ -156,10 +195,20 @@ GPIO_LOGIC_HIGH 1
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
 "160
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
-"13 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
-[v _keypad_value keypad_value `uc  1 e 1 0 ]
-"15
+"14 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
 [v _ret ret `uc  1 e 1 0 ]
+"15
+[v _customChar1 customChar1 `[8]uc  1 e 8 0 ]
+"16
+[v _customChar2 customChar2 `[8]uc  1 e 8 0 ]
+"17
+[v _customChar3 customChar3 `[8]uc  1 e 8 0 ]
+"18
+[v _customChar4 customChar4 `[8]uc  1 e 8 0 ]
+"19
+[v _customChar5 customChar5 `[8]uc  1 e 8 0 ]
+"20
+[v _customChar6 customChar6 `[8]uc  1 e 8 0 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -190,21 +239,17 @@ GPIO_LOGIC_HIGH 1
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2268
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
-[s S113 . 1 `uc 1 led_port 1 0 :3:0 
-`uc 1 led_pin 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-`uc 1 reserved 1 0 :1:7 
-]
-"13 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
-[v _led1 led1 `S113  1 e 1 0 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"15
-[s S408 . 8 `[4]S24 1 keypad_row_pins 4 0 `[4]S24 1 keypad_column_pins 4 4 ]
-[v _keypad1 keypad1 `S408  1 e 8 0 ]
+"49 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v _lcd1 lcd1 `S371  1 e 6 0 ]
+"81
+[s S375 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v _lcd2 lcd2 `S375  1 e 10 0 ]
 "13 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Keypad/ecu_keypad.c
 [v _keypad_values keypad_values `C[4][4]uc  1 s 16 keypad_values ]
 "15 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
@@ -213,142 +258,218 @@ GPIO_LOGIC_HIGH 1
 [v _lat_registers lat_registers `[5]*.39VEuc  1 e 10 0 ]
 "19
 [v _port_registers port_registers `[5]*.39VEuc  1 e 10 0 ]
-"18 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"77 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
 [v _main main `(i  1 e 2 0 ]
 {
-"40
+"89
 } 0
-"48 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/LED/ecu_led.c
-[v _led_turn_on led_turn_on `(uc  1 e 1 0 ]
-{
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"53
-[v led_turn_on@pin pin `S24  1 a 1 10 ]
-[s S113 . 1 `uc 1 led_port 1 0 :3:0 
-`uc 1 led_pin 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-`uc 1 reserved 1 0 :1:7 
-]
-"48
-[v led_turn_on@led led `*.30CS113  1 p 1 8 ]
-"52
-[v led_turn_on@F2897 F2897 `S24  1 s 1 F2897 ]
-"60
-} 0
-"69
-[v _led_turn_off led_turn_off `(uc  1 e 1 0 ]
-{
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"74
-[v led_turn_off@pin pin `S24  1 a 1 10 ]
-[s S113 . 1 `uc 1 led_port 1 0 :3:0 
-`uc 1 led_pin 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-`uc 1 reserved 1 0 :1:7 
-]
-"69
-[v led_turn_off@led led `*.30CS113  1 p 1 8 ]
-"73
-[v led_turn_off@F2902 F2902 `S24  1 s 1 F2902 ]
-"81
-} 0
-"60 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Keypad/ecu_keypad.c
-[v _keypad_get_value keypad_get_value `(uc  1 e 1 0 ]
-{
-"63
-[v keypad_get_value@l_column_counter l_column_counter `uc  1 a 1 15 ]
-[v keypad_get_value@l_row_counter l_row_counter `uc  1 a 1 14 ]
-[v keypad_get_value@l_counter l_counter `uc  1 a 1 13 ]
-"64
-[v keypad_get_value@column_logic column_logic `E2832  1 a 1 12 ]
 "62
-[v keypad_get_value@ret ret `uc  1 a 1 11 ]
-[s S24 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"60
-[s S408 . 8 `[4]S24 1 keypad_row_pins 4 0 `[4]S24 1 keypad_column_pins 4 4 ]
-[v keypad_get_value@_keypad _keypad `*.30CS408  1 p 1 8 ]
-[v keypad_get_value@value value `*.30uc  1 p 1 9 ]
-"88
-} 0
-"120 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
+[v _battary_charging2 battary_charging2 `(v  1 e 1 0 ]
 {
-"122
-[v gpio_pin_read_logic@ret ret `uc  1 a 1 6 ]
+"64
+[v battary_charging2@l_lcd1_counter l_lcd1_counter `uc  1 a 1 37 ]
+"74
+} 0
+"211 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
+[v _lcd_4bit_send_custom_char_pos lcd_4bit_send_custom_char_pos `(uc  1 e 1 0 ]
+{
+"215
+[v lcd_4bit_send_custom_char_pos@lcd_counter lcd_counter `uc  1 a 1 34 ]
+"214
+[v lcd_4bit_send_custom_char_pos@ret ret `uc  1 a 1 33 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"120
-[v gpio_pin_read_logic@_pin_config _pin_config `*.30CS24  1 p 1 0 ]
-[v gpio_pin_read_logic@logic logic `*.30E2832  1 p 1 1 ]
+"211
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_custom_char_pos@lcd lcd `*.30CS371  1 p 1 28 ]
+[v lcd_4bit_send_custom_char_pos@row row `uc  1 p 1 29 ]
+[v lcd_4bit_send_custom_char_pos@column column `uc  1 p 1 30 ]
+"212
+[v lcd_4bit_send_custom_char_pos@_char _char `*.30Cuc  1 p 1 31 ]
+[v lcd_4bit_send_custom_char_pos@mem_pos mem_pos `uc  1 p 1 32 ]
+"228
+} 0
+"141
+[v _lcd_4bit_send_char_data_pos lcd_4bit_send_char_data_pos `(uc  1 e 1 0 ]
+{
+"143
+[v lcd_4bit_send_char_data_pos@ret ret `uc  1 a 1 27 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"141
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_char_data_pos@lcd lcd `*.30CS371  1 p 1 23 ]
+[v lcd_4bit_send_char_data_pos@row row `uc  1 p 1 24 ]
+[v lcd_4bit_send_char_data_pos@column column `uc  1 p 1 25 ]
+[v lcd_4bit_send_char_data_pos@data data `uc  1 p 1 26 ]
+"152
+} 0
+"546
+[v _lcd_4bit_set_cursor lcd_4bit_set_cursor `(uc  1 s 1 lcd_4bit_set_cursor ]
+{
+"548
+[v lcd_4bit_set_cursor@ret ret `uc  1 a 1 22 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"546
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_set_cursor@lcd lcd `*.30CS371  1 p 1 17 ]
+[v lcd_4bit_set_cursor@row row `uc  1 p 1 18 ]
+[v lcd_4bit_set_cursor@column column `uc  1 p 1 19 ]
+"564
+} 0
+"109
+[v _lcd_4bit_send_char_data lcd_4bit_send_char_data `(uc  1 e 1 0 ]
+{
+"111
+[v lcd_4bit_send_char_data@ret ret `uc  1 a 1 16 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"109
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_char_data@lcd lcd `*.30CS371  1 p 1 14 ]
+[v lcd_4bit_send_char_data@data data `uc  1 p 1 15 ]
 "129
 } 0
-"42 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
+"91 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\Application1.c
 [v _application_initialize application_initialize `(v  1 e 1 0 ]
 {
-"46
+"95
 } 0
-"51 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
+"134 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(uc  1 e 1 0 ]
 {
-"53
-[v ecu_layer_initialize@ret_init ret_init `uc  1 a 1 15 ]
-"57
+"136
+[v ecu_layer_initialize@ret_init ret_init `uc  1 a 1 21 ]
+"140
 } 0
-"27 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/LED/ecu_led.c
-[v _led_initialize led_initialize `(uc  1 e 1 0 ]
+"238 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
+[v _lcd_8bit_initialize lcd_8bit_initialize `(uc  1 e 1 0 ]
 {
+"240
+[v lcd_8bit_initialize@ret ret `uc  1 a 1 19 ]
+"241
+[v lcd_8bit_initialize@l_pins_counter l_pins_counter `uc  1 a 1 18 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"32
-[v led_initialize@pin pin `S24  1 a 1 14 ]
-"29
-[v led_initialize@ret ret `uc  1 a 1 13 ]
-[s S113 . 1 `uc 1 led_port 1 0 :3:0 
-`uc 1 led_pin 1 0 :3:3 
-`uc 1 led_status 1 0 :1:6 
-`uc 1 reserved 1 0 :1:7 
-]
-"27
-[v led_initialize@led led `*.30CS113  1 p 1 11 ]
-"31
-[v led_initialize@F2892 F2892 `S24  1 s 1 F2892 ]
-"39
+"238
+[s S375 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_initialize@lcd lcd `*.30CS375  1 p 1 16 ]
+"275
 } 0
-"32 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\ECU_Layer/Keypad/ecu_keypad.c
-[v _keypad_initialize keypad_initialize `(uc  1 e 1 0 ]
+"285
+[v _lcd_8bit_send_command lcd_8bit_send_command `(uc  1 e 1 0 ]
 {
-"35
-[v keypad_initialize@column_counter column_counter `uc  1 a 1 14 ]
-[v keypad_initialize@row_counter row_counter `uc  1 a 1 13 ]
+"288
+[v lcd_8bit_send_command@l_pins_counter l_pins_counter `uc  1 a 1 15 ]
+"287
+[v lcd_8bit_send_command@ret ret `uc  1 a 1 14 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"285
+[s S375 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_send_command@lcd lcd `*.30CS375  1 p 1 10 ]
+[v lcd_8bit_send_command@command command `uc  1 p 1 11 ]
+"305
+} 0
+"532
+[v _lcd_8bit_send_enable_signal lcd_8bit_send_enable_signal `(uc  1 s 1 lcd_8bit_send_enable_signal ]
+{
+"534
+[v lcd_8bit_send_enable_signal@ret ret `uc  1 a 1 9 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"532
+[s S375 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_send_enable_signal@lcd lcd `*.30CS375  1 p 1 8 ]
+"544
+} 0
+"32
+[v _lcd_4bit_initialize lcd_4bit_initialize `(uc  1 e 1 0 ]
+{
 "34
-[v keypad_initialize@ret ret `uc  1 a 1 12 ]
+[v lcd_4bit_initialize@ret ret `uc  1 a 1 20 ]
+"35
+[v lcd_4bit_initialize@l_pins_counter l_pins_counter `uc  1 a 1 19 ]
 [s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
 "32
-[s S408 . 8 `[4]S24 1 keypad_row_pins 4 0 `[4]S24 1 keypad_column_pins 4 4 ]
-[v keypad_initialize@_keypad _keypad `*.30CS408  1 p 1 11 ]
-"50
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_initialize@lcd lcd `*.30CS371  1 p 1 17 ]
+"69
+} 0
+"79
+[v _lcd_4bit_send_command lcd_4bit_send_command `(uc  1 e 1 0 ]
+{
+"81
+[v lcd_4bit_send_command@ret ret `uc  1 a 1 16 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"79
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_command@lcd lcd `*.30CS371  1 p 1 14 ]
+[v lcd_4bit_send_command@command command `uc  1 p 1 15 ]
+"99
+} 0
+"502
+[v _lcd_send_4bits lcd_send_4bits `(uc  1 s 1 lcd_send_4bits ]
+{
+"505
+[v lcd_send_4bits@l_pins_counter l_pins_counter `uc  1 a 1 13 ]
+"504
+[v lcd_send_4bits@ret ret `uc  1 a 1 12 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"502
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_send_4bits@lcd lcd `*.30CS371  1 p 1 8 ]
+[v lcd_send_4bits@_data_command _data_command `uc  1 p 1 9 ]
+"516
+} 0
+"518
+[v _lcd_4bit_send_enable_signal lcd_4bit_send_enable_signal `(uc  1 s 1 lcd_4bit_send_enable_signal ]
+{
+"520
+[v lcd_4bit_send_enable_signal@ret ret `uc  1 a 1 9 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"518
+[s S371 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_enable_signal@lcd lcd `*.30CS371  1 p 1 8 ]
+"530
 } 0
 "160 C:\Users\pr7\Desktop\MPL_WorkSpace\Microcontroller_Interfacing\Application1\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
@@ -376,7 +497,7 @@ GPIO_LOGIC_HIGH 1
 ]
 "86
 [v gpio_pin_write_logic@_pin_config _pin_config `*.30CS24  1 p 1 0 ]
-[v gpio_pin_write_logic@logic logic `E2832  1 p 1 1 ]
+[v gpio_pin_write_logic@logic logic `E2999  1 p 1 1 ]
 "108
 } 0
 "34
