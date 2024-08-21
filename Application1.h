@@ -23,6 +23,7 @@
 
 
 /* Section : Functions Declarations */
+
 void application_initialize(void);
 
 #endif	/* APPLICATION1_H */

@@ -27,8 +27,8 @@ typedef enum
 
 typedef struct
 {
-    uint8 led_port          :3; /* @ref port_index_t */
-    uint8 led_pin           :3; /* @ref pin_index_t */
+    uint8 led_port      :3; /* @ref port_index_t */
+    uint8 led_pin       :3; /* @ref pin_index_t */
     uint8 led_status    :1; /* @ref led_status_t | logic_t*/ 
     uint8 reserved      :1; // Not used
 }led_t;

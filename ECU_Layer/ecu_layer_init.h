@@ -9,9 +9,9 @@
 #define	ECU_LAYER_INIT_H
 
 /* Section : Includes */
-#include "LED/ecu_led.h"
-#include "button/ecu_button.h"
-#include "relay/ecu_relay.h"
+#include "Led/ecu_led.h"
+#include "Button/ecu_button.h"
+#include "Relay/ecu_relay.h"
 #include "DC_Motor/ecu_dc_motor.h"
 #include "Seven_Seg/ecu_seven_seg.h"
 #include "Keypad/ecu_keypad.h"

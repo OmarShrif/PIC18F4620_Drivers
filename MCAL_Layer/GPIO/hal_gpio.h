@@ -9,14 +9,14 @@
 #define	HAL_GPIO_H
 
 /* Section : Includes */
-#include "pic18f4620.h" //#warning Header file pic18f4620.h included directly. Use #include <xc.h> instead.
 #include "../mcal_std_types.h"
+#include "pic18f4620.h"
 #include "../device_config.h"
 #include "hal_gpio_cfg.h"
 
 /* Section : Macro Declarations */
 #define BIT_MASK        (uint8)0x01
-#define PORTC_MASK      (uint8)0xFF
+#define PORT_MASK       (uint8)0xFF
 #define PORT_PIN_MAX_NUMBER     8
 #define PORT_MAX_NUMBER         5
 

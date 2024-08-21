@@ -571,10 +571,10 @@ static Std_ReturnType lcd_8bit_set_cursor(const chr_lcd_8bit_t *lcd,uint8 row,ui
         column--;
         switch (row)
         {
-            case ROW1 : ret = lcd_8bit_send_command(lcd,(0x80 + column)); break ;
-            case ROW2 : ret = lcd_8bit_send_command(lcd,(0xc0 + column)); break ;
-            case ROW3 : ret = lcd_8bit_send_command(lcd,(0x94 + column)); break ;
-            case ROW4 : ret = lcd_8bit_send_command(lcd,(0xd4 + column)); break ;
+            case ROW1 : ret = lcd_8bit_send_command(lcd, (0x80 + column)); break; /* 0x00 -> Decimal : 0  */
+            case ROW2 : ret = lcd_8bit_send_command(lcd, (0xc0 + column)); break; /* 0x40 -> Decimal : 64 */
+            case ROW3 : ret = lcd_8bit_send_command(lcd, (0x94 + column)); break; /* 0x14 -> Decimal : 20 */
+            case ROW4 : ret = lcd_8bit_send_command(lcd, (0xd4 + column)); break; /* 0x54 -> Decimal : 84 */
             default : break;
         }
     }

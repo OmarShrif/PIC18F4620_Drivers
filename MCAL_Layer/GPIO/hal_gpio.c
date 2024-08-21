@@ -182,7 +182,7 @@ Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config)
 Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 direction)
 {
     Std_ReturnType ret = E_OK;
-    if(port <= PORT_MAX_NUMBER-1)
+    if((port >= GPIO_PORTA_INDEX) && (port <= PORT_MAX_NUMBER-1))
     {
         *tris_registers[port] = direction; 
     }
@@ -203,7 +203,7 @@ Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 directio
 Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *direction_status)
 {
     Std_ReturnType ret = E_OK;
-    if((direction_status != NULL) && (port <= PORT_MAX_NUMBER-1))
+    if((direction_status != NULL) && (port >= GPIO_PORTA_INDEX) && (port <= PORT_MAX_NUMBER-1))
     {
         *direction_status = *tris_registers[port];
     }
@@ -224,7 +224,7 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *directi
 Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic)
 {
     Std_ReturnType ret = E_OK; 
-    if(port <= PORT_MAX_NUMBER-1)
+    if((port >= GPIO_PORTA_INDEX) && (port <= PORT_MAX_NUMBER-1))
     {
         *lat_registers[port] = logic;
     }
@@ -245,7 +245,7 @@ Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic)
 Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic)
 {
     Std_ReturnType ret = E_OK;
-    if((logic != NULL) && (port <= PORT_MAX_NUMBER-1))
+    if((logic != NULL) && (port >= GPIO_PORTA_INDEX) && (port <= PORT_MAX_NUMBER-1))
     {
         *logic = *lat_registers[port];
     }
@@ -265,9 +265,9 @@ Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic)
 Std_ReturnType gpio_port_toggle_logic(port_index_t port)
 {
     Std_ReturnType ret = E_OK;
-    if(port <= PORT_MAX_NUMBER-1)
+    if((port >= GPIO_PORTA_INDEX) && (port <= PORT_MAX_NUMBER-1))
     {
-        *lat_registers[port] ^= PORTC_MASK; 
+        *lat_registers[port] ^= PORT_MASK; 
     }
     else{ret = E_NOT_OK;}
     return ret;
