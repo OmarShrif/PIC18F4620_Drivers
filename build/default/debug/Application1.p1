@@ -3,38 +3,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./Application1.h
 [; ;./Application1.h: 27: void application_initialize(void);
 [v _application_initialize `(v ~T0 @X0 0 ef ]
-"1380 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1380: extern volatile unsigned char TRISA __attribute__((address(0xF92)));
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
-"880
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 880: extern volatile unsigned char LATA __attribute__((address(0xF89)));
-[v _LATA `Vuc ~T0 @X0 0 e@3977 ]
-"1602
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1602: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"992
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 992: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"1824
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1824: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"1104
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1104: extern volatile unsigned char LATC __attribute__((address(0xF8B)));
-[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
-"2046
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2046: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"1216
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1216: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
-[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
-"2268
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2268: extern volatile unsigned char TRISE __attribute__((address(0xF96)));
-[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
-"1328
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1328: extern volatile unsigned char LATE __attribute__((address(0xF8D)));
-[v _LATE `Vuc ~T0 @X0 0 e@3981 ]
-"32 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 32: Std_ReturnType ecu_layer_initialize(void);
+"36 ./ECU_Layer/ecu_layer_init.h
+[; ;./ECU_Layer/ecu_layer_init.h: 36: Std_ReturnType ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(uc ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
@@ -465,72 +435,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 "19
 [; ;Application1.c: 19:     application_initialize();
 [e ( _application_initialize ..  ]
-"20
-[; ;Application1.c: 20:     TRISA = 0b00000000;
-[e = _TRISA -> -> 0 `i `uc ]
 "21
-[; ;Application1.c: 21:     LATA = 0b11111111;
-[e = _LATA -> -> 255 `i `uc ]
-"23
-[; ;Application1.c: 23:     TRISB = 0b00000000;
-[e = _TRISB -> -> 0 `i `uc ]
-"24
-[; ;Application1.c: 24:     LATB = 0b11111111;
-[e = _LATB -> -> 255 `i `uc ]
-"26
-[; ;Application1.c: 26:     TRISC = 0b00000000;
-[e = _TRISC -> -> 0 `i `uc ]
-"27
-[; ;Application1.c: 27:     LATC = 0b11111111;
-[e = _LATC -> -> 255 `i `uc ]
-"29
-[; ;Application1.c: 29:     TRISD = 0b00000000;
-[e = _TRISD -> -> 0 `i `uc ]
-"30
-[; ;Application1.c: 30:     LATD = 0b11111111;
-[e = _LATD -> -> 255 `i `uc ]
-"32
-[; ;Application1.c: 32:     TRISE = 0b00000000;
-[e = _TRISE -> -> 0 `i `uc ]
-"33
-[; ;Application1.c: 33:     LATE = 0b11111111;
-[e = _LATE -> -> 255 `i `uc ]
-"35
-[; ;Application1.c: 35:     while(1)
+[; ;Application1.c: 21:     while(1)
 [e :U 284 ]
-"36
-[; ;Application1.c: 36:     {
+"22
+[; ;Application1.c: 22:     {
 {
-"38
-[; ;Application1.c: 38:     }
+"24
+[; ;Application1.c: 24:     }
 }
 [e :U 283 ]
 [e $U 284  ]
 [e :U 285 ]
-"40
-[; ;Application1.c: 40:     return (0);
+"26
+[; ;Application1.c: 26:     return (0);
 [e ) -> 0 `i ]
 [e $UE 282  ]
-"41
-[; ;Application1.c: 41: }
+"27
+[; ;Application1.c: 27: }
 [e :UE 282 ]
 }
-"43
-[; ;Application1.c: 43: void application_initialize(void)
+"29
+[; ;Application1.c: 29: void application_initialize(void)
 [v _application_initialize `(v ~T0 @X0 1 ef ]
-"44
-[; ;Application1.c: 44: {
+"30
+[; ;Application1.c: 30: {
 {
 [e :U _application_initialize ]
 [f ]
-"45
-[; ;Application1.c: 45:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
+"31
+[; ;Application1.c: 31:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
 [v _ret_init `uc ~T0 @X0 1 a ]
 [e = _ret_init -> -> 1 `i `uc ]
-"46
-[; ;Application1.c: 46:     ret_init = ecu_layer_initialize();
+"32
+[; ;Application1.c: 32:     ret_init = ecu_layer_initialize();
 [e = _ret_init ( _ecu_layer_initialize ..  ]
-"47
-[; ;Application1.c: 47: }
+"33
+[; ;Application1.c: 33: }
 [e :UE 286 ]
 }

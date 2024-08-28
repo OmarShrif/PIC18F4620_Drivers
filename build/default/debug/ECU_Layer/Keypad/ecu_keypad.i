@@ -4738,23 +4738,23 @@ typedef uint8 Std_ReturnType ;
 # 32 "ECU_Layer/Keypad/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum
@@ -4796,16 +4796,16 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "ECU_Layer/Keypad/ecu_keypad_cfg.h" 1
 # 13 "ECU_Layer/Keypad/ecu_keypad.h" 2
-# 25 "ECU_Layer/Keypad/ecu_keypad.h"
+# 24 "ECU_Layer/Keypad/ecu_keypad.h"
 typedef struct
 {
-    pin_config_t keypad_row_pins[4];
-    pin_config_t keypad_column_pins[4];
+    pin_config_t keypad_row_pin[4];
+    pin_config_t keypad_column_pin[4];
 
 }keypad_t;
-# 41 "ECU_Layer/Keypad/ecu_keypad.h"
+# 40 "ECU_Layer/Keypad/ecu_keypad.h"
 Std_ReturnType keypad_initialize(const keypad_t *_keypad);
-# 51 "ECU_Layer/Keypad/ecu_keypad.h"
+# 50 "ECU_Layer/Keypad/ecu_keypad.h"
 Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
 # 9 "ECU_Layer/Keypad/ecu_keypad.c" 2
 
@@ -4827,11 +4827,11 @@ Std_ReturnType keypad_initialize(const keypad_t *_keypad)
     {
         for(row_counter = 0 ; row_counter<4 ; row_counter++)
         {
-            ret = gpio_pin_initialize(&(_keypad->keypad_row_pins[row_counter]));
+            ret = gpio_pin_initialize(&(_keypad->keypad_row_pin[row_counter]));
         }
         for(column_counter = 0 ; column_counter<4 ; column_counter++)
         {
-            ret = gpio_pin_direction_initialize(&(_keypad->keypad_column_pins[column_counter]));
+            ret = gpio_pin_direction_initialize(&(_keypad->keypad_column_pin[column_counter]));
         }
     }
     else{ret = (Std_ReturnType)0x00;}
@@ -4850,16 +4850,15 @@ Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value)
         {
             for(l_counter = 0 ; l_counter<4 ; l_counter++)
             {
-                ret = gpio_pin_write_logic(&(_keypad->keypad_row_pins[l_counter]),GPIO_LOGIC_LOW);
+                ret = gpio_pin_write_logic(&(_keypad->keypad_row_pin[l_counter]),GPIO_LOGIC_LOW);
             }
-            ret = gpio_pin_write_logic(&(_keypad->keypad_row_pins[l_row_counter]),GPIO_LOGIC_HIGH);
+            ret = gpio_pin_write_logic(&(_keypad->keypad_row_pin[l_row_counter]),GPIO_LOGIC_HIGH);
             for(l_column_counter = 0 ; l_column_counter<4 ; l_column_counter++)
             {
-                ret = gpio_pin_read_logic(&(_keypad->keypad_column_pins[l_column_counter]),&column_logic);
+                ret = gpio_pin_read_logic(&(_keypad->keypad_column_pin[l_column_counter]),&column_logic);
                 if(GPIO_LOGIC_HIGH == column_logic)
                 {
                     *value = keypad_values[l_row_counter][l_column_counter];
-
                 }
             }
         }

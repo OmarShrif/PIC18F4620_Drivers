@@ -4738,23 +4738,23 @@ typedef uint8 Std_ReturnType ;
 # 32 "ECU_Layer/button/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum
@@ -4806,14 +4806,14 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 typedef enum
 {
-    BUTTON_PRESSED = 0,
-    BUTTON_RELEASED
+    BUTTON_RELEASED = 0,
+    BUTTON_PRESSED
 }button_state_t;
 
 typedef enum
 {
-    BUTTON_ACRIVE_HIGH = 0,
-    BUTTON_ACTIVE_LOW
+    BUTTON_ACTIVE_LOW = 0,
+    BUTTON_ACRIVE_HIGH
 }button_active_t;
 
 typedef struct
@@ -4858,6 +4858,7 @@ Std_ReturnType button_read_status(const button_t *button,button_state_t *button_
                 {
                     *button_status = BUTTON_RELEASED;
                 }
+                ret = (Std_ReturnType)0x01;
                 break;
             case BUTTON_ACTIVE_LOW:
                 if(GPIO_LOGIC_HIGH == pin_logic_status)
@@ -4868,8 +4869,10 @@ Std_ReturnType button_read_status(const button_t *button,button_state_t *button_
                 {
                     *button_status = BUTTON_PRESSED;
                 }
+                ret = (Std_ReturnType)0x01;
                 break;
             default:
+                ret = (Std_ReturnType)0x00;
                 break;
         }
     }

@@ -31,23 +31,23 @@
 /* Section : Data Type Declarations */
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum

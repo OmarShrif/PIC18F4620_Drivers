@@ -14,22 +14,26 @@
 #include "ecu_dc_motor_cfg.h"
 
 /* Section : Macro Declarations */
-#define DC_MOTOR_PIN1   0x00U
-#define DC_MOTOR_PIN2   0x01U
 
 /* Section : Macro Functions Declarations */
 
 /* Section : Data Type Declarations */
+
+typedef enum
+{
+    DC_MOTOR_PIN1 = 0,
+    DC_MOTOR_PIN2    
+}dc_motor_pins_t;
+
 typedef enum
 {
     DC_MOTOR_OFF = 0,
-    DC_MOTOR_ON
-            
+    DC_MOTOR_ON    
 }dc_motor_state_t;
 
 typedef struct
 {
-    pin_config_t dc_motor[2];
+    pin_config_t dc_motor_pin[2];
 }dc_motor_t;
 
 /* Section : Functions Declarations */

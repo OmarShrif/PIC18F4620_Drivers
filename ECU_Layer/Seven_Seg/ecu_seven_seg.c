@@ -30,10 +30,10 @@ Std_ReturnType seven_segment_initialize(const segment_t *seg)
     Std_ReturnType ret = E_OK;
     if(seg != NULL)
     {
-        ret = gpio_pin_initialize(&(seg->segment_pins[SEGMENT_PIN0]));
-        ret = gpio_pin_initialize(&(seg->segment_pins[SEGMENT_PIN1]));
-        ret = gpio_pin_initialize(&(seg->segment_pins[SEGMENT_PIN2]));
-        ret = gpio_pin_initialize(&(seg->segment_pins[SEGMENT_PIN3]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN0]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN1]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN2]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN3]));
     }
     else{ret = E_NOT_OK;}
     
@@ -53,10 +53,10 @@ Std_ReturnType seven_segment_write_number(const segment_t *seg,uint8 number)
     Std_ReturnType ret = E_OK;
     if((seg != NULL) && (number<10))
     {
-        ret = gpio_pin_write_logic(&(seg->segment_pins[SEGMENT_PIN0]),READ_BIT(number,0));
-        ret = gpio_pin_write_logic(&(seg->segment_pins[SEGMENT_PIN1]),READ_BIT(number,1));
-        ret = gpio_pin_write_logic(&(seg->segment_pins[SEGMENT_PIN2]),READ_BIT(number,2));
-        ret = gpio_pin_write_logic(&(seg->segment_pins[SEGMENT_PIN3]),READ_BIT(number,3));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN0]),READ_BIT(number,SEGMENT_PIN0));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN1]),READ_BIT(number,SEGMENT_PIN1));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN2]),READ_BIT(number,SEGMENT_PIN2));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN3]),READ_BIT(number,SEGMENT_PIN3));
     }
     else{ret = E_NOT_OK;}
     

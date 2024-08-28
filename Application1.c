@@ -16,21 +16,7 @@ Std_ReturnType ret = E_OK;
 
 int main() 
 {
-    application_initialize();
-    TRISA = 0b00000000;
-    LATA = 0b11111111;
-    
-    TRISB = 0b00000000;
-    LATB = 0b11111111;
-    
-    TRISC = 0b00000000;
-    LATC = 0b11111111;
-    
-    TRISD = 0b00000000;
-    LATD = 0b11111111;
-    
-    TRISE = 0b00000000;
-    LATE = 0b11111111;
+    application_initialize(); 
     
     while(1)
     {

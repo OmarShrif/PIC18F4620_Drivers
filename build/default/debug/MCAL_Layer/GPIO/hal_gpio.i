@@ -4736,23 +4736,23 @@ typedef uint8 Std_ReturnType ;
 # 32 "MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum
@@ -4896,7 +4896,7 @@ Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config)
 Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 direction)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
-    if((port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+    if((port >= GPIO_PORTA) && (port <= 5 -1))
     {
         *tris_registers[port] = direction;
     }
@@ -4907,7 +4907,7 @@ Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 directio
 Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *direction_status)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
-    if((direction_status != ((void*)0)) && (port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+    if((direction_status != ((void*)0)) && (port >= GPIO_PORTA) && (port <= 5 -1))
     {
         *direction_status = *tris_registers[port];
     }
@@ -4918,7 +4918,7 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *directi
 Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
-    if((port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+    if((port >= GPIO_PORTA) && (port <= 5 -1))
     {
         *lat_registers[port] = logic;
     }
@@ -4929,7 +4929,7 @@ Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic)
 Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
-    if((logic != ((void*)0)) && (port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+    if((logic != ((void*)0)) && (port >= GPIO_PORTA) && (port <= 5 -1))
     {
         *logic = *lat_registers[port];
     }
@@ -4940,7 +4940,7 @@ Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic)
 Std_ReturnType gpio_port_toggle_logic(port_index_t port)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
-    if((port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+    if((port >= GPIO_PORTA) && (port <= 5 -1))
     {
         *lat_registers[port] ^= (uint8)0xFF;
     }

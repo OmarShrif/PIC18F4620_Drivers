@@ -61,7 +61,7 @@ Std_ReturnType lcd_4bit_initialize(const chr_lcd_4bit_t *lcd)
         /* Selecting the mode of operation*/
         ret = lcd_4bit_send_command(lcd,_LCD_4BIT_MODE_2_LINE);
         /* Return the cursor to home location*/
-        ret = lcd_4bit_send_command(lcd,0x80);
+        ret = lcd_4bit_send_command(lcd,_LCD_DDRAM_START);
     }
     else{ret = E_NOT_OK;}
     
@@ -266,8 +266,7 @@ Std_ReturnType lcd_8bit_initialize(const chr_lcd_8bit_t *lcd)
         /* Selecting the mode of operation*/
         ret = lcd_8bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
         /* Return the cursor to home location*/
-        ret = lcd_8bit_send_command(lcd,0x80);
-        
+        ret = lcd_8bit_send_command(lcd,_LCD_DDRAM_START);       
     }
     else{ret = E_NOT_OK;}
     
@@ -294,7 +293,7 @@ Std_ReturnType lcd_8bit_send_command(const chr_lcd_8bit_t *lcd,uint8 command)
         /* Send the command*/
         for(l_pins_counter = ZERO_INIT ; l_pins_counter<8 ; l_pins_counter++)
         {
-            ret = gpio_pin_write_logic(&(lcd->lcd_data[l_pins_counter]),(command >> l_pins_counter) & (uint8)0x01);
+            ret = gpio_pin_write_logic(&(lcd->lcd_data[l_pins_counter]),READ_BIT(command,l_pins_counter));
         }
         /* Send Enable signal*/
         ret = lcd_8bit_send_enable_signal(lcd);
@@ -324,7 +323,7 @@ Std_ReturnType lcd_8bit_send_char_data(const chr_lcd_8bit_t *lcd,uint8 data)
         /* Send the command*/
         for(l_pins_counter = ZERO_INIT ; l_pins_counter<8 ; l_pins_counter++)
         {
-            ret = gpio_pin_write_logic(&(lcd->lcd_data[l_pins_counter]),(data >> l_pins_counter) & (uint8)0x01);
+            ret = gpio_pin_write_logic(&(lcd->lcd_data[l_pins_counter]),READ_BIT(data,l_pins_counter));
         }
         /* Send Enable signal*/
         ret = lcd_8bit_send_enable_signal(lcd);
@@ -446,8 +445,8 @@ Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str)
     Std_ReturnType ret = E_OK;
     if(str != NULL)
     {
-        memset((char *)str,'\0',4);
-        sprintf((char *)str,"%i",value);
+        memset((sint8 *)str,'\0',4);
+        sprintf((sint8 *)str,"%i",value);
     }
     else{ret = E_NOT_OK;}
     
@@ -467,8 +466,8 @@ Std_ReturnType convert_short_to_string(uint16 value,uint8 *str)
     Std_ReturnType ret = E_OK;
     if(str != NULL)
     {
-        memset((char *)str,'\0',6);
-        sprintf((char *)str,"%i",value);
+        memset((sint8 *)str,'\0',6);
+        sprintf((sint8 *)str,"%i",value);
     }
     else{ret = E_NOT_OK;}
     
@@ -488,8 +487,8 @@ Std_ReturnType convert_int_to_string(uint32 value,uint8 *str)
     Std_ReturnType ret = E_OK;
     if(str != NULL)
     {
-        memset((char *)str,'\0',11);
-        sprintf((char *)str,"%i",value);
+        memset((sint8 *)str,'\0',11);
+        sprintf((sint8 *)str,"%i",value);
     }
     else{ret = E_NOT_OK;}
     
@@ -507,7 +506,7 @@ static Std_ReturnType lcd_send_4bits(const chr_lcd_4bit_t *lcd,uint8 _data_comma
     {
         for(l_pins_counter = ZERO_INIT ; l_pins_counter<4 ; l_pins_counter++)
         {
-            ret = gpio_pin_write_logic(&(lcd->lcd_data[l_pins_counter]),(_data_command >> l_pins_counter) & (uint8)0x01);
+            ret = gpio_pin_write_logic(&(lcd->lcd_data[l_pins_counter]),READ_BIT(_data_command,l_pins_counter));
         }
     }
     else{ret = E_NOT_OK;}

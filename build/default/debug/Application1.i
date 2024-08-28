@@ -4742,23 +4742,23 @@ typedef uint8 Std_ReturnType ;
 # 32 "./ECU_Layer/Led/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum
@@ -4838,14 +4838,14 @@ Std_ReturnType led_turn_toggle(const led_t *led);
 
 typedef enum
 {
-    BUTTON_PRESSED = 0,
-    BUTTON_RELEASED
+    BUTTON_RELEASED = 0,
+    BUTTON_PRESSED
 }button_state_t;
 
 typedef enum
 {
-    BUTTON_ACRIVE_HIGH = 0,
-    BUTTON_ACTIVE_LOW
+    BUTTON_ACTIVE_LOW = 0,
+    BUTTON_ACRIVE_HIGH
 }button_active_t;
 
 typedef struct
@@ -4899,25 +4899,37 @@ Std_ReturnType relay_turn_off(const relay_t *relay);
 # 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 # 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
 # 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 23 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+
+
+
+
+
+
+
+
+typedef enum
+{
+    DC_MOTOR_PIN1 = 0,
+    DC_MOTOR_PIN2
+}dc_motor_pins_t;
+
 typedef enum
 {
     DC_MOTOR_OFF = 0,
     DC_MOTOR_ON
-
 }dc_motor_state_t;
 
 typedef struct
 {
-    pin_config_t dc_motor[2];
+    pin_config_t dc_motor_pin[2];
 }dc_motor_t;
-# 44 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 48 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
-# 53 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 57 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
-# 62 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 66 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
-# 71 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 75 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
 # 15 "./ECU_Layer/ecu_layer_init.h" 2
 
@@ -4925,21 +4937,29 @@ Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
 # 12 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 # 1 "./ECU_Layer/Seven_Seg/ecu_seven_seg_cfg.h" 1
 # 12 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h" 2
-# 25 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
+# 22 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 typedef enum
 {
-    SEGMENT_COMMON_ANODE = 0,
-    SEGMENT_COMMON_CATHODE
+    SEGMENT_PIN0 = 0,
+    SEGMENT_PIN1,
+    SEGMENT_PIN2,
+    SEGMENT_PIN3
+}segment_pins_t;
+
+typedef enum
+{
+    SEGMENT_COMMON_CATHODE = 0,
+    SEGMENT_COMMON_ANODE
 }segment_type_t;
 
 typedef struct
 {
-    pin_config_t segment_pins[4];
+    pin_config_t segment_pin[4];
     segment_type_t segment_type;
 }segment_t;
-# 46 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
+# 51 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 Std_ReturnType seven_segment_initialize(const segment_t *seg);
-# 56 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
+# 61 "./ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 Std_ReturnType seven_segment_write_number(const segment_t *seg,uint8 number);
 # 16 "./ECU_Layer/ecu_layer_init.h" 2
 
@@ -4947,16 +4967,16 @@ Std_ReturnType seven_segment_write_number(const segment_t *seg,uint8 number);
 # 13 "./ECU_Layer/Keypad/ecu_keypad.h"
 # 1 "./ECU_Layer/Keypad/ecu_keypad_cfg.h" 1
 # 13 "./ECU_Layer/Keypad/ecu_keypad.h" 2
-# 25 "./ECU_Layer/Keypad/ecu_keypad.h"
+# 24 "./ECU_Layer/Keypad/ecu_keypad.h"
 typedef struct
 {
-    pin_config_t keypad_row_pins[4];
-    pin_config_t keypad_column_pins[4];
+    pin_config_t keypad_row_pin[4];
+    pin_config_t keypad_column_pin[4];
 
 }keypad_t;
-# 41 "./ECU_Layer/Keypad/ecu_keypad.h"
+# 40 "./ECU_Layer/Keypad/ecu_keypad.h"
 Std_ReturnType keypad_initialize(const keypad_t *_keypad);
-# 51 "./ECU_Layer/Keypad/ecu_keypad.h"
+# 50 "./ECU_Layer/Keypad/ecu_keypad.h"
 Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
 # 17 "./ECU_Layer/ecu_layer_init.h" 2
 
@@ -4964,7 +4984,7 @@ Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
 # 13 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 # 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
 # 13 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
-# 47 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 54 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 typedef struct
 {
   pin_config_t lcd_rs;
@@ -4978,41 +4998,41 @@ typedef struct
   pin_config_t lcd_en;
   pin_config_t lcd_data[8];
 }chr_lcd_8bit_t;
-# 70 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 77 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_initialize(const chr_lcd_4bit_t *lcd);
-# 80 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 87 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_send_command(const chr_lcd_4bit_t *lcd,uint8 command);
-# 90 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 97 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data(const chr_lcd_4bit_t *lcd,uint8 data);
-# 102 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 109 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 data);
-# 112 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 119 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_send_string(const chr_lcd_4bit_t *lcd,uint8 *str);
-# 124 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 131 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_send_string_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 *str);
-# 137 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 144 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char_pos(const chr_lcd_4bit_t *lcd,uint8 row,uint8 column,
                                               const uint8 _char[],uint8 mem_pos);
-# 148 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 155 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_initialize(const chr_lcd_8bit_t *lcd);
-# 158 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 165 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_send_command(const chr_lcd_8bit_t *lcd,uint8 command);
-# 168 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 175 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data(const chr_lcd_8bit_t *lcd,uint8 data);
-# 180 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 187 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 data);
-# 190 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 197 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_send_string(const chr_lcd_8bit_t *lcd,uint8 *str);
-# 202 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 209 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_send_string_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 *str);
-# 215 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 222 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char_pos(const chr_lcd_8bit_t *lcd,uint8 row,uint8 column,
                                               const uint8 _char[],uint8 mem_pos);
-# 226 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 233 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str);
-# 236 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 243 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType convert_short_to_string(uint16 value,uint8 *str);
-# 246 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 253 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
 # 18 "./ECU_Layer/ecu_layer_init.h" 2
 
@@ -5023,8 +5043,12 @@ Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
 
 
 
-extern keypad_t keypad1;
 extern led_t led1;
+extern button_t btn1;
+extern relay_t relay1;
+extern dc_motor_t motor1;
+extern segment_t segment1;
+extern keypad_t keypad1;
 extern chr_lcd_4bit_t lcd1;
 extern chr_lcd_8bit_t lcd2;
 
@@ -5045,20 +5069,6 @@ Std_ReturnType ret = (Std_ReturnType)0x01;
 int main()
 {
     application_initialize();
-    TRISA = 0b00000000;
-    LATA = 0b11111111;
-
-    TRISB = 0b00000000;
-    LATB = 0b11111111;
-
-    TRISC = 0b00000000;
-    LATC = 0b11111111;
-
-    TRISD = 0b00000000;
-    LATD = 0b11111111;
-
-    TRISE = 0b00000000;
-    LATE = 0b11111111;
 
     while(1)
     {

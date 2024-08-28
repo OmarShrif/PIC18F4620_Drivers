@@ -23,8 +23,12 @@
 
 
 /* Section : Data Type Declarations */
-extern keypad_t keypad1;
 extern led_t led1;
+extern button_t btn1;
+extern relay_t relay1;
+extern dc_motor_t motor1;
+extern segment_t segment1;
+extern keypad_t keypad1;
 extern chr_lcd_4bit_t lcd1;
 extern chr_lcd_8bit_t lcd2;
 

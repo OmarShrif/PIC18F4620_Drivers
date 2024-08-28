@@ -59,7 +59,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "182
 [; ;MCAL_Layer/GPIO/hal_gpio.c: 182: Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 direction)
 [c E2981 0 1 2 3 4 .. ]
-[n E2981 . GPIO_PORTA_INDEX GPIO_PORTB_INDEX GPIO_PORTC_INDEX GPIO_PORTD_INDEX GPIO_PORTE_INDEX  ]
+[n E2981 . GPIO_PORTA GPIO_PORTB GPIO_PORTC GPIO_PORTD GPIO_PORTE  ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -887,7 +887,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
 "185
-[; ;MCAL_Layer/GPIO/hal_gpio.c: 185:     if((port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+[; ;MCAL_Layer/GPIO/hal_gpio.c: 185:     if((port >= GPIO_PORTA) && (port <= 5 -1))
 [e $ ! && >= -> _port `ui -> . `E2981 0 `ui <= -> _port `ui -> - -> 5 `i -> 1 `i `ui 305  ]
 "186
 [; ;MCAL_Layer/GPIO/hal_gpio.c: 186:     {
@@ -933,7 +933,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
 "206
-[; ;MCAL_Layer/GPIO/hal_gpio.c: 206:     if((direction_status != ((void*)0)) && (port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+[; ;MCAL_Layer/GPIO/hal_gpio.c: 206:     if((direction_status != ((void*)0)) && (port >= GPIO_PORTA) && (port <= 5 -1))
 [e $ ! && && != _direction_status -> -> -> 0 `i `*v `*uc >= -> _port `ui -> . `E2981 0 `ui <= -> _port `ui -> - -> 5 `i -> 1 `i `ui 308  ]
 "207
 [; ;MCAL_Layer/GPIO/hal_gpio.c: 207:     {
@@ -979,7 +979,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
 "227
-[; ;MCAL_Layer/GPIO/hal_gpio.c: 227:     if((port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+[; ;MCAL_Layer/GPIO/hal_gpio.c: 227:     if((port >= GPIO_PORTA) && (port <= 5 -1))
 [e $ ! && >= -> _port `ui -> . `E2981 0 `ui <= -> _port `ui -> - -> 5 `i -> 1 `i `ui 311  ]
 "228
 [; ;MCAL_Layer/GPIO/hal_gpio.c: 228:     {
@@ -1025,7 +1025,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
 "248
-[; ;MCAL_Layer/GPIO/hal_gpio.c: 248:     if((logic != ((void*)0)) && (port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+[; ;MCAL_Layer/GPIO/hal_gpio.c: 248:     if((logic != ((void*)0)) && (port >= GPIO_PORTA) && (port <= 5 -1))
 [e $ ! && && != _logic -> -> -> 0 `i `*v `*uc >= -> _port `ui -> . `E2981 0 `ui <= -> _port `ui -> - -> 5 `i -> 1 `i `ui 314  ]
 "249
 [; ;MCAL_Layer/GPIO/hal_gpio.c: 249:     {
@@ -1070,7 +1070,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
 "268
-[; ;MCAL_Layer/GPIO/hal_gpio.c: 268:     if((port >= GPIO_PORTA_INDEX) && (port <= 5 -1))
+[; ;MCAL_Layer/GPIO/hal_gpio.c: 268:     if((port >= GPIO_PORTA) && (port <= 5 -1))
 [e $ ! && >= -> _port `ui -> . `E2981 0 `ui <= -> _port `ui -> - -> 5 `i -> 1 `i `ui 317  ]
 "269
 [; ;MCAL_Layer/GPIO/hal_gpio.c: 269:     {

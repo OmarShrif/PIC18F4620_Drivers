@@ -20,14 +20,14 @@
 /* Section : Data Type Declarations */
 typedef enum
 {
-    BUTTON_PRESSED = 0,
-    BUTTON_RELEASED
+    BUTTON_RELEASED = 0,
+    BUTTON_PRESSED
 }button_state_t;
 
 typedef enum
 {
-    BUTTON_ACRIVE_HIGH = 0,
-    BUTTON_ACTIVE_LOW
+    BUTTON_ACTIVE_LOW = 0,
+    BUTTON_ACRIVE_HIGH
 }button_active_t;
 
 typedef struct

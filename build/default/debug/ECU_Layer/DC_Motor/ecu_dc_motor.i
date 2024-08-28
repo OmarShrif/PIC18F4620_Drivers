@@ -4731,23 +4731,23 @@ typedef uint8 Std_ReturnType ;
 # 32 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum
@@ -4789,25 +4789,37 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
 # 14 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
-# 23 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+
+
+
+
+
+
+
+
+typedef enum
+{
+    DC_MOTOR_PIN1 = 0,
+    DC_MOTOR_PIN2
+}dc_motor_pins_t;
+
 typedef enum
 {
     DC_MOTOR_OFF = 0,
     DC_MOTOR_ON
-
 }dc_motor_state_t;
 
 typedef struct
 {
-    pin_config_t dc_motor[2];
+    pin_config_t dc_motor_pin[2];
 }dc_motor_t;
-# 44 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 48 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
-# 53 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 57 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
-# 62 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 66 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
-# 71 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 75 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
 # 10 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
 # 27 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
@@ -4816,50 +4828,47 @@ Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor)
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(_dc_motor != ((void*)0))
     {
-
-        ret = gpio_pin_initialize(&_dc_motor->dc_motor[0x00U]);
-        ret = gpio_pin_initialize(&_dc_motor->dc_motor[0x01U]);
+        ret = gpio_pin_initialize(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]));
+        ret = gpio_pin_initialize(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]));
     }
     else{ret = (Std_ReturnType)0x00;}
 
     return ret;
 }
-# 48 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+# 47 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
 Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(_dc_motor != ((void*)0))
     {
-
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x00U],GPIO_LOGIC_HIGH);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x01U],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]),GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]),GPIO_LOGIC_LOW);
     }
     else{ret = (Std_ReturnType)0x00;}
 
     return ret;
 }
-# 69 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+# 67 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
 Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(_dc_motor != ((void*)0))
     {
-
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x00U],GPIO_LOGIC_LOW);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x01U],GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]),GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]),GPIO_LOGIC_HIGH);
     }
     else{ret = (Std_ReturnType)0x00;}
 
     return ret;
 }
-# 90 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+# 87 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
 Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(_dc_motor != ((void*)0))
     {
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x00U],GPIO_LOGIC_LOW);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[0x01U],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]),GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]),GPIO_LOGIC_LOW);
     }
     else{ret = (Std_ReturnType)0x00;}
 

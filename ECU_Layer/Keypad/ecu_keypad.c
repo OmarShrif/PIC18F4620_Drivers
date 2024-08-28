@@ -37,11 +37,11 @@ Std_ReturnType keypad_initialize(const keypad_t *_keypad)
     {
         for(row_counter = ZERO_INIT ; row_counter<KEYPAD_ROWS ; row_counter++)
         {
-            ret = gpio_pin_initialize(&(_keypad->keypad_row_pins[row_counter]));
+            ret = gpio_pin_initialize(&(_keypad->keypad_row_pin[row_counter]));
         }
         for(column_counter = ZERO_INIT ; column_counter<KEYPAD_COLUMNS ; column_counter++)
         {
-            ret = gpio_pin_direction_initialize(&(_keypad->keypad_column_pins[column_counter]));
+            ret = gpio_pin_direction_initialize(&(_keypad->keypad_column_pin[column_counter]));
         }
     }
     else{ret = E_NOT_OK;}
@@ -68,16 +68,15 @@ Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value)
         {
             for(l_counter = ZERO_INIT ; l_counter<KEYPAD_ROWS ; l_counter++)
             {
-                ret = gpio_pin_write_logic(&(_keypad->keypad_row_pins[l_counter]),GPIO_LOGIC_LOW);
+                ret = gpio_pin_write_logic(&(_keypad->keypad_row_pin[l_counter]),GPIO_LOGIC_LOW);
             }
-            ret = gpio_pin_write_logic(&(_keypad->keypad_row_pins[l_row_counter]),GPIO_LOGIC_HIGH);
+            ret = gpio_pin_write_logic(&(_keypad->keypad_row_pin[l_row_counter]),GPIO_LOGIC_HIGH);
             for(l_column_counter = ZERO_INIT ; l_column_counter<KEYPAD_COLUMNS ; l_column_counter++)
             {
-                ret = gpio_pin_read_logic(&(_keypad->keypad_column_pins[l_column_counter]),&column_logic);
+                ret = gpio_pin_read_logic(&(_keypad->keypad_column_pin[l_column_counter]),&column_logic);
                 if(GPIO_LOGIC_HIGH == column_logic)
                 {
                     *value = keypad_values[l_row_counter][l_column_counter];
-                    //break;
                 }
             }
         }

@@ -4736,23 +4736,23 @@ typedef uint8 Std_ReturnType ;
 # 32 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum
 {
-    GPIO_PORTA_INDEX = 0,
-    GPIO_PORTB_INDEX,
-    GPIO_PORTC_INDEX,
-    GPIO_PORTD_INDEX,
-    GPIO_PORTE_INDEX,
+    GPIO_PORTA = 0,
+    GPIO_PORTB,
+    GPIO_PORTC,
+    GPIO_PORTD,
+    GPIO_PORTE,
 }port_index_t;
 
 typedef enum
 {
-    GPIO_PIN0_INDEX = 0,
-    GPIO_PIN1_INDEX,
-    GPIO_PIN2_INDEX,
-    GPIO_PIN3_INDEX,
-    GPIO_PIN4_INDEX,
-    GPIO_PIN5_INDEX,
-    GPIO_PIN6_INDEX,
-    GPIO_PIN7_INDEX,
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7,
 }pin_index_t;
 
 typedef enum
@@ -4796,21 +4796,29 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 12 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 # 1 "ECU_Layer/Seven_Seg/ecu_seven_seg_cfg.h" 1
 # 12 "ECU_Layer/Seven_Seg/ecu_seven_seg.h" 2
-# 25 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
+# 22 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 typedef enum
 {
-    SEGMENT_COMMON_ANODE = 0,
-    SEGMENT_COMMON_CATHODE
+    SEGMENT_PIN0 = 0,
+    SEGMENT_PIN1,
+    SEGMENT_PIN2,
+    SEGMENT_PIN3
+}segment_pins_t;
+
+typedef enum
+{
+    SEGMENT_COMMON_CATHODE = 0,
+    SEGMENT_COMMON_ANODE
 }segment_type_t;
 
 typedef struct
 {
-    pin_config_t segment_pins[4];
+    pin_config_t segment_pin[4];
     segment_type_t segment_type;
 }segment_t;
-# 46 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
+# 51 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 Std_ReturnType seven_segment_initialize(const segment_t *seg);
-# 56 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
+# 61 "ECU_Layer/Seven_Seg/ecu_seven_seg.h"
 Std_ReturnType seven_segment_write_number(const segment_t *seg,uint8 number);
 # 10 "ECU_Layer/Seven_Seg/ecu_seven_seg.c" 2
 # 28 "ECU_Layer/Seven_Seg/ecu_seven_seg.c"
@@ -4819,10 +4827,10 @@ Std_ReturnType seven_segment_initialize(const segment_t *seg)
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(seg != ((void*)0))
     {
-        ret = gpio_pin_initialize(&(seg->segment_pins[0]));
-        ret = gpio_pin_initialize(&(seg->segment_pins[1]));
-        ret = gpio_pin_initialize(&(seg->segment_pins[2]));
-        ret = gpio_pin_initialize(&(seg->segment_pins[3]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN0]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN1]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN2]));
+        ret = gpio_pin_initialize(&(seg->segment_pin[SEGMENT_PIN3]));
     }
     else{ret = (Std_ReturnType)0x00;}
 
@@ -4834,10 +4842,10 @@ Std_ReturnType seven_segment_write_number(const segment_t *seg,uint8 number)
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if((seg != ((void*)0)) && (number<10))
     {
-        ret = gpio_pin_write_logic(&(seg->segment_pins[0]),((number >> 0) & 1));
-        ret = gpio_pin_write_logic(&(seg->segment_pins[1]),((number >> 1) & 1));
-        ret = gpio_pin_write_logic(&(seg->segment_pins[2]),((number >> 2) & 1));
-        ret = gpio_pin_write_logic(&(seg->segment_pins[3]),((number >> 3) & 1));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN0]),((number >> SEGMENT_PIN0) & 1));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN1]),((number >> SEGMENT_PIN1) & 1));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN2]),((number >> SEGMENT_PIN2) & 1));
+        ret = gpio_pin_write_logic(&(seg->segment_pin[SEGMENT_PIN3]),((number >> SEGMENT_PIN3) & 1));
     }
     else{ret = (Std_ReturnType)0x00;}
 

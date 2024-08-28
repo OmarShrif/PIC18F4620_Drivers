@@ -60,6 +60,7 @@ Std_ReturnType button_read_status(const button_t *button,button_state_t *button_
                 {
                     *button_status = BUTTON_RELEASED;
                 }
+                ret = E_OK;
                 break;
             case BUTTON_ACTIVE_LOW:
                 if(GPIO_LOGIC_HIGH == pin_logic_status)
@@ -70,8 +71,10 @@ Std_ReturnType button_read_status(const button_t *button,button_state_t *button_
                 {
                     *button_status = BUTTON_PRESSED;
                 }
+                ret = E_OK;
                 break;
             default:
+                ret = E_NOT_OK;
                 break; 
         }
     }

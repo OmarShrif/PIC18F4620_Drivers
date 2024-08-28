@@ -29,9 +29,8 @@ Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor)
     Std_ReturnType ret = E_OK;
     if(_dc_motor != NULL)
     {
-        
-        ret = gpio_pin_initialize(&_dc_motor->dc_motor[DC_MOTOR_PIN1]);
-        ret = gpio_pin_initialize(&_dc_motor->dc_motor[DC_MOTOR_PIN2]);
+        ret = gpio_pin_initialize(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]));
+        ret = gpio_pin_initialize(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]));
     }
     else{ret = E_NOT_OK;}
     
@@ -50,9 +49,8 @@ Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor)
     Std_ReturnType ret = E_OK;
     if(_dc_motor != NULL)
     {
-        
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[DC_MOTOR_PIN1],GPIO_LOGIC_HIGH);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[DC_MOTOR_PIN2],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]),GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]),GPIO_LOGIC_LOW);
     }
     else{ret = E_NOT_OK;}
     
@@ -71,9 +69,8 @@ Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor)
     Std_ReturnType ret = E_OK;
     if(_dc_motor != NULL)
     {
-        
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[DC_MOTOR_PIN1],GPIO_LOGIC_LOW);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[DC_MOTOR_PIN2],GPIO_LOGIC_HIGH);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]),GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]),GPIO_LOGIC_HIGH);
     }
     else{ret = E_NOT_OK;}
     
@@ -92,8 +89,8 @@ Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor)
     Std_ReturnType ret = E_OK;
     if(_dc_motor != NULL)
     {
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[DC_MOTOR_PIN1],GPIO_LOGIC_LOW);
-        ret = gpio_pin_write_logic(&_dc_motor->dc_motor[DC_MOTOR_PIN2],GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN1]),GPIO_LOGIC_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[DC_MOTOR_PIN2]),GPIO_LOGIC_LOW);
     }
     else{ret = E_NOT_OK;}
     

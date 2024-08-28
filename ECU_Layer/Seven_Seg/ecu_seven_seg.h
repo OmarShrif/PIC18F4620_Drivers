@@ -13,24 +13,29 @@
 
 
 /* Section : Macro Declarations */
-#define SEGMENT_PIN0    0
-#define SEGMENT_PIN1    1
-#define SEGMENT_PIN2    2
-#define SEGMENT_PIN3    3
 
 /* Section : Macro Functions Declarations */
 
 
 /* Section : Data Type Declarations */
+
 typedef enum
 {
-    SEGMENT_COMMON_ANODE = 0,
-    SEGMENT_COMMON_CATHODE        
+    SEGMENT_PIN0 = 0,
+    SEGMENT_PIN1,
+    SEGMENT_PIN2,
+    SEGMENT_PIN3
+}segment_pins_t;
+
+typedef enum
+{
+    SEGMENT_COMMON_CATHODE = 0,
+    SEGMENT_COMMON_ANODE
 }segment_type_t;
 
 typedef struct
 {
-    pin_config_t segment_pins[4];
+    pin_config_t segment_pin[4];
     segment_type_t segment_type;
 }segment_t;
 

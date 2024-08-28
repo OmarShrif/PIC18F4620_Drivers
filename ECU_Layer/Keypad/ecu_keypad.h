@@ -19,13 +19,12 @@
 
 /* Section : Macro Functions Declarations */
 
-
 /* Section : Data Type Declarations */
 
 typedef struct
 {
-    pin_config_t keypad_row_pins[KEYPAD_ROWS];
-    pin_config_t keypad_column_pins[KEYPAD_COLUMNS];
+    pin_config_t keypad_row_pin[KEYPAD_ROWS];
+    pin_config_t keypad_column_pin[KEYPAD_COLUMNS];
     
 }keypad_t;
 
