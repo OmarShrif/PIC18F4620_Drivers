@@ -25,9 +25,6 @@
 /* Section : Data Type Declarations */
 
 extern led_t led1;
-extern led_t led2;
-extern led_t led3;
-extern led_t led4;
 extern button_t btn1;
 extern relay_t relay1;
 extern dc_motor_t motor1;
