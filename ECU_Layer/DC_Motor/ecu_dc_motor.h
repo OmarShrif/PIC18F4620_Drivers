@@ -10,7 +10,7 @@
 
 
 /* Section : Includes */
-#include "../../MCAL_Layer/GPIO/hal_gpio.h"
+#include "../../MCAL_Layer/GPIO/mcal_gpio.h"
 #include "ecu_dc_motor_cfg.h"
 
 /* Section : Macro Declarations */

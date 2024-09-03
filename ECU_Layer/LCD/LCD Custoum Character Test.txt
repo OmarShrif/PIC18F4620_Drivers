@@ -1,0 +1,48 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+ 
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+uint8 counter = ZERO_INIT;
+// Battery
+const uint8 customChar[6][8] = {{0x0E,0x0A,0x11,0x11,0x11,0x11,0x1F,0x00},
+                                {0x0E,0x0A,0x11,0x11,0x11,0x1F,0x1F,0x00},
+                                {0x0E,0x0A,0x11,0x11,0x1F,0x1F,0x1F,0x00},
+                                {0x0E,0x0A,0x11,0x1F,0x1F,0x1F,0x1F,0x00},
+                                {0x0E,0x0A,0x1F,0x1F,0x1F,0x1F,0x1F,0x00},
+                                {0x0E,0x0E,0x1F,0x1F,0x1F,0x1F,0x1F,0x00}};
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize(); 
+    
+    while(1)
+    {
+        ret = lcd_4bit_send_custom_char_at_pos(&lcd1,1,20,customChar[counter],0);
+        ret = lcd_8bit_send_custom_char_at_pos(&lcd2,1,20,customChar[counter],0);
+        counter++;
+        if(6 == counter)
+        {
+            counter = 0;
+        }
+        __delay_ms(300);
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+}

@@ -10,10 +10,29 @@
 
 
 /* Section : Global Variables Definition */
+
 led_t led1 = 
 {
-    .led_port = GPIO_PORTD,
+    .led_port = GPIO_PORTC,
     .led_pin = GPIO_PIN0,
+    .led_status = GPIO_LOGIC_LOW
+};
+led_t led2 = 
+{
+    .led_port = GPIO_PORTC,
+    .led_pin = GPIO_PIN1,
+    .led_status = GPIO_LOGIC_LOW
+};
+led_t led3 = 
+{
+    .led_port = GPIO_PORTC,
+    .led_pin = GPIO_PIN2,
+    .led_status = GPIO_LOGIC_LOW
+};
+led_t led4 = 
+{
+    .led_port = GPIO_PORTC,
+    .led_pin = GPIO_PIN3,
     .led_status = GPIO_LOGIC_LOW
 };
 
@@ -115,7 +134,7 @@ keypad_t keypad1 =
     .keypad_column_pin[3].logic = GPIO_LOGIC_LOW,
 };
 
-chr_lcd_4bit_t lcd1 = 
+lcd_4bit_t lcd1 = 
 {
     .lcd_rs.port = GPIO_PORTC,
     .lcd_rs.pin = GPIO_PIN0,
@@ -148,7 +167,7 @@ chr_lcd_4bit_t lcd1 =
     .lcd_data[3].logic = GPIO_LOGIC_LOW,
 };
 
-chr_lcd_8bit_t lcd2 = 
+lcd_8bit_t lcd2 = 
 {
     .lcd_rs.port = GPIO_PORTC,
     .lcd_rs.pin = GPIO_PIN6,
@@ -204,7 +223,11 @@ chr_lcd_8bit_t lcd2 =
 /* Section : Functions Definition */
 Std_ReturnType ecu_layer_initialize(void)
 {
-    Std_ReturnType ret_init = E_NOT_OK;
-    ret_init = dc_motor_initialize(&motor1);
+    Std_ReturnType ret_init = E_NOT_OK; 
+    ret_init = led_initialize(&led1);
+    ret_init = led_initialize(&led2);
+    ret_init = led_initialize(&led3);
+    ret_init = led_initialize(&led4);
+    
     return ret_init;
 }

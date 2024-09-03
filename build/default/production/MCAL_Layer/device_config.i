@@ -22,6 +22,7 @@
 
 
 
+
 #pragma config OSC = HS
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -75,9 +76,6 @@
 
 
 #pragma config EBTRB = OFF
-
-
-
 
 
 

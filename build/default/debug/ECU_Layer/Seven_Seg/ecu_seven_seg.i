@@ -15,8 +15,8 @@
 
 
 
-# 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio.h" 1
+# 12 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio.h"
 # 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
 # 12 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/../mcal_std_types.h"
 # 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/../std_Liberates.h" 1
@@ -4725,15 +4725,15 @@ typedef signed short sint16 ;
 typedef signed long sint32 ;
 
 typedef uint8 Std_ReturnType ;
-# 12 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-
+# 12 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio.h" 2
 
 # 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio.h" 2
 
-# 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 32 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/hal_gpio.h"
+
+# 1 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio_cfg.h" 1
+# 15 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio.h" 2
+# 32 "ECU_Layer/Seven_Seg/../../MCAL_Layer/GPIO/mcal_gpio.h"
 typedef enum
 {
     GPIO_PORTA = 0,
@@ -4777,12 +4777,15 @@ typedef struct
 }pin_config_t;
 
 
+
+
 Std_ReturnType gpio_pin_direction_initialize(const pin_config_t *_pin_config);
 Std_ReturnType gpio_pin_get_direction_status(const pin_config_t *_pin_config ,direction_t *direction_status);
 Std_ReturnType gpio_pin_write_logic(const pin_config_t *_pin_config , logic_t logic);
 Std_ReturnType gpio_pin_read_logic(const pin_config_t *_pin_config , logic_t *logic);
 Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config);
 Std_ReturnType gpio_pin_initialize(const pin_config_t *_pin_config);
+
 
 
 Std_ReturnType gpio_port_direction_initialize(port_index_t port , uint8 direction);

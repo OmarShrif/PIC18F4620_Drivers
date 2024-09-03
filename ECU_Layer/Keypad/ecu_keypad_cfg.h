@@ -1,7 +1,7 @@
 /* 
  * File:   ecu_keypad_cfg.h
  * Author: Omar Shrif Mohamed
- *
+ * https://www.linkedin.com/in/omar-shrif-982413213/
  * Created on January 25, 2024, 8:13 PM
  */
 
@@ -11,11 +11,9 @@
 
 /* Section : Includes */
 
-
 /* Section : Macro Declarations */
 
 /* Section : Macro Functions Declarations */
-
 
 /* Section : Data Type Declarations */
 

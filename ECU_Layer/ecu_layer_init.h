@@ -15,7 +15,7 @@
 #include "DC_Motor/ecu_dc_motor.h"
 #include "Seven_Seg/ecu_seven_seg.h"
 #include "Keypad/ecu_keypad.h"
-#include "Chr_LCD/ecu_chr_lcd.h"
+#include "LCD/ecu_lcd.h"
 
 /* Section : Macro Declarations */
 
@@ -23,14 +23,18 @@
 
 
 /* Section : Data Type Declarations */
+
 extern led_t led1;
+extern led_t led2;
+extern led_t led3;
+extern led_t led4;
 extern button_t btn1;
 extern relay_t relay1;
 extern dc_motor_t motor1;
 extern segment_t segment1;
 extern keypad_t keypad1;
-extern chr_lcd_4bit_t lcd1;
-extern chr_lcd_8bit_t lcd2;
+extern lcd_4bit_t lcd1;
+extern lcd_8bit_t lcd2;
 
 /* Section : Functions Declarations */
 Std_ReturnType ecu_layer_initialize(void);

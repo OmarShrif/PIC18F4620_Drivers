@@ -1,0 +1,99 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+
+/* Section : Functions Definition */
+
+void INT0_APP_ISR(void);
+void INT1_APP_ISR(void);
+void INT2_APP_ISR(void);
+ 
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+ext_interrupt_INTx_t int0_obj = 
+{
+    .ext_interrupt_INTx_handler = INT0_APP_ISR,
+    .edge = EXTERNAL_INTERRUPT_RISING_EDGE,
+    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
+    .priority = INTERRUPT_PRIORITY_HIGH,
+    #endif
+    .INTx_pin.port = GPIO_PORTB,
+    .INTx_pin.pin = GPIO_PIN0,
+    .INTx_pin.direction = GPIO_DIRECTION_INPUT
+};
+
+ext_interrupt_INTx_t int1_obj = 
+{
+    .ext_interrupt_INTx_handler = INT1_APP_ISR,
+    .edge = EXTERNAL_INTERRUPT_FALLING_EDGE,
+    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
+    .priority = INTERRUPT_PRIORITY_HIGH,
+    #endif
+    .INTx_pin.port = GPIO_PORTB,
+    .INTx_pin.pin = GPIO_PIN1,
+    .INTx_pin.direction = GPIO_DIRECTION_INPUT
+};
+
+ext_interrupt_INTx_t int2_obj = 
+{
+    .ext_interrupt_INTx_handler = INT2_APP_ISR,
+    .edge = EXTERNAL_INTERRUPT_RISING_EDGE,
+    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
+    .priority = INTERRUPT_PRIORITY_HIGH,
+    #endif
+    .INTx_pin.port = GPIO_PORTB,
+    .INTx_pin.pin = GPIO_PIN2,
+    .INTx_pin.direction = GPIO_DIRECTION_INPUT
+};
+
+int main() 
+{
+    application_initialize(); 
+    
+    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
+    INTERRUPT_PriorityLevelsEnable();
+    INTERRUPT_GlobalInterruptHighEnable();
+    INTERRUPT_GlobalInterruptLowEnable();
+    #elif INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_DISABLE
+    INTERRUPT_GlobalInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
+    #endif
+
+    while(1)
+    {
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    ret_init = ext_interrupt_INTx_Init(&int0_obj);
+    ret_init = ext_interrupt_INTx_Init(&int1_obj);
+    ret_init = ext_interrupt_INTx_Init(&int2_obj);
+}
+
+void INT0_APP_ISR(void)
+{
+    led_turn_toggle(&led1);
+}
+
+void INT1_APP_ISR(void)
+{
+    led_turn_toggle(&led2);
+}
+
+void INT2_APP_ISR(void)
+{
+    led_turn_toggle(&led3);
+}
