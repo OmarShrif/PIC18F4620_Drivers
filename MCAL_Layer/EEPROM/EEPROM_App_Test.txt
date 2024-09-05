@@ -1,0 +1,92 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+
+/* Section : Functions Declarations */
+
+void INT0_APP_ISR(void);
+void program1(void);
+void program2(void);
+void program3(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+volatile uint8 program = 0;
+
+ext_interrupt_INTx_t int0 = 
+{
+    .ext_interrupt_INTx_handler = INT0_APP_ISR,
+    .edge = EXTERNAL_INTERRUPT_RISING_EDGE,
+    .priority = INTERRUPT_PRIORITY_HIGH,
+    .INTx_pin.port = GPIO_PORTB,
+    .INTx_pin.pin = GPIO_PIN0,
+    .INTx_pin.direction = GPIO_DIRECTION_INPUT
+};
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize(); 
+    
+    ret = EEPROM_ReadByte(0x00,&program);
+    
+    while(1)
+    {
+        if(1 == program)
+        {
+            program1();
+        }
+        else if(2 == program)
+        {
+            program2();
+        }
+        else
+        {
+            program3();
+        }
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    ret_init = ext_interrupt_INTx_Init(&int0);
+}
+
+void INT0_APP_ISR(void)
+{
+    Std_ReturnType ret = E_OK;
+    program++;
+    if(2 < program){ program = 0; }
+    else{ /*  Nothing */ }
+    ret = EEPROM_WriteByte(0x00,program);
+}
+
+void program1(void)
+{
+    led_turn_toggle(&led1);
+    __delay_ms(300);
+}
+
+void program2(void)
+{
+    led_turn_toggle(&led2);
+    __delay_ms(300);
+}
+
+void program3(void)
+{
+    led_turn_off(&led1);
+    led_turn_off(&led2);
+}

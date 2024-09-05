@@ -203,10 +203,16 @@ lcd_8bit_t lcd2 =
 };
 
 /* Section : Functions Definition */
+
+/**
+ * @brief
+ * @return Status of the function 
+ *          (E_OK) : The function done successfully
+ *          (E_NOT_OK) : The function has issue to perform this action
+ */
 Std_ReturnType ecu_layer_initialize(void)
 {
     Std_ReturnType ret_init = E_NOT_OK; 
-    ret_init = led_initialize(&led1);
     
     return ret_init;
 }

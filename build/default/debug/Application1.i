@@ -5045,8 +5045,6 @@ Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
 # 27 "./ECU_Layer/ecu_layer_init.h"
 extern led_t led1;
 extern led_t led2;
-extern led_t led3;
-extern led_t led4;
 extern button_t btn1;
 extern relay_t relay1;
 extern dc_motor_t motor1;
@@ -5059,20 +5057,33 @@ extern lcd_8bit_t lcd2;
 Std_ReturnType ecu_layer_initialize(void);
 # 13 "./Application1.h" 2
 
-# 1 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h" 1
-# 12 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
-# 1 "./MCAL_Layer/Interrupt/mcal_interrupt_cfg.h" 1
-# 14 "./MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
-# 1 "./MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 14 "./MCAL_Layer/Interrupt/mcal_interrupt_cfg.h" 2
-# 58 "./MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/EEPROM/mcal_eeprom.h" 1
+# 13 "./MCAL_Layer/EEPROM/mcal_eeprom.h"
+# 1 "./MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h" 2
+# 58 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h"
 typedef enum
 {
     INTERRUPT_PRIORITY_LOW = 0,
     INTERRUPT_PRIORITY_HIGH
 
 }interrupt_priority_t;
-# 12 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h" 2
+# 12 "./MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h" 2
+# 13 "./MCAL_Layer/EEPROM/mcal_eeprom.h" 2
+
+# 1 "./MCAL_Layer/EEPROM/mcal_eeprom_cfg.h" 1
+# 14 "./MCAL_Layer/EEPROM/mcal_eeprom.h" 2
+# 46 "./MCAL_Layer/EEPROM/mcal_eeprom.h"
+Std_ReturnType EEPROM_WriteByte(uint16 bAdd , uint8 bData);
+# 56 "./MCAL_Layer/EEPROM/mcal_eeprom.h"
+Std_ReturnType EEPROM_ReadByte(uint16 bAdd , uint8 *bData);
+# 14 "./Application1.h" 2
+
+# 1 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h" 1
 # 99 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
 typedef enum
 {
@@ -5113,75 +5124,56 @@ Std_ReturnType ext_interrupt_INTx_DeInit(const ext_interrupt_INTx_t *int_obj);
 Std_ReturnType ext_interrupt_RBx_Init(const ext_interrupt_RBx_t *int_obj);
 # 174 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
 Std_ReturnType ext_interrupt_RBx_DeInit(const ext_interrupt_RBx_t *int_obj);
-# 14 "./Application1.h" 2
-# 24 "./Application1.h"
+# 15 "./Application1.h" 2
+# 25 "./Application1.h"
 void application_initialize(void);
 # 9 "Application1.c" 2
 
 
 
 
-void RB4_APP_ISR(void);
-void RB5_APP_ISR(void);
-void RB6_APP_ISR(void);
-void RB7_APP_ISR(void);
+void INT0_APP_ISR(void);
+void program1(void);
+void program2(void);
+void program3(void);
 
 
 
 Std_ReturnType ret = (Std_ReturnType)0x01;
+volatile uint8 program = 0;
 
-ext_interrupt_RBx_t rb4_obj =
+ext_interrupt_INTx_t int0 =
 {
-    .ext_interrupt_RBx_high_handler = RB4_APP_ISR,
-    .ext_interrupt_RBx_low_handler = RB4_APP_ISR,
+    .ext_interrupt_INTx_handler = INT0_APP_ISR,
+    .edge = EXTERNAL_INTERRUPT_RISING_EDGE,
     .priority = INTERRUPT_PRIORITY_HIGH,
-    .RBx_pin.port = GPIO_PORTB,
-    .RBx_pin.pin = GPIO_PIN4,
-
-    .RBx_pin.direction = GPIO_DIRECTION_INPUT
-
+    .INTx_pin.port = GPIO_PORTB,
+    .INTx_pin.pin = GPIO_PIN0,
+    .INTx_pin.direction = GPIO_DIRECTION_INPUT
 };
-ext_interrupt_RBx_t rb5_obj =
-{
-    .ext_interrupt_RBx_high_handler = RB5_APP_ISR,
-    .ext_interrupt_RBx_low_handler = RB5_APP_ISR,
-    .priority = INTERRUPT_PRIORITY_HIGH,
-    .RBx_pin.port = GPIO_PORTB,
-    .RBx_pin.pin = GPIO_PIN5,
 
-    .RBx_pin.direction = GPIO_DIRECTION_INPUT
 
-};
-ext_interrupt_RBx_t rb6_obj =
-{
-    .ext_interrupt_RBx_high_handler = RB6_APP_ISR,
-    .ext_interrupt_RBx_low_handler = RB6_APP_ISR,
-    .priority = INTERRUPT_PRIORITY_HIGH,
-    .RBx_pin.port = GPIO_PORTB,
-    .RBx_pin.pin = GPIO_PIN6,
-
-    .RBx_pin.direction = GPIO_DIRECTION_INPUT
-
-};
-ext_interrupt_RBx_t rb7_obj =
-{
-    .ext_interrupt_RBx_high_handler = RB7_APP_ISR,
-    .ext_interrupt_RBx_low_handler = RB7_APP_ISR,
-    .priority = INTERRUPT_PRIORITY_HIGH,
-    .RBx_pin.port = GPIO_PORTB,
-    .RBx_pin.pin = GPIO_PIN7,
-
-    .RBx_pin.direction = GPIO_DIRECTION_INPUT
-
-};
 
 int main()
 {
     application_initialize();
 
+    ret = EEPROM_ReadByte(0x00,&program);
+
     while(1)
     {
-
+        if(1 == program)
+        {
+            program1();
+        }
+        else if(2 == program)
+        {
+            program2();
+        }
+        else
+        {
+            program3();
+        }
     }
 
     return (0);
@@ -5191,25 +5183,32 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x01;
     ret_init = ecu_layer_initialize();
-    ret_init = ext_interrupt_RBx_Init(&rb4_obj);
-    ret_init = ext_interrupt_RBx_Init(&rb5_obj);
-    ret_init = ext_interrupt_RBx_Init(&rb6_obj);
-    ret_init = ext_interrupt_RBx_Init(&rb7_obj);
+    ret_init = ext_interrupt_INTx_Init(&int0);
 }
 
-void RB4_APP_ISR(void)
+void INT0_APP_ISR(void)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    program++;
+    if(2 < program){ program = 0; }
+    else{ }
+    ret = EEPROM_WriteByte(0x00,program);
+}
+
+void program1(void)
 {
     led_turn_toggle(&led1);
+    _delay((unsigned long)((300)*(8000000UL/4000.0)));
 }
-void RB5_APP_ISR(void)
+
+void program2(void)
 {
     led_turn_toggle(&led2);
+    _delay((unsigned long)((300)*(8000000UL/4000.0)));
 }
-void RB6_APP_ISR(void)
+
+void program3(void)
 {
-    led_turn_toggle(&led3);
-}
-void RB7_APP_ISR(void)
-{
-    led_turn_toggle(&led4);
+    led_turn_off(&led1);
+    led_turn_off(&led2);
 }

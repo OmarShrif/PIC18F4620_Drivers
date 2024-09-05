@@ -14,8 +14,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "66 ECU_Layer/LCD/../../MCAL_Layer/GPIO/mcal_gpio.h
 [s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S273 . port pin direction logic ]
-"39 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 39: button_t btn1 =
+"27 ECU_Layer/ecu_layer_init.c
+[; ;ECU_Layer/ecu_layer_init.c: 27: button_t btn1 =
 [c E3059 0 1 .. ]
 [n E3059 . BUTTON_RELEASED BUTTON_PRESSED  ]
 [c E3063 0 1 .. ]
@@ -24,8 +24,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ECU_Layer/Button/ecu_button.h: 34: {
 [s S275 `S273 1 `E3059 1 `E3063 1 ]
 [n S275 . button_pin button_status button_connection ]
-"39 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 39: button_t btn1 =
+"27 ECU_Layer/ecu_layer_init.c
+[; ;ECU_Layer/ecu_layer_init.c: 27: button_t btn1 =
 [c E2998 0 1 .. ]
 [n E2998 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
 "30 ECU_Layer/Relay/ecu_relay.h
@@ -36,8 +36,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;ECU_Layer/DC_Motor/ecu_dc_motor.h: 35: {
 [s S277 `S273 -> 2 `i ]
 [n S277 . dc_motor_pin ]
-"69 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 69: segment_t segment1 =
+"57 ECU_Layer/ecu_layer_init.c
+[; ;ECU_Layer/ecu_layer_init.c: 57: segment_t segment1 =
 [c E3118 0 1 .. ]
 [n E3118 . SEGMENT_COMMON_CATHODE SEGMENT_COMMON_ANODE  ]
 "37 ECU_Layer/Seven_Seg/ecu_seven_seg.h
@@ -494,32 +494,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"26
-[; ;ECU_Layer/ecu_layer_init.c: 26: led_t led3 =
-[v _led3 `S274 ~T0 @X0 1 e ]
-[i _led3
-:U ..
-:U ..
--> . `E2981 2 `uc
--> . `E2988 2 `uc
--> . `E3002 0 `uc
-..
-..
-]
-"32
-[; ;ECU_Layer/ecu_layer_init.c: 32: led_t led4 =
-[v _led4 `S274 ~T0 @X0 1 e ]
-[i _led4
-:U ..
-:U ..
--> . `E2981 2 `uc
--> . `E2988 3 `uc
--> . `E3002 0 `uc
-..
-..
-]
-"39
-[; ;ECU_Layer/ecu_layer_init.c: 39: button_t btn1 =
+"27
+[; ;ECU_Layer/ecu_layer_init.c: 27: button_t btn1 =
 [v _btn1 `S275 ~T0 @X0 1 e ]
 [i _btn1
 :U ..
@@ -537,8 +513,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"49
-[; ;ECU_Layer/ecu_layer_init.c: 49: relay_t relay1 =
+"37
+[; ;ECU_Layer/ecu_layer_init.c: 37: relay_t relay1 =
 [v _relay1 `S276 ~T0 @X0 1 e ]
 [i _relay1
 :U ..
@@ -549,8 +525,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"56
-[; ;ECU_Layer/ecu_layer_init.c: 56: dc_motor_t motor1 =
+"44
+[; ;ECU_Layer/ecu_layer_init.c: 44: dc_motor_t motor1 =
 [v _motor1 `S277 ~T0 @X0 1 e ]
 [i _motor1
 :U ..
@@ -572,8 +548,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"69
-[; ;ECU_Layer/ecu_layer_init.c: 69: segment_t segment1 =
+"57
+[; ;ECU_Layer/ecu_layer_init.c: 57: segment_t segment1 =
 [v _segment1 `S278 ~T0 @X0 1 e ]
 [i _segment1
 :U ..
@@ -608,8 +584,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"94
-[; ;ECU_Layer/ecu_layer_init.c: 94: keypad_t keypad1 =
+"82
+[; ;ECU_Layer/ecu_layer_init.c: 82: keypad_t keypad1 =
 [v _keypad1 `S279 ~T0 @X0 1 e ]
 [i _keypad1
 :U ..
@@ -669,8 +645,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"137
-[; ;ECU_Layer/ecu_layer_init.c: 137: lcd_4bit_t lcd1 =
+"125
+[; ;ECU_Layer/ecu_layer_init.c: 125: lcd_4bit_t lcd1 =
 [v _lcd1 `S280 ~T0 @X0 1 e ]
 [i _lcd1
 :U ..
@@ -720,8 +696,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"170
-[; ;ECU_Layer/ecu_layer_init.c: 170: lcd_8bit_t lcd2 =
+"158
+[; ;ECU_Layer/ecu_layer_init.c: 158: lcd_8bit_t lcd2 =
 [v _lcd2 `S281 ~T0 @X0 1 e ]
 [i _lcd2
 :U ..
@@ -795,35 +771,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"224
-[; ;ECU_Layer/ecu_layer_init.c: 224: Std_ReturnType ecu_layer_initialize(void)
+"219
+[; ;ECU_Layer/ecu_layer_init.c: 219: Std_ReturnType ecu_layer_initialize(void)
 [v _ecu_layer_initialize `(uc ~T0 @X0 1 ef ]
-"225
-[; ;ECU_Layer/ecu_layer_init.c: 225: {
+"220
+[; ;ECU_Layer/ecu_layer_init.c: 220: {
 {
 [e :U _ecu_layer_initialize ]
 [f ]
-"226
-[; ;ECU_Layer/ecu_layer_init.c: 226:     Std_ReturnType ret_init = (Std_ReturnType)0x00;
+"221
+[; ;ECU_Layer/ecu_layer_init.c: 221:     Std_ReturnType ret_init = (Std_ReturnType)0x00;
 [v _ret_init `uc ~T0 @X0 1 a ]
 [e = _ret_init -> -> 0 `i `uc ]
-"227
-[; ;ECU_Layer/ecu_layer_init.c: 227:     ret_init = led_initialize(&led1);
+"222
+[; ;ECU_Layer/ecu_layer_init.c: 222:     ret_init = led_initialize(&led1);
 [e = _ret_init ( _led_initialize (1 -> &U _led1 `*CS274 ]
-"228
-[; ;ECU_Layer/ecu_layer_init.c: 228:     ret_init = led_initialize(&led2);
+"223
+[; ;ECU_Layer/ecu_layer_init.c: 223:     ret_init = led_initialize(&led2);
 [e = _ret_init ( _led_initialize (1 -> &U _led2 `*CS274 ]
-"229
-[; ;ECU_Layer/ecu_layer_init.c: 229:     ret_init = led_initialize(&led3);
-[e = _ret_init ( _led_initialize (1 -> &U _led3 `*CS274 ]
-"230
-[; ;ECU_Layer/ecu_layer_init.c: 230:     ret_init = led_initialize(&led4);
-[e = _ret_init ( _led_initialize (1 -> &U _led4 `*CS274 ]
-"232
-[; ;ECU_Layer/ecu_layer_init.c: 232:     return ret_init;
+"225
+[; ;ECU_Layer/ecu_layer_init.c: 225:     return ret_init;
 [e ) _ret_init ]
 [e $UE 282  ]
-"233
-[; ;ECU_Layer/ecu_layer_init.c: 233: }
+"226
+[; ;ECU_Layer/ecu_layer_init.c: 226: }
 [e :UE 282 ]
 }

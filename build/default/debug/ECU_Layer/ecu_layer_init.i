@@ -5043,8 +5043,6 @@ Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
 # 27 "ECU_Layer/ecu_layer_init.h"
 extern led_t led1;
 extern led_t led2;
-extern led_t led3;
-extern led_t led4;
 extern button_t btn1;
 extern relay_t relay1;
 extern dc_motor_t motor1;
@@ -5071,18 +5069,6 @@ led_t led2 =
 {
     .led_port = GPIO_PORTC,
     .led_pin = GPIO_PIN1,
-    .led_status = GPIO_LOGIC_LOW
-};
-led_t led3 =
-{
-    .led_port = GPIO_PORTC,
-    .led_pin = GPIO_PIN2,
-    .led_status = GPIO_LOGIC_LOW
-};
-led_t led4 =
-{
-    .led_port = GPIO_PORTC,
-    .led_pin = GPIO_PIN3,
     .led_status = GPIO_LOGIC_LOW
 };
 
@@ -5269,15 +5255,12 @@ lcd_8bit_t lcd2 =
     .lcd_data[7].direction = GPIO_DIRECTION_OUTPUT,
     .lcd_data[7].logic = GPIO_LOGIC_LOW,
 };
-
-
+# 219 "ECU_Layer/ecu_layer_init.c"
 Std_ReturnType ecu_layer_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x00;
     ret_init = led_initialize(&led1);
     ret_init = led_initialize(&led2);
-    ret_init = led_initialize(&led3);
-    ret_init = led_initialize(&led4);
 
     return ret_init;
 }

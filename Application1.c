@@ -8,17 +8,18 @@
 /* Section : Includes */
 #include "Application1.h"
 
-/* Section : Functions Definition */
+/* Section : Functions Declarations */
 
 /* Section : Global Variables Definition */
 
 Std_ReturnType ret = E_OK;
 
+/* Section : Functions Definition */
 
 int main() 
 {
     application_initialize(); 
-
+    
     while(1)
     {
         
