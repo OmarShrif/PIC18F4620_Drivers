@@ -36,5 +36,11 @@ void RB7_ISR(uint8 source);
 
 #endif
 
+#if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+void ADC_ISR(void);
+
+#endif
+
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 

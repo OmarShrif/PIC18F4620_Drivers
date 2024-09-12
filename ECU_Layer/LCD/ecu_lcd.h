@@ -14,32 +14,32 @@
 
 /* Section : Macro Declarations */
 
-#define _LCD_CLEAR                                  0X01
-#define _LCD_RETURN_HOME                            0x02
+#define LCD_CLEAR                                  0X01
+#define LCD_RETURN_HOME                            0x02
 
-#define _LCD_ENTRY_MODE_DEC_SHIFT_OFF               0x04
-#define _LCD_ENTRY_MODE_DEC_SHIFT_ON                0x05
-#define _LCD_ENTRY_MODE_INC_SHIFT_OFF               0x06
-#define _LCD_ENTRY_MODE_INC_SHIFT_ON                0x07
+#define LCD_ENTRY_MODE_DEC_SHIFT_OFF               0x04
+#define LCD_ENTRY_MODE_DEC_SHIFT_ON                0x05
+#define LCD_ENTRY_MODE_INC_SHIFT_OFF               0x06
+#define LCD_ENTRY_MODE_INC_SHIFT_ON                0x07
 
-#define _LCD_DISPLAY_OFF_CURSOR_OFF                 0x08
+#define LCD_DISPLAY_OFF_CURSOR_OFF                 0x08
 
-#define _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF    0x0C
-#define _LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_ON     0x0D
-#define _LCD_DISPLAY_ON_UNDERLINE_ON_CURSOR_OFF     0x0E
-#define _LCD_DISPLAY_ON_UNDERLINE_ON_CURSOR_ON      0x0F
+#define LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF    0x0C
+#define LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_ON     0x0D
+#define LCD_DISPLAY_ON_UNDERLINE_ON_CURSOR_OFF     0x0E
+#define LCD_DISPLAY_ON_UNDERLINE_ON_CURSOR_ON      0x0F
 
-#define _LCD_CURSOR_MOVE_LEFT                       0x10
-#define _LCD_CURSOR_MOVE_RIGHT                      0x14
+#define LCD_CURSOR_MOVE_LEFT                       0x10
+#define LCD_CURSOR_MOVE_RIGHT                      0x14
 
-#define _LCD_DISPLAY_SHIFT_LEFT                     0x18
-#define _LCD_DISPLAY_SHIFT_RIGHT                    0x1C
+#define LCD_DISPLAY_SHIFT_LEFT                     0x18
+#define LCD_DISPLAY_SHIFT_RIGHT                    0x1C
 
-#define _LCD_4BIT_MODE_2_LINE                       0x28
-#define _LCD_8BIT_MODE_2_LINE                       0x38
+#define LCD_4BIT_MODE_2_LINE                       0x28
+#define LCD_8BIT_MODE_2_LINE                       0x38
 
-#define _LCD_CGRAM_START                            0x40
-#define _LCD_DDRAM_START                            0x80
+#define LCD_CGRAM_START                            0x40
+#define LCD_DDRAM_START                            0x80
 
 #define ROW1 1
 #define ROW2 2
@@ -51,12 +51,18 @@
 
 /* Section : Data Type Declarations */
 
+#if LCD_4BIT_FEATURE == LCD_FEATURE_ENABLE
+
 typedef struct
 {
   pin_config_t lcd_rs;
   pin_config_t lcd_en;
   pin_config_t lcd_data[4];
 }lcd_4bit_t;
+
+#endif
+
+#if LCD_8BIT_FEATURE == LCD_FEATURE_ENABLE
 
 typedef struct
 {
@@ -65,7 +71,11 @@ typedef struct
   pin_config_t lcd_data[8];
 }lcd_8bit_t;
 
+#endif
+
 /* Section : Functions Declarations */
+
+#if LCD_4BIT_FEATURE == LCD_FEATURE_ENABLE
 
 /**
  * @brief Initialize the assigned pin to be output.
@@ -155,6 +165,10 @@ Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd,const uint8 _char
 Std_ReturnType lcd_4bit_send_custom_char_at_pos(const lcd_4bit_t *lcd,uint8 row,uint8 column,
                                               const uint8 _char[],uint8 mem_pos);
 
+#endif
+
+#if LCD_8BIT_FEATURE == LCD_FEATURE_ENABLE
+
 /**
  * @brief Initialize the assigned pin to be output.
  * @param lcd : pointer to the 8-bit lcd module configurations
@@ -243,6 +257,8 @@ Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd,const uint8 _char
 Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,uint8 column,
                                               const uint8 _char[],uint8 mem_pos);
 
+#endif
+
 /**
  * @brief convert 1-byte data to string
  * @param value : value needed to be converted
@@ -251,7 +267,7 @@ Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue to perform this action
  */
-Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str);
+Std_ReturnType convert_uint8_to_string(uint8 value,uint8 *str);
 
 /**
  * @brief convert 2-byte(short) data to string
@@ -261,7 +277,7 @@ Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str);
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue to perform this action
  */
-Std_ReturnType convert_short_to_string(uint16 value,uint8 *str);
+Std_ReturnType convert_uint16_to_string(uint16 value,uint8 *str);
 
 /**
  * @brief convert 4-byte(int) data to string
@@ -271,7 +287,7 @@ Std_ReturnType convert_short_to_string(uint16 value,uint8 *str);
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue to perform this action
  */
-Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
+Std_ReturnType convert_uint32_to_string(uint32 value,uint8 *str);
 
 #endif	/* ECU_LCD_H */
 

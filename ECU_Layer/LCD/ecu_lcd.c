@@ -12,13 +12,24 @@
 
 /* Section : Helper Function Declaration */
 
+#if LCD_4BIT_FEATURE == LCD_FEATURE_ENABLE
+
 static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command);
 static Std_ReturnType lcd_4bit_send_enable_signal(const lcd_4bit_t *lcd);
-static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd);
 static Std_ReturnType lcd_4bit_set_cursor(const lcd_4bit_t *lcd,uint8 row,uint8 column);
+
+#endif
+
+#if LCD_8BIT_FEATURE == LCD_FEATURE_ENABLE
+
+static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd);
 static Std_ReturnType lcd_8bit_set_cursor(const lcd_8bit_t *lcd,uint8 row,uint8 column);
 
+#endif
+
 /* Section : Functions Definition */
+
+#if LCD_4BIT_FEATURE == LCD_FEATURE_ENABLE
 
 /**
  * @brief Initialize the assigned pin to be output.
@@ -42,24 +53,24 @@ Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd)
         /* Delay after power on*/
         __delay_ms(20);
         /* Selecting the mode of operation*/
-        ret = lcd_4bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_4bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         __delay_ms(5);
-        ret = lcd_4bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_4bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         __delay_us(150);
-        ret = lcd_4bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_4bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         
         /* Clear the LCD*/
-        ret = lcd_4bit_send_command(lcd,_LCD_CLEAR);
+        ret = lcd_4bit_send_command(lcd,LCD_CLEAR);
         /* Return the cursor to home*/
-        ret = lcd_4bit_send_command(lcd,_LCD_RETURN_HOME);
+        ret = lcd_4bit_send_command(lcd,LCD_RETURN_HOME);
         /* Entry mode selection*/
-        ret = lcd_4bit_send_command(lcd,_LCD_ENTRY_MODE_INC_SHIFT_OFF);
+        ret = lcd_4bit_send_command(lcd,LCD_ENTRY_MODE_INC_SHIFT_OFF);
         /* Display mode selection*/
-        ret = lcd_4bit_send_command(lcd,_LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
+        ret = lcd_4bit_send_command(lcd,LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
         /* Selecting the mode of operation*/
-        ret = lcd_4bit_send_command(lcd,_LCD_4BIT_MODE_2_LINE);
+        ret = lcd_4bit_send_command(lcd,LCD_4BIT_MODE_2_LINE);
         /* Return the cursor to home location*/
-        ret = lcd_4bit_send_command(lcd,_LCD_DDRAM_START);
+        ret = lcd_4bit_send_command(lcd,LCD_DDRAM_START);
     }
     else{ret = E_NOT_OK;}
     
@@ -211,7 +222,7 @@ Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd,const uint8 _char
     
     if(lcd != NULL)
     {
-        ret = lcd_4bit_send_command(lcd,(_LCD_CGRAM_START+(mem_pos*8)));
+        ret = lcd_4bit_send_command(lcd,(LCD_CGRAM_START+(mem_pos*8)));
         for(lcd_counter = ZERO_INIT ; lcd_counter<=7 ; lcd_counter++)
         {
             ret = lcd_4bit_send_char_data(lcd,_char[lcd_counter]);
@@ -242,7 +253,7 @@ Std_ReturnType lcd_4bit_send_custom_char_at_pos(const lcd_4bit_t *lcd,uint8 row,
     
     if(lcd != NULL)
     {
-        ret = lcd_4bit_send_command(lcd,(_LCD_CGRAM_START+(mem_pos*8)));
+        ret = lcd_4bit_send_command(lcd,(LCD_CGRAM_START+(mem_pos*8)));
         for(lcd_counter = ZERO_INIT ; lcd_counter<=7 ; lcd_counter++)
         {
             ret = lcd_4bit_send_char_data(lcd,_char[lcd_counter]);
@@ -254,6 +265,9 @@ Std_ReturnType lcd_4bit_send_custom_char_at_pos(const lcd_4bit_t *lcd,uint8 row,
     return ret;
 }
 
+#endif
+
+#if LCD_8BIT_FEATURE == LCD_FEATURE_ENABLE
 
 /**
  * @brief Initialize the assigned pin to be output.
@@ -277,23 +291,23 @@ Std_ReturnType lcd_8bit_initialize(const lcd_8bit_t *lcd)
         /* Delay after power on*/
         __delay_ms(20);
         /* Selecting the mode of operation*/
-        ret = lcd_8bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_8bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         __delay_ms(5);
-        ret = lcd_8bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_8bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         __delay_us(150);
-        ret = lcd_8bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_8bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         /* Clear the LCD*/
-        ret = lcd_8bit_send_command(lcd,_LCD_CLEAR);
+        ret = lcd_8bit_send_command(lcd,LCD_CLEAR);
         /* Return the cursor to home*/
-        ret = lcd_8bit_send_command(lcd,_LCD_RETURN_HOME);
+        ret = lcd_8bit_send_command(lcd,LCD_RETURN_HOME);
         /* Entry mode selection*/
-        ret = lcd_8bit_send_command(lcd,_LCD_ENTRY_MODE_INC_SHIFT_OFF);
+        ret = lcd_8bit_send_command(lcd,LCD_ENTRY_MODE_INC_SHIFT_OFF);
         /* Display mode selection*/
-        ret = lcd_8bit_send_command(lcd,_LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
+        ret = lcd_8bit_send_command(lcd,LCD_DISPLAY_ON_UNDERLINE_OFF_CURSOR_OFF);
         /* Selecting the mode of operation*/
-        ret = lcd_8bit_send_command(lcd,_LCD_8BIT_MODE_2_LINE);
+        ret = lcd_8bit_send_command(lcd,LCD_8BIT_MODE_2_LINE);
         /* Return the cursor to home location*/
-        ret = lcd_8bit_send_command(lcd,_LCD_DDRAM_START);       
+        ret = lcd_8bit_send_command(lcd,LCD_DDRAM_START);       
     }
     else{ret = E_NOT_OK;}
     
@@ -445,7 +459,7 @@ Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd,const uint8 _char
     
     if(lcd != NULL)
     {
-        ret = lcd_8bit_send_command(lcd,(_LCD_CGRAM_START+(mem_pos*8)));
+        ret = lcd_8bit_send_command(lcd,(LCD_CGRAM_START+(mem_pos*8)));
         for(lcd_counter = ZERO_INIT ; lcd_counter<=7 ; lcd_counter++)
         {
             ret = lcd_8bit_send_char_data(lcd,_char[lcd_counter]);
@@ -476,7 +490,7 @@ Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,
     
     if(lcd != NULL)
     {
-        ret = lcd_8bit_send_command(lcd,(_LCD_CGRAM_START+(mem_pos*8)));
+        ret = lcd_8bit_send_command(lcd,(LCD_CGRAM_START+(mem_pos*8)));
         for(lcd_counter = ZERO_INIT ; lcd_counter<=7 ; lcd_counter++)
         {
             ret = lcd_8bit_send_char_data(lcd,_char[lcd_counter]);
@@ -488,6 +502,8 @@ Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,
     return ret;
 }
 
+#endif
+
 /**
  * @brief convert 1-byte data to string
  * @param value : value needed to be converted
@@ -496,7 +512,7 @@ Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue to perform this action
  */
-Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str)
+Std_ReturnType convert_uin8_to_string(uint8 value,uint8 *str)
 {
     Std_ReturnType ret = E_OK;
     if(str != NULL)
@@ -518,7 +534,7 @@ Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str)
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue to perform this action
  */
-Std_ReturnType convert_short_to_string(uint16 value,uint8 *str)
+Std_ReturnType convert_uint16_to_string(uint16 value,uint8 *str)
 {
     Std_ReturnType ret = E_OK;
     if(str != NULL)
@@ -540,7 +556,7 @@ Std_ReturnType convert_short_to_string(uint16 value,uint8 *str)
  *          (E_OK) : The function done successfully
  *          (E_NOT_OK) : The function has issue to perform this action
  */
-Std_ReturnType convert_int_to_string(uint32 value,uint8 *str)
+Std_ReturnType convert_uint32_to_string(uint32 value,uint8 *str)
 {
     Std_ReturnType ret = E_OK;
     if(str != NULL)
@@ -557,6 +573,9 @@ Std_ReturnType convert_int_to_string(uint32 value,uint8 *str)
 
 
 /* Section : Helper Function Definition */ 
+
+#if LCD_4BIT_FEATURE == LCD_FEATURE_ENABLE
+
 static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command)
 {
     Std_ReturnType ret = E_OK;
@@ -574,20 +593,6 @@ static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command)
 }
 
 static Std_ReturnType lcd_4bit_send_enable_signal(const lcd_4bit_t *lcd)
-{
-    Std_ReturnType ret = E_OK;
-    if(lcd != NULL)
-    {
-        ret = gpio_pin_write_logic(&(lcd->lcd_en),GPIO_LOGIC_HIGH);
-        __delay_us(5);
-        ret = gpio_pin_write_logic(&(lcd->lcd_en),GPIO_LOGIC_LOW);
-    }
-    else{ret = E_NOT_OK;}
-    
-    return ret;
-}
-
-static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd)
 {
     Std_ReturnType ret = E_OK;
     if(lcd != NULL)
@@ -621,6 +626,24 @@ static Std_ReturnType lcd_4bit_set_cursor(const lcd_4bit_t *lcd,uint8 row,uint8 
     return ret;
 }
 
+#endif
+
+#if LCD_8BIT_FEATURE == LCD_FEATURE_ENABLE
+
+static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd)
+{
+    Std_ReturnType ret = E_OK;
+    if(lcd != NULL)
+    {
+        ret = gpio_pin_write_logic(&(lcd->lcd_en),GPIO_LOGIC_HIGH);
+        __delay_us(5);
+        ret = gpio_pin_write_logic(&(lcd->lcd_en),GPIO_LOGIC_LOW);
+    }
+    else{ret = E_NOT_OK;}
+    
+    return ret;
+}
+
 static Std_ReturnType lcd_8bit_set_cursor(const lcd_8bit_t *lcd,uint8 row,uint8 column)
 {
     Std_ReturnType ret = E_OK;
@@ -640,3 +663,5 @@ static Std_ReturnType lcd_8bit_set_cursor(const lcd_8bit_t *lcd,uint8 row,uint8 
     
     return ret;
 }
+
+#endif

@@ -36,6 +36,10 @@
         <itemPath>ECU_Layer/ecu_layer_init.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCAL_Layer" displayName="MCAL_Layer" projectFiles="true">
+        <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
+          <itemPath>MCAL_Layer/ADC/mcal_adc.h</itemPath>
+          <itemPath>MCAL_Layer/ADC/mcal_adc_cfg.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom_cfg.h</itemPath>
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom.h</itemPath>
@@ -95,6 +99,9 @@
         <itemPath>ECU_Layer/ecu_layer_init.c</itemPath>
       </logicalFolder>
       <logicalFolder name="MCAL_Layer" displayName="MCAL_Layer" projectFiles="true">
+        <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
+          <itemPath>MCAL_Layer/ADC/mcal_adc.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/mcal_eeprom.c</itemPath>
         </logicalFolder>
@@ -105,6 +112,7 @@
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_internal_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_external_interrupt.c</itemPath>
+          <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_cfg.c</itemPath>
         </logicalFolder>
         <itemPath>MCAL_Layer/device_config.c</itemPath>
       </logicalFolder>

@@ -34,9 +34,6 @@ static void (*RB7_High_InterruptHandler)(void) = NULL;
 
 /* Section : Helper Function Declaration */
 
-static void global_interrupt_Enable(void);
-static void global_interrupt_Disable(void);
-
 #if EXTERNAL_INTERRUPT_INTx_FEATURE == INTERRUPT_FEATURE_ENABLE
 
 static Std_ReturnType ext_interrupt_INTx_Enable(const ext_interrupt_INTx_t *int_obj);
@@ -329,30 +326,6 @@ void RB7_ISR(uint8 source)
 #endif
 
 /* Section : Helper Function Definition */ 
-
-static void global_interrupt_Enable(void)
-{
-    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-    INTERRUPT_PriorityLevelsEnable();
-    INTERRUPT_GlobalInterruptHighEnable();
-    INTERRUPT_GlobalInterruptLowEnable();
-    #elif INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_DISABLE
-    INTERRUPT_GlobalInterruptEnable();
-    INTERRUPT_PeripheralInterruptEnable();
-    #endif
-}
-
-static void global_interrupt_Disable(void)
-{
-    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-    INTERRUPT_PriorityLevelsDisable();
-    INTERRUPT_GlobalInterruptHighDisable();
-    INTERRUPT_GlobalInterruptLowDisable();
-    #elif INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_DISABLE
-    INTERRUPT_GlobalInterruptDisable();
-    INTERRUPT_PeripheralInterruptDisable();
-    #endif
-}
 
 #if EXTERNAL_INTERRUPT_INTx_FEATURE == INTERRUPT_FEATURE_ENABLE
 

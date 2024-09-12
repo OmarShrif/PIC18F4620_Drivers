@@ -34,6 +34,7 @@ volatile uint8 *port_registers[] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
 Std_ReturnType gpio_pin_direction_initialize(const pin_config_t *_pin_config)
 {
     Std_ReturnType ret = E_OK;
+    
     if((_pin_config != NULL) && (_pin_config->port <= PORT_MAX_NUMBER-1) && (_pin_config->pin <= PORT_PIN_MAX_NUMBER-1))
     {
         switch(_pin_config->direction)

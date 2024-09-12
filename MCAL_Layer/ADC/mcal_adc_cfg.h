@@ -1,17 +1,14 @@
 /* 
- * File:   Application1.h
+ * File:   mcal_adc_cfg.h
  * Author: Omar Shrif Mohamed
  * https://www.linkedin.com/in/omar-shrif-982413213/
- * Created on January 1, 2024, 10:46 PM
+ * Created on September 10, 2024, 12:40 PM
  */
 
-#ifndef APPLICATION1_H
-#define	APPLICATION1_H
-
+#ifndef MCAL_ADC_CFG_H
+#define	MCAL_ADC_CFG_H
 
 /* Section : Includes */
-#include "ECU_Layer/ecu_layer_init.h"
-#include "MCAL_Layer/ADC/mcal_adc.h"
 
 /* Section : Macro Declarations */
 
@@ -21,7 +18,5 @@
 
 /* Section : Functions Declarations */
 
-void application_initialize(void);
-
-#endif	/* APPLICATION1_H */
+#endif	/* MCAL_ADC_CFG_H */
 

@@ -4987,7 +4987,7 @@ Std_ReturnType keypad_get_value(const keypad_t *_keypad,uint8 *value);
 # 13 "./ECU_Layer/LCD/ecu_lcd.h"
 # 1 "./ECU_Layer/LCD/ecu_lcd_cfg.h" 1
 # 13 "./ECU_Layer/LCD/ecu_lcd.h" 2
-# 54 "./ECU_Layer/LCD/ecu_lcd.h"
+# 56 "./ECU_Layer/LCD/ecu_lcd.h"
 typedef struct
 {
   pin_config_t lcd_rs;
@@ -4995,56 +4995,59 @@ typedef struct
   pin_config_t lcd_data[4];
 }lcd_4bit_t;
 
+
+
+
+
 typedef struct
 {
   pin_config_t lcd_rs;
   pin_config_t lcd_en;
   pin_config_t lcd_data[8];
 }lcd_8bit_t;
-# 77 "./ECU_Layer/LCD/ecu_lcd.h"
-Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd);
 # 87 "./ECU_Layer/LCD/ecu_lcd.h"
-Std_ReturnType lcd_4bit_send_command(const lcd_4bit_t *lcd,uint8 command);
+Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd);
 # 97 "./ECU_Layer/LCD/ecu_lcd.h"
+Std_ReturnType lcd_4bit_send_command(const lcd_4bit_t *lcd,uint8 command);
+# 107 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_4bit_send_char_data(const lcd_4bit_t *lcd,uint8 data);
-# 109 "./ECU_Layer/LCD/ecu_lcd.h"
-Std_ReturnType lcd_4bit_send_char_data_at_pos(const lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 data);
 # 119 "./ECU_Layer/LCD/ecu_lcd.h"
+Std_ReturnType lcd_4bit_send_char_data_at_pos(const lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 data);
+# 129 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_4bit_send_string(const lcd_4bit_t *lcd,uint8 *str);
-# 131 "./ECU_Layer/LCD/ecu_lcd.h"
+# 141 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_4bit_send_string_at_pos(const lcd_4bit_t *lcd,uint8 row,uint8 column,uint8 *str);
-# 142 "./ECU_Layer/LCD/ecu_lcd.h"
+# 152 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd,const uint8 _char[],uint8 mem_pos);
-# 155 "./ECU_Layer/LCD/ecu_lcd.h"
+# 165 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_4bit_send_custom_char_at_pos(const lcd_4bit_t *lcd,uint8 row,uint8 column,
                                               const uint8 _char[],uint8 mem_pos);
-# 165 "./ECU_Layer/LCD/ecu_lcd.h"
+# 179 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_initialize(const lcd_8bit_t *lcd);
-# 175 "./ECU_Layer/LCD/ecu_lcd.h"
+# 189 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_command(const lcd_8bit_t *lcd,uint8 command);
-# 185 "./ECU_Layer/LCD/ecu_lcd.h"
+# 199 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd,uint8 data);
-# 197 "./ECU_Layer/LCD/ecu_lcd.h"
+# 211 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_char_data_at_pos(const lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 data);
-# 207 "./ECU_Layer/LCD/ecu_lcd.h"
+# 221 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd,uint8 *str);
-# 219 "./ECU_Layer/LCD/ecu_lcd.h"
+# 233 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_string_at_pos(const lcd_8bit_t *lcd,uint8 row,uint8 column,uint8 *str);
-# 230 "./ECU_Layer/LCD/ecu_lcd.h"
+# 244 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd,const uint8 _char[],uint8 mem_pos);
-# 243 "./ECU_Layer/LCD/ecu_lcd.h"
+# 257 "./ECU_Layer/LCD/ecu_lcd.h"
 Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,uint8 column,
                                               const uint8 _char[],uint8 mem_pos);
-# 254 "./ECU_Layer/LCD/ecu_lcd.h"
-Std_ReturnType convert_byte_to_string(uint8 value,uint8 *str);
-# 264 "./ECU_Layer/LCD/ecu_lcd.h"
-Std_ReturnType convert_short_to_string(uint16 value,uint8 *str);
-# 274 "./ECU_Layer/LCD/ecu_lcd.h"
-Std_ReturnType convert_int_to_string(uint32 value,uint8 *str);
+# 270 "./ECU_Layer/LCD/ecu_lcd.h"
+Std_ReturnType convert_uint8_to_string(uint8 value,uint8 *str);
+# 280 "./ECU_Layer/LCD/ecu_lcd.h"
+Std_ReturnType convert_uint16_to_string(uint16 value,uint8 *str);
+# 290 "./ECU_Layer/LCD/ecu_lcd.h"
+Std_ReturnType convert_uint32_to_string(uint32 value,uint8 *str);
 # 18 "./ECU_Layer/ecu_layer_init.h" 2
 # 27 "./ECU_Layer/ecu_layer_init.h"
 extern led_t led1;
-extern led_t led2;
 extern button_t btn1;
 extern relay_t relay1;
 extern dc_motor_t motor1;
@@ -5057,99 +5060,145 @@ extern lcd_8bit_t lcd2;
 Std_ReturnType ecu_layer_initialize(void);
 # 13 "./Application1.h" 2
 
-# 1 "./MCAL_Layer/EEPROM/mcal_eeprom.h" 1
-# 13 "./MCAL_Layer/EEPROM/mcal_eeprom.h"
-# 1 "./MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h" 1
-# 12 "./MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h"
-# 1 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h" 1
-# 14 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h"
-# 1 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 14 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h" 2
-# 58 "./MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/ADC/mcal_adc.h" 1
+# 13 "./MCAL_Layer/ADC/mcal_adc.h"
+# 1 "./MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h" 2
+# 60 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h"
 typedef enum
 {
     INTERRUPT_PRIORITY_LOW = 0,
     INTERRUPT_PRIORITY_HIGH
 
 }interrupt_priority_t;
-# 12 "./MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h" 2
-# 13 "./MCAL_Layer/EEPROM/mcal_eeprom.h" 2
 
-# 1 "./MCAL_Layer/EEPROM/mcal_eeprom_cfg.h" 1
-# 14 "./MCAL_Layer/EEPROM/mcal_eeprom.h" 2
-# 46 "./MCAL_Layer/EEPROM/mcal_eeprom.h"
-Std_ReturnType EEPROM_WriteByte(uint16 bAdd , uint8 bData);
-# 56 "./MCAL_Layer/EEPROM/mcal_eeprom.h"
-Std_ReturnType EEPROM_ReadByte(uint16 bAdd , uint8 *bData);
-# 14 "./Application1.h" 2
 
-# 1 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h" 1
-# 99 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
+
+
+
+void global_interrupt_Enable(void);
+void global_interrupt_Disable(void);
+# 12 "./MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h" 2
+# 13 "./MCAL_Layer/ADC/mcal_adc.h" 2
+
+# 1 "./MCAL_Layer/ADC/mcal_adc_cfg.h" 1
+# 14 "./MCAL_Layer/ADC/mcal_adc.h" 2
+# 100 "./MCAL_Layer/ADC/mcal_adc.h"
 typedef enum
 {
-    EXTERNAL_INTERRUPT_FALLING_EDGE = 0,
-    EXTERNAL_INTERRUPT_RISING_EDGE
+    ADC_CHANNEL_AN0 = 0,
+    ADC_CHANNEL_AN1,
+    ADC_CHANNEL_AN2,
+    ADC_CHANNEL_AN3,
+    ADC_CHANNEL_AN4,
+    ADC_CHANNEL_AN5,
+    ADC_CHANNEL_AN6,
+    ADC_CHANNEL_AN7,
+    ADC_CHANNEL_AN8,
+    ADC_CHANNEL_AN9,
+    ADC_CHANNEL_AN10,
+    ADC_CHANNEL_AN11,
+    ADC_CHANNEL_AN12
+}adc_channel_select_t;
+# 124 "./MCAL_Layer/ADC/mcal_adc.h"
+typedef enum{
+    ADC_0_TAD = 0,
+    ADC_2_TAD,
+    ADC_4_TAD,
+    ADC_6_TAD,
+    ADC_8_TAD,
+    ADC_12_TAD,
+    ADC_16_TAD,
+    ADC_20_TAD
+}adc_acquisition_time_t;
 
-}ext_interrupt_INTx_edge_t;
+
+
+
+
+
+
+typedef enum{
+    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
+    ADC_CONVERSION_CLOCK_FRC,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    ADC_CONVERSION_CLOCK_FOSC_DIV_64
+}adc_conversion_clock_t;
+
+
+
 
 typedef struct
 {
-    void (*ext_interrupt_INTx_handler)(void);
-    pin_config_t INTx_pin;
-    ext_interrupt_INTx_edge_t edge;
-
-    interrupt_priority_t priority;
-
-}ext_interrupt_INTx_t;
 
 
 
 
 
-typedef struct
-{
-    void (*ext_interrupt_RBx_high_handler)(void);
-    void (*ext_interrupt_RBx_low_handler)(void);
-    pin_config_t RBx_pin;
 
-    interrupt_priority_t priority;
+    adc_acquisition_time_t acquisition_time ;
+    adc_conversion_clock_t conversion_clock ;
+    adc_channel_select_t adc_channel ;
+    uint8 voltage_reference : 1;
+    uint8 result_format : 1;
+    uint8 : 6;
+}adc_config_t;
 
 
-}ext_interrupt_RBx_t;
-# 144 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
-Std_ReturnType ext_interrupt_INTx_Init(const ext_interrupt_INTx_t *int_obj);
-# 153 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
-Std_ReturnType ext_interrupt_INTx_DeInit(const ext_interrupt_INTx_t *int_obj);
-# 165 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
-Std_ReturnType ext_interrupt_RBx_Init(const ext_interrupt_RBx_t *int_obj);
-# 174 "./MCAL_Layer/Interrupt/mcal_external_interrupt.h"
-Std_ReturnType ext_interrupt_RBx_DeInit(const ext_interrupt_RBx_t *int_obj);
-# 15 "./Application1.h" 2
-# 25 "./Application1.h"
+
+
+typedef uint16 adc_result_t;
+# 188 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_Init(const adc_config_t *_adc);
+# 197 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_DeInit(const adc_config_t *_adc);
+# 209 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_SelectChannel(const adc_config_t *_adc, adc_channel_select_t channel);
+# 220 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_StartConversion(const adc_config_t *_adc);
+# 236 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_IsConversionDone(const adc_config_t *_adc, uint8 *conversion_status);
+# 250 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_GetConversionResult(const adc_config_t *_adc, adc_result_t *conversion_result);
+# 264 "./MCAL_Layer/ADC/mcal_adc.h"
+Std_ReturnType adc_GetConversion_Blocking(const adc_config_t *_adc, adc_channel_select_t channel,
+                                          adc_result_t *conversion_result);
+# 14 "./Application1.h" 2
+# 24 "./Application1.h"
 void application_initialize(void);
 # 9 "Application1.c" 2
 
 
 
 
-void INT0_APP_ISR(void);
-void program1(void);
-void program2(void);
-void program3(void);
-
 
 
 Std_ReturnType ret = (Std_ReturnType)0x01;
-volatile uint8 program = 0;
 
-ext_interrupt_INTx_t int0 =
+uint16 adc_res_1 = 0, adc_res_2 = 0, adc_res_3 = 0, adc_res_4 = 0;
+uint8 adc_res_1_txt[6], adc_res_2_txt[6], adc_res_3_txt[6], adc_res_4_txt[6];
+uint8 ADC_Req = 0;
+
+adc_config_t adc1 =
 {
-    .ext_interrupt_INTx_handler = INT0_APP_ISR,
-    .edge = EXTERNAL_INTERRUPT_RISING_EDGE,
-    .priority = INTERRUPT_PRIORITY_HIGH,
-    .INTx_pin.port = GPIO_PORTB,
-    .INTx_pin.pin = GPIO_PIN0,
-    .INTx_pin.direction = GPIO_DIRECTION_INPUT
+    .adc_channel = ADC_CHANNEL_AN0,
+    .acquisition_time = ADC_12_TAD,
+    .conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
+    .voltage_reference = 0x00U,
+    .result_format = 0x01U,
+
+
+
+
+
+
 };
 
 
@@ -5157,23 +5206,31 @@ ext_interrupt_INTx_t int0 =
 int main()
 {
     application_initialize();
+    ret = lcd_4bit_send_string_at_pos(&lcd1, 1, 7, "ADC Test");
+    _delay((unsigned long)((2000)*(8000000UL/4000.0)));
+    ret = lcd_4bit_send_command(&lcd1, 0X01);
 
-    ret = EEPROM_ReadByte(0x00,&program);
+    ret = lcd_4bit_send_string_at_pos(&lcd1, 1, 1, "Pot0: ");
+    ret = lcd_4bit_send_string_at_pos(&lcd1, 2, 1, "Pot1: ");
+    ret = lcd_4bit_send_string_at_pos(&lcd1, 3, 1, "Pot2: ");
+    ret = lcd_4bit_send_string_at_pos(&lcd1, 4, 1, "Pot3: ");
 
     while(1)
     {
-        if(1 == program)
-        {
-            program1();
-        }
-        else if(2 == program)
-        {
-            program2();
-        }
-        else
-        {
-            program3();
-        }
+        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN0,&adc_res_1);
+        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN1,&adc_res_2);
+        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN2,&adc_res_3);
+        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN3,&adc_res_4);
+
+        ret = convert_uint16_to_string(adc_res_1,adc_res_1_txt);
+        ret = convert_uint16_to_string(adc_res_2,adc_res_2_txt);
+        ret = convert_uint16_to_string(adc_res_3,adc_res_3_txt);
+        ret = convert_uint16_to_string(adc_res_4,adc_res_4_txt);
+
+        ret = lcd_4bit_send_string_at_pos(&lcd1, 1, 7, adc_res_1_txt);
+        ret = lcd_4bit_send_string_at_pos(&lcd1, 2, 7, adc_res_2_txt);
+        ret = lcd_4bit_send_string_at_pos(&lcd1, 3, 7, adc_res_3_txt);
+        ret = lcd_4bit_send_string_at_pos(&lcd1, 4, 7, adc_res_4_txt);
     }
 
     return (0);
@@ -5183,32 +5240,5 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x01;
     ret_init = ecu_layer_initialize();
-    ret_init = ext_interrupt_INTx_Init(&int0);
-}
-
-void INT0_APP_ISR(void)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x01;
-    program++;
-    if(2 < program){ program = 0; }
-    else{ }
-    ret = EEPROM_WriteByte(0x00,program);
-}
-
-void program1(void)
-{
-    led_turn_toggle(&led1);
-    _delay((unsigned long)((300)*(8000000UL/4000.0)));
-}
-
-void program2(void)
-{
-    led_turn_toggle(&led2);
-    _delay((unsigned long)((300)*(8000000UL/4000.0)));
-}
-
-void program3(void)
-{
-    led_turn_off(&led1);
-    led_turn_off(&led2);
+    ret_init = adc_Init(&adc1);
 }

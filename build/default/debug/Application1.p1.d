@@ -22,9 +22,8 @@ ECU_Layer/Keypad/ecu_keypad.h  \
 ECU_Layer/Keypad/ecu_keypad_cfg.h  \
 ECU_Layer/LCD/ecu_lcd.h  \
 ECU_Layer/LCD/ecu_lcd_cfg.h  \
-MCAL_Layer/EEPROM/mcal_eeprom.h  \
-MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h  \
-MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h  \
-MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_gen_cfg.h  \
-MCAL_Layer/EEPROM/mcal_eeprom_cfg.h  \
-MCAL_Layer/Interrupt/mcal_external_interrupt.h 
+MCAL_Layer/ADC/mcal_adc.h  \
+MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h  \
+MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h  \
+MCAL_Layer/ADC/../Interrupt/mcal_interrupt_gen_cfg.h  \
+MCAL_Layer/ADC/mcal_adc_cfg.h 

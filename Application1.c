@@ -18,7 +18,7 @@ Std_ReturnType ret = E_OK;
 
 int main() 
 {
-    application_initialize(); 
+    application_initialize();
     
     while(1)
     {

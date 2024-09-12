@@ -55,6 +55,8 @@
 #endif
 /* Section : Data Type Declarations */
 
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
+
 typedef enum
 {
     INTERRUPT_PRIORITY_LOW = 0,
@@ -62,7 +64,12 @@ typedef enum
             
 }interrupt_priority_t;
 
+#endif
+
 /* Section : Functions Declarations */
+
+void global_interrupt_Enable(void);
+void global_interrupt_Disable(void);
 
 #endif	/* MCAL_INTERRUPT_CFG_H */
 

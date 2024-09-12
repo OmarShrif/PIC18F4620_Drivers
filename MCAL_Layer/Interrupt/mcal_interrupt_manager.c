@@ -28,13 +28,16 @@ void __interrupt() InterruptManagerHigh(void)
 {
     /* --------------------------------------------------------------------------------------------------  */
     /* External Interrupt INTx */
+    #if EXTERNAL_INTERRUPT_INTx_FEATURE == INTERRUPT_FEATURE_ENABLE
     if((INTERRUPT_ENABLE == INTCONbits.INT0IE) && (INTERRUPT_OCCUR == INTCONbits.INT0IF))
     {
         INT0_ISR();
     }
     else{/* Nothing */}
+    #endif
     /* --------------------------------------------------------------------------------------------------  */
     /* External Interrupt OneChange RBx */
+    #if EXTERNAL_INTERRUPT_OneChange_FEATURE == INTERRUPT_FEATURE_ENABLE
     if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB4) && (1 == RB4_flag))
     {
         RB4_flag = 0;
@@ -83,13 +86,23 @@ void __interrupt() InterruptManagerHigh(void)
         RB7_ISR(1);
     }
     else{/* Nothing */}
+    #endif
     /* --------------------------------------------------------------------------------------------------  */
+    /* ADC Interrupt */
+    #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
+    {
+        ADC_ISR();
+    }
+    else{/* Nothing */}
+    #endif
 }
 
 void __interrupt(low_priority) InterruptManagerLow(void)
 {
     /* --------------------------------------------------------------------------------------------------  */
     /* External Interrupt INTx */
+    #if EXTERNAL_INTERRUPT_INTx_FEATURE == INTERRUPT_FEATURE_ENABLE
     if((INTERRUPT_ENABLE == INTCON3bits.INT1IE) && (INTERRUPT_OCCUR == INTCON3bits.INT1IF))
     {
         INT1_ISR();
@@ -100,6 +113,7 @@ void __interrupt(low_priority) InterruptManagerLow(void)
         INT2_ISR();
     }
     else{/* Nothing */}
+    #endif
 }
 
 #elif INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_DISABLE
@@ -108,6 +122,7 @@ void __interrupt() InterruptManager(void)
 {
     /* --------------------------------------------------------------------------------------------------  */
     /* External Interrupt INTx */
+    #if EXTERNAL_INTERRUPT_INTx_FEATURE == INTERRUPT_FEATURE_ENABLE
     if((INTERRUPT_ENABLE == INTCONbits.INT0IE) && (INTERRUPT_OCCUR == INTCONbits.INT0IF))
     {
         INT0_ISR();
@@ -123,6 +138,68 @@ void __interrupt() InterruptManager(void)
         INT2_ISR();
     }
     else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* External Interrupt OneChange RBx */
+    #if EXTERNAL_INTERRUPT_OneChange_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB4) && (1 == RB4_flag))
+    {
+        RB4_flag = 0;
+        RB4_ISR(0);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB4) && (0 == RB4_flag))
+    {
+        RB4_flag = 1;
+        RB4_ISR(1);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB5) && (1 == RB5_flag))
+    {
+        RB5_flag = 0;
+        RB5_ISR(0);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB5) && (0 == RB5_flag))
+    {
+        RB5_flag = 1;
+        RB5_ISR(1);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB6) && (1 == RB6_flag))
+    {
+        RB6_flag = 0;
+        RB6_ISR(0);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB6) && (0 == RB6_flag))
+    {
+        RB6_flag = 1;
+        RB6_ISR(1);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB7) && (1 == RB7_flag))
+    {
+        RB7_flag = 0;
+        RB7_ISR(0);
+    }
+    else{/* Nothing */}
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB7) && (0 == RB7_flag))
+    {
+        RB7_flag = 1;
+        RB7_ISR(1);
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* ADC Interrupt */
+    #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
+    {
+        ADC_ISR();
+    }
+    else{/* Nothing */}
+    #endif
 }
 
 #endif

@@ -13,6 +13,12 @@
 
 /* Section : Macro Declarations */
 
+#define LCD_FEATURE_ENABLE      1
+#define LCD_FEATURE_DISABLE     0
+
+#define LCD_4BIT_FEATURE        LCD_FEATURE_ENABLE
+#define LCD_8BIT_FEATURE        LCD_FEATURE_ENABLE
+
 /* Section : Macro Functions Declarations */
 
 /* Section : Data Type Declarations */

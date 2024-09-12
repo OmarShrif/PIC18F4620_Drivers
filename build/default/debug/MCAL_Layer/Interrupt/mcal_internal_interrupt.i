@@ -4794,13 +4794,20 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h" 2
-# 58 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
+# 60 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
 typedef enum
 {
     INTERRUPT_PRIORITY_LOW = 0,
     INTERRUPT_PRIORITY_HIGH
 
 }interrupt_priority_t;
+
+
+
+
+
+void global_interrupt_Enable(void);
+void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Interrupt/mcal_internal_interrupt.h" 2
 # 10 "MCAL_Layer/Interrupt/mcal_internal_interrupt.c" 2
 
