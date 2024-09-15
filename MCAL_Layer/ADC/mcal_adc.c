@@ -54,6 +54,7 @@ Std_ReturnType adc_Init(const adc_config_t *_adc)
         /* Configure the interrupt for the ADC Module */
         #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         ADC_InterruptHandler = _adc->ADC_InterruptHandler;
+        /* Interrupt Priority Configurations */
         #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
         if(INTERRUPT_PRIORITY_HIGH == _adc->priority)
         { 

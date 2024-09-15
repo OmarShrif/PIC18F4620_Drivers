@@ -515,11 +515,19 @@ Std_ReturnType lcd_8bit_send_custom_char_at_pos(const lcd_8bit_t *lcd,uint8 row,
 Std_ReturnType convert_uin8_to_string(uint8 value,uint8 *str)
 {
     Std_ReturnType ret = E_OK;
+    uint8 Temp_String[4] = {0};
+    uint8 DataCounter = 0;
+    
     if(str != NULL)
     {
-        //max value = 255
-        memset((char *)str,'\0',4);
-        sprintf((char *)str,"%i",value);
+        //max value = 255 as unsigned char
+        memset(str, ' ', 3);
+        str[3] = '\0';
+        sprintf((char *)Temp_String, "%i", value);
+        while(Temp_String[DataCounter] != '\0'){
+            str[DataCounter] = Temp_String[DataCounter]; 
+            DataCounter++;
+        }
     }
     else{ret = E_NOT_OK;}
     
@@ -537,11 +545,19 @@ Std_ReturnType convert_uin8_to_string(uint8 value,uint8 *str)
 Std_ReturnType convert_uint16_to_string(uint16 value,uint8 *str)
 {
     Std_ReturnType ret = E_OK;
+    uint8 Temp_String[6] = {0};
+    uint8 DataCounter = 0;
+    
     if(str != NULL)
     {
-        //max value = 32767
-        memset((char *)str,'\0',6);
-        sprintf((char *)str,"%i",value);
+        //max value = 32767 as signed short   
+        memset(str, ' ', 5);
+        str[5] = '\0';
+        sprintf((char *)Temp_String, "%i", value);
+        while(Temp_String[DataCounter] != '\0'){
+            str[DataCounter] = Temp_String[DataCounter]; 
+            DataCounter++;
+        }
     }
     else{ret = E_NOT_OK;}
     
@@ -559,11 +575,19 @@ Std_ReturnType convert_uint16_to_string(uint16 value,uint8 *str)
 Std_ReturnType convert_uint32_to_string(uint32 value,uint8 *str)
 {
     Std_ReturnType ret = E_OK;
+    uint8 Temp_String[11] = {0};
+    uint8 DataCounter = 0;
+    
     if(str != NULL)
     {
-        //max value = 32767
-        memset((char *)str,'\0',11);
-        sprintf((char *)str,"%i",value);
+        //max value = 32767 as signed short
+        memset(str, ' ', 10);
+        str[10] = '\0';
+        sprintf((char *)Temp_String, "%i", value);
+        while(Temp_String[DataCounter] != '\0'){
+            str[DataCounter] = Temp_String[DataCounter]; 
+            DataCounter++;
+        }
     }
     else{ret = E_NOT_OK;}
     

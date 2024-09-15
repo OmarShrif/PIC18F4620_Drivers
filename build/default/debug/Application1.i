@@ -5060,15 +5060,15 @@ extern lcd_8bit_t lcd2;
 Std_ReturnType ecu_layer_initialize(void);
 # 13 "./Application1.h" 2
 
-# 1 "./MCAL_Layer/ADC/mcal_adc.h" 1
-# 13 "./MCAL_Layer/ADC/mcal_adc.h"
-# 1 "./MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h" 1
-# 12 "./MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h"
-# 1 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h" 1
-# 14 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h"
-# 1 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 14 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "./MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/Timer0/mcal_timer0.h" 1
+# 14 "./MCAL_Layer/Timer0/mcal_timer0.h"
+# 1 "./MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "./MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "./MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h" 2
+# 60 "./MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h"
 typedef enum
 {
     INTERRUPT_PRIORITY_LOW = 0,
@@ -5082,94 +5082,47 @@ typedef enum
 
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
-# 12 "./MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h" 2
-# 13 "./MCAL_Layer/ADC/mcal_adc.h" 2
+# 12 "./MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrupt.h" 2
+# 14 "./MCAL_Layer/Timer0/mcal_timer0.h" 2
 
-# 1 "./MCAL_Layer/ADC/mcal_adc_cfg.h" 1
-# 14 "./MCAL_Layer/ADC/mcal_adc.h" 2
-# 100 "./MCAL_Layer/ADC/mcal_adc.h"
+# 1 "./MCAL_Layer/Timer0/mcal_timer0_cfg.h" 1
+# 15 "./MCAL_Layer/Timer0/mcal_timer0.h" 2
+# 46 "./MCAL_Layer/Timer0/mcal_timer0.h"
 typedef enum
 {
-    ADC_CHANNEL_AN0 = 0,
-    ADC_CHANNEL_AN1,
-    ADC_CHANNEL_AN2,
-    ADC_CHANNEL_AN3,
-    ADC_CHANNEL_AN4,
-    ADC_CHANNEL_AN5,
-    ADC_CHANNEL_AN6,
-    ADC_CHANNEL_AN7,
-    ADC_CHANNEL_AN8,
-    ADC_CHANNEL_AN9,
-    ADC_CHANNEL_AN10,
-    ADC_CHANNEL_AN11,
-    ADC_CHANNEL_AN12
-}adc_channel_select_t;
-# 124 "./MCAL_Layer/ADC/mcal_adc.h"
-typedef enum{
-    ADC_0_TAD = 0,
-    ADC_2_TAD,
-    ADC_4_TAD,
-    ADC_6_TAD,
-    ADC_8_TAD,
-    ADC_12_TAD,
-    ADC_16_TAD,
-    ADC_20_TAD
-}adc_acquisition_time_t;
-
-
-
-
-
-
-
-typedef enum{
-    ADC_CONVERSION_CLOCK_FOSC_DIV_2 = 0,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_8,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_32,
-    ADC_CONVERSION_CLOCK_FRC,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_4,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_16,
-    ADC_CONVERSION_CLOCK_FOSC_DIV_64
-}adc_conversion_clock_t;
-
-
-
+    TIMER0_PRESCALER_DIV_BY_2 = 0,
+    TIMER0_PRESCALER_DIV_BY_4,
+    TIMER0_PRESCALER_DIV_BY_8,
+    TIMER0_PRESCALER_DIV_BY_16,
+    TIMER0_PRESCALER_DIV_BY_32,
+    TIMER0_PRESCALER_DIV_BY_64,
+    TIMER0_PRESCALER_DIV_BY_128,
+    TIMER0_PRESCALER_DIV_BY_256
+} timer0_prescaler_select_t;
 
 typedef struct
 {
 
+    void (* TIMER0_InterruptHandler)(void);
+
+    interrupt_priority_t priority;
+
+
+    timer0_prescaler_select_t prescaler_value;
+    uint16 timer0_preload_value;
+    uint8 prescaler_enable : 1;
+    uint8 timer0_counter_edge : 1;
+    uint8 timer0_mode : 1;
+    uint8 timer0_register_size : 1;
+    uint8 :4;
+} timer0_t;
 
 
 
-
-
-    adc_acquisition_time_t acquisition_time ;
-    adc_conversion_clock_t conversion_clock ;
-    adc_channel_select_t adc_channel ;
-    uint8 voltage_reference : 1;
-    uint8 result_format : 1;
-    uint8 : 6;
-}adc_config_t;
-
-
-
-
-typedef uint16 adc_result_t;
-# 188 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_Init(const adc_config_t *_adc);
-# 197 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_DeInit(const adc_config_t *_adc);
-# 209 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_SelectChannel(const adc_config_t *_adc, adc_channel_select_t channel);
-# 220 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_StartConversion(const adc_config_t *_adc);
-# 236 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_IsConversionDone(const adc_config_t *_adc, uint8 *conversion_status);
-# 250 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_GetConversionResult(const adc_config_t *_adc, adc_result_t *conversion_result);
-# 264 "./MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_GetConversion_Blocking(const adc_config_t *_adc, adc_channel_select_t channel,
-                                          adc_result_t *conversion_result);
+Std_ReturnType timer0_Init(const timer0_t *_timer);
+Std_ReturnType timer0_DeInit(const timer0_t *_timer);
+Std_ReturnType timer0_Write_Value(const timer0_t *_timer, uint16 _value);
+Std_ReturnType timer0_Read_Value(const timer0_t *_timer, uint16 *_value);
 # 14 "./Application1.h" 2
 # 24 "./Application1.h"
 void application_initialize(void);
@@ -5182,55 +5135,15 @@ void application_initialize(void);
 
 Std_ReturnType ret = (Std_ReturnType)0x01;
 
-uint16 adc_res_1 = 0, adc_res_2 = 0, adc_res_3 = 0, adc_res_4 = 0;
-uint8 adc_res_1_txt[6], adc_res_2_txt[6], adc_res_3_txt[6], adc_res_4_txt[6];
-uint8 ADC_Req = 0;
-
-adc_config_t adc1 =
-{
-    .adc_channel = ADC_CHANNEL_AN0,
-    .acquisition_time = ADC_12_TAD,
-    .conversion_clock = ADC_CONVERSION_CLOCK_FOSC_DIV_16,
-    .voltage_reference = 0x00U,
-    .result_format = 0x01U,
-
-
-
-
-
-
-};
-
 
 
 int main()
 {
     application_initialize();
-    ret = lcd_4bit_send_string_at_pos(&lcd1, 1, 7, "ADC Test");
-    _delay((unsigned long)((2000)*(8000000UL/4000.0)));
-    ret = lcd_4bit_send_command(&lcd1, 0X01);
-
-    ret = lcd_4bit_send_string_at_pos(&lcd1, 1, 1, "Pot0: ");
-    ret = lcd_4bit_send_string_at_pos(&lcd1, 2, 1, "Pot1: ");
-    ret = lcd_4bit_send_string_at_pos(&lcd1, 3, 1, "Pot2: ");
-    ret = lcd_4bit_send_string_at_pos(&lcd1, 4, 1, "Pot3: ");
 
     while(1)
     {
-        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN0,&adc_res_1);
-        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN1,&adc_res_2);
-        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN2,&adc_res_3);
-        ret = adc_GetConversion_Blocking(&adc1,ADC_CHANNEL_AN3,&adc_res_4);
 
-        ret = convert_uint16_to_string(adc_res_1,adc_res_1_txt);
-        ret = convert_uint16_to_string(adc_res_2,adc_res_2_txt);
-        ret = convert_uint16_to_string(adc_res_3,adc_res_3_txt);
-        ret = convert_uint16_to_string(adc_res_4,adc_res_4_txt);
-
-        ret = lcd_4bit_send_string_at_pos(&lcd1, 1, 7, adc_res_1_txt);
-        ret = lcd_4bit_send_string_at_pos(&lcd1, 2, 7, adc_res_2_txt);
-        ret = lcd_4bit_send_string_at_pos(&lcd1, 3, 7, adc_res_3_txt);
-        ret = lcd_4bit_send_string_at_pos(&lcd1, 4, 7, adc_res_4_txt);
     }
 
     return (0);
@@ -5240,5 +5153,4 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x01;
     ret_init = ecu_layer_initialize();
-    ret_init = adc_Init(&adc1);
 }

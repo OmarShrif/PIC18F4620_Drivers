@@ -42,5 +42,10 @@ void ADC_ISR(void);
 
 #endif
 
+#if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+void TIMER0_ISR(void);
+
+#endif
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 

@@ -35,6 +35,26 @@
 
 #endif
 
+#if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the TIMER0 Module */
+#define TIMER0_InterruptEnable()          (INTCONbits.TMR0IE = 1)
+/* This macro will disable interrupt for the TIMER0 Module */
+#define TIMER0_InterruptDisable()         (INTCONbits.TMR0IE = 0)
+/* This macro will clear interrupt flag for the TIMER0 Module */
+#define TIMER0_InterruptFlagClear()       (INTCONbits.TMR0IF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the TIMER0 Module Interrupt Priority to be High priority */
+#define TIMER0_PrioritySetHigh()          (INTCON2bits.TMR0IP = 1)
+/* This routine set the TIMER0 Module Interrupt Priority to be Low priority */
+#define TIMER0_PrioritySetLow()           (INTCON2bits.TMR0IP = 0)
+
+#endif
+
+#endif
+
 /* Section : Data Type Declarations */
 
 /* Section : Functions Declarations */

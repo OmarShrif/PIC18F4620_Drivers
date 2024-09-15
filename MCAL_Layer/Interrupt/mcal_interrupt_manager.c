@@ -11,6 +11,7 @@
  
 /* Section : Global Variables Definition */
 
+/* External Interrupt OneChange RBx */
 static volatile uint8 RB4_flag = 0;
 static volatile uint8 RB5_flag = 0;
 static volatile uint8 RB6_flag = 0;
@@ -93,6 +94,15 @@ void __interrupt() InterruptManagerHigh(void)
     if((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
     {
         ADC_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER0 Interrupt */
+    #if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF))
+    {
+        TIMER0_ISR();
     }
     else{/* Nothing */}
     #endif
@@ -197,6 +207,15 @@ void __interrupt() InterruptManager(void)
     if((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF))
     {
         ADC_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER0 Interrupt */
+    #if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF))
+    {
+        TIMER0_ISR();
     }
     else{/* Nothing */}
     #endif

@@ -22,8 +22,8 @@ ECU_Layer/Keypad/ecu_keypad.h  \
 ECU_Layer/Keypad/ecu_keypad_cfg.h  \
 ECU_Layer/LCD/ecu_lcd.h  \
 ECU_Layer/LCD/ecu_lcd_cfg.h  \
-MCAL_Layer/ADC/mcal_adc.h  \
-MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h  \
-MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h  \
-MCAL_Layer/ADC/../Interrupt/mcal_interrupt_gen_cfg.h  \
-MCAL_Layer/ADC/mcal_adc_cfg.h 
+MCAL_Layer/Timer0/mcal_timer0.h  \
+MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrupt.h  \
+MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h  \
+MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_gen_cfg.h  \
+MCAL_Layer/Timer0/mcal_timer0_cfg.h 
