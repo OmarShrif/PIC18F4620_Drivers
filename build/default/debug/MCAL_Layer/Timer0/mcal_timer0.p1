@@ -3,13 +3,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v F3081 `(v ~T0 @X0 0 tf ]
 [v F3059 `(v ~T0 @X0 0 tf ]
 "28 MCAL_Layer/Timer0/mcal_timer0.c
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 28: Std_ReturnType timer0_Init(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 28: Std_ReturnType timer0_Init(const timer0_config_t *_timer)
 [c E3041 0 1 .. ]
 [n E3041 . INTERRUPT_PRIORITY_LOW INTERRUPT_PRIORITY_HIGH  ]
 [c E3047 0 1 2 3 4 5 6 7 .. ]
 [n E3047 . TIMER0_PRESCALER_DIV_BY_2 TIMER0_PRESCALER_DIV_BY_4 TIMER0_PRESCALER_DIV_BY_8 TIMER0_PRESCALER_DIV_BY_16 TIMER0_PRESCALER_DIV_BY_32 TIMER0_PRESCALER_DIV_BY_64 TIMER0_PRESCALER_DIV_BY_128 TIMER0_PRESCALER_DIV_BY_256  ]
-"59 MCAL_Layer/Timer0/mcal_timer0.h
-[; ;MCAL_Layer/Timer0/mcal_timer0.h: 59: {
+"66 MCAL_Layer/Timer0/mcal_timer0.h
+[; ;MCAL_Layer/Timer0/mcal_timer0.h: 66: {
 [s S274 `*F3059 1 `E3041 1 `E3047 1 `us 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
 [n S274 . TIMER0_InterruptHandler priority prescaler_value timer0_preload_value prescaler_enable timer0_counter_edge timer0_mode timer0_register_size . ]
 "5862 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
@@ -29,15 +29,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _T0CONbits `VS252 ~T0 @X0 0 e@4053 ]
 [v F3084 `(v ~T0 @X0 1 tf1`*CS274 ]
 "22 MCAL_Layer/Timer0/mcal_timer0.c
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 22: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_t *_timer);
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 22: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer);
 [v _timer0_Prescaler_Config `TF3084 ~T0 @X0 0 s ]
 [v F3087 `(v ~T0 @X0 1 tf1`*CS274 ]
 "23
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 23: static __attribute__((inline)) void timer0_Mode_Select(const timer0_t *_timer);
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 23: static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer);
 [v _timer0_Mode_Select `TF3087 ~T0 @X0 0 s ]
 [v F3090 `(v ~T0 @X0 1 tf1`*CS274 ]
 "24
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 24: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_t *_timer);
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 24: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer);
 [v _timer0_Register_Size_Config `TF3090 ~T0 @X0 0 s ]
 "5947 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5947: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
@@ -511,14 +511,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `us
 ]
 "28
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 28: Std_ReturnType timer0_Init(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 28: Std_ReturnType timer0_Init(const timer0_config_t *_timer)
 [v _timer0_Init `(uc ~T0 @X0 1 ef1`*CS274 ]
 "29
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 29: {
 {
 [e :U _timer0_Init ]
 "28
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 28: Std_ReturnType timer0_Init(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 28: Std_ReturnType timer0_Init(const timer0_config_t *_timer)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 "29
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 29: {
@@ -623,14 +623,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 275 ]
 }
 "74
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 74: Std_ReturnType timer0_DeInit(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 74: Std_ReturnType timer0_DeInit(const timer0_config_t *_timer)
 [v _timer0_DeInit `(uc ~T0 @X0 1 ef1`*CS274 ]
 "75
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 75: {
 {
 [e :U _timer0_DeInit ]
 "74
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 74: Std_ReturnType timer0_DeInit(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 74: Std_ReturnType timer0_DeInit(const timer0_config_t *_timer)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 "75
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 75: {
@@ -674,14 +674,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 282 ]
 }
 "94
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 94: Std_ReturnType timer0_Write_Value(const timer0_t *_timer, uint16 _value)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 94: Std_ReturnType timer0_Write_Value(const timer0_config_t *_timer, uint16 _value)
 [v _timer0_Write_Value `(uc ~T0 @X0 1 ef2`*CS274`us ]
 "95
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 95: {
 {
 [e :U _timer0_Write_Value ]
 "94
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 94: Std_ReturnType timer0_Write_Value(const timer0_t *_timer, uint16 _value)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 94: Std_ReturnType timer0_Write_Value(const timer0_config_t *_timer, uint16 _value)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 [v __value `us ~T0 @X0 1 r2 ]
 "95
@@ -723,14 +723,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 285 ]
 }
 "108
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 108: Std_ReturnType timer0_Read_Value(const timer0_t *_timer, uint16 *_value)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 108: Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
 [v _timer0_Read_Value `(uc ~T0 @X0 1 ef2`*CS274`*us ]
 "109
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 109: {
 {
 [e :U _timer0_Read_Value ]
 "108
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 108: Std_ReturnType timer0_Read_Value(const timer0_t *_timer, uint16 *_value)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 108: Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 [v __value `*us ~T0 @X0 1 r2 ]
 "109
@@ -782,14 +782,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [v F3112 `(v ~T0 @X0 1 tf1`*CS274 ]
 "126
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 126: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 126: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer)
 [v _timer0_Prescaler_Config `TF3112 ~T0 @X0 1 s ]
 "127
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 127: {
 {
 [e :U _timer0_Prescaler_Config ]
 "126
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 126: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 126: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 "127
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 127: {
@@ -837,14 +837,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [v F3115 `(v ~T0 @X0 1 tf1`*CS274 ]
 "140
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 140: static __attribute__((inline)) void timer0_Mode_Select(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 140: static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer)
 [v _timer0_Mode_Select `TF3115 ~T0 @X0 1 s ]
 "141
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 141: {
 {
 [e :U _timer0_Mode_Select ]
 "140
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 140: static __attribute__((inline)) void timer0_Mode_Select(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 140: static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 "141
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 141: {
@@ -923,14 +923,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [v F3118 `(v ~T0 @X0 1 tf1`*CS274 ]
 "162
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 162: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 162: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer)
 [v _timer0_Register_Size_Config `TF3118 ~T0 @X0 1 s ]
 "163
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 163: {
 {
 [e :U _timer0_Register_Size_Config ]
 "162
-[; ;MCAL_Layer/Timer0/mcal_timer0.c: 162: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_t *_timer)
+[; ;MCAL_Layer/Timer0/mcal_timer0.c: 162: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer)
 [v __timer `*CS274 ~T0 @X0 1 r1 ]
 "163
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 163: {

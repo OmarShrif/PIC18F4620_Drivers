@@ -10,9 +10,11 @@
 
 /* Section : Functions Declarations */
 
+
 /* Section : Global Variables Definition */
 
 Std_ReturnType ret = E_OK;
+
 
 /* Section : Functions Definition */
 
@@ -22,7 +24,6 @@ int main()
     
     while(1)
     {
-        
     }
     
     return (EXIT_SUCCESS);
@@ -32,4 +33,5 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = E_OK;
     ret_init = ecu_layer_initialize();
+    
 }

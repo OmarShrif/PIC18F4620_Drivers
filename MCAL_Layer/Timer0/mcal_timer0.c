@@ -180,7 +180,7 @@ void TIMER0_ISR(void)
 {
     /* The TIMER0 interrupt occurred (flag must be cleared by software) */
     TIMER0_InterruptFlagClear();
-    /* Code */
+    /* Configure The Pre-loaded value */
     TMR0H = (timer0_preload) >> 8;
     TMR0L = (uint8) (timer0_preload);
     /* Callback function gets called every time this ISR executed */

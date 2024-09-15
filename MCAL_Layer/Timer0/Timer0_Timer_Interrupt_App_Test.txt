@@ -1,0 +1,61 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+
+/* Section : Functions Declarations */
+
+void TIMER0_APP_ISR(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+/* time overflow every 250 ms */
+timer0_config_t timer = 
+{
+    #if TIMER0_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    .TIMER0_InterruptHandler = TIMER0_APP_ISR,
+    #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
+    .priority = INTERRUPT_PRIORITY_HIGH,
+    #endif
+    #endif
+
+    .timer0_mode = TIMER0_TIMER_MODE,
+    .timer0_register_size = TIMER0_16BIT_REGISTER_MODE,
+    .prescaler_enable = TIMER0_PRESCALER_ENABLE_CFG,
+    .prescaler_value = TIMER0_PRESCALER_DIV_BY_8,
+    .timer0_preload_value = 3036,
+};
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    
+    ret_init = timer0_Init(&timer);
+}
+
+void TIMER0_APP_ISR(void)
+{
+    led_turn_toggle(&led1);
+}

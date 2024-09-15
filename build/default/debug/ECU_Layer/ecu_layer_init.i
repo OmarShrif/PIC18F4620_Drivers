@@ -5257,7 +5257,7 @@ Std_ReturnType ecu_layer_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x00;
 
-    ret_init = lcd_4bit_initialize(&lcd1);
+    ret_init = led_initialize(&led1);
 
     return ret_init;
 }

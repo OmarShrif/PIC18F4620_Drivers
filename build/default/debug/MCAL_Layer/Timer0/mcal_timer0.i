@@ -4815,7 +4815,7 @@ void global_interrupt_Disable(void);
 
 # 1 "MCAL_Layer/Timer0/mcal_timer0_cfg.h" 1
 # 15 "MCAL_Layer/Timer0/mcal_timer0.h" 2
-# 46 "MCAL_Layer/Timer0/mcal_timer0.h"
+# 53 "MCAL_Layer/Timer0/mcal_timer0.h"
 typedef enum
 {
     TIMER0_PRESCALER_DIV_BY_2 = 0,
@@ -4843,14 +4843,14 @@ typedef struct
     uint8 timer0_mode : 1;
     uint8 timer0_register_size : 1;
     uint8 :4;
-} timer0_t;
+} timer0_config_t;
 
 
 
-Std_ReturnType timer0_Init(const timer0_t *_timer);
-Std_ReturnType timer0_DeInit(const timer0_t *_timer);
-Std_ReturnType timer0_Write_Value(const timer0_t *_timer, uint16 _value);
-Std_ReturnType timer0_Read_Value(const timer0_t *_timer, uint16 *_value);
+Std_ReturnType timer0_Init(const timer0_config_t *_timer);
+Std_ReturnType timer0_DeInit(const timer0_config_t *_timer);
+Std_ReturnType timer0_Write_Value(const timer0_config_t *_timer, uint16 _value);
+Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value);
 # 10 "MCAL_Layer/Timer0/mcal_timer0.c" 2
 
 
@@ -4864,13 +4864,13 @@ static uint16 timer0_preload = 0;
 
 
 
-static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_t *_timer);
-static __attribute__((inline)) void timer0_Mode_Select(const timer0_t *_timer);
-static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_t *_timer);
+static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer);
+static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer);
+static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer);
 
 
 
-Std_ReturnType timer0_Init(const timer0_t *_timer)
+Std_ReturnType timer0_Init(const timer0_config_t *_timer)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
 
@@ -4916,7 +4916,7 @@ Std_ReturnType timer0_Init(const timer0_t *_timer)
     return ret;
 }
 
-Std_ReturnType timer0_DeInit(const timer0_t *_timer)
+Std_ReturnType timer0_DeInit(const timer0_config_t *_timer)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
 
@@ -4936,7 +4936,7 @@ Std_ReturnType timer0_DeInit(const timer0_t *_timer)
     return ret;
 }
 
-Std_ReturnType timer0_Write_Value(const timer0_t *_timer, uint16 _value)
+Std_ReturnType timer0_Write_Value(const timer0_config_t *_timer, uint16 _value)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
 
@@ -4950,7 +4950,7 @@ Std_ReturnType timer0_Write_Value(const timer0_t *_timer, uint16 _value)
     return ret;
 }
 
-Std_ReturnType timer0_Read_Value(const timer0_t *_timer, uint16 *_value)
+Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
     uint8 l_tmr0l = 0, l_tmr0h = 0;
@@ -4968,7 +4968,7 @@ Std_ReturnType timer0_Read_Value(const timer0_t *_timer, uint16 *_value)
 
 
 
-static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_t *_timer)
+static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer)
 {
     if (1 == _timer->prescaler_enable)
     {
@@ -4982,7 +4982,7 @@ static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_t *_tim
     else{ }
 }
 
-static __attribute__((inline)) void timer0_Mode_Select(const timer0_t *_timer)
+static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer)
 {
     if (1 == _timer->timer0_mode)
     {
@@ -5004,7 +5004,7 @@ static __attribute__((inline)) void timer0_Mode_Select(const timer0_t *_timer)
     else{ }
 }
 
-static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_t *_timer)
+static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer)
 {
     if (1 == _timer->timer0_register_size)
     {
