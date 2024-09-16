@@ -35,7 +35,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "107 MCAL_Layer/Interrupt/mcal_external_interrupt.h
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.h: 107: {
 [s S274 `*F3053 1 `S273 1 `E3047 1 `E3041 1 ]
-[n S274 . ext_interrupt_INTx_handler INTx_pin edge priority ]
+[n S274 . ext_interrupt_INTx_handler ext_interrupt_INTx_pin ext_interrupt_INTx_edge ext_interrupt_INTx_priority ]
 "40 MCAL_Layer/Interrupt/mcal_external_interrupt.c
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 40: static Std_ReturnType ext_interrupt_INTx_Disable(const ext_interrupt_INTx_t *int_obj);
 [v _ext_interrupt_INTx_Disable `(uc ~T0 @X0 0 sf1`*CS274 ]
@@ -65,7 +65,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "121 MCAL_Layer/Interrupt/mcal_external_interrupt.h
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.h: 121: {
 [s S275 `*F3060 1 `*F3062 1 `S273 1 `E3041 1 ]
-[n S275 . ext_interrupt_RBx_high_handler ext_interrupt_RBx_low_handler RBx_pin priority ]
+[n S275 . ext_interrupt_RBx_high_handler ext_interrupt_RBx_low_handler ext_interrupt_RBx_pin ext_interrupt_RBx_priority ]
 "6380 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6380:     struct {
 [s S266 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -653,7 +653,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 84:         ret |= ext_interrupt_INTx_Priority_Init(int_obj);
 [e =| _ret -> ( _ext_interrupt_INTx_Priority_Init (1 _int_obj `uc ]
 "87
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 87:         ret |= gpio_pin_direction_initialize(&(int_obj->INTx_pin));
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 87:         ret |= gpio_pin_direction_initialize(&(int_obj->ext_interrupt_INTx_pin));
 [e =| _ret -> ( _gpio_pin_direction_initialize (1 &U . *U _int_obj 1 `uc ]
 "89
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 89:         ret |= ext_interrupt_INTx_SetInterruptHandler(int_obj);
@@ -764,7 +764,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 144:         ret = ext_interrupt_RBx_Priority_Init(int_obj);
 [e = _ret ( _ext_interrupt_RBx_Priority_Init (1 _int_obj ]
 "147
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 147:         ret |= gpio_pin_direction_initialize(&(int_obj->RBx_pin));
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 147:         ret |= gpio_pin_direction_initialize(&(int_obj->ext_interrupt_RBx_pin));
 [e =| _ret -> ( _gpio_pin_direction_initialize (1 &U . *U _int_obj 2 `uc ]
 "149
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 149:         ret |= ext_interrupt_RBx_SetInterruptHandler(int_obj);
@@ -1246,7 +1246,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 343:     {
 {
 "344
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 344:         switch (int_obj->INTx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 344:         switch (int_obj->ext_interrupt_INTx_pin.pin)
 [e $U 336  ]
 "345
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 345:         {
@@ -1324,7 +1324,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 368:     {
 {
 "369
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 369:         switch (int_obj->INTx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 369:         switch (int_obj->ext_interrupt_INTx_pin.pin)
 [e $U 345  ]
 "370
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 370:         {
@@ -1402,7 +1402,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 393:     {
 {
 "394
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 394:         switch (int_obj->INTx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 394:         switch (int_obj->ext_interrupt_INTx_pin.pin)
 [e $U 354  ]
 "395
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 395:         {
@@ -1411,7 +1411,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 396:             case GPIO_PIN0 :
 [e :U 355 ]
 "398
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 398:             switch (int_obj->edge)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 398:             switch (int_obj->ext_interrupt_INTx_edge)
 [e $U 357  ]
 "399
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 399:             {
@@ -1447,7 +1447,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 406:             case GPIO_PIN1 :
 [e :U 361 ]
 "408
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 408:             switch (int_obj->edge)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 408:             switch (int_obj->ext_interrupt_INTx_edge)
 [e $U 363  ]
 "409
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 409:             {
@@ -1483,7 +1483,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 416:             case GPIO_PIN2 :
 [e :U 367 ]
 "418
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 418:             switch (int_obj->edge)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 418:             switch (int_obj->ext_interrupt_INTx_edge)
 [e $U 369  ]
 "419
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 419:             {
@@ -1573,7 +1573,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 445:     {
 {
 "446
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 446:         switch (int_obj->INTx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 446:         switch (int_obj->ext_interrupt_INTx_pin.pin)
 [e $U 378  ]
 "447
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 447:         {
@@ -1651,7 +1651,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 472:     {
 {
 "473
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 473:         switch (int_obj->INTx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 473:         switch (int_obj->ext_interrupt_INTx_pin.pin)
 [e $U 387  ]
 "474
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 474:         {
@@ -1660,7 +1660,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 475:             case GPIO_PIN1 :
 [e :U 388 ]
 "477
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 477:             switch (int_obj->priority)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 477:             switch (int_obj->ext_interrupt_INTx_priority)
 [e $U 390  ]
 "478
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 478:             {
@@ -1696,7 +1696,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 485:             case GPIO_PIN2 :
 [e :U 394 ]
 "487
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 487:             switch (int_obj->priority)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 487:             switch (int_obj->ext_interrupt_INTx_priority)
 [e $U 396  ]
 "488
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 488:             {
@@ -1785,7 +1785,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 516:     {
 {
 "517
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 517:         switch (int_obj->INTx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 517:         switch (int_obj->ext_interrupt_INTx_pin.pin)
 [e $U 405  ]
 "518
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 518:         {
@@ -1863,7 +1863,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 538:     {
 {
 "539
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 539:         switch (int_obj->RBx_pin.pin)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 539:         switch (int_obj->ext_interrupt_RBx_pin.pin)
 [e $U 414  ]
 "540
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 540:         {
@@ -1972,7 +1972,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 571:     {
 {
 "572
-[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 572:         switch (int_obj->priority)
+[; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 572:         switch (int_obj->ext_interrupt_RBx_priority)
 [e $U 424  ]
 "573
 [; ;MCAL_Layer/Interrupt/mcal_external_interrupt.c: 573:         {

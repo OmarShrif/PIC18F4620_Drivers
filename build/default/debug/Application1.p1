@@ -1,41 +1,24 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3248 `(v ~T0 @X0 0 tf ]
-"21 Application1.c
-[; ;Application1.c: 21: timer0_config_t counter =
-[c E3230 0 1 .. ]
-[n E3230 . INTERRUPT_PRIORITY_LOW INTERRUPT_PRIORITY_HIGH  ]
-[c E3236 0 1 2 3 4 5 6 7 .. ]
-[n E3236 . TIMER0_PRESCALER_DIV_BY_2 TIMER0_PRESCALER_DIV_BY_4 TIMER0_PRESCALER_DIV_BY_8 TIMER0_PRESCALER_DIV_BY_16 TIMER0_PRESCALER_DIV_BY_32 TIMER0_PRESCALER_DIV_BY_64 TIMER0_PRESCALER_DIV_BY_128 TIMER0_PRESCALER_DIV_BY_256  ]
-"66 ./MCAL_Layer/Timer0/mcal_timer0.h
-[; ;./MCAL_Layer/Timer0/mcal_timer0.h: 66: {
-[s S282 `*F3248 1 `E3230 1 `E3236 1 `us 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
-[n S282 . TIMER0_InterruptHandler priority prescaler_value timer0_preload_value prescaler_enable timer0_counter_edge timer0_mode timer0_register_size . ]
-"13 Application1.c
-[; ;Application1.c: 13: void TIMER0_APP_ISR(void);
-[v _TIMER0_APP_ISR `(v ~T0 @X0 0 ef ]
+[v F3311 `(v ~T0 @X0 0 tf ]
+"26 Application1.c
+[; ;Application1.c: 26: timer3_config_t counter3 =
+[c E3231 0 1 .. ]
+[n E3231 . INTERRUPT_PRIORITY_LOW INTERRUPT_PRIORITY_HIGH  ]
+"54 ./MCAL_Layer/Timer3/mcal_timer3.h
+[; ;./MCAL_Layer/Timer3/mcal_timer3.h: 54: {
+[s S285 `*F3311 1 `E3231 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 ]
+[n S285 . TIMER3_InterruptHandler timer3_priority timer3_preload_value timer3_prescaler_value timer3_mode timer3_counter_mode timer3_reg_wr_mode . ]
+[v F3334 `(v ~T0 @X0 0 tf ]
 [p mainexit ]
-"24 ./Application1.h
-[; ;./Application1.h: 24: void application_initialize(void);
+"23 ./Application1.h
+[; ;./Application1.h: 23: void application_initialize(void);
 [v _application_initialize `(v ~T0 @X0 0 ef ]
-"87 ./MCAL_Layer/Timer0/mcal_timer0.h
-[; ;./MCAL_Layer/Timer0/mcal_timer0.h: 87: Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value);
-[v _timer0_Read_Value `(uc ~T0 @X0 0 ef2`*CS282`*us ]
 "37 ./ECU_Layer/ecu_layer_init.h
 [; ;./ECU_Layer/ecu_layer_init.h: 37: Std_ReturnType ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(uc ~T0 @X0 0 ef ]
-"84 ./MCAL_Layer/Timer0/mcal_timer0.h
-[; ;./MCAL_Layer/Timer0/mcal_timer0.h: 84: Std_ReturnType timer0_Init(const timer0_config_t *_timer);
-[v _timer0_Init `(uc ~T0 @X0 0 ef1`*CS282 ]
-"29 ./ECU_Layer/Led/ecu_led.h
-[; ;./ECU_Layer/Led/ecu_led.h: 29: {
-[s S274 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S274 . led_port led_pin led_status reserved ]
-"72
-[; ;./ECU_Layer/Led/ecu_led.h: 72: Std_ReturnType led_turn_toggle(const led_t *led);
-[v _led_turn_toggle `(uc ~T0 @X0 0 ef1`*CS274 ]
-"27 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 27: extern led_t led1;
-[v _led1 `S274 ~T0 @X0 0 e ]
+"71 ./MCAL_Layer/Timer3/mcal_timer3.h
+[; ;./MCAL_Layer/Timer3/mcal_timer3.h: 71: Std_ReturnType timer3_Init(const timer3_config_t *_timer);
+[v _timer3_Init `(uc ~T0 @X0 0 ef1`*CS285 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -447,31 +430,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"17 Application1.c
-[; ;Application1.c: 17: Std_ReturnType ret = (Std_ReturnType)0x01;
+"21 Application1.c
+[; ;Application1.c: 21: Std_ReturnType ret = (Std_ReturnType)0x01;
 [v _ret `uc ~T0 @X0 1 e ]
 [i _ret
 -> -> 1 `i `uc
 ]
-"19
-[; ;Application1.c: 19: uint16 value = 0;
-[v _value `us ~T0 @X0 1 e ]
-[i _value
--> -> 0 `i `us
+"23
+[; ;Application1.c: 23: volatile uint8 timer3_value = 0;
+[v _timer3_value `Vuc ~T0 @X0 1 e ]
+[i _timer3_value
+-> -> 0 `i `uc
 ]
-"21
-[; ;Application1.c: 21: timer0_config_t counter =
-[v _counter `S282 ~T0 @X0 1 e ]
-[i _counter
+"26
+[; ;Application1.c: 26: timer3_config_t counter3 =
+[v _counter3 `S285 ~T0 @X0 1 e ]
+[i _counter3
 :U ..
 :U ..
-&U _TIMER0_APP_ISR
-. `E3230 1
--> -> 0 `i `E3236
+-> -> -> 0 `i `*v `*F3334
+. `E3231 1
 -> -> 0 `i `us
 -> -> 0 `i `uc
 -> -> 1 `i `uc
--> -> 0 `i `uc
+-> -> 1 `i `uc
 -> -> 0 `i `uc
 ..
 ..
@@ -490,61 +472,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _application_initialize ..  ]
 "43
 [; ;Application1.c: 43:     while(1)
-[e :U 285 ]
+[e :U 288 ]
 "44
 [; ;Application1.c: 44:     {
 {
 "45
-[; ;Application1.c: 45:         ret = timer0_Read_Value(&counter,&value);
-[e = _ret ( _timer0_Read_Value (2 , -> &U _counter `*CS282 &U _value ]
-"46
-[; ;Application1.c: 46:     }
+[; ;Application1.c: 45:     }
 }
-[e :U 284 ]
-[e $U 285  ]
-[e :U 286 ]
-"48
-[; ;Application1.c: 48:     return (0);
+[e :U 287 ]
+[e $U 288  ]
+[e :U 289 ]
+"47
+[; ;Application1.c: 47:     return (0);
 [e ) -> 0 `i ]
-[e $UE 283  ]
-"49
-[; ;Application1.c: 49: }
-[e :UE 283 ]
+[e $UE 286  ]
+"48
+[; ;Application1.c: 48: }
+[e :UE 286 ]
 }
-"51
-[; ;Application1.c: 51: void application_initialize(void)
+"50
+[; ;Application1.c: 50: void application_initialize(void)
 [v _application_initialize `(v ~T0 @X0 1 ef ]
-"52
-[; ;Application1.c: 52: {
+"51
+[; ;Application1.c: 51: {
 {
 [e :U _application_initialize ]
 [f ]
-"53
-[; ;Application1.c: 53:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
+"52
+[; ;Application1.c: 52:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
 [v _ret_init `uc ~T0 @X0 1 a ]
 [e = _ret_init -> -> 1 `i `uc ]
-"54
-[; ;Application1.c: 54:     ret_init = ecu_layer_initialize();
+"53
+[; ;Application1.c: 53:     ret_init = ecu_layer_initialize();
 [e = _ret_init ( _ecu_layer_initialize ..  ]
-"56
-[; ;Application1.c: 56:     ret_init = timer0_Init(&counter);
-[e = _ret_init ( _timer0_Init (1 -> &U _counter `*CS282 ]
-"57
-[; ;Application1.c: 57: }
-[e :UE 287 ]
-}
-"59
-[; ;Application1.c: 59: void TIMER0_APP_ISR(void)
-[v _TIMER0_APP_ISR `(v ~T0 @X0 1 ef ]
-"60
-[; ;Application1.c: 60: {
-{
-[e :U _TIMER0_APP_ISR ]
-[f ]
-"61
-[; ;Application1.c: 61:     led_turn_toggle(&led1);
-[e ( _led_turn_toggle (1 -> &U _led1 `*CS274 ]
-"62
-[; ;Application1.c: 62: }
-[e :UE 288 ]
+"54
+[; ;Application1.c: 54:     ret_init = timer3_Init(&counter3);
+[e = _ret_init ( _timer3_Init (1 -> &U _counter3 `*CS285 ]
+"55
+[; ;Application1.c: 55: }
+[e :UE 290 ]
 }

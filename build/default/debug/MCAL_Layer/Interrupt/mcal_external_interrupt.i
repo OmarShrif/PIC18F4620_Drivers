@@ -4820,10 +4820,10 @@ typedef enum
 typedef struct
 {
     void (*ext_interrupt_INTx_handler)(void);
-    pin_config_t INTx_pin;
-    ext_interrupt_INTx_edge_t edge;
+    pin_config_t ext_interrupt_INTx_pin;
+    ext_interrupt_INTx_edge_t ext_interrupt_INTx_edge;
 
-    interrupt_priority_t priority;
+    interrupt_priority_t ext_interrupt_INTx_priority;
 
 }ext_interrupt_INTx_t;
 
@@ -4835,9 +4835,9 @@ typedef struct
 {
     void (*ext_interrupt_RBx_high_handler)(void);
     void (*ext_interrupt_RBx_low_handler)(void);
-    pin_config_t RBx_pin;
+    pin_config_t ext_interrupt_RBx_pin;
 
-    interrupt_priority_t priority;
+    interrupt_priority_t ext_interrupt_RBx_priority;
 
 
 }ext_interrupt_RBx_t;
@@ -4913,7 +4913,7 @@ Std_ReturnType ext_interrupt_INTx_Init(const ext_interrupt_INTx_t *int_obj)
         ret |= ext_interrupt_INTx_Priority_Init(int_obj);
 
 
-        ret |= gpio_pin_direction_initialize(&(int_obj->INTx_pin));
+        ret |= gpio_pin_direction_initialize(&(int_obj->ext_interrupt_INTx_pin));
 
         ret |= ext_interrupt_INTx_SetInterruptHandler(int_obj);
 
@@ -4955,7 +4955,7 @@ Std_ReturnType ext_interrupt_RBx_Init(const ext_interrupt_RBx_t *int_obj)
         ret = ext_interrupt_RBx_Priority_Init(int_obj);
 
 
-        ret |= gpio_pin_direction_initialize(&(int_obj->RBx_pin));
+        ret |= gpio_pin_direction_initialize(&(int_obj->ext_interrupt_RBx_pin));
 
         ret |= ext_interrupt_RBx_SetInterruptHandler(int_obj);
 
@@ -5116,7 +5116,7 @@ static Std_ReturnType ext_interrupt_INTx_Enable(const ext_interrupt_INTx_t *int_
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : (INTCONbits.INT0IE = 1); break;
             case GPIO_PIN1 : (INTCON3bits.INT1IE = 1); break;
@@ -5134,7 +5134,7 @@ static Std_ReturnType ext_interrupt_INTx_Disable(const ext_interrupt_INTx_t *int
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : (INTCONbits.INT0IE = 0); break;
             case GPIO_PIN1 : (INTCON3bits.INT1IE = 0); break;
@@ -5152,11 +5152,11 @@ static Std_ReturnType ext_interrupt_INTx_Edge_Init(const ext_interrupt_INTx_t *i
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 :
 
-            switch (int_obj->edge)
+            switch (int_obj->ext_interrupt_INTx_edge)
             {
                 case EXTERNAL_INTERRUPT_FALLING_EDGE : (INTCON2bits.INTEDG0 = 0); break;
                 case EXTERNAL_INTERRUPT_RISING_EDGE : (INTCON2bits.INTEDG0 = 1); break;
@@ -5166,7 +5166,7 @@ static Std_ReturnType ext_interrupt_INTx_Edge_Init(const ext_interrupt_INTx_t *i
 
             case GPIO_PIN1 :
 
-            switch (int_obj->edge)
+            switch (int_obj->ext_interrupt_INTx_edge)
             {
                 case EXTERNAL_INTERRUPT_FALLING_EDGE : (INTCON2bits.INTEDG1 = 0); break;
                 case EXTERNAL_INTERRUPT_RISING_EDGE : (INTCON2bits.INTEDG1 = 1); break;
@@ -5176,7 +5176,7 @@ static Std_ReturnType ext_interrupt_INTx_Edge_Init(const ext_interrupt_INTx_t *i
 
             case GPIO_PIN2 :
 
-            switch (int_obj->edge)
+            switch (int_obj->ext_interrupt_INTx_edge)
             {
                 case EXTERNAL_INTERRUPT_FALLING_EDGE : (INTCON2bits.INTEDG2 = 0); break;
                 case EXTERNAL_INTERRUPT_RISING_EDGE : (INTCON2bits.INTEDG2 = 1); break;
@@ -5197,7 +5197,7 @@ static Std_ReturnType ext_interrupt_INTx_Clear_Flag(const ext_interrupt_INTx_t *
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : (INTCONbits.INT0IF = 0); break;
             case GPIO_PIN1 : (INTCON3bits.INT1IF = 0); break;
@@ -5215,11 +5215,11 @@ static Std_ReturnType ext_interrupt_INTx_Priority_Init(const ext_interrupt_INTx_
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN1 :
 
-            switch (int_obj->priority)
+            switch (int_obj->ext_interrupt_INTx_priority)
             {
                 case INTERRUPT_PRIORITY_LOW : (INTCON3bits.INT1IP = 0); break;
                 case INTERRUPT_PRIORITY_HIGH : (INTCON3bits.INT1IP = 1); break;
@@ -5229,7 +5229,7 @@ static Std_ReturnType ext_interrupt_INTx_Priority_Init(const ext_interrupt_INTx_
 
             case GPIO_PIN2 :
 
-            switch (int_obj->priority)
+            switch (int_obj->ext_interrupt_INTx_priority)
             {
                 case INTERRUPT_PRIORITY_LOW : (INTCON3bits.INT2IP = 0); break;
                 case INTERRUPT_PRIORITY_HIGH : (INTCON3bits.INT2IP = 1); break;
@@ -5250,7 +5250,7 @@ static Std_ReturnType ext_interrupt_INTx_SetInterruptHandler(const ext_interrupt
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : INT0_InterruptHandler = int_obj->ext_interrupt_INTx_handler; break;
             case GPIO_PIN1 : INT1_InterruptHandler = int_obj->ext_interrupt_INTx_handler; break;
@@ -5272,7 +5272,7 @@ static Std_ReturnType ext_interrupt_RBx_SetInterruptHandler(const ext_interrupt_
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->RBx_pin.pin)
+        switch (int_obj->ext_interrupt_RBx_pin.pin)
         {
             case GPIO_PIN4 :
                 RB4_Low_InterruptHandler = int_obj->ext_interrupt_RBx_low_handler;
@@ -5305,7 +5305,7 @@ static Std_ReturnType ext_interrupt_RBx_Priority_Init(const ext_interrupt_RBx_t 
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(((void*)0) != int_obj)
     {
-        switch (int_obj->priority)
+        switch (int_obj->ext_interrupt_RBx_priority)
         {
             case INTERRUPT_PRIORITY_LOW : (INTCON2bits.RBIP = 0); break;
             case INTERRUPT_PRIORITY_HIGH : (INTCON2bits.RBIP = 1); break;

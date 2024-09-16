@@ -98,6 +98,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 "47
 [; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 47: void TIMER0_ISR(void);
 [v _TIMER0_ISR `(v ~T0 @X0 0 ef ]
+"53
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 53: void TIMER1_ISR(void);
+[v _TIMER1_ISR `(v ~T0 @X0 0 ef ]
+"59
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 59: void TIMER2_ISR(void);
+[v _TIMER2_ISR `(v ~T0 @X0 0 ef ]
+"2734 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2734:     struct {
+[s S103 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S103 . CCP2IE TMR3IE HLVDIE BCLIE EEIE . CMIE OSCFIE ]
+"2744
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2744:     struct {
+[s S104 :2 `uc 1 :1 `uc 1 ]
+[n S104 . . LVDIE ]
+"2733
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2733: typedef union {
+[u S102 `S103 1 `S104 1 ]
+[n S102 . . . ]
+"2749
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2749: extern volatile PIE2bits_t PIE2bits __attribute__((address(0xFA0)));
+[v _PIE2bits `VS102 ~T0 @X0 0 e@4000 ]
+"2800
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2800:     struct {
+[s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S106 . CCP2IF TMR3IF HLVDIF BCLIF EEIF . CMIF OSCFIF ]
+"2810
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2810:     struct {
+[s S107 :2 `uc 1 :1 `uc 1 ]
+[n S107 . . LVDIF ]
+"2799
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2799: typedef union {
+[u S105 `S106 1 `S107 1 ]
+[n S105 . . . ]
+"2815
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2815: extern volatile PIR2bits_t PIR2bits __attribute__((address(0xFA1)));
+[v _PIR2bits `VS105 ~T0 @X0 0 e@4001 ]
+"65 MCAL_Layer/Interrupt/mcal_interrupt_manager.h
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 65: void TIMER3_ISR(void);
+[v _TIMER3_ISR `(v ~T0 @X0 0 ef ]
 [t T40 __interrupt low_priority ]
 "6218 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6218:     struct {
@@ -797,58 +836,115 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 }
 [e :U 296 ]
-"109
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 109: }
-[e :UE 274 ]
-}
-[v $root$_InterruptManagerLow `(v ~T0 @X0 0 e ]
-"111
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 111: void __attribute__((picinterrupt(("low_priority")))) InterruptManagerLow(void)
-[v _InterruptManagerLow `(v ~T40 @X0 1 ef ]
 "112
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 112: {
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 112:     if((1 == PIE1bits.TMR1IE) && (1 == PIR1bits.TMR1IF))
+[e $ ! && == -> 1 `i -> . . _PIE1bits 0 0 `i == -> 1 `i -> . . _PIR1bits 0 0 `i 297  ]
+"113
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 113:     {
 {
-[e :U _InterruptManagerLow ]
-[f ]
+"114
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 114:         TIMER1_ISR();
+[e ( _TIMER1_ISR ..  ]
+"115
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 115:     }
+}
+[e $U 298  ]
 "116
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 116:     if((1 == INTCON3bits.INT1IE) && (1 == INTCON3bits.INT1IF))
-[e $ ! && == -> 1 `i -> . . _INTCON3bits 0 3 `i == -> 1 `i -> . . _INTCON3bits 0 0 `i 298  ]
-"117
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 117:     {
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 116:     else{ }
+[e :U 297 ]
 {
-"118
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 118:         INT1_ISR();
-[e ( _INT1_ISR ..  ]
-"119
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 119:     }
 }
-[e $U 299  ]
-"120
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 120:     else{ }
 [e :U 298 ]
-{
-}
-[e :U 299 ]
 "121
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 121:     if((1 == INTCON3bits.INT2IE) && (1 == INTCON3bits.INT2IF))
-[e $ ! && == -> 1 `i -> . . _INTCON3bits 0 4 `i == -> 1 `i -> . . _INTCON3bits 0 1 `i 300  ]
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 121:     if((1 == PIE1bits.TMR2IE) && (1 == PIR1bits.TMR2IF))
+[e $ ! && == -> 1 `i -> . . _PIE1bits 0 1 `i == -> 1 `i -> . . _PIR1bits 0 1 `i 299  ]
 "122
 [; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 122:     {
 {
 "123
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 123:         INT2_ISR();
-[e ( _INT2_ISR ..  ]
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 123:         TIMER2_ISR();
+[e ( _TIMER2_ISR ..  ]
 "124
 [; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 124:     }
 }
-[e $U 301  ]
+[e $U 300  ]
 "125
 [; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 125:     else{ }
-[e :U 300 ]
+[e :U 299 ]
 {
 }
+[e :U 300 ]
+"130
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 130:     if((1 == PIE2bits.TMR3IE) && (1 == PIR2bits.TMR3IF))
+[e $ ! && == -> 1 `i -> . . _PIE2bits 0 1 `i == -> 1 `i -> . . _PIR2bits 0 1 `i 301  ]
+"131
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 131:     {
+{
+"132
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 132:         TIMER3_ISR();
+[e ( _TIMER3_ISR ..  ]
+"133
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 133:     }
+}
+[e $U 302  ]
+"134
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 134:     else{ }
 [e :U 301 ]
-"127
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 127: }
-[e :UE 297 ]
+{
+}
+[e :U 302 ]
+"136
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 136: }
+[e :UE 274 ]
+}
+[v $root$_InterruptManagerLow `(v ~T0 @X0 0 e ]
+"138
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 138: void __attribute__((picinterrupt(("low_priority")))) InterruptManagerLow(void)
+[v _InterruptManagerLow `(v ~T40 @X0 1 ef ]
+"139
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 139: {
+{
+[e :U _InterruptManagerLow ]
+[f ]
+"143
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 143:     if((1 == INTCON3bits.INT1IE) && (1 == INTCON3bits.INT1IF))
+[e $ ! && == -> 1 `i -> . . _INTCON3bits 0 3 `i == -> 1 `i -> . . _INTCON3bits 0 0 `i 304  ]
+"144
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 144:     {
+{
+"145
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 145:         INT1_ISR();
+[e ( _INT1_ISR ..  ]
+"146
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 146:     }
+}
+[e $U 305  ]
+"147
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 147:     else{ }
+[e :U 304 ]
+{
+}
+[e :U 305 ]
+"148
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 148:     if((1 == INTCON3bits.INT2IE) && (1 == INTCON3bits.INT2IF))
+[e $ ! && == -> 1 `i -> . . _INTCON3bits 0 4 `i == -> 1 `i -> . . _INTCON3bits 0 1 `i 306  ]
+"149
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 149:     {
+{
+"150
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 150:         INT2_ISR();
+[e ( _INT2_ISR ..  ]
+"151
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 151:     }
+}
+[e $U 307  ]
+"152
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 152:     else{ }
+[e :U 306 ]
+{
+}
+[e :U 307 ]
+"154
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 154: }
+[e :UE 303 ]
 }

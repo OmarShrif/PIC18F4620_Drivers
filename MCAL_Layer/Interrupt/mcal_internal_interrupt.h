@@ -55,6 +55,66 @@
 
 #endif
 
+#if TIMER1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the TIMER1 Module */
+#define TIMER1_InterruptEnable()          (PIE1bits.TMR1IE = 1)
+/* This macro will disable interrupt for the TIMER1 Module */
+#define TIMER1_InterruptDisable()         (PIE1bits.TMR1IE = 0)
+/* This macro will clear interrupt flag for the TIMER1 Module */
+#define TIMER1_InterruptFlagClear()       (PIR1bits.TMR1IF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the TIMER1 Module Interrupt Priority to be High priority */
+#define TIMER1_PrioritySetHigh()          (IPR1bits.TMR1IP = 1)
+/* This routine set the TIMER1 Module Interrupt Priority to be Low priority */
+#define TIMER1_PrioritySetLow()           (IPR1bits.TMR1IP = 0)
+
+#endif
+
+#endif
+
+#if TIMER2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the TIMER2 Module */
+#define TIMER2_InterruptEnable()          (PIE1bits.TMR2IE = 1)
+/* This macro will disable interrupt for the TIMER2 Module */
+#define TIMER2_InterruptDisable()         (PIE1bits.TMR2IE = 0)
+/* This macro will clear interrupt flag for the TIMER2 Module */
+#define TIMER2_InterruptFlagClear()       (PIR1bits.TMR2IF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the TIMER2 Module Interrupt Priority to be High priority */
+#define TIMER2_PrioritySetHigh()          (IPR1bits.TMR2IP = 1)
+/* This routine set the TIMER2 Module Interrupt Priority to be Low priority */
+#define TIMER2_PrioritySetLow()           (IPR1bits.TMR2IP = 0)
+
+#endif
+
+#endif
+
+#if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the TIMER3 Module */
+#define TIMER3_InterruptEnable()          (PIE2bits.TMR3IE = 1)
+/* This macro will disable interrupt for the TIMER3 Module */
+#define TIMER3_InterruptDisable()         (PIE2bits.TMR3IE = 0)
+/* This macro will clear interrupt flag for the TIMER3 Module */
+#define TIMER3_InterruptFlagClear()       (PIR2bits.TMR3IF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the TIMER3 Module Interrupt Priority to be High priority */
+#define TIMER3_PrioritySetHigh()          (IPR2bits.TMR3IP = 1)
+/* This routine set the TIMER3 Module Interrupt Priority to be Low priority */
+#define TIMER3_PrioritySetLow()           (IPR2bits.TMR3IP = 0)
+
+#endif
+
+#endif
+
 /* Section : Data Type Declarations */
 
 /* Section : Functions Declarations */

@@ -476,7 +476,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _led1
 :U ..
 :U ..
--> . `E2981 2 `uc
+-> . `E2981 3 `uc
 -> . `E2988 0 `uc
 -> . `E3002 0 `uc
 ..

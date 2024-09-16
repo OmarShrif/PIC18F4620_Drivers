@@ -4834,6 +4834,24 @@ void ADC_ISR(void);
 
 
 void TIMER0_ISR(void);
+
+
+
+
+
+void TIMER1_ISR(void);
+
+
+
+
+
+void TIMER2_ISR(void);
+
+
+
+
+
+void TIMER3_ISR(void);
 # 10 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c" 2
 
 
@@ -4923,6 +4941,33 @@ void __attribute__((picinterrupt(("")))) InterruptManagerHigh(void)
     if((1 == INTCONbits.TMR0IE) && (1 == INTCONbits.TMR0IF))
     {
         TIMER0_ISR();
+    }
+    else{ }
+
+
+
+
+    if((1 == PIE1bits.TMR1IE) && (1 == PIR1bits.TMR1IF))
+    {
+        TIMER1_ISR();
+    }
+    else{ }
+
+
+
+
+    if((1 == PIE1bits.TMR2IE) && (1 == PIR1bits.TMR2IF))
+    {
+        TIMER2_ISR();
+    }
+    else{ }
+
+
+
+
+    if((1 == PIE2bits.TMR3IE) && (1 == PIR2bits.TMR3IF))
+    {
+        TIMER3_ISR();
     }
     else{ }
 

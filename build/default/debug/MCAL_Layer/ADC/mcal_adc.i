@@ -4868,15 +4868,15 @@ typedef struct
 
     void (* ADC_InterruptHandler)(void);
 
-    interrupt_priority_t priority;
+    interrupt_priority_t adc_priority;
 
 
-    adc_acquisition_time_t acquisition_time ;
-    adc_conversion_clock_t conversion_clock ;
+    adc_acquisition_time_t adc_acquisition_time ;
+    adc_conversion_clock_t adc_conversion_clock ;
     adc_channel_select_t adc_channel ;
-    uint8 voltage_reference : 1;
-    uint8 result_format : 1;
-    uint8 : 6;
+    uint8 adc_voltage_reference : 1;
+    uint8 adc_result_format : 1;
+    uint8 adc_port_configuration : 6;
 }adc_config_t;
 
 
@@ -4924,11 +4924,11 @@ Std_ReturnType adc_Init(const adc_config_t *_adc)
 
         (ADCON0bits.ADON = 0);
 
-        (ADCON1bits.PCFG = 0x07);
+        (ADCON1bits.PCFG = _adc->adc_port_configuration);
 
-        ADCON2bits.ACQT = _adc->acquisition_time;
+        ADCON2bits.ACQT = _adc->adc_acquisition_time;
 
-        ADCON2bits.ADCS = _adc->conversion_clock;
+        ADCON2bits.ADCS = _adc->adc_conversion_clock;
 
         ret = adc_SelectChannel(_adc, _adc->adc_channel);
 
@@ -4936,11 +4936,11 @@ Std_ReturnType adc_Init(const adc_config_t *_adc)
         ADC_InterruptHandler = _adc->ADC_InterruptHandler;
 
 
-        if(INTERRUPT_PRIORITY_HIGH == _adc->priority)
+        if(INTERRUPT_PRIORITY_HIGH == _adc->adc_priority)
         {
             (IPR1bits.ADIP = 1);
         }
-        else if(INTERRUPT_PRIORITY_LOW == _adc->priority)
+        else if(INTERRUPT_PRIORITY_LOW == _adc->adc_priority)
         {
             (IPR1bits.ADIP = 0);
         }
@@ -5029,11 +5029,11 @@ Std_ReturnType adc_GetConversionResult(const adc_config_t *_adc, adc_result_t *c
 
     if((((void*)0) != _adc) && (((void*)0) != conversion_result))
     {
-        if(0x01U == _adc->result_format)
+        if(0x01U == _adc->adc_result_format)
         {
             *conversion_result = (adc_result_t)((ADRESH << 8) + ADRESL);
         }
-        else if(0x00U == _adc->result_format)
+        else if(0x00U == _adc->adc_result_format)
         {
             *conversion_result = (adc_result_t)(((ADRESH << 8) + ADRESL) >> 6);
         }
@@ -5121,11 +5121,11 @@ static __attribute__((inline)) Std_ReturnType select_result_format(const adc_con
 
     if(((void*)0) != _adc)
     {
-        if(0x01U == _adc->result_format)
+        if(0x01U == _adc->adc_result_format)
         {
             (ADCON2bits.ADFM = 1);
         }
-        else if(0x00U == _adc->result_format)
+        else if(0x00U == _adc->adc_result_format)
         {
             (ADCON2bits.ADFM = 0);
         }
@@ -5145,11 +5145,11 @@ static __attribute__((inline)) Std_ReturnType configure_voltage_reference(const 
 
     if(((void*)0) != _adc)
     {
-        if(0x01U == _adc->voltage_reference)
+        if(0x01U == _adc->adc_voltage_reference)
         {
             ADCON1bits.VCFG1 = 1; ADCON1bits.VCFG0 = 1;;
         }
-        else if(0x00U == _adc->voltage_reference)
+        else if(0x00U == _adc->adc_voltage_reference)
         {
             ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0;;
         }

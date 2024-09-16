@@ -15,7 +15,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "155 MCAL_Layer/ADC/mcal_adc.h
 [; ;MCAL_Layer/ADC/mcal_adc.h: 155: {
 [s S274 `*F3083 1 `E3041 1 `E3062 1 `E3072 1 `E3047 1 :1 `uc 1 :1 `uc 1 :6 `uc 1 ]
-[n S274 . ADC_InterruptHandler priority acquisition_time conversion_clock adc_channel voltage_reference result_format . ]
+[n S274 . ADC_InterruptHandler adc_priority adc_acquisition_time adc_conversion_clock adc_channel adc_voltage_reference adc_result_format adc_port_configuration ]
 "4535 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4535:     struct {
 [s S182 :1 `uc 1 :1 `uc 1 ]
@@ -612,13 +612,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/ADC/mcal_adc.c: 45:         (ADCON0bits.ADON = 0);
 [e = . . _ADCON0bits 1 0 -> -> 0 `i `uc ]
 "47
-[; ;MCAL_Layer/ADC/mcal_adc.c: 47:         (ADCON1bits.PCFG = 0x07);
-[e = . . _ADCON1bits 0 0 -> -> 7 `i `uc ]
+[; ;MCAL_Layer/ADC/mcal_adc.c: 47:         (ADCON1bits.PCFG = _adc->adc_port_configuration);
+[e = . . _ADCON1bits 0 0 . *U __adc 7 ]
 "49
-[; ;MCAL_Layer/ADC/mcal_adc.c: 49:         ADCON2bits.ACQT = _adc->acquisition_time;
+[; ;MCAL_Layer/ADC/mcal_adc.c: 49:         ADCON2bits.ACQT = _adc->adc_acquisition_time;
 [e = . . _ADCON2bits 0 1 -> . *U __adc 2 `uc ]
 "51
-[; ;MCAL_Layer/ADC/mcal_adc.c: 51:         ADCON2bits.ADCS = _adc->conversion_clock;
+[; ;MCAL_Layer/ADC/mcal_adc.c: 51:         ADCON2bits.ADCS = _adc->adc_conversion_clock;
 [e = . . _ADCON2bits 0 0 -> . *U __adc 3 `uc ]
 "53
 [; ;MCAL_Layer/ADC/mcal_adc.c: 53:         ret = adc_SelectChannel(_adc, _adc->adc_channel);
@@ -627,7 +627,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/ADC/mcal_adc.c: 56:         ADC_InterruptHandler = _adc->ADC_InterruptHandler;
 [e = _ADC_InterruptHandler . *U __adc 0 ]
 "59
-[; ;MCAL_Layer/ADC/mcal_adc.c: 59:         if(INTERRUPT_PRIORITY_HIGH == _adc->priority)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 59:         if(INTERRUPT_PRIORITY_HIGH == _adc->adc_priority)
 [e $ ! == -> . `E3041 1 `ui -> . *U __adc 1 `ui 277  ]
 "60
 [; ;MCAL_Layer/ADC/mcal_adc.c: 60:         {
@@ -640,7 +640,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 278  ]
 "63
-[; ;MCAL_Layer/ADC/mcal_adc.c: 63:         else if(INTERRUPT_PRIORITY_LOW == _adc->priority)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 63:         else if(INTERRUPT_PRIORITY_LOW == _adc->adc_priority)
 [e :U 277 ]
 [e $ ! == -> . `E3041 0 `ui -> . *U __adc 1 `ui 279  ]
 "64
@@ -913,7 +913,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/ADC/mcal_adc.c: 203:     {
 {
 "204
-[; ;MCAL_Layer/ADC/mcal_adc.c: 204:         if(0x01U == _adc->result_format)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 204:         if(0x01U == _adc->adc_result_format)
 [e $ ! == -> 1 `ui -> . *U __adc 6 `ui 296  ]
 "205
 [; ;MCAL_Layer/ADC/mcal_adc.c: 205:         {
@@ -926,7 +926,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 297  ]
 "208
-[; ;MCAL_Layer/ADC/mcal_adc.c: 208:         else if(0x00U == _adc->result_format)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 208:         else if(0x00U == _adc->adc_result_format)
 [e :U 296 ]
 [e $ ! == -> 0 `ui -> . *U __adc 6 `ui 298  ]
 "209
@@ -1232,7 +1232,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/ADC/mcal_adc.c: 320:     {
 {
 "321
-[; ;MCAL_Layer/ADC/mcal_adc.c: 321:         if(0x01U == _adc->result_format)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 321:         if(0x01U == _adc->adc_result_format)
 [e $ ! == -> 1 `ui -> . *U __adc 6 `ui 329  ]
 "322
 [; ;MCAL_Layer/ADC/mcal_adc.c: 322:         {
@@ -1245,7 +1245,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 330  ]
 "325
-[; ;MCAL_Layer/ADC/mcal_adc.c: 325:         else if(0x00U == _adc->result_format)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 325:         else if(0x00U == _adc->adc_result_format)
 [e :U 329 ]
 [e $ ! == -> 0 `ui -> . *U __adc 6 `ui 331  ]
 "326
@@ -1316,7 +1316,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/ADC/mcal_adc.c: 344:     {
 {
 "345
-[; ;MCAL_Layer/ADC/mcal_adc.c: 345:         if(0x01U == _adc->voltage_reference)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 345:         if(0x01U == _adc->adc_voltage_reference)
 [e $ ! == -> 1 `ui -> . *U __adc 5 `ui 336  ]
 "346
 [; ;MCAL_Layer/ADC/mcal_adc.c: 346:         {
@@ -1330,7 +1330,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 337  ]
 "349
-[; ;MCAL_Layer/ADC/mcal_adc.c: 349:         else if(0x00U == _adc->voltage_reference)
+[; ;MCAL_Layer/ADC/mcal_adc.c: 349:         else if(0x00U == _adc->adc_voltage_reference)
 [e :U 336 ]
 [e $ ! == -> 0 `ui -> . *U __adc 5 `ui 338  ]
 "350

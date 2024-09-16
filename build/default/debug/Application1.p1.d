@@ -26,4 +26,10 @@ MCAL_Layer/Timer0/mcal_timer0.h  \
 MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrupt.h  \
 MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h  \
 MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_gen_cfg.h  \
-MCAL_Layer/Timer0/mcal_timer0_cfg.h 
+MCAL_Layer/Timer0/mcal_timer0_cfg.h  \
+MCAL_Layer/Timer1/mcal_timer1.h  \
+MCAL_Layer/Timer1/mcal_timer1_cfg.h  \
+MCAL_Layer/Timer2/mcal_timer2.h  \
+MCAL_Layer/Timer2/mcal_timer2_cfg.h  \
+MCAL_Layer/Timer3/mcal_timer3.h  \
+MCAL_Layer/Timer3/mcal_timer3_cfg.h 

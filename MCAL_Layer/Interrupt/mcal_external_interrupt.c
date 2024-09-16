@@ -84,7 +84,7 @@ Std_ReturnType ext_interrupt_INTx_Init(const ext_interrupt_INTx_t *int_obj)
         ret |= ext_interrupt_INTx_Priority_Init(int_obj);
         #endif
         /* Configure External Interrupt Pin*/
-        ret |= gpio_pin_direction_initialize(&(int_obj->INTx_pin));
+        ret |= gpio_pin_direction_initialize(&(int_obj->ext_interrupt_INTx_pin));
         /* Configure Default External Interrupt CallBack*/
         ret |= ext_interrupt_INTx_SetInterruptHandler(int_obj);
         /* Enable the External Interrupt */
@@ -144,7 +144,7 @@ Std_ReturnType ext_interrupt_RBx_Init(const ext_interrupt_RBx_t *int_obj)
         ret = ext_interrupt_RBx_Priority_Init(int_obj);
         #endif
         /* Configure External Interrupt Pin*/
-        ret |= gpio_pin_direction_initialize(&(int_obj->RBx_pin));
+        ret |= gpio_pin_direction_initialize(&(int_obj->ext_interrupt_RBx_pin));
         /* Configure Default External Interrupt CallBack*/
         ret |= ext_interrupt_RBx_SetInterruptHandler(int_obj);
         /* Enable the External Interrupt */
@@ -341,7 +341,7 @@ static Std_ReturnType ext_interrupt_INTx_Enable(const ext_interrupt_INTx_t *int_
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : EXT_INTERRUPT_INT0_InterruptEnable(); break;
             case GPIO_PIN1 : EXT_INTERRUPT_INT1_InterruptEnable(); break;
@@ -366,7 +366,7 @@ static Std_ReturnType ext_interrupt_INTx_Disable(const ext_interrupt_INTx_t *int
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : EXT_INTERRUPT_INT0_InterruptDisable(); break;
             case GPIO_PIN1 : EXT_INTERRUPT_INT1_InterruptDisable(); break;
@@ -391,11 +391,11 @@ static Std_ReturnType ext_interrupt_INTx_Edge_Init(const ext_interrupt_INTx_t *i
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 :
               
-            switch (int_obj->edge)
+            switch (int_obj->ext_interrupt_INTx_edge)
             {
                 case EXTERNAL_INTERRUPT_FALLING_EDGE : EXT_INTERRUPT_INT0_FallingEdgeSet(); break;
                 case EXTERNAL_INTERRUPT_RISING_EDGE : EXT_INTERRUPT_INT0_RisingEdgeSet(); break;
@@ -405,7 +405,7 @@ static Std_ReturnType ext_interrupt_INTx_Edge_Init(const ext_interrupt_INTx_t *i
             
             case GPIO_PIN1 :
               
-            switch (int_obj->edge)
+            switch (int_obj->ext_interrupt_INTx_edge)
             {
                 case EXTERNAL_INTERRUPT_FALLING_EDGE : EXT_INTERRUPT_INT1_FallingEdgeSet(); break;
                 case EXTERNAL_INTERRUPT_RISING_EDGE : EXT_INTERRUPT_INT1_RisingEdgeSet(); break;
@@ -415,7 +415,7 @@ static Std_ReturnType ext_interrupt_INTx_Edge_Init(const ext_interrupt_INTx_t *i
             
             case GPIO_PIN2 :
               
-            switch (int_obj->edge)
+            switch (int_obj->ext_interrupt_INTx_edge)
             {
                 case EXTERNAL_INTERRUPT_FALLING_EDGE : EXT_INTERRUPT_INT2_FallingEdgeSet(); break;
                 case EXTERNAL_INTERRUPT_RISING_EDGE : EXT_INTERRUPT_INT2_RisingEdgeSet(); break;
@@ -443,7 +443,7 @@ static Std_ReturnType ext_interrupt_INTx_Clear_Flag(const ext_interrupt_INTx_t *
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : EXT_INTERRUPT_INT0_InterruptFlagClear(); break;
             case GPIO_PIN1 : EXT_INTERRUPT_INT1_InterruptFlagClear(); break;
@@ -470,11 +470,11 @@ static Std_ReturnType ext_interrupt_INTx_Priority_Init(const ext_interrupt_INTx_
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN1 :
               
-            switch (int_obj->priority)
+            switch (int_obj->ext_interrupt_INTx_priority)
             {
                 case INTERRUPT_PRIORITY_LOW : EXT_INTERRUPT_INT1_PrioritySetLow(); break;
                 case INTERRUPT_PRIORITY_HIGH : EXT_INTERRUPT_INT1_PrioritySetHigh(); break;
@@ -484,7 +484,7 @@ static Std_ReturnType ext_interrupt_INTx_Priority_Init(const ext_interrupt_INTx_
             
             case GPIO_PIN2 :
               
-            switch (int_obj->priority)
+            switch (int_obj->ext_interrupt_INTx_priority)
             {
                 case INTERRUPT_PRIORITY_LOW : EXT_INTERRUPT_INT2_PrioritySetLow(); break;
                 case INTERRUPT_PRIORITY_HIGH : EXT_INTERRUPT_INT2_PrioritySetHigh(); break;
@@ -514,7 +514,7 @@ static Std_ReturnType ext_interrupt_INTx_SetInterruptHandler(const ext_interrupt
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->INTx_pin.pin)
+        switch (int_obj->ext_interrupt_INTx_pin.pin)
         {
             case GPIO_PIN0 : INT0_InterruptHandler = int_obj->ext_interrupt_INTx_handler; break;
             case GPIO_PIN1 : INT1_InterruptHandler = int_obj->ext_interrupt_INTx_handler; break;
@@ -536,7 +536,7 @@ static Std_ReturnType ext_interrupt_RBx_SetInterruptHandler(const ext_interrupt_
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->RBx_pin.pin)
+        switch (int_obj->ext_interrupt_RBx_pin.pin)
         {
             case GPIO_PIN4 : 
                 RB4_Low_InterruptHandler = int_obj->ext_interrupt_RBx_low_handler;
@@ -569,7 +569,7 @@ static Std_ReturnType ext_interrupt_RBx_Priority_Init(const ext_interrupt_RBx_t 
     Std_ReturnType ret = E_OK;
     if(NULL != int_obj)
     {
-        switch (int_obj->priority)
+        switch (int_obj->ext_interrupt_RBx_priority)
         {
             case INTERRUPT_PRIORITY_LOW : EXT_INTERRUPT_RBx_PrioritySetLow(); break;
             case INTERRUPT_PRIORITY_HIGH : EXT_INTERRUPT_RBx_PrioritySetHigh(); break;

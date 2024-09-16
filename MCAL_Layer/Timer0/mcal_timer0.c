@@ -49,11 +49,11 @@ Std_ReturnType timer0_Init(const timer0_config_t *_timer)
         TIMER0_InterruptHandler = _timer->TIMER0_InterruptHandler;
         /* Interrupt Priority Configurations */
         #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
-        if(INTERRUPT_PRIORITY_HIGH == _timer->priority)
+        if(INTERRUPT_PRIORITY_HIGH == _timer->timer0_priority)
         { 
             TIMER0_PrioritySetHigh(); 
         }
-        else if(INTERRUPT_PRIORITY_LOW == _timer->priority)
+        else if(INTERRUPT_PRIORITY_LOW == _timer->timer0_priority)
         {
             TIMER0_PrioritySetLow(); 
         }
@@ -110,7 +110,7 @@ Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
     Std_ReturnType ret = E_OK;
     uint8 l_tmr0l = ZERO_INIT, l_tmr0h = ZERO_INIT;
     
-    if (NULL != _timer)
+    if ((NULL != _timer) && (NULL != _value))
     {
         l_tmr0l = TMR0L;
         l_tmr0h = TMR0H;
@@ -125,12 +125,12 @@ Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
 
 static inline void timer0_Prescaler_Config(const timer0_config_t *_timer)
 {
-    if (TIMER0_PRESCALER_ENABLE_CFG == _timer->prescaler_enable)
+    if (TIMER0_PRESCALER_ENABLE_CFG == _timer->timer0_prescaler_enable)
     {
         TIMER0_PRESCALER_ENABLE();
-        T0CONbits.T0PS = _timer->prescaler_value;
+        T0CONbits.T0PS = _timer->timer0_prescaler_value;
     }
-    else if (TIMER0_PRESCALER_DISABLE_CFG == _timer->prescaler_enable)
+    else if (TIMER0_PRESCALER_DISABLE_CFG == _timer->timer0_prescaler_enable)
     {
         TIMER0_PRESCALER_DISABLE();
     }
@@ -146,6 +146,7 @@ static inline void timer0_Mode_Select(const timer0_config_t *_timer)
     else if (TIMER0_COUNTER_MODE == _timer->timer0_mode)
     {
         TIMER0_COUNTER_MODE_ENABLE();
+        SET_BIT(TRISA, _TRISA_RA4_POSN);
         if (TIMER0_COUNTER_RISING_EDGE_CFG == _timer->timer0_counter_edge)
         {
             TIMER0_RISING_EDGE_ENABLE();

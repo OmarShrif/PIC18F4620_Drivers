@@ -5059,6 +5059,9 @@ extern lcd_8bit_t lcd2;
 
 Std_ReturnType ecu_layer_initialize(void);
 # 13 "./Application1.h" 2
+# 23 "./Application1.h"
+void application_initialize(void);
+# 9 "Application1.c" 2
 
 # 1 "./MCAL_Layer/Timer0/mcal_timer0.h" 1
 # 14 "./MCAL_Layer/Timer0/mcal_timer0.h"
@@ -5105,16 +5108,15 @@ typedef struct
 
     void (* TIMER0_InterruptHandler)(void);
 
-    interrupt_priority_t priority;
+    interrupt_priority_t timer0_priority;
 
 
-    timer0_prescaler_select_t prescaler_value;
     uint16 timer0_preload_value;
-    uint8 prescaler_enable : 1;
-    uint8 timer0_counter_edge : 1;
+    uint8 timer0_prescaler_enable : 1;
+    uint8 timer0_prescaler_value : 4;
     uint8 timer0_mode : 1;
+    uint8 timer0_counter_edge : 1;
     uint8 timer0_register_size : 1;
-    uint8 :4;
 } timer0_config_t;
 
 
@@ -5123,36 +5125,115 @@ Std_ReturnType timer0_Init(const timer0_config_t *_timer);
 Std_ReturnType timer0_DeInit(const timer0_config_t *_timer);
 Std_ReturnType timer0_Write_Value(const timer0_config_t *_timer, uint16 _value);
 Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value);
-# 14 "./Application1.h" 2
-# 24 "./Application1.h"
-void application_initialize(void);
-# 9 "Application1.c" 2
+# 10 "Application1.c" 2
+
+# 1 "./MCAL_Layer/Timer1/mcal_timer1.h" 1
+# 15 "./MCAL_Layer/Timer1/mcal_timer1.h"
+# 1 "./MCAL_Layer/Timer1/mcal_timer1_cfg.h" 1
+# 15 "./MCAL_Layer/Timer1/mcal_timer1.h" 2
+# 61 "./MCAL_Layer/Timer1/mcal_timer1.h"
+typedef struct
+{
+
+    void (* TIMER1_InterruptHandler)(void);
+
+    interrupt_priority_t timer1_priority;
+
+
+    uint16 timer1_preload_value;
+    uint8 timer1_prescaler_value : 2;
+    uint8 timer1_mode : 1;
+    uint8 timer1_counter_mode : 1;
+    uint8 timer1_osc_cfg : 1;
+    uint8 timer1_reg_wr_mode : 1;
+    uint8 : 2;
+} timer1_config_t;
+
+
+
+Std_ReturnType timer1_Init(const timer1_config_t *_timer);
+Std_ReturnType timer1_DeInit(const timer1_config_t *_timer);
+Std_ReturnType timer1_Write_Value(const timer1_config_t *_timer, uint16 _value);
+Std_ReturnType timer1_Read_Value(const timer1_config_t *_timer, uint16 *_value);
+# 11 "Application1.c" 2
+
+# 1 "./MCAL_Layer/Timer2/mcal_timer2.h" 1
+# 15 "./MCAL_Layer/Timer2/mcal_timer2.h"
+# 1 "./MCAL_Layer/Timer2/mcal_timer2_cfg.h" 1
+# 15 "./MCAL_Layer/Timer2/mcal_timer2.h" 2
+# 57 "./MCAL_Layer/Timer2/mcal_timer2.h"
+typedef struct
+{
+
+    void (* TIMER2_InterruptHandler)(void);
+
+    interrupt_priority_t timer2_priority;
+
+
+    uint8 timer2_preload_value;
+    uint8 timer2_prescaler_value :2;
+    uint8 timer2_postscaler_value :4;
+    uint8 :2;
+}timer2_config_t;
+
+
+
+Std_ReturnType timer2_Init(const timer2_config_t *_timer);
+Std_ReturnType timer2_DeInit(const timer2_config_t *_timer);
+Std_ReturnType timer2_Write_Value(const timer2_config_t *_timer, uint8 _value);
+Std_ReturnType timer2_Read_Value(const timer2_config_t *_timer, uint8 *_value);
+# 12 "Application1.c" 2
+
+# 1 "./MCAL_Layer/Timer3/mcal_timer3.h" 1
+# 15 "./MCAL_Layer/Timer3/mcal_timer3.h"
+# 1 "./MCAL_Layer/Timer3/mcal_timer3_cfg.h" 1
+# 15 "./MCAL_Layer/Timer3/mcal_timer3.h" 2
+# 53 "./MCAL_Layer/Timer3/mcal_timer3.h"
+typedef struct
+{
+
+    void (* TIMER3_InterruptHandler)(void);
+
+    interrupt_priority_t timer3_priority;
+
+
+    uint16 timer3_preload_value;
+    uint8 timer3_prescaler_value : 2;
+    uint8 timer3_mode : 1;
+    uint8 timer3_counter_mode : 1;
+    uint8 timer3_reg_wr_mode : 1;
+    uint8 : 3;
+}timer3_config_t;
+
+
+
+Std_ReturnType timer3_Init(const timer3_config_t *_timer);
+Std_ReturnType timer3_DeInit(const timer3_config_t *_timer);
+Std_ReturnType timer3_Write_Value(const timer3_config_t *_timer, uint16 _value);
+Std_ReturnType timer3_Read_Value(const timer3_config_t *_timer, uint16 *_value);
+# 13 "Application1.c" 2
 
 
 
 
-void TIMER0_APP_ISR(void);
+void TIMER3_APP_ISR(void);
 
 
 
 Std_ReturnType ret = (Std_ReturnType)0x01;
 
-uint16 value = 0;
+volatile uint8 timer3_value = 0;
 
-timer0_config_t counter =
+
+timer3_config_t counter3 =
 {
-
-    .TIMER0_InterruptHandler = TIMER0_APP_ISR,
-
-    .priority = INTERRUPT_PRIORITY_HIGH,
-
-
-
-    .timer0_mode = 0,
-    .timer0_register_size = 0,
-    .prescaler_enable = 0,
-    .timer0_counter_edge = 1,
-    .timer0_preload_value = 0,
+    .TIMER3_InterruptHandler = ((void*)0),
+    .timer3_priority = INTERRUPT_PRIORITY_HIGH,
+    .timer3_mode = 1,
+    .timer3_counter_mode = 1,
+    .timer3_reg_wr_mode = 0,
+    .timer3_prescaler_value = 0,
+    .timer3_preload_value = 0
 };
 
 
@@ -5163,7 +5244,6 @@ int main()
 
     while(1)
     {
-        ret = timer0_Read_Value(&counter,&value);
     }
 
     return (0);
@@ -5173,11 +5253,5 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x01;
     ret_init = ecu_layer_initialize();
-
-    ret_init = timer0_Init(&counter);
-}
-
-void TIMER0_APP_ISR(void)
-{
-    led_turn_toggle(&led1);
+    ret_init = timer3_Init(&counter3);
 }

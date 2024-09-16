@@ -4833,16 +4833,15 @@ typedef struct
 
     void (* TIMER0_InterruptHandler)(void);
 
-    interrupt_priority_t priority;
+    interrupt_priority_t timer0_priority;
 
 
-    timer0_prescaler_select_t prescaler_value;
     uint16 timer0_preload_value;
-    uint8 prescaler_enable : 1;
-    uint8 timer0_counter_edge : 1;
+    uint8 timer0_prescaler_enable : 1;
+    uint8 timer0_prescaler_value : 4;
     uint8 timer0_mode : 1;
+    uint8 timer0_counter_edge : 1;
     uint8 timer0_register_size : 1;
-    uint8 :4;
 } timer0_config_t;
 
 
@@ -4894,11 +4893,11 @@ Std_ReturnType timer0_Init(const timer0_config_t *_timer)
         TIMER0_InterruptHandler = _timer->TIMER0_InterruptHandler;
 
 
-        if(INTERRUPT_PRIORITY_HIGH == _timer->priority)
+        if(INTERRUPT_PRIORITY_HIGH == _timer->timer0_priority)
         {
             (INTCON2bits.TMR0IP = 1);
         }
-        else if(INTERRUPT_PRIORITY_LOW == _timer->priority)
+        else if(INTERRUPT_PRIORITY_LOW == _timer->timer0_priority)
         {
             (INTCON2bits.TMR0IP = 0);
         }
@@ -4955,7 +4954,7 @@ Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
     Std_ReturnType ret = (Std_ReturnType)0x01;
     uint8 l_tmr0l = 0, l_tmr0h = 0;
 
-    if (((void*)0) != _timer)
+    if ((((void*)0) != _timer) && (((void*)0) != _value))
     {
         l_tmr0l = TMR0L;
         l_tmr0h = TMR0H;
@@ -4970,12 +4969,12 @@ Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value)
 
 static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer)
 {
-    if (1 == _timer->prescaler_enable)
+    if (0 == _timer->timer0_prescaler_enable)
     {
         (T0CONbits.PSA = 0);
-        T0CONbits.T0PS = _timer->prescaler_value;
+        T0CONbits.T0PS = _timer->timer0_prescaler_value;
     }
-    else if (0 == _timer->prescaler_enable)
+    else if (1 == _timer->timer0_prescaler_enable)
     {
         (T0CONbits.PSA = 1);
     }
@@ -4984,18 +4983,19 @@ static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_
 
 static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer)
 {
-    if (1 == _timer->timer0_mode)
+    if (0 == _timer->timer0_mode)
     {
         (T0CONbits.T0CS = 0);
     }
-    else if (0 == _timer->timer0_mode)
+    else if (1 == _timer->timer0_mode)
     {
         (T0CONbits.T0CS = 1);
-        if (1 == _timer->timer0_counter_edge)
+        (TRISA |= ((uint8)0x01 << 0x4));
+        if (0 == _timer->timer0_counter_edge)
         {
             (T0CONbits.T0SE = 0);
         }
-        else if (0 == _timer->timer0_counter_edge)
+        else if (1 == _timer->timer0_counter_edge)
         {
             (T0CONbits.T0SE = 1);
         }

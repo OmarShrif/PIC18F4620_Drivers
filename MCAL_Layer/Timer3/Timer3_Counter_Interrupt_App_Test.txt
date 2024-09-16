@@ -1,0 +1,49 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "MCAL_Layer/Timer3/mcal_timer3.h"
+
+/* Section : Functions Declarations */
+
+void TIMER3_APP_ISR(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+timer3_config_t counter3 = 
+{
+    .TIMER3_InterruptHandler = NULL,
+    .timer3_priority = INTERRUPT_PRIORITY_HIGH,
+    .timer3_mode = TIMER3_COUNTER_MODE,
+    .timer3_counter_mode = TIMER3_ASYNC_COUNTER_MODE,
+    .timer3_reg_wr_mode = TIMER3_RW_REG_8Bit_MODE,
+    .timer3_prescaler_value = TIMER3_PRESCALER_DIV_BY_1,
+    .timer3_preload_value = 0
+};
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    ret_init = timer3_Init(&counter3);
+}

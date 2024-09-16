@@ -106,6 +106,33 @@ void __interrupt() InterruptManagerHigh(void)
     }
     else{/* Nothing */}
     #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER1 Interrupt */
+    #if TIMER1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF))
+    {
+        TIMER1_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER2 Interrupt */
+    #if TIMER2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.TMR2IE) && (INTERRUPT_OCCUR == PIR1bits.TMR2IF))
+    {
+        TIMER2_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER3 Interrupt */
+    #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF))
+    {
+        TIMER3_ISR();
+    }
+    else{/* Nothing */}
+    #endif
 }
 
 void __interrupt(low_priority) InterruptManagerLow(void)
@@ -216,6 +243,33 @@ void __interrupt() InterruptManager(void)
     if((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_OCCUR == INTCONbits.TMR0IF))
     {
         TIMER0_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER1 Interrupt */
+    #if TIMER1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.TMR1IE) && (INTERRUPT_OCCUR == PIR1bits.TMR1IF))
+    {
+        TIMER1_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER2 Interrupt */
+    #if TIMER2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.TMR2IE) && (INTERRUPT_OCCUR == PIR1bits.TMR2IF))
+    {
+        TIMER2_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* TIMER3 Interrupt */
+    #if TIMER3_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF))
+    {
+        TIMER3_ISR();
     }
     else{/* Nothing */}
     #endif

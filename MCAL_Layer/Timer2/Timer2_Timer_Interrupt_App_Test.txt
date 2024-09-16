@@ -1,0 +1,59 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "MCAL_Layer/Timer1/mcal_timer1.h"
+#include "MCAL_Layer/Timer0/mcal_timer0.h"
+#include "MCAL_Layer/Timer2/mcal_timer2.h"
+
+/* Section : Functions Declarations */
+
+void TIMER2_APP_ISR(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+volatile uint8 timer2_value = 0;
+
+/* Timer delay 2 msec Fosc = 4 MHz*/
+timer2_config_t timer2 = 
+{
+    .TIMER2_InterruptHandler = TIMER2_APP_ISR,
+    .timer2_priority = INTERRUPT_PRIORITY_HIGH,
+    .timer2_prescaler_value = TIMER2_PRESCALER_DIV_BY_1,
+    .timer2_postscaler_value = TIMER2_POSTSCALER_DIV_BY_16,
+    .timer2_preload_value = 131
+};
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    ret_init = timer2_Init(&timer2);
+}
+
+void TIMER2_APP_ISR(void)
+{
+    Std_ReturnType ret = E_OK;
+    
+    ret = led_turn_toggle(&led1);
+}

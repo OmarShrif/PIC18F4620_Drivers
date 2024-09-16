@@ -156,15 +156,15 @@ typedef struct
     #if ADC_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
     void (* ADC_InterruptHandler)(void);      /* Interrupt CallBack Function */
     #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-    interrupt_priority_t priority;            /* @ref interrupt_priority_t*/
+    interrupt_priority_t adc_priority;            /* @ref interrupt_priority_t*/
     #endif
     #endif
-    adc_acquisition_time_t acquisition_time ; /* @ref adc_acquisition_time_t*/
-    adc_conversion_clock_t conversion_clock ; /* @ref adc_conversion_clock_t*/
-    adc_channel_select_t adc_channel        ; /* used as default channel in initialization @ref adc_channel_select_t*/
-    uint8 voltage_reference : 1;              /* Voltage Reference Configuration */
-    uint8 result_format     : 1;              /* A/D Result Format Select */
-    uint8                   : 6;              /* Unimplemented */
+    adc_acquisition_time_t adc_acquisition_time ; /* @ref adc_acquisition_time_t*/
+    adc_conversion_clock_t adc_conversion_clock ; /* @ref adc_conversion_clock_t*/
+    adc_channel_select_t adc_channel            ; /* used as default channel in initialization @ref adc_channel_select_t*/
+    uint8 adc_voltage_reference     : 1;          /* Voltage Reference Configuration */
+    uint8 adc_result_format         : 1;          /* A/D Result Format Select */
+    uint8 adc_port_configuration    : 6;          /* @note use ADC_AN0_ANALOG_FUNCTIONALITY @ref adc_port_configuration*/
 }adc_config_t;
 
 /**

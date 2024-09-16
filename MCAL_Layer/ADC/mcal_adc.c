@@ -44,11 +44,11 @@ Std_ReturnType adc_Init(const adc_config_t *_adc)
         /* Disable the ADC Module */
         ADC_CONVERTER_DISABLE();
         /* Analog-To-Digital Port Configuration Control */
-        ADC_ANALOG_DIGITAL_PORT_CONFIG(ADC_AN7_ANALOG_FUNCTIONALITY);
+        ADC_ANALOG_DIGITAL_PORT_CONFIG(_adc->adc_port_configuration);
         /* Configure the acquisition time */
-        ADCON2bits.ACQT = _adc->acquisition_time;
+        ADCON2bits.ACQT = _adc->adc_acquisition_time;
         /* Configure the conversion clock */
-        ADCON2bits.ADCS = _adc->conversion_clock;
+        ADCON2bits.ADCS = _adc->adc_conversion_clock;
         /* Configure the default channel */
         ret = adc_SelectChannel(_adc, _adc->adc_channel);
         /* Configure the interrupt for the ADC Module */
@@ -56,11 +56,11 @@ Std_ReturnType adc_Init(const adc_config_t *_adc)
         ADC_InterruptHandler = _adc->ADC_InterruptHandler;
         /* Interrupt Priority Configurations */
         #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
-        if(INTERRUPT_PRIORITY_HIGH == _adc->priority)
+        if(INTERRUPT_PRIORITY_HIGH == _adc->adc_priority)
         { 
             ADC_PrioritySetHigh(); 
         }
-        else if(INTERRUPT_PRIORITY_LOW == _adc->priority)
+        else if(INTERRUPT_PRIORITY_LOW == _adc->adc_priority)
         {
             ADC_PrioritySetLow(); 
         }
@@ -201,11 +201,11 @@ Std_ReturnType adc_GetConversionResult(const adc_config_t *_adc, adc_result_t *c
     
     if((NULL != _adc) && (NULL != conversion_result))
     {
-        if(ADC_RESULT_RIGHT == _adc->result_format)
+        if(ADC_RESULT_RIGHT == _adc->adc_result_format)
         {
             *conversion_result = (adc_result_t)((ADRESH << 8) + ADRESL);
         }
-        else if(ADC_RESULT_LEFT == _adc->result_format)
+        else if(ADC_RESULT_LEFT == _adc->adc_result_format)
         {
             *conversion_result = (adc_result_t)(((ADRESH << 8) + ADRESL) >> 6);
         }
@@ -318,11 +318,11 @@ static inline Std_ReturnType select_result_format(const adc_config_t *_adc)
     
     if(NULL != _adc)
     {
-        if(ADC_RESULT_RIGHT == _adc->result_format)
+        if(ADC_RESULT_RIGHT == _adc->adc_result_format)
         {
             ADC_RESULT_RIGHT_FORMAT();
         }
-        else if(ADC_RESULT_LEFT == _adc->result_format)
+        else if(ADC_RESULT_LEFT == _adc->adc_result_format)
         {
             ADC_RESULT_LEFT_FORMAT();
         }
@@ -342,11 +342,11 @@ static inline Std_ReturnType configure_voltage_reference(const adc_config_t *_ad
     
     if(NULL != _adc)
     {
-        if(ADC_VOLTAGE_REFERENCE_ENABLED == _adc->voltage_reference)
+        if(ADC_VOLTAGE_REFERENCE_ENABLED == _adc->adc_voltage_reference)
         {
             ADC_ENABLE_VOLTAGE_REFERENCE();
         }
-        else if(ADC_VOLTAGE_REFERENCE_DISABLED == _adc->voltage_reference)
+        else if(ADC_VOLTAGE_REFERENCE_DISABLED == _adc->adc_voltage_reference)
         {
             ADC_DISABLE_VOLTAGE_REFERENCE();
         }

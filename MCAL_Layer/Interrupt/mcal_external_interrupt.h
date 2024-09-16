@@ -106,10 +106,10 @@ typedef enum
 typedef struct
 {
     void (*ext_interrupt_INTx_handler)(void);
-    pin_config_t INTx_pin;
-    ext_interrupt_INTx_edge_t edge;
+    pin_config_t ext_interrupt_INTx_pin;
+    ext_interrupt_INTx_edge_t ext_interrupt_INTx_edge;
     #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-    interrupt_priority_t priority;
+    interrupt_priority_t ext_interrupt_INTx_priority;
     #endif
 }ext_interrupt_INTx_t;
 
@@ -121,9 +121,9 @@ typedef struct
 {
     void (*ext_interrupt_RBx_high_handler)(void);
     void (*ext_interrupt_RBx_low_handler)(void);
-    pin_config_t RBx_pin;
+    pin_config_t ext_interrupt_RBx_pin;
     #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-    interrupt_priority_t priority;
+    interrupt_priority_t ext_interrupt_RBx_priority;
     #endif
     
 }ext_interrupt_RBx_t;

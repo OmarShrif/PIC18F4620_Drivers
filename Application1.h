@@ -11,7 +11,6 @@
 
 /* Section : Includes */
 #include "ECU_Layer/ecu_layer_init.h"
-#include "MCAL_Layer/Timer0/mcal_timer0.h"
 
 /* Section : Macro Declarations */
 
