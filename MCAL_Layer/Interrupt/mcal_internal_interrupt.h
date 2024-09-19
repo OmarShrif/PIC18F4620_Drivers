@@ -115,6 +115,46 @@
 
 #endif
 
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the CCP1 Module */
+#define CCP1_InterruptEnable()          (PIE1bits.CCP1IE = 1)
+/* This macro will disable interrupt for the CCP1 Module */
+#define CCP1_InterruptDisable()         (PIE1bits.CCP1IE = 0)
+/* This macro will clear interrupt flag for the CCP1 Module */
+#define CCP1_InterruptFlagClear()       (PIR1bits.CCP1IF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the CCP1 Module Interrupt Priority to be High priority */
+#define CCP1_PrioritySetHigh()          (IPR1bits.CCP1IP = 1)
+/* This routine set the CCP1 Module Interrupt Priority to be Low priority */
+#define CCP1_PrioritySetLow()           (IPR1bits.CCP1IP = 0)
+
+#endif
+
+#endif
+
+#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the CCP2 Module */
+#define CCP2_InterruptEnable()          (PIE2bits.CCP2IE = 1)
+/* This macro will disable interrupt for the CCP2 Module */
+#define CCP2_InterruptDisable()         (PIE2bits.CCP2IE = 0)
+/* This macro will clear interrupt flag for the CCP2 Module */
+#define CCP2_InterruptFlagClear()       (PIR2bits.CCP2IF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the CCP2 Module Interrupt Priority to be High priority */
+#define CCP2_PrioritySetHigh()          (IPR2bits.CCP2IP = 1)
+/* This routine set the CCP2 Module Interrupt Priority to be Low priority */
+#define CCP2_PrioritySetLow()           (IPR2bits.CCP2IP = 0)
+
+#endif
+
+#endif
+
 /* Section : Data Type Declarations */
 
 /* Section : Functions Declarations */

@@ -1,24 +1,56 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3311 `(v ~T0 @X0 0 tf ]
-"26 Application1.c
-[; ;Application1.c: 26: timer3_config_t counter3 =
+[v F3239 `(v ~T0 @X0 0 tf ]
+"19 Application1.c
+[; ;Application1.c: 19: timer2_config_t timer2 =
 [c E3231 0 1 .. ]
 [n E3231 . INTERRUPT_PRIORITY_LOW INTERRUPT_PRIORITY_HIGH  ]
-"54 ./MCAL_Layer/Timer3/mcal_timer3.h
-[; ;./MCAL_Layer/Timer3/mcal_timer3.h: 54: {
-[s S285 `*F3311 1 `E3231 1 `us 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 ]
-[n S285 . TIMER3_InterruptHandler timer3_priority timer3_preload_value timer3_prescaler_value timer3_mode timer3_counter_mode timer3_reg_wr_mode . ]
-[v F3334 `(v ~T0 @X0 0 tf ]
+"58 ./MCAL_Layer/Timer2/mcal_timer2.h
+[; ;./MCAL_Layer/Timer2/mcal_timer2.h: 58: {
+[s S282 `*F3239 1 `E3231 1 `uc 1 :2 `uc 1 :4 `uc 1 :2 `uc 1 ]
+[n S282 . TIMER2_InterruptHandler timer2_priority timer2_preload_value timer2_prescaler_value timer2_postscaler_value . ]
+[v F3310 `(v ~T0 @X0 0 tf ]
+"66 ./MCAL_Layer/Timer2/../Interrupt/../GPIO/mcal_gpio.h
+[s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S273 . port pin direction logic ]
+"111 ./MCAL_Layer/CCP/mcal_ccp.h
+[; ;./MCAL_Layer/CCP/mcal_ccp.h: 111: {
+[s S286 `S273 1 `S273 1 `ul 1 `uc 1 `uc 1 ]
+[n S286 . ccp1_pin ccp2_pin PWM_Frequency timer2_postscaler_value timer2_prescaler_value ]
+"27 Application1.c
+[; ;Application1.c: 27: ccp_config_t ccp =
+[c E2981 0 1 2 3 4 .. ]
+[n E2981 . GPIO_PORTA GPIO_PORTB GPIO_PORTC GPIO_PORTD GPIO_PORTE  ]
+[c E2988 0 1 2 3 4 5 6 7 .. ]
+[n E2988 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
+[c E2998 0 1 .. ]
+[n E2998 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
+[c E3002 0 1 .. ]
+[n E3002 . GPIO_LOGIC_LOW GPIO_LOGIC_HIGH  ]
 [p mainexit ]
 "23 ./Application1.h
 [; ;./Application1.h: 23: void application_initialize(void);
 [v _application_initialize `(v ~T0 @X0 0 ef ]
+"222 ./MCAL_Layer/CCP/mcal_ccp.h
+[; ;./MCAL_Layer/CCP/mcal_ccp.h: 222:         Std_ReturnType ccp1_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty);
+[v _ccp1_PWM_Set_Duty `(uc ~T0 @X0 0 ef2`*CS286`Cuc ]
+"223
+[; ;./MCAL_Layer/CCP/mcal_ccp.h: 223:         Std_ReturnType ccp1_PWM_Start(const ccp_config_t *_ccp_obj);
+[v _ccp1_PWM_Start `(uc ~T0 @X0 0 ef1`*CS286 ]
+"243
+[; ;./MCAL_Layer/CCP/mcal_ccp.h: 243:         Std_ReturnType ccp2_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty);
+[v _ccp2_PWM_Set_Duty `(uc ~T0 @X0 0 ef2`*CS286`Cuc ]
+"244
+[; ;./MCAL_Layer/CCP/mcal_ccp.h: 244:         Std_ReturnType ccp2_PWM_Start(const ccp_config_t *_ccp_obj);
+[v _ccp2_PWM_Start `(uc ~T0 @X0 0 ef1`*CS286 ]
 "37 ./ECU_Layer/ecu_layer_init.h
 [; ;./ECU_Layer/ecu_layer_init.h: 37: Std_ReturnType ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(uc ~T0 @X0 0 ef ]
-"71 ./MCAL_Layer/Timer3/mcal_timer3.h
-[; ;./MCAL_Layer/Timer3/mcal_timer3.h: 71: Std_ReturnType timer3_Init(const timer3_config_t *_timer);
-[v _timer3_Init `(uc ~T0 @X0 0 ef1`*CS285 ]
+"73 ./MCAL_Layer/Timer2/mcal_timer2.h
+[; ;./MCAL_Layer/Timer2/mcal_timer2.h: 73: Std_ReturnType timer2_Init(const timer2_config_t *_timer);
+[v _timer2_Init `(uc ~T0 @X0 0 ef1`*CS282 ]
+"203 ./MCAL_Layer/CCP/mcal_ccp.h
+[; ;./MCAL_Layer/CCP/mcal_ccp.h: 203:     Std_ReturnType ccp_Init(const ccp_config_t *_ccp_obj);
+[v _ccp_Init `(uc ~T0 @X0 0 ef1`*CS286 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -430,85 +462,120 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"21 Application1.c
-[; ;Application1.c: 21: Std_ReturnType ret = (Std_ReturnType)0x01;
+"17 Application1.c
+[; ;Application1.c: 17: Std_ReturnType ret = (Std_ReturnType)0x01;
 [v _ret `uc ~T0 @X0 1 e ]
 [i _ret
 -> -> 1 `i `uc
 ]
-"23
-[; ;Application1.c: 23: volatile uint8 timer3_value = 0;
-[v _timer3_value `Vuc ~T0 @X0 1 e ]
-[i _timer3_value
--> -> 0 `i `uc
-]
-"26
-[; ;Application1.c: 26: timer3_config_t counter3 =
-[v _counter3 `S285 ~T0 @X0 1 e ]
-[i _counter3
+"19
+[; ;Application1.c: 19: timer2_config_t timer2 =
+[v _timer2 `S282 ~T0 @X0 1 e ]
+[i _timer2
 :U ..
 :U ..
--> -> -> 0 `i `*v `*F3334
+-> -> -> 0 `i `*v `*F3310
 . `E3231 1
--> -> 0 `i `us
 -> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+"27
+[; ;Application1.c: 27: ccp_config_t ccp =
+[v _ccp `S286 ~T0 @X0 1 e ]
+[i _ccp
+:U ..
+:U ..
+:U ..
+:U ..
+-> . `E2981 2 `uc
+-> . `E2988 2 `uc
+-> . `E2998 0 `uc
+-> . `E3002 0 `uc
+..
+..
+:U ..
+:U ..
+-> . `E2981 2 `uc
+-> . `E2988 1 `uc
+-> . `E2998 0 `uc
+-> . `E3002 0 `uc
+..
+..
+-> -> -> 20000 `i `l `ul
 -> -> 1 `i `uc
 -> -> 1 `i `uc
--> -> 0 `i `uc
 ..
 ..
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"39
-[; ;Application1.c: 39: int main()
+"44
+[; ;Application1.c: 44: int main()
 [v _main `(i ~T0 @X0 1 ef ]
-"40
-[; ;Application1.c: 40: {
+"45
+[; ;Application1.c: 45: {
 {
 [e :U _main ]
 [f ]
-"41
-[; ;Application1.c: 41:     application_initialize();
+"46
+[; ;Application1.c: 46:     application_initialize();
 [e ( _application_initialize ..  ]
-"43
-[; ;Application1.c: 43:     while(1)
-[e :U 288 ]
-"44
-[; ;Application1.c: 44:     {
-{
-"45
-[; ;Application1.c: 45:     }
-}
-[e :U 287 ]
-[e $U 288  ]
-[e :U 289 ]
-"47
-[; ;Application1.c: 47:     return (0);
-[e ) -> 0 `i ]
-[e $UE 286  ]
 "48
-[; ;Application1.c: 48: }
-[e :UE 286 ]
-}
+[; ;Application1.c: 48:     ret = ccp1_PWM_Set_Duty(&ccp,50);
+[e = _ret ( _ccp1_PWM_Set_Duty (2 , -> &U _ccp `*CS286 -> -> 50 `i `uc ]
+"49
+[; ;Application1.c: 49:     ret = ccp1_PWM_Start(&ccp);
+[e = _ret ( _ccp1_PWM_Start (1 -> &U _ccp `*CS286 ]
 "50
-[; ;Application1.c: 50: void application_initialize(void)
-[v _application_initialize `(v ~T0 @X0 1 ef ]
+[; ;Application1.c: 50:     ret = ccp2_PWM_Set_Duty(&ccp,25);
+[e = _ret ( _ccp2_PWM_Set_Duty (2 , -> &U _ccp `*CS286 -> -> 25 `i `uc ]
 "51
-[; ;Application1.c: 51: {
+[; ;Application1.c: 51:     ret = ccp2_PWM_Start(&ccp);
+[e = _ret ( _ccp2_PWM_Start (1 -> &U _ccp `*CS286 ]
+"52
+[; ;Application1.c: 52:     while(1)
+[e :U 289 ]
+"53
+[; ;Application1.c: 53:     {
+{
+"54
+[; ;Application1.c: 54:     }
+}
+[e :U 288 ]
+[e $U 289  ]
+[e :U 290 ]
+"56
+[; ;Application1.c: 56:     return (0);
+[e ) -> 0 `i ]
+[e $UE 287  ]
+"57
+[; ;Application1.c: 57: }
+[e :UE 287 ]
+}
+"59
+[; ;Application1.c: 59: void application_initialize(void)
+[v _application_initialize `(v ~T0 @X0 1 ef ]
+"60
+[; ;Application1.c: 60: {
 {
 [e :U _application_initialize ]
 [f ]
-"52
-[; ;Application1.c: 52:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
+"61
+[; ;Application1.c: 61:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
 [v _ret_init `uc ~T0 @X0 1 a ]
 [e = _ret_init -> -> 1 `i `uc ]
-"53
-[; ;Application1.c: 53:     ret_init = ecu_layer_initialize();
+"62
+[; ;Application1.c: 62:     ret_init = ecu_layer_initialize();
 [e = _ret_init ( _ecu_layer_initialize ..  ]
-"54
-[; ;Application1.c: 54:     ret_init = timer3_Init(&counter3);
-[e = _ret_init ( _timer3_Init (1 -> &U _counter3 `*CS285 ]
-"55
-[; ;Application1.c: 55: }
-[e :UE 290 ]
+"63
+[; ;Application1.c: 63:     ret_init = timer2_Init(&timer2);
+[e = _ret_init ( _timer2_Init (1 -> &U _timer2 `*CS282 ]
+"64
+[; ;Application1.c: 64:     ret_init = ccp_Init(&ccp);
+[e = _ret_init ( _ccp_Init (1 -> &U _ccp `*CS286 ]
+"65
+[; ;Application1.c: 65: }
+[e :UE 291 ]
 }

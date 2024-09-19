@@ -33,6 +33,7 @@
 #define MSSP_I2C_INTERRUPT_FEATURE              INTERRUPT_FEATURE_ENABLE
 
 #define CCP1_INTERRUPT_FEATURE                  INTERRUPT_FEATURE_ENABLE
+#define CCP2_INTERRUPT_FEATURE                  INTERRUPT_FEATURE_ENABLE
 
 /* Section : Macro Functions Declarations */
 

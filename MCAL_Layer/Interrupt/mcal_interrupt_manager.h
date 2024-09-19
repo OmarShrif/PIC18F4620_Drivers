@@ -66,5 +66,17 @@ void TIMER3_ISR(void);
 
 #endif
 
+#if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+void CCP1_ISR(void);
+
+#endif
+
+#if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+void CCP2_ISR(void);
+
+#endif
+
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 
