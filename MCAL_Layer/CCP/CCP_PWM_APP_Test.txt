@@ -27,8 +27,8 @@ timer2_config_t timer2 =
 ccp_config_t ccp = 
 {
     .PWM_Frequency = 20000,
-    .timer2_prescaler_value = 1,
-    .timer2_postscaler_value = 1,
+    .timer2_prescaler_value = CCP_TIMER2_PRESCALER_DIV_BY_1,
+    .timer2_postscaler_value = CCP_TIMER2_POSTSCALER_DIV_BY_1,
     .ccp1_pin.port = GPIO_PORTC,
     .ccp1_pin.pin = GPIO_PIN2,
     .ccp1_pin.direction = GPIO_DIRECTION_OUTPUT,

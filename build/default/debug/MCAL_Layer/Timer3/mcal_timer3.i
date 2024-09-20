@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Timer3/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Timer3/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/Timer3/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/Timer3/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Timer3/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4819,9 +4808,9 @@ void global_interrupt_Disable(void);
 typedef struct
 {
 
-    void (* TIMER3_InterruptHandler)(void);
 
-    interrupt_priority_t timer3_priority;
+
+
 
 
     uint16 timer3_preload_value;
@@ -4844,7 +4833,7 @@ Std_ReturnType timer3_Read_Value(const timer3_config_t *_timer, uint16 *_value);
 
 
 
-static void (*TIMER3_InterruptHandler)(void) = ((void*)0);
+
 
 static uint16 timer3_preload = 0;
 
@@ -4874,26 +4863,7 @@ Std_ReturnType timer3_Init(const timer3_config_t *_timer)
         TMR3L = (uint8) (_timer->timer3_preload_value);
 
         timer3_preload = _timer->timer3_preload_value;
-
-
-        TIMER3_InterruptHandler = _timer->TIMER3_InterruptHandler;
-
-
-        if(INTERRUPT_PRIORITY_HIGH == _timer->timer3_priority)
-        {
-            (IPR2bits.TMR3IP = 1);
-        }
-        else if(INTERRUPT_PRIORITY_LOW == _timer->timer3_priority)
-        {
-            (IPR2bits.TMR3IP = 0);
-        }
-        else{ }
-
-        (PIR2bits.TMR3IF = 0);
-        (PIE2bits.TMR3IE = 1);
-        global_interrupt_Enable();
-
-
+# 65 "MCAL_Layer/Timer3/mcal_timer3.c"
         (T3CONbits.TMR3ON = 1);
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -4911,9 +4881,9 @@ Std_ReturnType timer3_DeInit(const timer3_config_t *_timer)
         (T3CONbits.TMR3ON = 0);
 
 
-        (PIE2bits.TMR3IE = 0);
 
-        (PIR2bits.TMR3IF = 0);
+
+
 
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -4989,23 +4959,4 @@ static __attribute__((inline)) void timer3_RW_REG_Bit_Mode_Select(const timer3_c
     }
     else{ }
 
-}
-
-
-
-
-
-void TIMER3_ISR(void)
-{
-
-    (PIR2bits.TMR3IF = 0);
-
-    TMR3H = (timer3_preload) >> 8;
-    TMR3L = (uint8)(timer3_preload);
-
-    if(TIMER3_InterruptHandler)
-    {
-        TIMER3_InterruptHandler();
-    }
-    else{ }
 }

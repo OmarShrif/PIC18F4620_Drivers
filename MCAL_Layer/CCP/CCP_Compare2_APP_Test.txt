@@ -1,23 +1,23 @@
-/* 
- * File:   Application1.c
- * Author: Omar Shrif Mohamed
- * https://www.linkedin.com/in/omar-shrif-982413213/
- * Created on January 1, 2024, 9:09 PM
- */
+ 
+  File   Application1.c
+  Author Omar Shrif Mohamed
+  httpswww.linkedin.cominomar-shrif-982413213
+  Created on January 1, 2024, 909 PM
+ 
 
-/* Section : Includes */
-#include "Application1.h"
-#include "MCAL_Layer/CCP/mcal_ccp.h"
-#include "MCAL_Layer/Timer1/mcal_timer1.h"
-#include "MCAL_Layer/Timer2/mcal_timer2.h"
-#include "MCAL_Layer/Timer3/mcal_timer3.h"
+ Section  Includes 
+#include Application1.h
+#include MCAL_LayerCCPmcal_ccp.h
+#include MCAL_LayerTimer1mcal_timer1.h
+#include MCAL_LayerTimer2mcal_timer2.h
+#include MCAL_LayerTimer3mcal_timer3.h
 
-/* Section : Functions Declarations */
+ Section  Functions Declarations 
 
 void CCP1_APP_ISR(void);
 void TIMER1_APP_ISR(void);
 
-/* Section : Global Variables Definition */
+ Section  Global Variables Definition 
 
 Std_ReturnType ret = E_OK;
 
@@ -41,7 +41,7 @@ ccp_config_t ccp =
     .ccp1_pin.logic = GPIO_LOGIC_LOW,
 };
 
-/* Section : Functions Definition */
+ Section  Functions Definition 
 
 int main() 
 {

@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/Timer0/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4831,9 +4820,9 @@ typedef enum
 typedef struct
 {
 
-    void (* TIMER0_InterruptHandler)(void);
 
-    interrupt_priority_t timer0_priority;
+
+
 
 
     uint16 timer0_preload_value;
@@ -4856,7 +4845,7 @@ Std_ReturnType timer0_Read_Value(const timer0_config_t *_timer, uint16 *_value);
 
 
 
-static void (*TIMER0_InterruptHandler)(void) = ((void*)0);
+
 
 static uint16 timer0_preload = 0;
 
@@ -4888,26 +4877,7 @@ Std_ReturnType timer0_Init(const timer0_config_t *_timer)
         TMR0L = (uint8) (_timer->timer0_preload_value);
 
         timer0_preload = _timer->timer0_preload_value;
-
-
-        TIMER0_InterruptHandler = _timer->TIMER0_InterruptHandler;
-
-
-        if(INTERRUPT_PRIORITY_HIGH == _timer->timer0_priority)
-        {
-            (INTCON2bits.TMR0IP = 1);
-        }
-        else if(INTERRUPT_PRIORITY_LOW == _timer->timer0_priority)
-        {
-            (INTCON2bits.TMR0IP = 0);
-        }
-        else{ }
-
-        (INTCONbits.TMR0IF = 0);
-        (INTCONbits.TMR0IE = 1);
-        global_interrupt_Enable();
-
-
+# 67 "MCAL_Layer/Timer0/mcal_timer0.c"
         (T0CONbits.TMR0ON = 1);
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -4925,9 +4895,9 @@ Std_ReturnType timer0_DeInit(const timer0_config_t *_timer)
         (T0CONbits.TMR0ON = 0);
 
 
-        (INTCONbits.TMR0IE = 0);
 
-        (INTCONbits.TMR0IF = 0);
+
+
 
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -5013,25 +4983,6 @@ static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_con
     else if (0 == _timer->timer0_register_size)
     {
         (T0CONbits.T08BIT = 0);
-    }
-    else{ }
-}
-
-
-
-
-
-void TIMER0_ISR(void)
-{
-
-    (INTCONbits.TMR0IF = 0);
-
-    TMR0H = (timer0_preload) >> 8;
-    TMR0L = (uint8) (timer0_preload);
-
-    if (TIMER0_InterruptHandler)
-    {
-        TIMER0_InterruptHandler();
     }
     else{ }
 }

@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/ADC/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4866,9 +4855,9 @@ typedef enum{
 typedef struct
 {
 
-    void (* ADC_InterruptHandler)(void);
 
-    interrupt_priority_t adc_priority;
+
+
 
 
     adc_acquisition_time_t adc_acquisition_time ;
@@ -4898,19 +4887,8 @@ Std_ReturnType adc_GetConversionResult(const adc_config_t *_adc, adc_result_t *c
 # 264 "MCAL_Layer/ADC/mcal_adc.h"
 Std_ReturnType adc_GetConversion_Blocking(const adc_config_t *_adc, adc_channel_select_t channel,
                                           adc_result_t *conversion_result);
-# 279 "MCAL_Layer/ADC/mcal_adc.h"
-Std_ReturnType adc_StartConversion_Interrupt(const adc_config_t *_adc, adc_channel_select_t channel);
 # 11 "MCAL_Layer/ADC/mcal_adc.c" 2
-
-
-
-
-
-static void (*ADC_InterruptHandler)(void) = ((void*)0);
-
-
-
-
+# 21 "MCAL_Layer/ADC/mcal_adc.c"
 static __attribute__((inline)) Std_ReturnType adc_input_channel_port_configure(adc_channel_select_t channel);
 static __attribute__((inline)) Std_ReturnType select_result_format(const adc_config_t *_adc);
 static __attribute__((inline)) Std_ReturnType configure_voltage_reference(const adc_config_t *_adc);
@@ -4931,26 +4909,7 @@ Std_ReturnType adc_Init(const adc_config_t *_adc)
         ADCON2bits.ADCS = _adc->adc_conversion_clock;
 
         ret = adc_SelectChannel(_adc, _adc->adc_channel);
-
-
-        ADC_InterruptHandler = _adc->ADC_InterruptHandler;
-
-
-        if(INTERRUPT_PRIORITY_HIGH == _adc->adc_priority)
-        {
-            (IPR1bits.ADIP = 1);
-        }
-        else if(INTERRUPT_PRIORITY_LOW == _adc->adc_priority)
-        {
-            (IPR1bits.ADIP = 0);
-        }
-        else{ }
-
-        (PIR1bits.ADIF = 0);
-        (PIE1bits.ADIE = 1);
-        global_interrupt_Enable();
-
-
+# 74 "MCAL_Layer/ADC/mcal_adc.c"
         ret = select_result_format(_adc);
 
         ret = configure_voltage_reference(_adc);
@@ -4972,9 +4931,9 @@ Std_ReturnType adc_DeInit(const adc_config_t *_adc)
         (ADCON0bits.ADON = 0);
 
 
-        (PIE1bits.ADIE = 0);
 
-        (PIR1bits.ADIF = 0);
+
+
 
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -5066,29 +5025,7 @@ Std_ReturnType adc_GetConversion_Blocking(const adc_config_t *_adc, adc_channel_
 
     return ret;
 }
-# 267 "MCAL_Layer/ADC/mcal_adc.c"
-Std_ReturnType adc_StartConversion_Interrupt(const adc_config_t *_adc, adc_channel_select_t channel)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x01;
-
-    if(((void*)0) != _adc)
-    {
-
-        (PIR1bits.ADIF = 0);
-
-        ret = adc_SelectChannel(_adc, channel);
-
-        ret = adc_StartConversion(_adc);
-    }
-    else{ ret = (Std_ReturnType)0x00; }
-
-    return ret;
-}
-
-
-
-
-
+# 289 "MCAL_Layer/ADC/mcal_adc.c"
 static __attribute__((inline)) Std_ReturnType adc_input_channel_port_configure(adc_channel_select_t channel)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
@@ -5162,22 +5099,4 @@ static __attribute__((inline)) Std_ReturnType configure_voltage_reference(const 
 
     return ret;
 
-}
-
-
-
-
-
-void ADC_ISR(void)
-{
-
-    (PIR1bits.ADIF = 0);
-
-
-
-    if(ADC_InterruptHandler)
-    {
-        ADC_InterruptHandler();
-    }
-    else{ }
 }

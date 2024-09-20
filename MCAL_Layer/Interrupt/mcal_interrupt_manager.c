@@ -12,10 +12,14 @@
 /* Section : Global Variables Definition */
 
 /* External Interrupt OneChange RBx */
+#if EXTERNAL_INTERRUPT_OneChange_FEATURE == INTERRUPT_FEATURE_ENABLE
+
 static volatile uint8 RB4_flag = 0;
 static volatile uint8 RB5_flag = 0;
 static volatile uint8 RB6_flag = 0;
 static volatile uint8 RB7_flag = 0;
+
+#endif
 
 /* Section : Helper Function Declaration */
 
@@ -130,6 +134,24 @@ void __interrupt() InterruptManagerHigh(void)
     if((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF))
     {
         TIMER3_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* CCP1 Interrupt */
+    #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.CCP1IE) && (INTERRUPT_OCCUR == PIR1bits.CCP1IF))
+    {
+        CCP1_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* CCP2 Interrupt */
+    #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE2bits.CCP2IE) && (INTERRUPT_OCCUR == PIR2bits.CCP2IF))
+    {
+        CCP2_ISR();
     }
     else{/* Nothing */}
     #endif
@@ -270,6 +292,24 @@ void __interrupt() InterruptManager(void)
     if((INTERRUPT_ENABLE == PIE2bits.TMR3IE) && (INTERRUPT_OCCUR == PIR2bits.TMR3IF))
     {
         TIMER3_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* CCP1 Interrupt */
+    #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.CCP1IE) && (INTERRUPT_OCCUR == PIR1bits.CCP1IF))
+    {
+        CCP1_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* CCP2 Interrupt */
+    #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE2bits.CCP2IE) && (INTERRUPT_OCCUR == PIR2bits.CCP2IF))
+    {
+        CCP2_ISR();
     }
     else{/* Nothing */}
     #endif

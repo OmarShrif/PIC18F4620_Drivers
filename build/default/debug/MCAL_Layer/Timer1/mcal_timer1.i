@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Timer1/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4821,7 +4810,7 @@ typedef struct
 
     void (* TIMER1_InterruptHandler)(void);
 
-    interrupt_priority_t timer1_priority;
+
 
 
     uint16 timer1_preload_value;
@@ -4879,18 +4868,7 @@ Std_ReturnType timer1_Init(const timer1_config_t *_timer)
 
 
         TIMER1_InterruptHandler = _timer->TIMER1_InterruptHandler;
-
-
-        if(INTERRUPT_PRIORITY_HIGH == _timer->timer1_priority)
-        {
-            (IPR1bits.TMR1IP = 1);
-        }
-        else if(INTERRUPT_PRIORITY_LOW == _timer->timer1_priority)
-        {
-            (IPR1bits.TMR1IP = 0);
-        }
-        else{ }
-
+# 61 "MCAL_Layer/Timer1/mcal_timer1.c"
         (PIR1bits.TMR1IF = 0);
         (PIE1bits.TMR1IE = 1);
         global_interrupt_Enable();

@@ -4794,69 +4794,13 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h" 2
-# 24 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
-void INT0_ISR(void);
-void INT1_ISR(void);
-void INT2_ISR(void);
-
-
-
-
-
-void RB4_ISR(uint8 source);
-void RB5_ISR(uint8 source);
-void RB6_ISR(uint8 source);
-void RB7_ISR(uint8 source);
-
-
-
-
-
-void ADC_ISR(void);
-
-
-
-
-
-void TIMER0_ISR(void);
-
-
-
-
-
+# 53 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
 void TIMER1_ISR(void);
-
-
-
-
-
-void TIMER2_ISR(void);
-
-
-
-
-
-void TIMER3_ISR(void);
-
-
-
-
-
+# 71 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
 void CCP1_ISR(void);
 
 
@@ -4865,139 +4809,28 @@ void CCP1_ISR(void);
 
 void CCP2_ISR(void);
 # 10 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c" 2
-
-
-
-
-
-static volatile uint8 RB4_flag = 0;
-static volatile uint8 RB5_flag = 0;
-static volatile uint8 RB6_flag = 0;
-static volatile uint8 RB7_flag = 0;
-# 28 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
-void __attribute__((picinterrupt(("")))) InterruptManagerHigh(void)
+# 180 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+void __attribute__((picinterrupt(("")))) InterruptManager(void)
 {
-
-
-
-    if((1 == INTCONbits.INT0IE) && (1 == INTCONbits.INT0IF))
-    {
-        INT0_ISR();
-    }
-    else{ }
-
-
-
-
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB4) && (1 == RB4_flag))
-    {
-        RB4_flag = 0;
-        RB4_ISR(0);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB4) && (0 == RB4_flag))
-    {
-        RB4_flag = 1;
-        RB4_ISR(1);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB5) && (1 == RB5_flag))
-    {
-        RB5_flag = 0;
-        RB5_ISR(0);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB5) && (0 == RB5_flag))
-    {
-        RB5_flag = 1;
-        RB5_ISR(1);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB6) && (1 == RB6_flag))
-    {
-        RB6_flag = 0;
-        RB6_ISR(0);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB6) && (0 == RB6_flag))
-    {
-        RB6_flag = 1;
-        RB6_ISR(1);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_LOW == PORTBbits.RB7) && (1 == RB7_flag))
-    {
-        RB7_flag = 0;
-        RB7_ISR(0);
-    }
-    else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF) && (GPIO_LOGIC_HIGH == PORTBbits.RB7) && (0 == RB7_flag))
-    {
-        RB7_flag = 1;
-        RB7_ISR(1);
-    }
-    else{ }
-
-
-
-
-    if((1 == PIE1bits.ADIE) && (1 == PIR1bits.ADIF))
-    {
-        ADC_ISR();
-    }
-    else{ }
-
-
-
-
-    if((1 == INTCONbits.TMR0IE) && (1 == INTCONbits.TMR0IF))
-    {
-        TIMER0_ISR();
-    }
-    else{ }
-
-
-
-
+# 274 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
     if((1 == PIE1bits.TMR1IE) && (1 == PIR1bits.TMR1IF))
     {
         TIMER1_ISR();
     }
     else{ }
-
-
-
-
-    if((1 == PIE1bits.TMR2IE) && (1 == PIR1bits.TMR2IF))
+# 301 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+    if((1 == PIE1bits.CCP1IE) && (1 == PIR1bits.CCP1IF))
     {
-        TIMER2_ISR();
+        CCP1_ISR();
     }
     else{ }
 
 
 
 
-    if((1 == PIE2bits.TMR3IE) && (1 == PIR2bits.TMR3IF))
+    if((1 == PIE2bits.CCP2IE) && (1 == PIR2bits.CCP2IF))
     {
-        TIMER3_ISR();
-    }
-    else{ }
-
-}
-
-void __attribute__((picinterrupt(("low_priority")))) InterruptManagerLow(void)
-{
-
-
-
-    if((1 == INTCON3bits.INT1IE) && (1 == INTCON3bits.INT1IF))
-    {
-        INT1_ISR();
-    }
-    else{ }
-    if((1 == INTCON3bits.INT2IE) && (1 == INTCON3bits.INT2IF))
-    {
-        INT2_ISR();
+        CCP2_ISR();
     }
     else{ }
 

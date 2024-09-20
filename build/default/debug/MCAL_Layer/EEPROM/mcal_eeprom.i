@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/EEPROM/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/EEPROM/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4839,9 +4828,9 @@ Std_ReturnType EEPROM_WriteByte(uint16 bAdd , uint8 bData)
     EECON1bits.WREN = 1;
 
 
-    (INTCONbits.GIEH = 0);
 
 
+    (INTCONbits.GIE = 0);
 
 
     EECON2 = 0x55;

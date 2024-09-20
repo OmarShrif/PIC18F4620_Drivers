@@ -1,15 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3067 `(v ~T0 @X0 0 tf ]
-[v F3068 `(v ~T0 @X0 0 tf ]
-[v F3049 `(v ~T0 @X0 0 tf ]
-"24 MCAL_Layer/Timer2/mcal_timer2.c
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 24: Std_ReturnType timer2_Init(const timer2_config_t *_timer)
-[c E3041 0 1 .. ]
-[n E3041 . INTERRUPT_PRIORITY_LOW INTERRUPT_PRIORITY_HIGH  ]
 "58 MCAL_Layer/Timer2/mcal_timer2.h
 [; ;MCAL_Layer/Timer2/mcal_timer2.h: 58: {
-[s S274 `*F3049 1 `E3041 1 `uc 1 :2 `uc 1 :4 `uc 1 :2 `uc 1 ]
-[n S274 . TIMER2_InterruptHandler timer2_priority timer2_preload_value timer2_prescaler_value timer2_postscaler_value . ]
+[s S274 `uc 1 :2 `uc 1 :4 `uc 1 :2 `uc 1 ]
+[n S274 . timer2_preload_value timer2_prescaler_value timer2_postscaler_value . ]
 "5042 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5042:     struct {
 [s S209 :2 `uc 1 :1 `uc 1 :4 `uc 1 ]
@@ -28,55 +21,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5217
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5217: extern volatile unsigned char TMR2 __attribute__((address(0xFCC)));
 [v _TMR2 `Vuc ~T0 @X0 0 e@4044 ]
-"2657
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2657:     struct {
-[s S100 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S100 . TMR1IP TMR2IP CCP1IP SSPIP TXIP RCIP ADIP PSPIP ]
-"2667
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2667:     struct {
-[s S101 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S101 . . TX1IP RC1IP ]
-"2656
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2656: typedef union {
-[u S99 `S100 1 `S101 1 ]
-[n S99 . . . ]
-"2673
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2673: extern volatile IPR1bits_t IPR1bits __attribute__((address(0xF9F)));
-[v _IPR1bits `VS99 ~T0 @X0 0 e@3999 ]
-"2580
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2580:     struct {
-[s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S97 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
-"2590
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2590:     struct {
-[s S98 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S98 . . TX1IF RC1IF ]
-"2579
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2579: typedef union {
-[u S96 `S97 1 `S98 1 ]
-[n S96 . . . ]
-"2596
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2596: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
-[v _PIR1bits `VS96 ~T0 @X0 0 e@3998 ]
-"2503
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2503:     struct {
-[s S94 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S94 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
-"2513
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2513:     struct {
-[s S95 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S95 . . TX1IE RC1IE ]
-"2502
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2502: typedef union {
-[u S93 `S94 1 `S95 1 ]
-[n S93 . . . ]
-"2519
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2519: extern volatile PIE1bits_t PIE1bits __attribute__((address(0xF9D)));
-[v _PIE1bits `VS93 ~T0 @X0 0 e@3997 ]
-"71 MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h
-[; ;MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h: 71: void global_interrupt_Enable(void);
-[v _global_interrupt_Enable `(v ~T0 @X0 0 ef ]
-[v F3088 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -488,13 +432,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"15 MCAL_Layer/Timer2/mcal_timer2.c
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 15:  void (*TIMER2_InterruptHandler)(void) = ((void*)0);
-[v _TIMER2_InterruptHandler `*F3067 ~T0 @X0 1 e ]
-[i _TIMER2_InterruptHandler
--> -> -> 0 `i `*v `*F3068
-]
-"18
+"18 MCAL_Layer/Timer2/mcal_timer2.c
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 18: static uint8 timer2_preload = 0;
 [v _timer2_preload `uc ~T0 @X0 1 s ]
 [i _timer2_preload
@@ -528,76 +466,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
 "33
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 33:         (T2CONbits.T2CKPS = _timer->timer2_prescaler_value);
-[e = . . _T2CONbits 0 0 . *U __timer 3 ]
+[e = . . _T2CONbits 0 0 . *U __timer 1 ]
 "34
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 34:         (T2CONbits.TOUTPS = _timer->timer2_postscaler_value);
-[e = . . _T2CONbits 0 2 . *U __timer 4 ]
+[e = . . _T2CONbits 0 2 . *U __timer 2 ]
 "36
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 36:         TMR2 = _timer->timer2_preload_value;
-[e = _TMR2 . *U __timer 2 ]
+[e = _TMR2 . *U __timer 0 ]
 "38
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 38:         timer2_preload = _timer->timer2_preload_value;
-[e = _timer2_preload . *U __timer 2 ]
-"41
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 41:         TIMER2_InterruptHandler = _timer->TIMER2_InterruptHandler;
-[e = _TIMER2_InterruptHandler . *U __timer 0 ]
-"44
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 44:         if(INTERRUPT_PRIORITY_HIGH == _timer->timer2_priority)
-[e $ ! == -> . `E3041 1 `ui -> . *U __timer 1 `ui 277  ]
-"45
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 45:         {
-{
-"46
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 46:             (IPR1bits.TMR2IP = 1);
-[e = . . _IPR1bits 0 1 -> -> 1 `i `uc ]
-"47
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 47:         }
-}
-[e $U 278  ]
-"48
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 48:         else if(INTERRUPT_PRIORITY_LOW == _timer->timer2_priority)
-[e :U 277 ]
-[e $ ! == -> . `E3041 0 `ui -> . *U __timer 1 `ui 279  ]
-"49
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 49:         {
-{
-"50
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 50:             (IPR1bits.TMR2IP = 0);
-[e = . . _IPR1bits 0 1 -> -> 0 `i `uc ]
-"51
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 51:         }
-}
-[e $U 280  ]
-"52
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 52:         else{ }
-[e :U 279 ]
-{
-}
-[e :U 280 ]
-[e :U 278 ]
-"54
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 54:         (PIR1bits.TMR2IF = 0);
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"55
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 55:         (PIE1bits.TMR2IE = 1);
-[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
-"56
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 56:         global_interrupt_Enable();
-[e ( _global_interrupt_Enable ..  ]
+[e = _timer2_preload . *U __timer 0 ]
 "59
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 59:         (T2CONbits.TMR2ON = 1);
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
 "60
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 60:     }
 }
-[e $U 281  ]
+[e $U 277  ]
 "61
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 61:     else{ ret = (Std_ReturnType)0x00; }
 [e :U 276 ]
 {
 [e = _ret -> -> 0 `i `uc ]
 }
-[e :U 281 ]
+[e :U 277 ]
 "63
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 63:     return ret;
 [e ) _ret ]
@@ -625,37 +517,31 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "70
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 70:     if (((void*)0) != _timer)
-[e $ ! != -> -> -> 0 `i `*v `*CS274 __timer 283  ]
+[e $ ! != -> -> -> 0 `i `*v `*CS274 __timer 279  ]
 "71
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 71:     {
 {
 "73
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 73:         (T2CONbits.TMR2ON = 0);
 [e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
-"76
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 76:         (PIE1bits.TMR2IE = 0);
-[e = . . _PIE1bits 0 1 -> -> 0 `i `uc ]
-"78
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 78:         (PIR1bits.TMR2IF = 0);
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
 "80
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 80:     }
 }
-[e $U 284  ]
+[e $U 280  ]
 "81
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 81:     else{ ret = (Std_ReturnType)0x00; }
-[e :U 283 ]
+[e :U 279 ]
 {
 [e = _ret -> -> 0 `i `uc ]
 }
-[e :U 284 ]
+[e :U 280 ]
 "83
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 83:     return ret;
 [e ) _ret ]
-[e $UE 282  ]
+[e $UE 278  ]
 "84
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 84: }
-[e :UE 282 ]
+[e :UE 278 ]
 }
 "86
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 86: Std_ReturnType timer2_Write_Value(const timer2_config_t *_timer, uint8 _value)
@@ -677,7 +563,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "90
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 90:     if(((void*)0) != _timer)
-[e $ ! != -> -> -> 0 `i `*v `*CS274 __timer 286  ]
+[e $ ! != -> -> -> 0 `i `*v `*CS274 __timer 282  ]
 "91
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 91:     {
 {
@@ -687,21 +573,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "93
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 93:     }
 }
-[e $U 287  ]
+[e $U 283  ]
 "94
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 94:     else{ ret = (Std_ReturnType)0x00; }
-[e :U 286 ]
+[e :U 282 ]
 {
 [e = _ret -> -> 0 `i `uc ]
 }
-[e :U 287 ]
+[e :U 283 ]
 "96
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 96:     return ret;
 [e ) _ret ]
-[e $UE 285  ]
+[e $UE 281  ]
 "97
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 97: }
-[e :UE 285 ]
+[e :UE 281 ]
 }
 "99
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 99: Std_ReturnType timer2_Read_Value(const timer2_config_t *_timer, uint8 *_value)
@@ -723,7 +609,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _ret -> -> 1 `i `uc ]
 "103
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 103:     if((((void*)0) != _timer) && (((void*)0) != _value))
-[e $ ! && != -> -> -> 0 `i `*v `*CS274 __timer != -> -> -> 0 `i `*v `*uc __value 289  ]
+[e $ ! && != -> -> -> 0 `i `*v `*CS274 __timer != -> -> -> 0 `i `*v `*uc __value 285  ]
 "104
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 104:     {
 {
@@ -733,56 +619,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "106
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 106:     }
 }
-[e $U 290  ]
+[e $U 286  ]
 "107
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 107:     else{ ret = (Std_ReturnType)0x00; }
-[e :U 289 ]
+[e :U 285 ]
 {
 [e = _ret -> -> 0 `i `uc ]
 }
-[e :U 290 ]
+[e :U 286 ]
 "109
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 109:     return ret;
 [e ) _ret ]
-[e $UE 288  ]
+[e $UE 284  ]
 "110
 [; ;MCAL_Layer/Timer2/mcal_timer2.c: 110: }
-[e :UE 288 ]
-}
-"119
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 119: void TIMER2_ISR(void)
-[v _TIMER2_ISR `(v ~T0 @X0 1 ef ]
-"120
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 120: {
-{
-[e :U _TIMER2_ISR ]
-[f ]
-"122
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 122:     (PIR1bits.TMR2IF = 0);
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"124
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 124:     TMR2 = timer2_preload;
-[e = _TMR2 _timer2_preload ]
-"126
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 126:     if(TIMER2_InterruptHandler)
-[e $ ! != _TIMER2_InterruptHandler -> -> 0 `i `*F3088 292  ]
-"127
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 127:     {
-{
-"128
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 128:         TIMER2_InterruptHandler();
-[e ( *U _TIMER2_InterruptHandler ..  ]
-"129
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 129:     }
-}
-[e $U 293  ]
-"130
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 130:     else{ }
-[e :U 292 ]
-{
-}
-[e :U 293 ]
-"131
-[; ;MCAL_Layer/Timer2/mcal_timer2.c: 131: }
-[e :UE 291 ]
+[e :UE 284 ]
 }

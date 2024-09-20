@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Timer2/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4819,9 +4808,9 @@ void global_interrupt_Disable(void);
 typedef struct
 {
 
-    void (* TIMER2_InterruptHandler)(void);
 
-    interrupt_priority_t timer2_priority;
+
+
 
 
     uint8 timer2_preload_value;
@@ -4842,7 +4831,7 @@ Std_ReturnType timer2_Read_Value(const timer2_config_t *_timer, uint8 *_value);
 
 
 
- void (*TIMER2_InterruptHandler)(void) = ((void*)0);
+
 
 
 static uint8 timer2_preload = 0;
@@ -4866,26 +4855,7 @@ Std_ReturnType timer2_Init(const timer2_config_t *_timer)
         TMR2 = _timer->timer2_preload_value;
 
         timer2_preload = _timer->timer2_preload_value;
-
-
-        TIMER2_InterruptHandler = _timer->TIMER2_InterruptHandler;
-
-
-        if(INTERRUPT_PRIORITY_HIGH == _timer->timer2_priority)
-        {
-            (IPR1bits.TMR2IP = 1);
-        }
-        else if(INTERRUPT_PRIORITY_LOW == _timer->timer2_priority)
-        {
-            (IPR1bits.TMR2IP = 0);
-        }
-        else{ }
-
-        (PIR1bits.TMR2IF = 0);
-        (PIE1bits.TMR2IE = 1);
-        global_interrupt_Enable();
-
-
+# 59 "MCAL_Layer/Timer2/mcal_timer2.c"
         (T2CONbits.TMR2ON = 1);
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -4903,9 +4873,9 @@ Std_ReturnType timer2_DeInit(const timer2_config_t *_timer)
         (T2CONbits.TMR2ON = 0);
 
 
-        (PIE1bits.TMR2IE = 0);
 
-        (PIR1bits.TMR2IF = 0);
+
+
 
     }
     else{ ret = (Std_ReturnType)0x00; }
@@ -4937,18 +4907,4 @@ Std_ReturnType timer2_Read_Value(const timer2_config_t *_timer, uint8 *_value)
     else{ ret = (Std_ReturnType)0x00; }
 
     return ret;
-}
-# 119 "MCAL_Layer/Timer2/mcal_timer2.c"
-void TIMER2_ISR(void)
-{
-
-    (PIR1bits.TMR2IF = 0);
-
-    TMR2 = timer2_preload;
-
-    if(TIMER2_InterruptHandler)
-    {
-        TIMER2_InterruptHandler();
-    }
-    else{ }
 }

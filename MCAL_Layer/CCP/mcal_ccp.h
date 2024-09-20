@@ -96,9 +96,9 @@ typedef union
 
 typedef enum
 {
-    CCP1_CCP2_TIMER3 = 0,
+    CCP1_CCP2_TIMER1 = 0,
     CCP1_TIMER1_CCP2_TIMER3,
-    CCP1_CCP2_TIMER1
+    CCP1_CCP2_TIMER3
 }ccp_capture_timer_t;
 
 #if (CCP1_MODULE == CCP_MODULE_ENABLE) || (CCP2_MODULE == CCP_MODULE_ENABLE)

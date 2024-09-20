@@ -21,23 +21,28 @@ void TIMER1_APP_ISR(void);
 
 Std_ReturnType ret = E_OK;
 
+volatile uint8 second_captuer_flag = 0 ;
+uint16 second_capture = 0 ;
+volatile uint32 timer1_overflow = 0;
+sint32 total_period = 0;
+sint32 freq = 0;
+
 timer1_config_t timer1 = 
 {
-    .TIMER1_InterruptHandler = NULL,
+    .TIMER1_InterruptHandler = TIMER1_APP_ISR,
     .timer1_mode = TIMER1_TIMER_MODE,
     .timer1_reg_wr_mode = TIMER1_RW_REG_8Bit_MODE,
     .timer1_prescaler_value = TIMER1_PRESCALER_DIV_BY_1,
     .timer1_preload_value = 0
 };
-
 ccp_config_t ccp = 
 {
     .CCP1_InterruptHandler = CCP1_APP_ISR,
-    .ccp1_compare_mode = CCP_COMPARE_MODE_TOGGLE_ON_MATCH,
+    .ccp1_capture_mode = CCP_CAPTURE_MODE_1_RISING_EDGE,
     .ccp_capture_timer = CCP1_CCP2_TIMER1,
     .ccp1_pin.port = GPIO_PORTC,
     .ccp1_pin.pin = GPIO_PIN2,
-    .ccp1_pin.direction = GPIO_DIRECTION_OUTPUT,
+    .ccp1_pin.direction = GPIO_DIRECTION_INPUT,
     .ccp1_pin.logic = GPIO_LOGIC_LOW,
 };
 
@@ -46,7 +51,7 @@ ccp_config_t ccp =
 int main() 
 {
     application_initialize();
-    ret = ccp1_Compare_Mode_Set_Value(&ccp,37500);
+    
     while(1)
     {
         
@@ -66,16 +71,14 @@ void application_initialize(void)
 void CCP1_APP_ISR(void)
 {
     Std_ReturnType ret = E_OK;
-    static uint8 flag = 0;
+    ret = ccp1_Capture_Mode_Read_Value(&second_capture);
+    total_period = (sint32)(timer1_overflow * 65536) + second_capture;
+    timer1_overflow = 0;
     ret = timer1_Write_Value(&timer1,0);
-    if(0 == flag)
-    {
-        ret = ccp1_Compare_Mode_Set_Value(&ccp,12500);
-        flag = 1;
-    }
-    else if(1 == flag)
-    {
-        ret = ccp1_Compare_Mode_Set_Value(&ccp,37500);
-        flag = 0;
-    }
+    freq = (sint32)(1000000.0/total_period);
+}
+
+void TIMER1_APP_ISR(void)
+{
+    timer1_overflow++;
 }

@@ -104,28 +104,25 @@
 
             /* PIN Configurations */
             ret = gpio_pin_initialize(&(_ccp_obj->ccp1_pin));
-
+            
             #if CCP1_CFG_SELECTED_MODE == CCP_CFG_CAPTURE_MODE_SELECTED
-                /* Interrupt Configurations for CCP1 Module */
-                #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
-                ccp1_Interrupt_Config(_ccp_obj);
-                #endif
                 ccp_Mode_Timer_Select(_ccp_obj);
                 ccp1_Capture_Mode_Config(_ccp_obj);
-            #elif CCP1_CFG_SELECTED_MODE == CCP_CFG_COMPARE_MODE_SELECTED
                 /* Interrupt Configurations for CCP1 Module */
                 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
                 ccp1_Interrupt_Config(_ccp_obj);
                 #endif
+            #elif CCP1_CFG_SELECTED_MODE == CCP_CFG_COMPARE_MODE_SELECTED
                 ccp_Mode_Timer_Select(_ccp_obj);
                 ccp1_Compare_Mode_Config(_ccp_obj);
+                /* Interrupt Configurations for CCP1 Module */
+                #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+                ccp1_Interrupt_Config(_ccp_obj);
+                #endif
             #elif CCP1_CFG_SELECTED_MODE == CCP_CFG_PWM_MODE_SELECTED
                 ccp_PWM_Mode_Config(_ccp_obj);
                 CCP1_SET_MODE(CCP_PWM_MODE);
             #endif
-
-            /* CCP1 Module Disable */
-            CCP1_SET_MODE(CCP_MODULE_DISABLE);
         }
         else{ ret = E_NOT_OK; }
         
@@ -295,26 +292,23 @@
             ret = gpio_pin_initialize(&(_ccp_obj->ccp2_pin));
 
             #if CCP2_CFG_SELECTED_MODE == CCP_CFG_CAPTURE_MODE_SELECTED
-                /* Interrupt Configurations for CCP2 Module */
-                #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
-                ccp2_Interrupt_Config(_ccp_obj);
-                #endif
                 ccp_Mode_Timer_Select(_ccp_obj);
                 ccp2_Capture_Mode_Config(_ccp_obj);
-            #elif CCP2_CFG_SELECTED_MODE == CCP_CFG_COMPARE_MODE_SELECTED
                 /* Interrupt Configurations for CCP2 Module */
                 #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
                 ccp2_Interrupt_Config(_ccp_obj);
                 #endif
+            #elif CCP2_CFG_SELECTED_MODE == CCP_CFG_COMPARE_MODE_SELECTED
                 ccp_Mode_Timer_Select(_ccp_obj);
                 ccp2_Compare_Mode_Config(_ccp_obj);
+                /* Interrupt Configurations for CCP2 Module */
+                #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+                ccp2_Interrupt_Config(_ccp_obj);
+                #endif
             #elif CCP2_CFG_SELECTED_MODE == CCP_CFG_PWM_MODE_SELECTED
                 ccp_PWM_Mode_Config(_ccp_obj);
                 CCP2_SET_MODE(CCP_PWM_MODE);
             #endif
-
-            /* CCP2 Module Disable */
-            CCP2_SET_MODE(CCP_MODULE_DISABLE);
         }
         else{ ret = E_NOT_OK; }
 
@@ -675,7 +669,6 @@ static void ccp_PWM_Mode_Config(const ccp_config_t *_ccp_obj)
 
 /* Section : ISRs Definition */ 
 
-#if (CCP1_MODULE == CCP_MODULE_ENABLE) && (CCP1_CFG_SELECTED_MODE != CCP_CFG_PWM_MODE_SELECTED)
 #if CCP1_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 
 void CCP1_ISR(void)
@@ -693,9 +686,7 @@ void CCP1_ISR(void)
 }
 
 #endif
-#endif
-        
-#if (CCP2_MODULE == CCP_MODULE_ENABLE) && (CCP2_CFG_SELECTED_MODE != CCP_CFG_PWM_MODE_SELECTED)
+
 #if CCP2_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 
 void CCP2_ISR(void)
@@ -712,5 +703,4 @@ void CCP2_ISR(void)
     else{ /* Nothing */ }
 }
 
-#endif
 #endif

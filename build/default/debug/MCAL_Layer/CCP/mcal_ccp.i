@@ -4796,18 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 71 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/CCP/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4842,9 +4831,9 @@ typedef union
 
 typedef enum
 {
-    CCP1_CCP2_TIMER3 = 0,
+    CCP1_CCP2_TIMER1 = 0,
     CCP1_TIMER1_CCP2_TIMER3,
-    CCP1_CCP2_TIMER1
+    CCP1_CCP2_TIMER3
 }ccp_capture_timer_t;
 
 
@@ -4858,42 +4847,29 @@ typedef struct
 
 
         pin_config_t ccp1_pin;
-# 146 "MCAL_Layer/CCP/mcal_ccp.h"
-        pin_config_t ccp2_pin;
-# 180 "MCAL_Layer/CCP/mcal_ccp.h"
-            uint32 PWM_Frequency;
-            uint8 timer2_postscaler_value;
-            uint8 timer2_prescaler_value;
-# 196 "MCAL_Layer/CCP/mcal_ccp.h"
+# 128 "MCAL_Layer/CCP/mcal_ccp.h"
+            uint8 ccp1_compare_mode;
+
+
+                void (* CCP1_InterruptHandler)(void);
+# 192 "MCAL_Layer/CCP/mcal_ccp.h"
+        ccp_capture_timer_t ccp_capture_timer;
+
+
+
 }ccp_config_t;
-
-
-
-
-
-
-    Std_ReturnType ccp_Init(const ccp_config_t *_ccp_obj);
-    Std_ReturnType ccp_DeInit(const ccp_config_t *_ccp_obj);
-
-
-
+# 208 "MCAL_Layer/CCP/mcal_ccp.h"
     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj);
     Std_ReturnType ccp1_DeInit(const ccp_config_t *_ccp_obj);
-# 222 "MCAL_Layer/CCP/mcal_ccp.h"
-        Std_ReturnType ccp1_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty);
-        Std_ReturnType ccp1_PWM_Start(const ccp_config_t *_ccp_obj);
-        Std_ReturnType ccp1_PWM_Stop(const ccp_config_t *_ccp_obj);
 
 
 
 
 
-    Std_ReturnType ccp2_Init(const ccp_config_t *_ccp_obj);
-    Std_ReturnType ccp2_DeInit(const ccp_config_t *_ccp_obj);
-# 243 "MCAL_Layer/CCP/mcal_ccp.h"
-        Std_ReturnType ccp2_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty);
-        Std_ReturnType ccp2_PWM_Start(const ccp_config_t *_ccp_obj);
-        Std_ReturnType ccp2_PWM_Stop(const ccp_config_t *_ccp_obj);
+
+
+        Std_ReturnType ccp1_IsCompareComplete(uint8 *_compare_status);
+        Std_ReturnType ccp1_Compare_Mode_Set_Value(const ccp_config_t *_ccp_obj, uint16 compare_value);
 # 10 "MCAL_Layer/CCP/mcal_ccp.c" 2
 
 
@@ -4905,45 +4881,13 @@ typedef struct
 
 
     static void (*CCP2_InterruptHandler)(void) = ((void*)0);
-# 58 "MCAL_Layer/CCP/mcal_ccp.c"
-    static void ccp_PWM_Mode_Config(const ccp_config_t *_ccp_obj);
+# 31 "MCAL_Layer/CCP/mcal_ccp.c"
+    static Std_ReturnType ccp1_Compare_Mode_Config(const ccp_config_t *_ccp_obj);
 
-
-
-
-
-
-    Std_ReturnType ccp_Init(const ccp_config_t *_ccp_obj)
-    {
-        Std_ReturnType ret = (Std_ReturnType)0x01;
-
-        if(((void*)0) != _ccp_obj)
-        {
-            ret = ccp1_Init(_ccp_obj);
-            ret = ccp2_Init(_ccp_obj);
-        }
-        else{ ret = (Std_ReturnType)0x00; }
-
-        return ret;
-    }
-
-    Std_ReturnType ccp_DeInit(const ccp_config_t *_ccp_obj)
-    {
-        Std_ReturnType ret = (Std_ReturnType)0x01;
-
-        if(((void*)0) != _ccp_obj)
-        {
-            ret = ccp1_DeInit(_ccp_obj);
-            ret = ccp2_DeInit(_ccp_obj);
-        }
-        else{ ret = (Std_ReturnType)0x00; }
-
-        return ret;
-    }
-
-
-
-
+        static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj);
+# 54 "MCAL_Layer/CCP/mcal_ccp.c"
+    static void ccp_Mode_Timer_Select(const ccp_config_t *_ccp_obj);
+# 96 "MCAL_Layer/CCP/mcal_ccp.c"
     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj)
     {
         Std_ReturnType ret = (Std_ReturnType)0x01;
@@ -4955,13 +4899,17 @@ typedef struct
 
 
             ret = gpio_pin_initialize(&(_ccp_obj->ccp1_pin));
-# 123 "MCAL_Layer/CCP/mcal_ccp.c"
-                ccp_PWM_Mode_Config(_ccp_obj);
-                (CCP1CONbits.CCP1M = ((uint8)0x0C));
+# 116 "MCAL_Layer/CCP/mcal_ccp.c"
+                ccp_Mode_Timer_Select(_ccp_obj);
+                ccp1_Compare_Mode_Config(_ccp_obj);
+
+
+                ccp1_Interrupt_Config(_ccp_obj);
 
 
 
-            (CCP1CONbits.CCP1M = ((uint8)0x00));
+
+
         }
         else{ ret = (Std_ReturnType)0x00; }
 
@@ -4987,143 +4935,123 @@ typedef struct
 
         return ret;
     }
-# 239 "MCAL_Layer/CCP/mcal_ccp.c"
-        Std_ReturnType ccp1_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty)
+# 195 "MCAL_Layer/CCP/mcal_ccp.c"
+        Std_ReturnType ccp1_IsCompareComplete(uint8 *_compare_status)
         {
             Std_ReturnType ret = (Std_ReturnType)0x01;
-            uint16 l_duty_temp = 0;
-            if(((void*)0) != _ccp_obj)
+
+            if(((void*)0) != _compare_status)
             {
-                l_duty_temp = (uint16)((float)4 * ((float)PR2 + 1.0) * ((float)_duty / 100.0));
-                CCP1CONbits.DC1B = (uint8)(l_duty_temp & 0x0003);
-                CCPR1L = (uint8)(l_duty_temp >> 2);
+                if(0X01 == PIR1bits.CCP1IF)
+                {
+                    *_compare_status = 0X01;
+                    (PIR1bits.CCP1IF = 0);
+                }
+                else
+                {
+                    *_compare_status = 0X00;
+                }
             }
             else{ ret = (Std_ReturnType)0x00; }
 
             return ret;
         }
 
-        Std_ReturnType ccp1_PWM_Start(const ccp_config_t *_ccp_obj)
+        Std_ReturnType ccp1_Compare_Mode_Set_Value(const ccp_config_t *_ccp_obj, uint16 compare_value)
         {
             Std_ReturnType ret = (Std_ReturnType)0x01;
+            CCP_REG_T capture_temp_value = {.ccpr_low = 0, .ccpr_high = 0};
 
             if(((void*)0) != _ccp_obj)
             {
-                (CCP1CONbits.CCP1M = ((uint8)0x0C));
+
+                capture_temp_value.ccpr_16Bit = compare_value;
+                CCPR1L = capture_temp_value.ccpr_low;
+                CCPR1H = capture_temp_value.ccpr_high;
             }
             else{ ret = (Std_ReturnType)0x00; }
 
             return ret;
         }
-
-        Std_ReturnType ccp1_PWM_Stop(const ccp_config_t *_ccp_obj)
-        {
-            Std_ReturnType ret = (Std_ReturnType)0x01;
-
-            if(((void*)0) != _ccp_obj)
-            {
-                (CCP1CONbits.CCP1M = ((uint8)0x00));
-            }
-            else{ ret = (Std_ReturnType)0x00; }
-
-            return ret;
-        }
-
-
-
-
-
-
-    Std_ReturnType ccp2_Init(const ccp_config_t *_ccp_obj)
+# 509 "MCAL_Layer/CCP/mcal_ccp.c"
+    static Std_ReturnType ccp1_Compare_Mode_Config(const ccp_config_t *_ccp_obj)
     {
         Std_ReturnType ret = (Std_ReturnType)0x01;
 
-        if(((void*)0) != _ccp_obj)
+
+        switch(_ccp_obj->ccp1_compare_mode)
         {
-
-            (CCP2CONbits.CCP2M = ((uint8)0x00));
-
-
-            ret = gpio_pin_initialize(&(_ccp_obj->ccp2_pin));
-# 312 "MCAL_Layer/CCP/mcal_ccp.c"
-                ccp_PWM_Mode_Config(_ccp_obj);
-                (CCP2CONbits.CCP2M = ((uint8)0x0C));
-
-
-
-            (CCP2CONbits.CCP2M = ((uint8)0x00));
+            case ((uint8)0x08) : (CCP1CONbits.CCP1M = ((uint8)0x08)); break;
+            case ((uint8)0x09) : (CCP1CONbits.CCP1M = ((uint8)0x09)); break;
+            case ((uint8)0x02) : (CCP1CONbits.CCP1M = ((uint8)0x02)); break;
+            case ((uint8)0x0A) : (CCP1CONbits.CCP1M = ((uint8)0x0A)); break;
+            case ((uint8)0x0B) : (CCP1CONbits.CCP1M = ((uint8)0x0B)); break;
+            default : ret = (Std_ReturnType)0x00;
         }
-        else{ ret = (Std_ReturnType)0x00; }
 
         return ret;
     }
 
-    Std_ReturnType ccp2_DeInit(const ccp_config_t *_ccp_obj)
+        static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj)
+        {
+
+            CCP1_InterruptHandler = _ccp_obj->CCP1_InterruptHandler;
+# 543 "MCAL_Layer/CCP/mcal_ccp.c"
+            (PIR1bits.CCP1IF = 0);
+            (PIE1bits.CCP1IE = 1);
+            global_interrupt_Enable();
+        }
+# 636 "MCAL_Layer/CCP/mcal_ccp.c"
+    static void ccp_Mode_Timer_Select(const ccp_config_t *_ccp_obj)
     {
-        Std_ReturnType ret = (Std_ReturnType)0x01;
-
-        if(((void*)0) != _ccp_obj)
+        if(CCP1_CCP2_TIMER3 == _ccp_obj->ccp_capture_timer)
         {
 
-            (CCP2CONbits.CCP2M = ((uint8)0x00));
-
-
-            (PIE2bits.CCP2IE = 0);
-
-            (PIR2bits.CCP2IF = 0);
-
+            T3CONbits.T3CCP1 = 0;
+            T3CONbits.T3CCP2 = 1;
         }
-        else{ ret = (Std_ReturnType)0x00; }
+        else if(CCP1_TIMER1_CCP2_TIMER3 == _ccp_obj->ccp_capture_timer){
 
-        return ret;
+
+            T3CONbits.T3CCP1 = 1;
+            T3CONbits.T3CCP2 = 0;
+        }
+        else if(CCP1_CCP2_TIMER1 == _ccp_obj->ccp_capture_timer){
+
+            T3CONbits.T3CCP1 = 0;
+            T3CONbits.T3CCP2 = 0;
+        }
+        else{ }
     }
-# 428 "MCAL_Layer/CCP/mcal_ccp.c"
-        Std_ReturnType ccp2_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty)
-        {
-            Std_ReturnType ret = (Std_ReturnType)0x01;
-            uint16 l_duty_temp = 0;
-
-            if(((void*)0) != _ccp_obj)
-            {
-                l_duty_temp = (uint16)((float)4 * ((float)PR2 + 1.0) * ((float)_duty / 100.0));
-                CCP2CONbits.DC2B = (uint8)(l_duty_temp & 0x0003);
-                CCPR2L = (uint8)(l_duty_temp >> 2);
-            }
-            else{ ret = (Std_ReturnType)0x00; }
-
-            return ret;
-        }
-
-        Std_ReturnType ccp2_PWM_Start(const ccp_config_t *_ccp_obj)
-        {
-            Std_ReturnType ret = (Std_ReturnType)0x01;
-
-            if(((void*)0) != _ccp_obj)
-            {
-                (CCP2CONbits.CCP2M = ((uint8)0x0C));
-            }
-            else{ ret = (Std_ReturnType)0x00; }
-
-            return ret;
-        }
-
-        Std_ReturnType ccp2_PWM_Stop(const ccp_config_t *_ccp_obj)
-        {
-            Std_ReturnType ret = (Std_ReturnType)0x01;
-
-            if(((void*)0) != _ccp_obj)
-            {
-                (CCP2CONbits.CCP2M = ((uint8)0x00));
-            }
-            else{ ret = (Std_ReturnType)0x00; }
-
-            return ret;
-        }
-# 666 "MCAL_Layer/CCP/mcal_ccp.c"
-static void ccp_PWM_Mode_Config(const ccp_config_t *_ccp_obj)
+# 674 "MCAL_Layer/CCP/mcal_ccp.c"
+void CCP1_ISR(void)
 {
 
-    PR2 = (uint8)( ((float)4000000UL / ((float)_ccp_obj->PWM_Frequency * 4.0 *
-                    (float)_ccp_obj->timer2_prescaler_value *
-                    (float)_ccp_obj->timer2_postscaler_value)) - 1);
+    (PIR1bits.CCP1IF = 0);
+
+
+
+    if(CCP1_InterruptHandler)
+    {
+        CCP1_InterruptHandler();
+    }
+    else{ }
+}
+
+
+
+
+
+void CCP2_ISR(void)
+{
+
+    (PIR2bits.CCP2IF = 0);
+
+
+
+    if(CCP2_InterruptHandler)
+    {
+        CCP2_InterruptHandler();
+    }
+    else{ }
 }

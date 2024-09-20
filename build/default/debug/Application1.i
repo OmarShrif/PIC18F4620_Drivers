@@ -5063,58 +5063,20 @@ Std_ReturnType ecu_layer_initialize(void);
 void application_initialize(void);
 # 9 "Application1.c" 2
 
-# 1 "./MCAL_Layer/Timer2/mcal_timer2.h" 1
-# 14 "./MCAL_Layer/Timer2/mcal_timer2.h"
-# 1 "./MCAL_Layer/Timer2/../Interrupt/mcal_internal_interrupt.h" 1
-# 12 "./MCAL_Layer/Timer2/../Interrupt/mcal_internal_interrupt.h"
-# 1 "./MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h" 1
-# 14 "./MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h"
-# 1 "./MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 14 "./MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "./MCAL_Layer/Timer2/../Interrupt/mcal_interrupt_cfg.h"
-typedef enum
-{
-    INTERRUPT_PRIORITY_LOW = 0,
-    INTERRUPT_PRIORITY_HIGH
-
-}interrupt_priority_t;
-
-
-
-
-
+# 1 "./MCAL_Layer/CCP/mcal_ccp.h" 1
+# 13 "./MCAL_Layer/CCP/mcal_ccp.h"
+# 1 "./MCAL_Layer/CCP/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_Layer/CCP/../Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "./MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/CCP/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "./MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h" 2
+# 71 "./MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
-# 12 "./MCAL_Layer/Timer2/../Interrupt/mcal_internal_interrupt.h" 2
-# 14 "./MCAL_Layer/Timer2/mcal_timer2.h" 2
+# 12 "./MCAL_Layer/CCP/../Interrupt/mcal_internal_interrupt.h" 2
+# 13 "./MCAL_Layer/CCP/mcal_ccp.h" 2
 
-# 1 "./MCAL_Layer/Timer2/mcal_timer2_cfg.h" 1
-# 15 "./MCAL_Layer/Timer2/mcal_timer2.h" 2
-# 57 "./MCAL_Layer/Timer2/mcal_timer2.h"
-typedef struct
-{
-
-    void (* TIMER2_InterruptHandler)(void);
-
-    interrupt_priority_t timer2_priority;
-
-
-    uint8 timer2_preload_value;
-    uint8 timer2_prescaler_value :2;
-    uint8 timer2_postscaler_value :4;
-    uint8 :2;
-}timer2_config_t;
-
-
-
-Std_ReturnType timer2_Init(const timer2_config_t *_timer);
-Std_ReturnType timer2_DeInit(const timer2_config_t *_timer);
-Std_ReturnType timer2_Write_Value(const timer2_config_t *_timer, uint8 _value);
-Std_ReturnType timer2_Read_Value(const timer2_config_t *_timer, uint8 *_value);
-# 10 "Application1.c" 2
-
-# 1 "./MCAL_Layer/CCP/mcal_ccp.h" 1
-# 14 "./MCAL_Layer/CCP/mcal_ccp.h"
 # 1 "./MCAL_Layer/CCP/mcal_ccp_cfg.h" 1
 # 14 "./MCAL_Layer/CCP/mcal_ccp.h" 2
 # 73 "./MCAL_Layer/CCP/mcal_ccp.h"
@@ -5144,9 +5106,9 @@ typedef union
 
 typedef enum
 {
-    CCP1_CCP2_TIMER3 = 0,
+    CCP1_CCP2_TIMER1 = 0,
     CCP1_TIMER1_CCP2_TIMER3,
-    CCP1_CCP2_TIMER1
+    CCP1_CCP2_TIMER3
 }ccp_capture_timer_t;
 
 
@@ -5160,72 +5122,145 @@ typedef struct
 
 
         pin_config_t ccp1_pin;
-# 146 "./MCAL_Layer/CCP/mcal_ccp.h"
-        pin_config_t ccp2_pin;
-# 180 "./MCAL_Layer/CCP/mcal_ccp.h"
-            uint32 PWM_Frequency;
-            uint8 timer2_postscaler_value;
-            uint8 timer2_prescaler_value;
-# 196 "./MCAL_Layer/CCP/mcal_ccp.h"
+# 128 "./MCAL_Layer/CCP/mcal_ccp.h"
+            uint8 ccp1_compare_mode;
+
+
+                void (* CCP1_InterruptHandler)(void);
+# 192 "./MCAL_Layer/CCP/mcal_ccp.h"
+        ccp_capture_timer_t ccp_capture_timer;
+
+
+
 }ccp_config_t;
-
-
-
-
-
-
-    Std_ReturnType ccp_Init(const ccp_config_t *_ccp_obj);
-    Std_ReturnType ccp_DeInit(const ccp_config_t *_ccp_obj);
-
-
-
+# 208 "./MCAL_Layer/CCP/mcal_ccp.h"
     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj);
     Std_ReturnType ccp1_DeInit(const ccp_config_t *_ccp_obj);
-# 222 "./MCAL_Layer/CCP/mcal_ccp.h"
-        Std_ReturnType ccp1_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty);
-        Std_ReturnType ccp1_PWM_Start(const ccp_config_t *_ccp_obj);
-        Std_ReturnType ccp1_PWM_Stop(const ccp_config_t *_ccp_obj);
 
 
 
 
 
-    Std_ReturnType ccp2_Init(const ccp_config_t *_ccp_obj);
-    Std_ReturnType ccp2_DeInit(const ccp_config_t *_ccp_obj);
-# 243 "./MCAL_Layer/CCP/mcal_ccp.h"
-        Std_ReturnType ccp2_PWM_Set_Duty(const ccp_config_t *_ccp_obj, const uint8 _duty);
-        Std_ReturnType ccp2_PWM_Start(const ccp_config_t *_ccp_obj);
-        Std_ReturnType ccp2_PWM_Stop(const ccp_config_t *_ccp_obj);
+
+
+        Std_ReturnType ccp1_IsCompareComplete(uint8 *_compare_status);
+        Std_ReturnType ccp1_Compare_Mode_Set_Value(const ccp_config_t *_ccp_obj, uint16 compare_value);
+# 10 "Application1.c" 2
+
+# 1 "./MCAL_Layer/Timer1/mcal_timer1.h" 1
+# 15 "./MCAL_Layer/Timer1/mcal_timer1.h"
+# 1 "./MCAL_Layer/Timer1/mcal_timer1_cfg.h" 1
+# 15 "./MCAL_Layer/Timer1/mcal_timer1.h" 2
+# 61 "./MCAL_Layer/Timer1/mcal_timer1.h"
+typedef struct
+{
+
+    void (* TIMER1_InterruptHandler)(void);
+
+
+
+
+    uint16 timer1_preload_value;
+    uint8 timer1_prescaler_value : 2;
+    uint8 timer1_mode : 1;
+    uint8 timer1_counter_mode : 1;
+    uint8 timer1_osc_cfg : 1;
+    uint8 timer1_reg_wr_mode : 1;
+    uint8 : 2;
+} timer1_config_t;
+
+
+
+Std_ReturnType timer1_Init(const timer1_config_t *_timer);
+Std_ReturnType timer1_DeInit(const timer1_config_t *_timer);
+Std_ReturnType timer1_Write_Value(const timer1_config_t *_timer, uint16 _value);
+Std_ReturnType timer1_Read_Value(const timer1_config_t *_timer, uint16 *_value);
 # 11 "Application1.c" 2
 
+# 1 "./MCAL_Layer/Timer2/mcal_timer2.h" 1
+# 15 "./MCAL_Layer/Timer2/mcal_timer2.h"
+# 1 "./MCAL_Layer/Timer2/mcal_timer2_cfg.h" 1
+# 15 "./MCAL_Layer/Timer2/mcal_timer2.h" 2
+# 57 "./MCAL_Layer/Timer2/mcal_timer2.h"
+typedef struct
+{
 
 
+
+
+
+
+    uint8 timer2_preload_value;
+    uint8 timer2_prescaler_value :2;
+    uint8 timer2_postscaler_value :4;
+    uint8 :2;
+}timer2_config_t;
+
+
+
+Std_ReturnType timer2_Init(const timer2_config_t *_timer);
+Std_ReturnType timer2_DeInit(const timer2_config_t *_timer);
+Std_ReturnType timer2_Write_Value(const timer2_config_t *_timer, uint8 _value);
+Std_ReturnType timer2_Read_Value(const timer2_config_t *_timer, uint8 *_value);
+# 12 "Application1.c" 2
+
+# 1 "./MCAL_Layer/Timer3/mcal_timer3.h" 1
+# 15 "./MCAL_Layer/Timer3/mcal_timer3.h"
+# 1 "./MCAL_Layer/Timer3/mcal_timer3_cfg.h" 1
+# 15 "./MCAL_Layer/Timer3/mcal_timer3.h" 2
+# 53 "./MCAL_Layer/Timer3/mcal_timer3.h"
+typedef struct
+{
+
+
+
+
+
+
+    uint16 timer3_preload_value;
+    uint8 timer3_prescaler_value : 2;
+    uint8 timer3_mode : 1;
+    uint8 timer3_counter_mode : 1;
+    uint8 timer3_reg_wr_mode : 1;
+    uint8 : 3;
+}timer3_config_t;
+
+
+
+Std_ReturnType timer3_Init(const timer3_config_t *_timer);
+Std_ReturnType timer3_DeInit(const timer3_config_t *_timer);
+Std_ReturnType timer3_Write_Value(const timer3_config_t *_timer, uint16 _value);
+Std_ReturnType timer3_Read_Value(const timer3_config_t *_timer, uint16 *_value);
+# 13 "Application1.c" 2
+
+
+
+
+void CCP1_APP_ISR(void);
+void TIMER1_APP_ISR(void);
 
 
 
 Std_ReturnType ret = (Std_ReturnType)0x01;
 
-timer2_config_t timer2 =
+timer1_config_t timer1 =
 {
-    .TIMER2_InterruptHandler = ((void*)0),
-    .timer2_priority = INTERRUPT_PRIORITY_HIGH,
-    .timer2_prescaler_value = 0,
-    .timer2_postscaler_value = 0,
-    .timer2_preload_value = 0
+    .TIMER1_InterruptHandler = ((void*)0),
+    .timer1_mode = 0,
+    .timer1_reg_wr_mode = 0,
+    .timer1_prescaler_value = 0,
+    .timer1_preload_value = 0
 };
+
 ccp_config_t ccp =
 {
-    .PWM_Frequency = 20000,
-    .timer2_prescaler_value = 1,
-    .timer2_postscaler_value = 1,
+    .CCP1_InterruptHandler = CCP1_APP_ISR,
+    .ccp1_compare_mode = ((uint8)0x02),
+    .ccp_capture_timer = CCP1_CCP2_TIMER1,
     .ccp1_pin.port = GPIO_PORTC,
     .ccp1_pin.pin = GPIO_PIN2,
     .ccp1_pin.direction = GPIO_DIRECTION_OUTPUT,
-    .ccp1_pin.logic = GPIO_LOGIC_LOW,
-    .ccp2_pin.port = GPIO_PORTC,
-    .ccp2_pin.pin = GPIO_PIN1,
-    .ccp2_pin.direction = GPIO_DIRECTION_OUTPUT,
-    .ccp2_pin.logic = GPIO_LOGIC_LOW,
+    .ccp1_pin.logic = GPIO_LOGIC_HIGH,
 };
 
 
@@ -5233,13 +5268,10 @@ ccp_config_t ccp =
 int main()
 {
     application_initialize();
-
-    ret = ccp1_PWM_Set_Duty(&ccp,50);
-    ret = ccp1_PWM_Start(&ccp);
-    ret = ccp2_PWM_Set_Duty(&ccp,25);
-    ret = ccp2_PWM_Start(&ccp);
+    ret = ccp1_Compare_Mode_Set_Value(&ccp,37500);
     while(1)
     {
+
     }
 
     return (0);
@@ -5249,6 +5281,23 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x01;
     ret_init = ecu_layer_initialize();
-    ret_init = timer2_Init(&timer2);
-    ret_init = ccp_Init(&ccp);
+    ret_init = timer1_Init(&timer1);
+    ret_init = ccp1_Init(&ccp);
+}
+
+void CCP1_APP_ISR(void)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    static uint8 flag = 0;
+    ret = timer1_Write_Value(&timer1,0);
+    if(0 == flag)
+    {
+        ret = ccp1_Compare_Mode_Set_Value(&ccp,12500);
+        flag = 1;
+    }
+    else if(1 == flag)
+    {
+        ret = ccp1_Compare_Mode_Set_Value(&ccp,37500);
+        flag = 0;
+    }
 }
