@@ -7,46 +7,18 @@
 
 /* Section : Includes */
 #include "Application1.h"
-#include "MCAL_Layer/CCP/mcal_ccp.h"
-#include "MCAL_Layer/Timer1/mcal_timer1.h"
-#include "MCAL_Layer/Timer2/mcal_timer2.h"
-#include "MCAL_Layer/Timer3/mcal_timer3.h"
 
 /* Section : Functions Declarations */
-
-void CCP1_APP_ISR(void);
-void TIMER1_APP_ISR(void);
 
 /* Section : Global Variables Definition */
 
 Std_ReturnType ret = E_OK;
-
-timer1_config_t timer1 = 
-{
-    .TIMER1_InterruptHandler = NULL,
-    .timer1_mode = TIMER1_TIMER_MODE,
-    .timer1_reg_wr_mode = TIMER1_RW_REG_8Bit_MODE,
-    .timer1_prescaler_value = TIMER1_PRESCALER_DIV_BY_1,
-    .timer1_preload_value = 0
-};
-
-ccp_config_t ccp = 
-{
-    .CCP1_InterruptHandler = CCP1_APP_ISR,
-    .ccp1_compare_mode = CCP_COMPARE_MODE_TOGGLE_ON_MATCH,
-    .ccp_capture_timer = CCP1_CCP2_TIMER1,
-    .ccp1_pin.port = GPIO_PORTC,
-    .ccp1_pin.pin = GPIO_PIN2,
-    .ccp1_pin.direction = GPIO_DIRECTION_OUTPUT,
-    .ccp1_pin.logic = GPIO_LOGIC_LOW,
-};
 
 /* Section : Functions Definition */
 
 int main() 
 {
     application_initialize();
-    ret = ccp1_Compare_Mode_Set_Value(&ccp,37500);
     while(1)
     {
         
@@ -59,23 +31,4 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = E_OK;
     ret_init = ecu_layer_initialize();
-    ret_init = timer1_Init(&timer1);
-    ret_init = ccp1_Init(&ccp);
-}
-
-void CCP1_APP_ISR(void)
-{
-    Std_ReturnType ret = E_OK;
-    static uint8 flag = 0;
-    ret = timer1_Write_Value(&timer1,0);
-    if(0 == flag)
-    {
-        ret = ccp1_Compare_Mode_Set_Value(&ccp,12500);
-        flag = 1;
-    }
-    else if(1 == flag)
-    {
-        ret = ccp1_Compare_Mode_Set_Value(&ccp,37500);
-        flag = 0;
-    }
 }
