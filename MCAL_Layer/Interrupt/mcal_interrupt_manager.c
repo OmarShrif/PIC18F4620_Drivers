@@ -155,6 +155,42 @@ void __interrupt() InterruptManagerHigh(void)
     }
     else{/* Nothing */}
     #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* EUSART_TX Interrupt */
+    #if EUSART_TX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.TXIE) && (INTERRUPT_OCCUR == PIR1bits.TXIF))
+    {
+        EUSART_TX_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* EUSART_RX Interrupt */
+    #if EUSART_RX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.RCIE) && (INTERRUPT_OCCUR == PIR1bits.RCIF))
+    {
+        EUSART_RX_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* SPI Interrupt */
+    #if SPI_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.SSPIE) && (INTERRUPT_OCCUR == PIR1bits.SSPIF))
+    {
+        SPI_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* I2C Interrupt */
+    #if I2C_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_OCCUR == PIR2bits.BCLIF))
+    {
+        I2C_ISR();
+    }
+    else{/* Nothing */}
+    #endif
 }
 
 void __interrupt(low_priority) InterruptManagerLow(void)
@@ -310,6 +346,42 @@ void __interrupt() InterruptManager(void)
     if((INTERRUPT_ENABLE == PIE2bits.CCP2IE) && (INTERRUPT_OCCUR == PIR2bits.CCP2IF))
     {
         CCP2_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* EUSART_TX Interrupt */
+    #if EUSART_TX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.TXIE) && (INTERRUPT_OCCUR == PIR1bits.TXIF))
+    {
+        EUSART_TX_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* EUSART_RX Interrupt */
+    #if EUSART_RX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.RCIE) && (INTERRUPT_OCCUR == PIR1bits.RCIF))
+    {
+        EUSART_RX_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* SPI Interrupt */
+    #if SPI_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE1bits.SSPIE) && (INTERRUPT_OCCUR == PIR1bits.SSPIF))
+    {
+        SPI_ISR();
+    }
+    else{/* Nothing */}
+    #endif
+    /* --------------------------------------------------------------------------------------------------  */
+    /* I2C Interrupt */
+    #if I2C_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+    if((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_OCCUR == PIR2bits.BCLIF))
+    {
+        I2C_ISR();
     }
     else{/* Nothing */}
     #endif

@@ -4798,40 +4798,32 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h" 2
-# 53 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
-void TIMER1_ISR(void);
-# 71 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
-void CCP1_ISR(void);
+# 83 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
+void EUSART_TX_ISR(void);
 
 
 
 
 
-void CCP2_ISR(void);
+void EUSART_RX_ISR(void);
 # 10 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c" 2
-# 180 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+# 216 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) InterruptManager(void)
 {
-# 274 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
-    if((1 == PIE1bits.TMR1IE) && (1 == PIR1bits.TMR1IF))
+# 355 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+    if((1 == PIE1bits.TXIE) && (1 == PIR1bits.TXIF))
     {
-        TIMER1_ISR();
-    }
-    else{ }
-# 301 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
-    if((1 == PIE1bits.CCP1IE) && (1 == PIR1bits.CCP1IF))
-    {
-        CCP1_ISR();
+        EUSART_TX_ISR();
     }
     else{ }
 
 
 
 
-    if((1 == PIE2bits.CCP2IE) && (1 == PIR2bits.CCP2IF))
+    if((1 == PIE1bits.RCIE) && (1 == PIR1bits.RCIF))
     {
-        CCP2_ISR();
+        EUSART_RX_ISR();
     }
     else{ }
-
+# 388 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
 }

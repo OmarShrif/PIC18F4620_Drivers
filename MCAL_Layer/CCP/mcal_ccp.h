@@ -119,7 +119,7 @@ typedef struct
 
                 void (* CCP1_InterruptHandler)(void);   /* Call back used for all CCP1 Modes */
                 #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-                    interrupt_priority_t CCP1_priority;   /* Configure the CCP1 mode interrupt */
+                    interrupt_priority_t CCP1_priority;   /* Configure the CCP1 interrupt priority */
                 #endif
 
             #endif
@@ -130,7 +130,7 @@ typedef struct
 
                 void (* CCP1_InterruptHandler)(void);   /* Call back used for all CCP1 Modes */
                 #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-                    interrupt_priority_t CCP1_priority;   /* Configure the CCP1 mode interrupt */
+                    interrupt_priority_t CCP1_priority;   /* Configure the CCP1 interrupt priority */
                 #endif
 
             #endif
@@ -151,7 +151,7 @@ typedef struct
 
                 void (* CCP2_InterruptHandler)(void);   /* Call back used for all CCP2 Modes */
                 #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-                    interrupt_priority_t CCP2_priority;   /* Configure the CCP1 mode interrupt */
+                    interrupt_priority_t CCP2_priority;   /* Configure the CCP2 interrupt priority */
                 #endif
 
             #endif
@@ -162,7 +162,7 @@ typedef struct
 
                 void (* CCP2_InterruptHandler)(void);   /* Call back used for all CCP2 Modes */
                 #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE
-                    interrupt_priority_t CCP2_priority;   /* Configure the CCP1 mode interrupt */
+                    interrupt_priority_t CCP2_priority;   /* Configure the CCP2 interrupt priority */
                 #endif
 
             #endif

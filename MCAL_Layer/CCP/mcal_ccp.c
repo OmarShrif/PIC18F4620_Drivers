@@ -159,7 +159,7 @@
                 if(CCP_CAPTURE_READY == PIR1bits.CCP1IF)
                 {
                     *_capture_status = CCP_CAPTURE_READY;
-                    CCP1_InterruptFlagClear();
+                    PIR1bits.CCP1IF = 0;
                 }
                 else
                 {
@@ -201,7 +201,7 @@
                 if(CCP_COMPARE_READY == PIR1bits.CCP1IF)
                 {
                     *_compare_status = CCP_COMPARE_READY;
-                    CCP1_InterruptFlagClear();
+                    PIR1bits.CCP1IF = 0;
                 }
                 else
                 {
@@ -345,7 +345,7 @@
                 if(CCP_CAPTURE_READY == PIR2bits.CCP2IF)
                 {
                     *_capture_status = CCP_CAPTURE_READY;
-                    CCP2_InterruptFlagClear();
+                    PIR2bits.CCP2IF = 0;
                 }
                 else
                 {
@@ -387,7 +387,7 @@
                 if(CCP_COMPARE_READY == PIR2bits.CCP2IF)
                 {
                     *_compare_status = CCP_COMPARE_READY;
-                    CCP2_InterruptFlagClear();
+                    PIR2bits.CCP2IF = 0;
                 }
                 else
                 {

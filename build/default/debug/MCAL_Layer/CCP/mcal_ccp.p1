@@ -1,21 +1,16 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3079 `(v ~T0 @X0 0 tf ]
-[v F3080 `(v ~T0 @X0 0 tf ]
-[v F3082 `(v ~T0 @X0 0 tf ]
-[v F3083 `(v ~T0 @X0 0 tf ]
 "66 MCAL_Layer/CCP/../Interrupt/../GPIO/mcal_gpio.h
 [; ;MCAL_Layer/CCP/../Interrupt/../GPIO/mcal_gpio.h: 66: {
 [s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S273 . port pin direction logic ]
-[v F3066 `(v ~T0 @X0 0 tf ]
 "96 MCAL_Layer/CCP/mcal_ccp.c
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 96:     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj)
 [c E3057 0 1 2 .. ]
 [n E3057 . CCP1_CCP2_TIMER1 CCP1_TIMER1_CCP2_TIMER3 CCP1_CCP2_TIMER3  ]
 "111 MCAL_Layer/CCP/mcal_ccp.h
 [; ;MCAL_Layer/CCP/mcal_ccp.h: 111: {
-[s S277 `S273 1 `uc 1 `*F3066 1 `E3057 1 ]
-[n S277 . ccp1_pin ccp1_compare_mode CCP1_InterruptHandler ccp_capture_timer ]
+[s S277 `S273 1 `uc 1 `E3057 1 ]
+[n S277 . ccp1_pin ccp1_compare_mode ccp_capture_timer ]
 "4261 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4261:     struct {
 [s S171 :4 `uc 1 :2 `uc 1 :2 `uc 1 ]
@@ -44,25 +39,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 31:     static Std_ReturnType ccp1_Compare_Mode_Config(const ccp_config_t *_ccp_obj);
 [v _ccp1_Compare_Mode_Config `(uc ~T0 @X0 0 sf1`*CS277 ]
-"33
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 33:         static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj);
-[v _ccp1_Interrupt_Config `(v ~T0 @X0 0 sf1`*CS277 ]
-"2503 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2503:     struct {
-[s S94 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S94 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
-"2513
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2513:     struct {
-[s S95 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S95 . . TX1IE RC1IE ]
-"2502
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2502: typedef union {
-[u S93 `S94 1 `S95 1 ]
-[n S93 . . . ]
-"2519
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2519: extern volatile PIE1bits_t PIE1bits __attribute__((address(0xF9D)));
-[v _PIE1bits `VS93 ~T0 @X0 0 e@3997 ]
-"2580
+"2580 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2580:     struct {
 [s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S97 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
@@ -95,10 +72,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4366
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4366: extern volatile unsigned char CCPR1H __attribute__((address(0xFBF)));
 [v _CCPR1H `Vuc ~T0 @X0 0 e@4031 ]
-"71 MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h
-[; ;MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h: 71: void global_interrupt_Enable(void);
-[v _global_interrupt_Enable `(v ~T0 @X0 0 ef ]
-"3535 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+"3535
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3535:     struct {
 [s S139 :2 `uc 1 :1 `uc 1 ]
 [n S139 . . NOT_T3SYNC ]
@@ -125,23 +99,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3566
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3566: extern volatile T3CONbits_t T3CONbits __attribute__((address(0xFB1)));
 [v _T3CONbits `VS138 ~T0 @X0 0 e@4017 ]
-[v F3116 `(v ~T0 @X0 0 tf ]
-"2800
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2800:     struct {
-[s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S106 . CCP2IF TMR3IF HLVDIF BCLIF EEIF . CMIF OSCFIF ]
-"2810
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2810:     struct {
-[s S107 :2 `uc 1 :1 `uc 1 ]
-[n S107 . . LVDIF ]
-"2799
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2799: typedef union {
-[u S105 `S106 1 `S107 1 ]
-[n S105 . . . ]
-"2815
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2815: extern volatile PIR2bits_t PIR2bits __attribute__((address(0xFA1)));
-[v _PIR2bits `VS105 ~T0 @X0 0 e@4001 ]
-[v F3118 `(v ~T0 @X0 0 tf ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -553,19 +510,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"15 MCAL_Layer/CCP/mcal_ccp.c
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 15:     static void (*CCP1_InterruptHandler)(void) = ((void*)0);
-[v _CCP1_InterruptHandler `*F3079 ~T0 @X0 1 s ]
-[i _CCP1_InterruptHandler
--> -> -> 0 `i `*v `*F3080
-]
-"19
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 19:     static void (*CCP2_InterruptHandler)(void) = ((void*)0);
-[v _CCP2_InterruptHandler `*F3082 ~T0 @X0 1 s ]
-[i _CCP2_InterruptHandler
--> -> -> 0 `i `*v `*F3083
-]
-"96
+"96 MCAL_Layer/CCP/mcal_ccp.c
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 96:     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj)
 [v _ccp1_Init `(uc ~T0 @X0 1 ef1`*CS277 ]
 "97
@@ -600,9 +545,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "117
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 117:                 ccp1_Compare_Mode_Config(_ccp_obj);
 [e ( _ccp1_Compare_Mode_Config (1 __ccp_obj ]
-"120
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 120:                 ccp1_Interrupt_Config(_ccp_obj);
-[e ( _ccp1_Interrupt_Config (1 __ccp_obj ]
 "126
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 126:         }
 }
@@ -648,12 +590,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "139
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 139:             (CCP1CONbits.CCP1M = ((uint8)0x00));
 [e = . . _CCP1CONbits 0 0 -> -> 0 `i `uc ]
-"142
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 142:             (PIE1bits.CCP1IE = 0);
-[e = . . _PIE1bits 0 2 -> -> 0 `i `uc ]
-"144
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 144:             (PIR1bits.CCP1IF = 0);
-[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
 "146
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 146:         }
 }
@@ -706,7 +642,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 203:                     *_compare_status = 0X01;
 [e = *U __compare_status -> -> 1 `i `uc ]
 "204
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 204:                     (PIR1bits.CCP1IF = 0);
+[; ;MCAL_Layer/CCP/mcal_ccp.c: 204:                     PIR1bits.CCP1IF = 0;
 [e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
 "205
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 205:                 }
@@ -762,8 +698,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 218:             Std_ReturnType ret = (Std_ReturnType)0x01;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
-[v F3103 `S274 ~T0 @X0 1 s ]
-[i F3103
+[v F3093 `S274 ~T0 @X0 1 s ]
+[i F3093
 :U 0
 :U ..
 :U ..
@@ -778,7 +714,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _capture_temp_value `S274 ~T0 @X0 1 a ]
-[e = _capture_temp_value F3103 ]
+[e = _capture_temp_value F3093 ]
 "221
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 221:             if(((void*)0) != _ccp_obj)
 [e $ ! != -> -> -> 0 `i `*v `*CS277 __ccp_obj 290  ]
@@ -885,35 +821,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 525:     }
 [e :UE 292 ]
 }
-"527
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 527:         static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj)
-[v _ccp1_Interrupt_Config `(v ~T0 @X0 1 sf1`*CS277 ]
-"528
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 528:         {
-{
-[e :U _ccp1_Interrupt_Config ]
-"527
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 527:         static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj)
-[v __ccp_obj `*CS277 ~T0 @X0 1 r1 ]
-"528
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 528:         {
-[f ]
-"530
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 530:             CCP1_InterruptHandler = _ccp_obj->CCP1_InterruptHandler;
-[e = _CCP1_InterruptHandler . *U __ccp_obj 2 ]
-"543
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 543:             (PIR1bits.CCP1IF = 0);
-[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
-"544
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 544:             (PIE1bits.CCP1IE = 1);
-[e = . . _PIE1bits 0 2 -> -> 1 `i `uc ]
-"545
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 545:             global_interrupt_Enable();
-[e ( _global_interrupt_Enable ..  ]
-"546
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 546:         }
-[e :UE 301 ]
-}
 "636
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 636:     static void ccp_Mode_Timer_Select(const ccp_config_t *_ccp_obj)
 [v _ccp_Mode_Timer_Select `(v ~T0 @X0 1 sf1`*CS277 ]
@@ -929,7 +836,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "638
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 638:         if(CCP1_CCP2_TIMER3 == _ccp_obj->ccp_capture_timer)
-[e $ ! == -> . `E3057 2 `ui -> . *U __ccp_obj 3 `ui 303  ]
+[e $ ! == -> . `E3057 2 `ui -> . *U __ccp_obj 2 `ui 302  ]
 "639
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 639:         {
 {
@@ -942,11 +849,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "643
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 643:         }
 }
-[e $U 304  ]
+[e $U 303  ]
 "644
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 644:         else if(CCP1_TIMER1_CCP2_TIMER3 == _ccp_obj->ccp_capture_timer){
-[e :U 303 ]
-[e $ ! == -> . `E3057 1 `ui -> . *U __ccp_obj 3 `ui 305  ]
+[e :U 302 ]
+[e $ ! == -> . `E3057 1 `ui -> . *U __ccp_obj 2 `ui 304  ]
 {
 "647
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 647:             T3CONbits.T3CCP1 = 1;
@@ -957,11 +864,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "649
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 649:         }
 }
-[e $U 306  ]
+[e $U 305  ]
 "650
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 650:         else if(CCP1_CCP2_TIMER1 == _ccp_obj->ccp_capture_timer){
-[e :U 305 ]
-[e $ ! == -> . `E3057 0 `ui -> . *U __ccp_obj 3 `ui 307  ]
+[e :U 304 ]
+[e $ ! == -> . `E3057 0 `ui -> . *U __ccp_obj 2 `ui 306  ]
 {
 "652
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 652:             T3CONbits.T3CCP1 = 0;
@@ -972,84 +879,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "654
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 654:         }
 }
-[e $U 308  ]
+[e $U 307  ]
 "655
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 655:         else{ }
-[e :U 307 ]
+[e :U 306 ]
 {
 }
-[e :U 308 ]
-[e :U 306 ]
-[e :U 304 ]
+[e :U 307 ]
+[e :U 305 ]
+[e :U 303 ]
 "656
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 656:     }
-[e :UE 302 ]
-}
-"674
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 674: void CCP1_ISR(void)
-[v _CCP1_ISR `(v ~T0 @X0 1 ef ]
-"675
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 675: {
-{
-[e :U _CCP1_ISR ]
-[f ]
-"677
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 677:     (PIR1bits.CCP1IF = 0);
-[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
-"681
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 681:     if(CCP1_InterruptHandler)
-[e $ ! != _CCP1_InterruptHandler -> -> 0 `i `*F3116 310  ]
-"682
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 682:     {
-{
-"683
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 683:         CCP1_InterruptHandler();
-[e ( *U _CCP1_InterruptHandler ..  ]
-"684
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 684:     }
-}
-[e $U 311  ]
-"685
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 685:     else{ }
-[e :U 310 ]
-{
-}
-[e :U 311 ]
-"686
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 686: }
-[e :UE 309 ]
-}
-"692
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 692: void CCP2_ISR(void)
-[v _CCP2_ISR `(v ~T0 @X0 1 ef ]
-"693
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 693: {
-{
-[e :U _CCP2_ISR ]
-[f ]
-"695
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 695:     (PIR2bits.CCP2IF = 0);
-[e = . . _PIR2bits 0 0 -> -> 0 `i `uc ]
-"699
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 699:     if(CCP2_InterruptHandler)
-[e $ ! != _CCP2_InterruptHandler -> -> 0 `i `*F3118 313  ]
-"700
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 700:     {
-{
-"701
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 701:         CCP2_InterruptHandler();
-[e ( *U _CCP2_InterruptHandler ..  ]
-"702
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 702:     }
-}
-[e $U 314  ]
-"703
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 703:     else{ }
-[e :U 313 ]
-{
-}
-[e :U 314 ]
-"704
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 704: }
-[e :UE 312 ]
+[e :UE 301 ]
 }

@@ -4849,9 +4849,6 @@ typedef struct
         pin_config_t ccp1_pin;
 # 128 "MCAL_Layer/CCP/mcal_ccp.h"
             uint8 ccp1_compare_mode;
-
-
-                void (* CCP1_InterruptHandler)(void);
 # 192 "MCAL_Layer/CCP/mcal_ccp.h"
         ccp_capture_timer_t ccp_capture_timer;
 
@@ -4871,20 +4868,8 @@ typedef struct
         Std_ReturnType ccp1_IsCompareComplete(uint8 *_compare_status);
         Std_ReturnType ccp1_Compare_Mode_Set_Value(const ccp_config_t *_ccp_obj, uint16 compare_value);
 # 10 "MCAL_Layer/CCP/mcal_ccp.c" 2
-
-
-
-
-
-    static void (*CCP1_InterruptHandler)(void) = ((void*)0);
-
-
-
-    static void (*CCP2_InterruptHandler)(void) = ((void*)0);
 # 31 "MCAL_Layer/CCP/mcal_ccp.c"
     static Std_ReturnType ccp1_Compare_Mode_Config(const ccp_config_t *_ccp_obj);
-
-        static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj);
 # 54 "MCAL_Layer/CCP/mcal_ccp.c"
     static void ccp_Mode_Timer_Select(const ccp_config_t *_ccp_obj);
 # 96 "MCAL_Layer/CCP/mcal_ccp.c"
@@ -4902,14 +4887,7 @@ typedef struct
 # 116 "MCAL_Layer/CCP/mcal_ccp.c"
                 ccp_Mode_Timer_Select(_ccp_obj);
                 ccp1_Compare_Mode_Config(_ccp_obj);
-
-
-                ccp1_Interrupt_Config(_ccp_obj);
-
-
-
-
-
+# 126 "MCAL_Layer/CCP/mcal_ccp.c"
         }
         else{ ret = (Std_ReturnType)0x00; }
 
@@ -4926,9 +4904,9 @@ typedef struct
             (CCP1CONbits.CCP1M = ((uint8)0x00));
 
 
-            (PIE1bits.CCP1IE = 0);
 
-            (PIR1bits.CCP1IF = 0);
+
+
 
         }
         else{ ret = (Std_ReturnType)0x00; }
@@ -4945,7 +4923,7 @@ typedef struct
                 if(0X01 == PIR1bits.CCP1IF)
                 {
                     *_compare_status = 0X01;
-                    (PIR1bits.CCP1IF = 0);
+                    PIR1bits.CCP1IF = 0;
                 }
                 else
                 {
@@ -4991,16 +4969,6 @@ typedef struct
 
         return ret;
     }
-
-        static void ccp1_Interrupt_Config(const ccp_config_t *_ccp_obj)
-        {
-
-            CCP1_InterruptHandler = _ccp_obj->CCP1_InterruptHandler;
-# 543 "MCAL_Layer/CCP/mcal_ccp.c"
-            (PIR1bits.CCP1IF = 0);
-            (PIE1bits.CCP1IE = 1);
-            global_interrupt_Enable();
-        }
 # 636 "MCAL_Layer/CCP/mcal_ccp.c"
     static void ccp_Mode_Timer_Select(const ccp_config_t *_ccp_obj)
     {
@@ -5023,35 +4991,3 @@ typedef struct
         }
         else{ }
     }
-# 674 "MCAL_Layer/CCP/mcal_ccp.c"
-void CCP1_ISR(void)
-{
-
-    (PIR1bits.CCP1IF = 0);
-
-
-
-    if(CCP1_InterruptHandler)
-    {
-        CCP1_InterruptHandler();
-    }
-    else{ }
-}
-
-
-
-
-
-void CCP2_ISR(void)
-{
-
-    (PIR2bits.CCP2IF = 0);
-
-
-
-    if(CCP2_InterruptHandler)
-    {
-        CCP2_InterruptHandler();
-    }
-    else{ }
-}

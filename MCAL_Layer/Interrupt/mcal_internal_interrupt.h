@@ -155,6 +155,87 @@
 
 #endif
 
+#if EUSART_TX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the EUSART TX Module */
+#define EUSART_TX_InterruptEnable()          (PIE1bits.TXIE = 1)
+/* This macro will disable interrupt for the EUSART TX Module */
+#define EUSART_TX_InterruptDisable()         (PIE1bits.TXIE = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the EUSART TX Module Interrupt Priority to be High priority */
+#define EUSART_TX_PrioritySetHigh()          (IPR1bits.TXIP = 1)
+/* This routine set the EUSART TX Module Interrupt Priority to be Low priority */
+#define EUSART_TX_PrioritySetLow()           (IPR1bits.TXIP = 0)
+
+#endif
+
+#endif
+
+#if EUSART_RX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the EUSART RX Module */
+#define EUSART_RX_InterruptEnable()          (PIE1bits.RCIE = 1)
+/* This macro will disable interrupt for the EUSART RX Module */
+#define EUSART_RX_InterruptDisable()         (PIE1bits.RCIE = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the EUSART RX Module Interrupt Priority to be High priority */
+#define EUSART_RX_PrioritySetHigh()          (IPR1bits.RCIP = 1)
+/* This routine set the EUSART RX Module Interrupt Priority to be Low priority */
+#define EUSART_RX_PrioritySetLow()           (IPR1bits.RCIP = 0)
+
+#endif
+
+#endif
+
+#if SPI_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the SPI Module */
+#define SPI_InterruptEnable()          (PIE1bits.SSPIE = 1)
+/* This macro will disable interrupt for the SPI Module */
+#define SPI_InterruptDisable()         (PIE1bits.SSPIE = 0)
+/* This macro will clear interrupt flag for the SPI Module */
+#define SPI_InterruptFlagClear()       (PIR1bits.SSPIF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the SPI Module Interrupt Priority to be High priority */
+#define SPI_PrioritySetHigh()          (IPR1bits.SSPIP = 1)
+/* This routine set the SPI Module Interrupt Priority to be Low priority */
+#define SPI_PrioritySetLow()           (IPR1bits.SSPIP = 0)
+
+#endif
+
+#endif
+
+#if I2C_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+
+/* This macro will enable interrupt for the I2C Module */
+#define I2C_InterruptEnable()               (PIE1bits.SSPIE = 1)
+#define I2C_BUS_COL_InterruptEnable()       (PIE2bits.BCLIE = 1)
+/* This macro will disable interrupt for the I2C Module */
+#define I2C_InterruptDisable()              (PIE1bits.SSPIE = 0)
+#define I2C_BUS_COL_InterruptDisable()      (PIE2bits.BCLIE = 0)
+/* This macro will clear interrupt flag for the I2C Module */
+#define I2C_InterruptFlagClear()            (PIR2bits.SSPIF = 0)
+#define I2C_BUS_COL_InterruptFlagClear()    (PIR2bits.BCLIF = 0)
+
+#if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 
+
+/* This routine set the I2C Module Interrupt Priority to be High priority */
+#define I2C_PrioritySetHigh()               (IPR1bits.SSPIP = 1)
+#define I2C_BUS_COL_PrioritySetHigh()       (IPR2bits.BCLIP = 1)
+/* This routine set the I2C Module Interrupt Priority to be Low priority */
+#define I2C_PrioritySetLow()                (IPR1bits.SSPIP = 0)
+#define I2C_BUS_COL_PrioritySetLow()        (IPR2bits.BCLIP = 0)
+
+#endif
+
+#endif
+
 /* Section : Data Type Declarations */
 
 /* Section : Functions Declarations */

@@ -15,14 +15,14 @@
 /* Section : Macro Declarations */
 
 #define CCP_MODULE_ENABLE               0X01
-#define CCP_MODULE_DISENABLE            0X00
+#define CCP_MODULE_DISABLE              0X00
 
 #define CCP_CFG_CAPTURE_MODE_SELECTED   0x00
 #define CCP_CFG_COMPARE_MODE_SELECTED   0x01
 #define CCP_CFG_PWM_MODE_SELECTED       0x02
 
 #define CCP1_MODULE                     CCP_MODULE_ENABLE
-#define CCP2_MODULE                     CCP_MODULE_DISENABLE
+#define CCP2_MODULE                     CCP_MODULE_DISABLE
 
 #if CCP1_MODULE == CCP_MODULE_ENABLE
 #define CCP1_CFG_SELECTED_MODE          CCP_CFG_COMPARE_MODE_SELECTED

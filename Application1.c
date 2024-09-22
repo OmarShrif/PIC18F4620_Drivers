@@ -7,12 +7,14 @@
 
 /* Section : Includes */
 #include "Application1.h"
+#include "MCAL_Layer/EUSART/mcal_eusart.h"
 
 /* Section : Functions Declarations */
 
 /* Section : Global Variables Definition */
 
 Std_ReturnType ret = E_OK;
+
 
 /* Section : Functions Definition */
 

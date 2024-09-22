@@ -1,4 +1,4 @@
-# 1 "MCAL_Layer/Timer1/mcal_timer1.c"
+# 1 "MCAL_Layer/EUSART/mcal_eusart.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,20 +6,20 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "MCAL_Layer/Timer1/mcal_timer1.c" 2
-# 10 "MCAL_Layer/Timer1/mcal_timer1.c"
-# 1 "MCAL_Layer/Timer1/mcal_timer1.h" 1
-# 14 "MCAL_Layer/Timer1/mcal_timer1.h"
-# 1 "MCAL_Layer/Timer1/../Interrupt/mcal_internal_interrupt.h" 1
-# 12 "MCAL_Layer/Timer1/../Interrupt/mcal_internal_interrupt.h"
-# 1 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h" 1
-# 13 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h"
-# 1 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio.h" 1
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio.h"
-# 1 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../mcal_std_types.h" 1
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../mcal_std_types.h"
-# 1 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../std_Liberates.h" 1
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../std_Liberates.h"
+# 1 "MCAL_Layer/EUSART/mcal_eusart.c" 2
+# 11 "MCAL_Layer/EUSART/mcal_eusart.c"
+# 1 "MCAL_Layer/EUSART/mcal_eusart.h" 1
+# 13 "MCAL_Layer/EUSART/mcal_eusart.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h" 1
+# 13 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio.h" 1
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../mcal_std_types.h" 1
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../mcal_std_types.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../std_Liberates.h" 1
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../std_Liberates.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdio.h" 1 3
 
 
@@ -190,7 +190,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../std_Liberates.h" 2
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../std_Liberates.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdlib.h" 1 3
 # 21 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\stdlib.h" 3
@@ -269,7 +269,7 @@ typedef struct { unsigned int quot, rem; } udiv_t;
 typedef struct { unsigned long quot, rem; } uldiv_t;
 udiv_t udiv (unsigned int, unsigned int);
 uldiv_t uldiv (unsigned long, unsigned long);
-# 13 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../std_Liberates.h" 2
+# 13 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../std_Liberates.h" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\string.h" 1 3
 # 25 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\c99\\string.h" 3
@@ -328,11 +328,11 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 14 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../std_Liberates.h" 2
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../mcal_std_types.h" 2
+# 14 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../std_Liberates.h" 2
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../mcal_std_types.h" 2
 
-# 1 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../compiler.h" 1
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../compiler.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../compiler.h" 1
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../compiler.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4710,8 +4710,8 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 2 3
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../compiler.h" 2
-# 13 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../mcal_std_types.h" 2
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../compiler.h" 2
+# 13 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4724,15 +4724,15 @@ typedef signed short sint16 ;
 typedef signed long sint32 ;
 
 typedef uint8 Std_ReturnType ;
-# 12 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio.h" 2
+# 12 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio.h" 2
 
-# 1 "MCAL_Layer/Timer1/../Interrupt/../GPIO/../device_config.h" 1
-# 13 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio.h" 2
+# 1 "MCAL_Layer/EUSART/../Interrupt/../GPIO/../device_config.h" 1
+# 13 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio.h" 2
 
 
-# 1 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio_cfg.h" 1
-# 15 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio.h" 2
-# 32 "MCAL_Layer/Timer1/../Interrupt/../GPIO/mcal_gpio.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio_cfg.h" 1
+# 15 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio.h" 2
+# 32 "MCAL_Layer/EUSART/../Interrupt/../GPIO/mcal_gpio.h"
 typedef enum
 {
     GPIO_PORTA = 0,
@@ -4792,186 +4792,139 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port , uint8 *directi
 Std_ReturnType gpio_port_write_logic(port_index_t port , uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port , uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h" 2
+# 13 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h" 2
 
-# 1 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 14 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h" 2
-# 71 "MCAL_Layer/Timer1/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h" 2
+# 71 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h"
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
-# 12 "MCAL_Layer/Timer1/../Interrupt/mcal_internal_interrupt.h" 2
-# 14 "MCAL_Layer/Timer1/mcal_timer1.h" 2
+# 12 "MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h" 2
+# 13 "MCAL_Layer/EUSART/mcal_eusart.h" 2
 
-# 1 "MCAL_Layer/Timer1/mcal_timer1_cfg.h" 1
-# 15 "MCAL_Layer/Timer1/mcal_timer1.h" 2
-# 61 "MCAL_Layer/Timer1/mcal_timer1.h"
+# 1 "MCAL_Layer/EUSART/mcal_eusart_cfg.h" 1
+# 14 "MCAL_Layer/EUSART/mcal_eusart.h" 2
+# 63 "MCAL_Layer/EUSART/mcal_eusart.h"
+typedef enum
+{
+    BAUDRATE_ASYN_8BIT_lOW_SPEED,
+    BAUDRATE_ASYN_8BIT_HIGH_SPEED,
+    BAUDRATE_ASYN_16BIT_lOW_SPEED,
+    BAUDRATE_ASYN_16BIT_HIGH_SPEED,
+    BAUDRATE_SYN_8BIT,
+    BAUDRATE_SYN_16BIT
+}baudrate_gen_t;
+
 typedef struct
 {
+    interrupt_priority_t usart_tx_int_priority;
+ uint8 usart_tx_enable : 1;
+ uint8 usart_tx_interrupt_enable : 1;
+ uint8 usart_tx_9bit_enable : 1;
+    uint8 usart_tx_reserved : 5;
+}eusart_tx_cfg_t;
 
-
-
-
-
-
-    uint16 timer1_preload_value;
-    uint8 timer1_prescaler_value : 2;
-    uint8 timer1_mode : 1;
-    uint8 timer1_counter_mode : 1;
-    uint8 timer1_osc_cfg : 1;
-    uint8 timer1_reg_wr_mode : 1;
-    uint8 : 2;
-} timer1_config_t;
-
-
-
-Std_ReturnType timer1_Init(const timer1_config_t *_timer);
-Std_ReturnType timer1_DeInit(const timer1_config_t *_timer);
-Std_ReturnType timer1_Write_Value(const timer1_config_t *_timer, uint16 _value);
-Std_ReturnType timer1_Read_Value(const timer1_config_t *_timer, uint16 *_value);
-# 10 "MCAL_Layer/Timer1/mcal_timer1.c" 2
-
-
-
-
-
-
-
-static uint16 timer1_preload = 0;
-
-
-
-static __attribute__((inline)) void timer1_Mode_Select(const timer1_config_t *_timer);
-static __attribute__((inline)) void timer1_RW_REG_Bit_Mode_Select(const timer1_config_t *_timer);
-static __attribute__((inline)) void timer1_OSC_HW_Mode_Select(const timer1_config_t *_timer);
-
-
-
-Std_ReturnType timer1_Init(const timer1_config_t *_timer)
+typedef struct
 {
-    Std_ReturnType ret = (Std_ReturnType)0x01;
+    interrupt_priority_t usart_rx_int_priority;
+ uint8 usart_rx_enable : 1;
+ uint8 usart_rx_interrupt_enable : 1;
+ uint8 usart_rx_9bit_enable : 1;
+    uint8 usart_rx_reserved : 5;
+}eusart_rx_cfg_t;
 
-    if (((void*)0) != _timer)
-    {
-
-        (T1CONbits.TMR1ON = 0);
-
-        timer1_Mode_Select(_timer);
-        timer1_RW_REG_Bit_Mode_Select(_timer);
-        timer1_OSC_HW_Mode_Select(_timer);
-
-        (T1CONbits.T1CKPS = _timer->timer1_prescaler_value);
-
-        TMR0H = (_timer->timer1_preload_value) >> 8;
-        TMR0L = (uint8) (_timer->timer1_preload_value);
-
-        timer1_preload = _timer->timer1_preload_value;
-# 66 "MCAL_Layer/Timer1/mcal_timer1.c"
-        (T1CONbits.TMR1ON = 1);
-    }
-    else{ ret = (Std_ReturnType)0x00; }
-
-    return ret;
-}
-
-Std_ReturnType timer1_DeInit(const timer1_config_t *_timer)
+typedef union
 {
-    Std_ReturnType ret = (Std_ReturnType)0x01;
-
-    if (((void*)0) != _timer)
+ struct
     {
+  uint8 usart_tx_reserved : 6;
+  uint8 usart_ferr : 1;
+  uint8 usart_oerr : 1;
+ };
+ uint8 status;
+}eusart_error_status_t;
 
-        (T1CONbits.TMR1ON = 0);
-
-
-
-
-
-
-    }
-    else{ ret = (Std_ReturnType)0x00; }
-
-    return ret;
-}
-
-Std_ReturnType timer1_Write_Value(const timer1_config_t *_timer, uint16 _value)
+typedef struct
 {
-    Std_ReturnType ret = (Std_ReturnType)0x01;
+    uint32 baudrate;
+    baudrate_gen_t baudrate_gen_gonfig;
+    eusart_tx_cfg_t usart_tx_cfg;
+ eusart_rx_cfg_t usart_rx_cfg;
+ eusart_error_status_t error_status;
+ void (*EUSART_TxDefaultInterruptHandler)(void);
+    void (*EUSART_RxDefaultInterruptHandler)(void);
+    void (*EUSART_FramingErrorHandler)(void);
+    void (*EUSART_OverrunErrorHandler)(void);
+}eusart_config_t;
 
-    if(((void*)0) != _timer)
-    {
-        TMR1H = (_value) >> 8;
-        TMR1L = (uint8)(_value);
-    }
-    else{ ret = (Std_ReturnType)0x00; }
 
-    return ret;
-}
 
-Std_ReturnType timer1_Read_Value(const timer1_config_t *_timer, uint16 *_value)
+Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart);
+Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart);
+
+Std_ReturnType eusart_async_ReadByteBlocking(uint8 *_data);
+Std_ReturnType eusart_async_ReadByteNonBlocking(uint8 *_data);
+Std_ReturnType eusart_async_RX_Restart(void);
+
+Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data);
+Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len);
+Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data);
+Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len);
+# 11 "MCAL_Layer/EUSART/mcal_eusart.c" 2
+
+
+
+
+
+    static void (*EUSART_TX_InterruptHandler)(void) = ((void*)0);
+
+
+    static void (*EUSART_RX_InterruptHandler)(void) = ((void*)0);
+    static void (*EUSART_FramingErrorHandler)(void) = ((void*)0);
+    static void (*EUSART_OverrunErrorHandler)(void) = ((void*)0);
+
+
+
+
+static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart);
+static void eusart_async_TX_Init(const eusart_config_t *_eusart);
+static void eusart_async_RX_Init(const eusart_config_t *_eusart);
+# 38 "MCAL_Layer/EUSART/mcal_eusart.c"
+void EUSART_TX_ISR(void)
 {
-    Std_ReturnType ret = (Std_ReturnType)0x01;
-    uint8 l_tmr1l = 0, l_tmr1h = 0;
 
-    if((((void*)0) != _timer) && (((void*)0) != _value))
+    (PIE1bits.TXIE = 0);
+
+
+
+    if(EUSART_TX_InterruptHandler)
     {
-        l_tmr1l = TMR1L;
-        l_tmr1h = TMR1H;
-        *_value = (uint16)((l_tmr1h << 8) + l_tmr1l);
-    }
-    else{ ret = (Std_ReturnType)0x00; }
-
-    return ret;
-}
-
-
-
-
-static __attribute__((inline)) void timer1_Mode_Select(const timer1_config_t *_timer)
-{
-    if(0 == _timer->timer1_mode)
-    {
-        (T1CONbits.TMR1CS = 0);
-    }
-    else if(1 == _timer->timer1_mode)
-    {
-        (T1CONbits.TMR1CS = 1);
-        (TRISC |= ((uint8)0x01 << 0x0));
-        if(1 == _timer->timer1_counter_mode)
-        {
-            (T1CONbits.T1SYNC = 1);
-        }
-        else if(0 == _timer->timer1_counter_mode)
-        {
-            (T1CONbits.T1SYNC = 0);
-        }
-        else{ }
+        EUSART_TX_InterruptHandler();
     }
     else{ }
 }
 
-static __attribute__((inline)) void timer1_RW_REG_Bit_Mode_Select(const timer1_config_t *_timer)
-{
-    if(0 == _timer->timer1_reg_wr_mode)
-    {
-        (T1CONbits.RD16 = 0);
-    }
-    else if(1 == _timer->timer1_reg_wr_mode)
-    {
-        (T1CONbits.RD16 = 1);
-    }
-    else{ }
 
-}
 
-static __attribute__((inline)) void timer1_OSC_HW_Mode_Select(const timer1_config_t *_timer)
+
+void EUSART_RX_ISR(void)
 {
-    if(1 == _timer->timer1_osc_cfg)
+
+
+
+    if(EUSART_RX_InterruptHandler)
     {
-        (T1CONbits.T1OSCEN = 1);
+        EUSART_RX_InterruptHandler();
     }
-    else if(0 == _timer->timer1_osc_cfg)
+    else { }
+    if(EUSART_FramingErrorHandler)
     {
-        (T1CONbits.T1OSCEN = 0);
+        EUSART_FramingErrorHandler();
     }
-    else{ }
+    else { }
+    if(EUSART_OverrunErrorHandler)
+    {
+        EUSART_OverrunErrorHandler();
+    }
+    else { }
 }
