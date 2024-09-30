@@ -4794,36 +4794,54 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h" 2
-# 71 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
+# 60 "MCAL_Layer/Interrupt/mcal_interrupt_cfg.h"
+typedef enum
+{
+    INTERRUPT_PRIORITY_LOW = 0,
+    INTERRUPT_PRIORITY_HIGH
+
+}interrupt_priority_t;
+
+
+
+
+
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h" 2
-# 83 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
-void EUSART_TX_ISR(void);
+# 95 "MCAL_Layer/Interrupt/mcal_interrupt_manager.h"
+void SPI_ISR(void);
 
 
 
 
 
-void EUSART_RX_ISR(void);
+void I2C_ISR(void);
+void I2C_BC_ISR(void);
 # 10 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c" 2
-# 216 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
-void __attribute__((picinterrupt(("")))) InterruptManager(void)
+# 32 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+void __attribute__((picinterrupt(("")))) InterruptManagerHigh(void)
 {
-# 355 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
-    if((1 == PIE1bits.TXIE) && (1 == PIR1bits.TXIF))
+# 179 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+    if((1 == PIE1bits.SSPIE) && (1 == PIR1bits.SSPIF))
     {
-        EUSART_TX_ISR();
+        SPI_ISR();
     }
     else{ }
 
 
 
 
-    if((1 == PIE1bits.RCIE) && (1 == PIR1bits.RCIF))
+    if((1 == PIE2bits.BCLIE) && (1 == PIR2bits.BCLIF))
     {
-        EUSART_RX_ISR();
+        I2C_ISR();
+        I2C_BC_ISR();
     }
     else{ }
-# 388 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+
+}
+
+void __attribute__((picinterrupt(("low_priority")))) InterruptManagerLow(void)
+{
+# 213 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
 }

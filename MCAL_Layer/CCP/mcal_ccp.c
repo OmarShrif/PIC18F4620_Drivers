@@ -548,7 +548,7 @@
 #endif
 #endif
 
-#if CCP2_MODULE == CCP_MODULE_ENABLE
+#if CCP_MODULE_ENABLE == CCP2_MODULE
 #if CCP2_CFG_SELECTED_MODE == CCP_CFG_CAPTURE_MODE_SELECTED
     static Std_ReturnType ccp2_Capture_Mode_Config(const ccp_config_t *_ccp_obj)
     {

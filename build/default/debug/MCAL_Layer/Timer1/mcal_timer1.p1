@@ -26,18 +26,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5257
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5257: extern volatile T1CONbits_t T1CONbits __attribute__((address(0xFCD)));
 [v _T1CONbits `VS223 ~T0 @X0 0 e@4045 ]
-[v F3064 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3068 `(v ~T0 @X0 1 tf1`*CS274 ]
 "21 MCAL_Layer/Timer1/mcal_timer1.c
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 21: static __attribute__((inline)) void timer1_Mode_Select(const timer1_config_t *_timer);
-[v _timer1_Mode_Select `TF3064 ~T0 @X0 0 s ]
-[v F3067 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v _timer1_Mode_Select `TF3068 ~T0 @X0 0 s ]
+[v F3071 `(v ~T0 @X0 1 tf1`*CS274 ]
 "22
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 22: static __attribute__((inline)) void timer1_RW_REG_Bit_Mode_Select(const timer1_config_t *_timer);
-[v _timer1_RW_REG_Bit_Mode_Select `TF3067 ~T0 @X0 0 s ]
-[v F3070 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v _timer1_RW_REG_Bit_Mode_Select `TF3071 ~T0 @X0 0 s ]
+[v F3074 `(v ~T0 @X0 1 tf1`*CS274 ]
 "23
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 23: static __attribute__((inline)) void timer1_OSC_HW_Mode_Select(const timer1_config_t *_timer);
-[v _timer1_OSC_HW_Mode_Select `TF3070 ~T0 @X0 0 s ]
+[v _timer1_OSC_HW_Mode_Select `TF3074 ~T0 @X0 0 s ]
 "5947 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5947: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
 [v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
@@ -691,10 +691,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 121: }
 [e :UE 284 ]
 }
-[v F3089 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3093 `(v ~T0 @X0 1 tf1`*CS274 ]
 "126
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 126: static __attribute__((inline)) void timer1_Mode_Select(const timer1_config_t *_timer)
-[v _timer1_Mode_Select `TF3089 ~T0 @X0 1 s ]
+[v _timer1_Mode_Select `TF3093 ~T0 @X0 1 s ]
 "127
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 127: {
 {
@@ -780,10 +780,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 147: }
 [e :UE 287 ]
 }
-[v F3092 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3096 `(v ~T0 @X0 1 tf1`*CS274 ]
 "149
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 149: static __attribute__((inline)) void timer1_RW_REG_Bit_Mode_Select(const timer1_config_t *_timer)
-[v _timer1_RW_REG_Bit_Mode_Select `TF3092 ~T0 @X0 1 s ]
+[v _timer1_RW_REG_Bit_Mode_Select `TF3096 ~T0 @X0 1 s ]
 "150
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 150: {
 {
@@ -832,10 +832,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 161: }
 [e :UE 296 ]
 }
-[v F3095 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3099 `(v ~T0 @X0 1 tf1`*CS274 ]
 "163
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 163: static __attribute__((inline)) void timer1_OSC_HW_Mode_Select(const timer1_config_t *_timer)
-[v _timer1_OSC_HW_Mode_Select `TF3095 ~T0 @X0 1 s ]
+[v _timer1_OSC_HW_Mode_Select `TF3099 ~T0 @X0 1 s ]
 "164
 [; ;MCAL_Layer/Timer1/mcal_timer1.c: 164: {
 {

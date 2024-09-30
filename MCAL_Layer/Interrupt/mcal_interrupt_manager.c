@@ -188,6 +188,7 @@ void __interrupt() InterruptManagerHigh(void)
     if((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_OCCUR == PIR2bits.BCLIF))
     {
         I2C_ISR();
+        I2C_BC_ISR();
     }
     else{/* Nothing */}
     #endif
@@ -382,6 +383,7 @@ void __interrupt() InterruptManager(void)
     if((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_OCCUR == PIR2bits.BCLIF))
     {
         I2C_ISR();
+        I2C_BC_ISR();
     }
     else{/* Nothing */}
     #endif

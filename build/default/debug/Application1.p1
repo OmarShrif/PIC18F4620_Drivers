@@ -435,42 +435,42 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;Application1.c: 21:     application_initialize();
 [e ( _application_initialize ..  ]
-"22
-[; ;Application1.c: 22:     while(1)
-[e :U 284 ]
 "23
-[; ;Application1.c: 23:     {
+[; ;Application1.c: 23:     while(1)
+[e :U 284 ]
+"24
+[; ;Application1.c: 24:     {
 {
-"25
-[; ;Application1.c: 25:     }
+"26
+[; ;Application1.c: 26:     }
 }
 [e :U 283 ]
 [e $U 284  ]
 [e :U 285 ]
-"27
-[; ;Application1.c: 27:     return (0);
+"28
+[; ;Application1.c: 28:     return (0);
 [e ) -> 0 `i ]
 [e $UE 282  ]
-"28
-[; ;Application1.c: 28: }
+"29
+[; ;Application1.c: 29: }
 [e :UE 282 ]
 }
-"30
-[; ;Application1.c: 30: void application_initialize(void)
-[v _application_initialize `(v ~T0 @X0 1 ef ]
 "31
-[; ;Application1.c: 31: {
+[; ;Application1.c: 31: void application_initialize(void)
+[v _application_initialize `(v ~T0 @X0 1 ef ]
+"32
+[; ;Application1.c: 32: {
 {
 [e :U _application_initialize ]
 [f ]
-"32
-[; ;Application1.c: 32:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
+"33
+[; ;Application1.c: 33:     Std_ReturnType ret_init = (Std_ReturnType)0x01;
 [v _ret_init `uc ~T0 @X0 1 a ]
 [e = _ret_init -> -> 1 `i `uc ]
-"33
-[; ;Application1.c: 33:     ret_init = ecu_layer_initialize();
-[e = _ret_init ( _ecu_layer_initialize ..  ]
 "34
-[; ;Application1.c: 34: }
+[; ;Application1.c: 34:     ret_init = ecu_layer_initialize();
+[e = _ret_init ( _ecu_layer_initialize ..  ]
+"35
+[; ;Application1.c: 35: }
 [e :UE 286 ]
 }

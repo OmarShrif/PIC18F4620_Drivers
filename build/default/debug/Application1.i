@@ -5075,6 +5075,7 @@ Std_ReturnType ret = (Std_ReturnType)0x01;
 int main()
 {
     application_initialize();
+
     while(1)
     {
 

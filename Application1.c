@@ -7,7 +7,6 @@
 
 /* Section : Includes */
 #include "Application1.h"
-#include "MCAL_Layer/EUSART/mcal_eusart.h"
 
 /* Section : Functions Declarations */
 
@@ -15,12 +14,12 @@
 
 Std_ReturnType ret = E_OK;
 
-
 /* Section : Functions Definition */
 
 int main() 
 {
     application_initialize();
+    
     while(1)
     {
         

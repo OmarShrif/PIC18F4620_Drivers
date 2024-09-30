@@ -99,6 +99,7 @@ void SPI_ISR(void);
 #if I2C_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
 
 void I2C_ISR(void);
+void I2C_BC_ISR(void);
 
 #endif
 

@@ -220,7 +220,7 @@
 #define I2C_InterruptDisable()              (PIE1bits.SSPIE = 0)
 #define I2C_BUS_COL_InterruptDisable()      (PIE2bits.BCLIE = 0)
 /* This macro will clear interrupt flag for the I2C Module */
-#define I2C_InterruptFlagClear()            (PIR2bits.SSPIF = 0)
+#define I2C_InterruptFlagClear()            (PIR1bits.SSPIF = 0)
 #define I2C_BUS_COL_InterruptFlagClear()    (PIR2bits.BCLIF = 0)
 
 #if INTERRUPT_PRIORITY_LEVELS_FEATURE == INTERRUPT_FEATURE_ENABLE 

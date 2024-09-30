@@ -18,18 +18,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5878
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5878: extern volatile T0CONbits_t T0CONbits __attribute__((address(0xFD5)));
 [v _T0CONbits `VS252 ~T0 @X0 0 e@4053 ]
-[v F3073 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3077 `(v ~T0 @X0 1 tf1`*CS274 ]
 "22 MCAL_Layer/Timer0/mcal_timer0.c
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 22: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer);
-[v _timer0_Prescaler_Config `TF3073 ~T0 @X0 0 s ]
-[v F3076 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v _timer0_Prescaler_Config `TF3077 ~T0 @X0 0 s ]
+[v F3080 `(v ~T0 @X0 1 tf1`*CS274 ]
 "23
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 23: static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer);
-[v _timer0_Mode_Select `TF3076 ~T0 @X0 0 s ]
-[v F3079 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v _timer0_Mode_Select `TF3080 ~T0 @X0 0 s ]
+[v F3083 `(v ~T0 @X0 1 tf1`*CS274 ]
 "24
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 24: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer);
-[v _timer0_Register_Size_Config `TF3079 ~T0 @X0 0 s ]
+[v _timer0_Register_Size_Config `TF3083 ~T0 @X0 0 s ]
 "5947 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5947: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
 [v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
@@ -674,10 +674,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 122: }
 [e :UE 284 ]
 }
-[v F3098 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3102 `(v ~T0 @X0 1 tf1`*CS274 ]
 "126
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 126: static __attribute__((inline)) void timer0_Prescaler_Config(const timer0_config_t *_timer)
-[v _timer0_Prescaler_Config `TF3098 ~T0 @X0 1 s ]
+[v _timer0_Prescaler_Config `TF3102 ~T0 @X0 1 s ]
 "127
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 127: {
 {
@@ -729,10 +729,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 138: }
 [e :UE 287 ]
 }
-[v F3101 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3105 `(v ~T0 @X0 1 tf1`*CS274 ]
 "140
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 140: static __attribute__((inline)) void timer0_Mode_Select(const timer0_config_t *_timer)
-[v _timer0_Mode_Select `TF3101 ~T0 @X0 1 s ]
+[v _timer0_Mode_Select `TF3105 ~T0 @X0 1 s ]
 "141
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 141: {
 {
@@ -818,10 +818,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 161: }
 [e :UE 292 ]
 }
-[v F3104 `(v ~T0 @X0 1 tf1`*CS274 ]
+[v F3108 `(v ~T0 @X0 1 tf1`*CS274 ]
 "163
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 163: static __attribute__((inline)) void timer0_Register_Size_Config(const timer0_config_t *_timer)
-[v _timer0_Register_Size_Config `TF3104 ~T0 @X0 1 s ]
+[v _timer0_Register_Size_Config `TF3108 ~T0 @X0 1 s ]
 "164
 [; ;MCAL_Layer/Timer0/mcal_timer0.c: 164: {
 {

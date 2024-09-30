@@ -1,0 +1,88 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "MCAL_Layer/EUSART/mcal_eusart.h"
+
+/* Section : Functions Declarations */
+
+void EUSART_TX_APP_ISR(void);
+void EUSART_RX_APP_ISR(void);
+void EUSART_FramingError_APP_ISR(void);
+void EUSART_OverrunError_APP_ISR(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+eusart_config_t eusart = 
+{
+    .baudrate = 9600,
+    .baudrate_gen_gonfig = BAUDRATE_ASYN_8BIT_HIGH_SPEED,
+    .eusart_tx_9bit_enable = EUSART_ASYNCHRONOUS_TX_9Bit_DISABLE,
+    .eusart_rx_9bit_enable = EUSART_ASYNCHRONOUS_RX_9Bit_DISABLE,
+    .EUSART_TX_InterruptHandler = EUSART_TX_APP_ISR,
+    .EUSART_RX_InterruptHandler = EUSART_RX_APP_ISR,  
+    .EUSART_FramingErrorHandler = EUSART_FramingError_APP_ISR,
+    .EUSART_OverrunErrorHandler = EUSART_OverrunError_APP_ISR,
+    .eusart_tx_priority = INTERRUPT_PRIORITY_HIGH,
+    .eusart_rx_priority = INTERRUPT_PRIORITY_HIGH,
+    
+};
+uint8 _data = 0;
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        ret = eusart_async_ReadByteBlocking(&eusart,&_data);
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    ret_init = eusart_async_Init(&eusart);
+}
+
+void EUSART_TX_APP_ISR(void)
+{
+    led_turn_toggle(&led1);
+}
+
+void EUSART_RX_APP_ISR(void)
+{
+    //ret = eusart_async_ReadByteNonBlocking(&_data);
+}
+
+void EUSART_FramingError_APP_ISR(void)
+{
+    Std_ReturnType ret = E_OK;
+    
+    if(EUSART_FRAMING_ERROR_DETECTED == eusart.eusart_ferr)
+    {
+        
+    }
+}
+
+void EUSART_OverrunError_APP_ISR(void)
+{
+    Std_ReturnType ret = E_OK;
+    
+    if(EUSART_OVERRUN_ERROR_DETECTED == eusart.eusart_oerr)
+    {
+        ret = eusart_async_RX_Restart();
+    }
+}

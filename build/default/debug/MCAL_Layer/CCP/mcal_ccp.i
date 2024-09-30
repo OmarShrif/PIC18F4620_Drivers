@@ -4796,7 +4796,18 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h" 2
-# 71 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h"
+# 60 "MCAL_Layer/CCP/../Interrupt/mcal_interrupt_cfg.h"
+typedef enum
+{
+    INTERRUPT_PRIORITY_LOW = 0,
+    INTERRUPT_PRIORITY_HIGH
+
+}interrupt_priority_t;
+
+
+
+
+
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/CCP/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4804,7 +4815,7 @@ void global_interrupt_Disable(void);
 
 # 1 "MCAL_Layer/CCP/mcal_ccp_cfg.h" 1
 # 14 "MCAL_Layer/CCP/mcal_ccp.h" 2
-# 73 "MCAL_Layer/CCP/mcal_ccp.h"
+# 72 "MCAL_Layer/CCP/mcal_ccp.h"
 typedef enum
 {
     CCP_CAPTURE_MODE_SELECTED = 0,
@@ -4847,15 +4858,15 @@ typedef struct
 
 
         pin_config_t ccp1_pin;
-# 128 "MCAL_Layer/CCP/mcal_ccp.h"
+# 127 "MCAL_Layer/CCP/mcal_ccp.h"
             uint8 ccp1_compare_mode;
-# 192 "MCAL_Layer/CCP/mcal_ccp.h"
+# 191 "MCAL_Layer/CCP/mcal_ccp.h"
         ccp_capture_timer_t ccp_capture_timer;
 
 
 
 }ccp_config_t;
-# 208 "MCAL_Layer/CCP/mcal_ccp.h"
+# 207 "MCAL_Layer/CCP/mcal_ccp.h"
     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj);
     Std_ReturnType ccp1_DeInit(const ccp_config_t *_ccp_obj);
 
@@ -4880,7 +4891,7 @@ typedef struct
         if(((void*)0) != _ccp_obj)
         {
 
-            (CCP1CONbits.CCP1M = ((uint8)0x00));
+            (CCP1CONbits.CCP1M = 0);
 
 
             ret = gpio_pin_initialize(&(_ccp_obj->ccp1_pin));
@@ -4901,7 +4912,7 @@ typedef struct
         if(((void*)0) != _ccp_obj)
         {
 
-            (CCP1CONbits.CCP1M = ((uint8)0x00));
+            (CCP1CONbits.CCP1M = 0);
 
 
 

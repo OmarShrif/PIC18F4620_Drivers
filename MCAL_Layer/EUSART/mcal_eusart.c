@@ -53,11 +53,11 @@
             TRISCbits.RC7 = 1;                    
             eusart_Baud_Rate_Calculation(_eusart);
             #if EUSART_TX_MODULE == EUSART_MODULE_ENABLE
-                ret = eusart_async_TX_Init(_eusart);
+                eusart_async_TX_Init(_eusart);
             #endif  
 
             #if EUSART_RX_MODULE == EUSART_MODULE_ENABLE
-                ret = eusart_async_RX_Init(_eusart);
+                eusart_async_RX_Init(_eusart);
             #endif 
             /* Enable EUSART Module */
             RCSTAbits.SPEN = EUSART_MODULE_ENABLE;  
@@ -83,31 +83,37 @@
 
     #if EUSART_RX_MODULE == EUSART_MODULE_ENABLE
 
-        Std_ReturnType eusart_async_ReadByteBlocking(uint8 *_data)
+        Std_ReturnType eusart_async_ReadByteBlocking(eusart_config_t *_eusart, uint8 *_data)
         {
             Std_ReturnType ret = E_OK;
 
-            if(NULL != _data)
+            if((NULL != _eusart) && (NULL != _data))
             {    
-                while(!PIR1bits.RCIF);
+                while(!PIR1bits.RCIF){}
+                #if EUSART_RX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+                    EUSART_RX_InterruptEnable();
+                #endif
+                _eusart->eusart_ferr = RCSTAbits.FERR;
+                _eusart->eusart_oerr = RCSTAbits.OERR;
                 *_data = RCREG;
             }
             else{ ret = E_NOT_OK; }
 
             return ret;
         }
-
-        Std_ReturnType eusart_async_ReadByteNonBlocking(uint8 *_data)
+        
+        Std_ReturnType eusart_async_ReadByteNonBlocking(eusart_config_t *_eusart, uint8 *_data) /* Used inside ISR */
         {
             Std_ReturnType ret = E_OK;
 
-            if(NULL != _data)
+            if((NULL != _eusart) && (NULL != _data))
             {    
-                if(1 == PIR1bits.RCIF)
-                {
-                    *_data = RCREG;
-                }
-                else{ ret = E_NOT_OK; }
+                #if EUSART_RX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+                    EUSART_RX_InterruptEnable();
+                #endif
+                _eusart->eusart_ferr = RCSTAbits.FERR;
+                _eusart->eusart_oerr = RCSTAbits.OERR;
+                *_data = RCREG;
             }
             else{ ret = E_NOT_OK; }
 
@@ -132,11 +138,11 @@
         {
             Std_ReturnType ret = E_OK;
 
-            while(!TXSTAbits.TRMT);
+            while(!(TXSTAbits.TRMT)){}
+            TXREG = _data;
             #if EUSART_TX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
                 EUSART_TX_InterruptEnable();
             #endif
-            TXREG = _data;
             
             return ret;
         }
@@ -166,6 +172,9 @@
             if(1 == PIR1bits.TXIF)
             {
                 TXREG = _data;
+                #if EUSART_TX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
+                    EUSART_TX_InterruptEnable();
+                #endif
             }
             else{ ret = E_NOT_OK; }
             
@@ -206,16 +215,16 @@ static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart)
         case BAUDRATE_ASYN_8BIT_lOW_SPEED:
             TXSTAbits.SYNC = EUSART_ASYNCHRONOUS_MODE;
             TXSTAbits.BRGH = EUSART_ASYNCHRONOUS_LOW_SPEED;
-            BAUDCONbits.BRG16 = EUSART_08BIT_BAUDRATE_GEN;
+            BAUDCONbits.BRG16 = EUSART_8BIT_BAUDRATE_GEN;
             Baud_Rate_Temp = ((_XTAL_FREQ / (float)_eusart->baudrate) / 64) - 1;
             break;
         case BAUDRATE_ASYN_8BIT_HIGH_SPEED:
             TXSTAbits.SYNC = EUSART_ASYNCHRONOUS_MODE;
             TXSTAbits.BRGH = EUSART_ASYNCHRONOUS_HIGH_SPEED;
-            BAUDCONbits.BRG16 = EUSART_08BIT_BAUDRATE_GEN;
+            BAUDCONbits.BRG16 = EUSART_8BIT_BAUDRATE_GEN;
             Baud_Rate_Temp = ((_XTAL_FREQ / (float)_eusart->baudrate) / 16) - 1;
             break;
-        case BAUDRATE_ASYN_16BIT_lOW_SPEED:
+        case BAUDRATE_ASYN_16BIT_LOW_SPEED:
             TXSTAbits.SYNC = EUSART_ASYNCHRONOUS_MODE;
             TXSTAbits.BRGH = EUSART_ASYNCHRONOUS_LOW_SPEED;
             BAUDCONbits.BRG16 = EUSART_16BIT_BAUDRATE_GEN;
@@ -229,7 +238,7 @@ static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart)
             break;
         case BAUDRATE_SYN_8BIT:
             TXSTAbits.SYNC = EUSART_SYNCHRONOUS_MODE;
-            BAUDCONbits.BRG16 = EUSART_08BIT_BAUDRATE_GEN;
+            BAUDCONbits.BRG16 = EUSART_8BIT_BAUDRATE_GEN;
             Baud_Rate_Temp = ((_XTAL_FREQ / (float)_eusart->baudrate) / 4) - 1;
             break;
         case BAUDRATE_SYN_16BIT:
@@ -273,13 +282,13 @@ static void eusart_async_TX_Init(const eusart_config_t *_eusart)
     #endif
 
     /* EUSART  9-Bit Transmit Configuration */
-    if(EUSART_ASYNCHRONOUS_9Bit_TX_ENABLE == _eusart->eusart_tx_9bit_enable)
+    if(EUSART_ASYNCHRONOUS_TX_9Bit_ENABLE == _eusart->eusart_tx_9bit_enable)
     {
-        TXSTAbits.TX9 = EUSART_ASYNCHRONOUS_9Bit_TX_ENABLE;
+        TXSTAbits.TX9 = EUSART_ASYNCHRONOUS_TX_9Bit_ENABLE;
     }
-    else if(EUSART_ASYNCHRONOUS_9Bit_TX_DISABLE == _eusart->eusart_tx_9bit_enable)
+    else if(EUSART_ASYNCHRONOUS_TX_9Bit_DISABLE == _eusart->eusart_tx_9bit_enable)
     {
-        TXSTAbits.TX9 = EUSART_ASYNCHRONOUS_9Bit_TX_DISABLE;
+        TXSTAbits.TX9 = EUSART_ASYNCHRONOUS_TX_9Bit_DISABLE;
     }
     else{ /* Nothing */}
         
@@ -318,13 +327,13 @@ static void eusart_async_RX_Init(const eusart_config_t *_eusart)
     #endif
 
     /* EUSART  9-Bit Receiver Configuration */
-    if(EUSART_ASYNCHRONOUS_9Bit_RX_ENABLE == _eusart->eusart_rx_9bit_enable)
+    if(EUSART_ASYNCHRONOUS_RX_9Bit_ENABLE == _eusart->eusart_rx_9bit_enable)
     {
-        RCSTAbits.RX9 = EUSART_ASYNCHRONOUS_9Bit_RX_ENABLE;
+        RCSTAbits.RX9 = EUSART_ASYNCHRONOUS_RX_9Bit_ENABLE;
     }
-    else if(EUSART_ASYNCHRONOUS_9Bit_RX_DISABLE == _eusart->eusart_rx_9bit_enable)
+    else if(EUSART_ASYNCHRONOUS_RX_9Bit_DISABLE == _eusart->eusart_rx_9bit_enable)
     {
-        RCSTAbits.RX9 = EUSART_ASYNCHRONOUS_9Bit_RX_DISABLE;
+        RCSTAbits.RX9 = EUSART_ASYNCHRONOUS_RX_9Bit_DISABLE;
     }
     else{ /* Nothing */}
         
@@ -341,6 +350,7 @@ void EUSART_TX_ISR(void)
 {
     /* Disable the interrupt of the EUSART TX Module*/
     EUSART_TX_InterruptDisable();
+    
     /* Code */
     
     /* Callback function gets called every time this ISR executed */
@@ -356,6 +366,8 @@ void EUSART_TX_ISR(void)
 
 void EUSART_RX_ISR(void)
 {
+    /* Disable the interrupt of the EUSART RX Module*/
+    EUSART_RX_InterruptDisable();
     /* Code */
     
     /* Callback function gets called every time this ISR executed */

@@ -1,5 +1,40 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"6380 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+"5354 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5354:     struct {
+[s S229 :1 `uc 1 ]
+[n S229 . NOT_BOR ]
+"5357
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5357:     struct {
+[s S230 :1 `uc 1 :1 `uc 1 ]
+[n S230 . . NOT_POR ]
+"5361
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5361:     struct {
+[s S231 :2 `uc 1 :1 `uc 1 ]
+[n S231 . . NOT_PD ]
+"5365
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5365:     struct {
+[s S232 :3 `uc 1 :1 `uc 1 ]
+[n S232 . . NOT_TO ]
+"5369
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5369:     struct {
+[s S233 :4 `uc 1 :1 `uc 1 ]
+[n S233 . . NOT_RI ]
+"5373
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5373:     struct {
+[s S234 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S234 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+"5383
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5383:     struct {
+[s S235 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S235 . BOR POR PD TO RI ]
+"5353
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5353: typedef union {
+[u S228 `S229 1 `S230 1 `S231 1 `S232 1 `S233 1 `S234 1 `S235 1 ]
+[n S228 . . . . . . . . ]
+"5391
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5391: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
+[v _RCONbits `VS228 ~T0 @X0 0 e@4048 ]
+"6380
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6380:     struct {
 [s S266 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S266 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
@@ -437,12 +472,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _global_interrupt_Enable ]
 [f ]
-"25
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 25:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"26
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 26:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+"21
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 21:     (RCONbits.IPEN = 1);
+[e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
+"22
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 22:     (INTCONbits.GIEH = 1);
+[e = . . _INTCONbits 2 2 -> -> 1 `i `uc ]
+"23
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 23:     (INTCONbits.GIEL = 1);
+[e = . . _INTCONbits 2 1 -> -> 1 `i `uc ]
 "28
 [; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 28: }
 [e :UE 274 ]
@@ -455,12 +493,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _global_interrupt_Disable ]
 [f ]
-"37
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 37:     (INTCONbits.GIE = 0);
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"38
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 38:     (INTCONbits.PEIE = 0);
-[e = . . _INTCONbits 1 6 -> -> 0 `i `uc ]
+"33
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 33:     (RCONbits.IPEN = 0);
+[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
+"34
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 34:     (INTCONbits.GIEH = 0);
+[e = . . _INTCONbits 2 2 -> -> 0 `i `uc ]
+"35
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 35:     (INTCONbits.GIEL = 0);
+[e = . . _INTCONbits 2 1 -> -> 0 `i `uc ]
 "40
 [; ;MCAL_Layer/Interrupt/mcal_interrupt_cfg.c: 40: }
 [e :UE 275 ]

@@ -56,12 +56,20 @@
           <itemPath>MCAL_Layer/GPIO/mcal_gpio_cfg.h</itemPath>
           <itemPath>MCAL_Layer/GPIO/mcal_gpio.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
+          <itemPath>MCAL_Layer/I2C/mcal_i2c.h</itemPath>
+          <itemPath>MCAL_Layer/I2C/mcal_i2c_cfg.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="Interrupt" displayName="Interrupt" projectFiles="true">
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_cfg.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_internal_interrupt.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_external_interrupt.h</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="SPI" displayName="SPI" projectFiles="true">
+          <itemPath>MCAL_Layer/SPI/mcal_spi.h</itemPath>
+          <itemPath>MCAL_Layer/SPI/mcal_spi_cfg.h</itemPath>
         </logicalFolder>
         <logicalFolder name="Timer0" displayName="Timer0" projectFiles="true">
           <itemPath>MCAL_Layer/Timer0/mcal_timer0.h</itemPath>
@@ -138,11 +146,17 @@
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL_Layer/GPIO/mcal_gpio.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
+          <itemPath>MCAL_Layer/I2C/mcal_i2c.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="Interrupt" displayName="Interrupt" projectFiles="true">
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_manager.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_internal_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_external_interrupt.c</itemPath>
           <itemPath>MCAL_Layer/Interrupt/mcal_interrupt_cfg.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="SPI" displayName="SPI" projectFiles="true">
+          <itemPath>MCAL_Layer/SPI/mcal_spi.c</itemPath>
         </logicalFolder>
         <logicalFolder name="Timer0" displayName="Timer0" projectFiles="true">
           <itemPath>MCAL_Layer/Timer0/mcal_timer0.c</itemPath>

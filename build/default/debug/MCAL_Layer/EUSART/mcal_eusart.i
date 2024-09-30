@@ -4796,7 +4796,18 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 14 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h" 2
-# 71 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h"
+# 60 "MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h"
+typedef enum
+{
+    INTERRUPT_PRIORITY_LOW = 0,
+    INTERRUPT_PRIORITY_HIGH
+
+}interrupt_priority_t;
+
+
+
+
+
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
 # 12 "MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h" 2
@@ -4804,127 +4815,317 @@ void global_interrupt_Disable(void);
 
 # 1 "MCAL_Layer/EUSART/mcal_eusart_cfg.h" 1
 # 14 "MCAL_Layer/EUSART/mcal_eusart.h" 2
-# 63 "MCAL_Layer/EUSART/mcal_eusart.h"
+# 61 "MCAL_Layer/EUSART/mcal_eusart.h"
 typedef enum
 {
     BAUDRATE_ASYN_8BIT_lOW_SPEED,
     BAUDRATE_ASYN_8BIT_HIGH_SPEED,
-    BAUDRATE_ASYN_16BIT_lOW_SPEED,
+    BAUDRATE_ASYN_16BIT_LOW_SPEED,
     BAUDRATE_ASYN_16BIT_HIGH_SPEED,
     BAUDRATE_SYN_8BIT,
     BAUDRATE_SYN_16BIT
 }baudrate_gen_t;
 
-typedef struct
-{
-    interrupt_priority_t usart_tx_int_priority;
- uint8 usart_tx_enable : 1;
- uint8 usart_tx_interrupt_enable : 1;
- uint8 usart_tx_9bit_enable : 1;
-    uint8 usart_tx_reserved : 5;
-}eusart_tx_cfg_t;
 
-typedef struct
-{
-    interrupt_priority_t usart_rx_int_priority;
- uint8 usart_rx_enable : 1;
- uint8 usart_rx_interrupt_enable : 1;
- uint8 usart_rx_9bit_enable : 1;
-    uint8 usart_rx_reserved : 5;
-}eusart_rx_cfg_t;
-
-typedef union
-{
- struct
-    {
-  uint8 usart_tx_reserved : 6;
-  uint8 usart_ferr : 1;
-  uint8 usart_oerr : 1;
- };
- uint8 status;
-}eusart_error_status_t;
 
 typedef struct
 {
     uint32 baudrate;
     baudrate_gen_t baudrate_gen_gonfig;
-    eusart_tx_cfg_t usart_tx_cfg;
- eusart_rx_cfg_t usart_rx_cfg;
- eusart_error_status_t error_status;
- void (*EUSART_TxDefaultInterruptHandler)(void);
-    void (*EUSART_RxDefaultInterruptHandler)(void);
-    void (*EUSART_FramingErrorHandler)(void);
-    void (*EUSART_OverrunErrorHandler)(void);
+
+        uint8 eusart_tx_9bit_enable : 1;
+        uint8 eusart_tx_9bit_mode : 1;
+# 90 "MCAL_Layer/EUSART/mcal_eusart.h"
+        uint8 eusart_rx_9bit_enable : 1;
+        uint8 eusart_rx_9bit_mode : 1;
+        uint8 eusart_ferr : 1;
+        uint8 eusart_oerr : 1;
+# 105 "MCAL_Layer/EUSART/mcal_eusart.h"
 }eusart_config_t;
 
 
 
-Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart);
-Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart);
 
-Std_ReturnType eusart_async_ReadByteBlocking(uint8 *_data);
-Std_ReturnType eusart_async_ReadByteNonBlocking(uint8 *_data);
-Std_ReturnType eusart_async_RX_Restart(void);
 
-Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data);
-Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len);
-Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data);
-Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len);
+
+
+    Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart);
+    Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart);
+
+
+
+        Std_ReturnType eusart_async_ReadByteBlocking(eusart_config_t *_eusart, uint8 *_data);
+        Std_ReturnType eusart_async_ReadByteNonBlocking(eusart_config_t *_eusart, uint8 *_data);
+        Std_ReturnType eusart_async_RX_Restart(void);
+
+
+
+
+
+        Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data);
+        Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len);
+        Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data);
+        Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len);
 # 11 "MCAL_Layer/EUSART/mcal_eusart.c" 2
+# 27 "MCAL_Layer/EUSART/mcal_eusart.c"
+    static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart);
+
+
+
+    static void eusart_async_TX_Init(const eusart_config_t *_eusart);
+
+
+
+    static void eusart_async_RX_Init(const eusart_config_t *_eusart);
 
 
 
 
 
-    static void (*EUSART_TX_InterruptHandler)(void) = ((void*)0);
 
-
-    static void (*EUSART_RX_InterruptHandler)(void) = ((void*)0);
-    static void (*EUSART_FramingErrorHandler)(void) = ((void*)0);
-    static void (*EUSART_OverrunErrorHandler)(void) = ((void*)0);
-
-
-
-
-static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart);
-static void eusart_async_TX_Init(const eusart_config_t *_eusart);
-static void eusart_async_RX_Init(const eusart_config_t *_eusart);
-# 38 "MCAL_Layer/EUSART/mcal_eusart.c"
-void EUSART_TX_ISR(void)
-{
-
-    (PIE1bits.TXIE = 0);
-
-
-
-    if(EUSART_TX_InterruptHandler)
+    Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart)
     {
-        EUSART_TX_InterruptHandler();
+        Std_ReturnType ret = (Std_ReturnType)0x01;
+
+        if(((void*)0) != _eusart)
+        {
+
+            RCSTAbits.SPEN = 0X00;
+
+            TRISCbits.RC6 = 1;
+
+            TRISCbits.RC7 = 1;
+            eusart_Baud_Rate_Calculation(_eusart);
+
+                eusart_async_TX_Init(_eusart);
+
+
+
+                eusart_async_RX_Init(_eusart);
+
+
+            RCSTAbits.SPEN = 0X01;
+        }
+        else{ ret = (Std_ReturnType)0x00; }
+
+        return ret;
     }
-    else{ }
+
+    Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart)
+    {
+        Std_ReturnType ret = (Std_ReturnType)0x01;
+
+        if(((void*)0) != _eusart)
+        {
+            RCSTAbits.SPEN = 0X00;
+        }
+        else{ ret = (Std_ReturnType)0x00; }
+
+        return ret;
+    }
+
+
+
+
+        Std_ReturnType eusart_async_ReadByteBlocking(eusart_config_t *_eusart, uint8 *_data)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            if((((void*)0) != _eusart) && (((void*)0) != _data))
+            {
+                while(!PIR1bits.RCIF){}
+
+
+
+                _eusart->eusart_ferr = RCSTAbits.FERR;
+                _eusart->eusart_oerr = RCSTAbits.OERR;
+                *_data = RCREG;
+            }
+            else{ ret = (Std_ReturnType)0x00; }
+
+            return ret;
+        }
+
+        Std_ReturnType eusart_async_ReadByteNonBlocking(eusart_config_t *_eusart, uint8 *_data)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            if((((void*)0) != _eusart) && (((void*)0) != _data))
+            {
+
+
+
+                _eusart->eusart_ferr = RCSTAbits.FERR;
+                _eusart->eusart_oerr = RCSTAbits.OERR;
+                *_data = RCREG;
+            }
+            else{ ret = (Std_ReturnType)0x00; }
+
+            return ret;
+        }
+
+        Std_ReturnType eusart_async_RX_Restart(void)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            RCSTAbits.CREN = 0;
+            RCSTAbits.CREN = 1;
+
+            return ret;
+        }
+
+
+
+
+
+        Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            while(!(TXSTAbits.TRMT)){}
+            TXREG = _data;
+
+
+
+
+            return ret;
+        }
+
+        Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            if(((void*)0) != _data)
+            {
+                uint16 char_counter = 0;
+
+                for(char_counter = 0 ; char_counter < str_len ; char_counter++)
+                {
+                    ret = eusart_async_WriteByteBlocking(_data[char_counter]);
+                }
+            }
+            else{ ret = (Std_ReturnType)0x00; }
+
+            return ret;
+        }
+
+        Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            if(1 == PIR1bits.TXIF)
+            {
+                TXREG = _data;
+
+
+
+            }
+            else{ ret = (Std_ReturnType)0x00; }
+
+            return ret;
+        }
+
+        Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len)
+        {
+            Std_ReturnType ret = (Std_ReturnType)0x01;
+
+            if(((void*)0) != _data)
+            {
+                uint16 char_counter = 0;
+
+                for(char_counter = 0 ; char_counter < str_len ; char_counter++)
+                {
+                    ret = eusart_async_WriteByteNonBlocking(_data[char_counter]);
+                }
+            }
+            else{ ret = (Std_ReturnType)0x00; }
+
+            return ret;
+        }
+# 210 "MCAL_Layer/EUSART/mcal_eusart.c"
+static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart)
+{
+    float Baud_Rate_Temp = 0;
+    switch(_eusart->baudrate_gen_gonfig)
+    {
+        case BAUDRATE_ASYN_8BIT_lOW_SPEED:
+            TXSTAbits.SYNC = 0;
+            TXSTAbits.BRGH = 0;
+            BAUDCONbits.BRG16 = 0;
+            Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 64) - 1;
+            break;
+        case BAUDRATE_ASYN_8BIT_HIGH_SPEED:
+            TXSTAbits.SYNC = 0;
+            TXSTAbits.BRGH = 1;
+            BAUDCONbits.BRG16 = 0;
+            Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 16) - 1;
+            break;
+        case BAUDRATE_ASYN_16BIT_LOW_SPEED:
+            TXSTAbits.SYNC = 0;
+            TXSTAbits.BRGH = 0;
+            BAUDCONbits.BRG16 = 1;
+            Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 16) - 1;
+            break;
+        case BAUDRATE_ASYN_16BIT_HIGH_SPEED:
+            TXSTAbits.SYNC = 0;
+            TXSTAbits.BRGH = 1;
+            BAUDCONbits.BRG16 = 1;
+            Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 4) - 1;
+            break;
+        case BAUDRATE_SYN_8BIT:
+            TXSTAbits.SYNC = 1;
+            BAUDCONbits.BRG16 = 0;
+            Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 4) - 1;
+            break;
+        case BAUDRATE_SYN_16BIT:
+            TXSTAbits.SYNC = 1;
+            BAUDCONbits.BRG16 = 1;
+            Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 4) - 1;
+            break;
+        default : ;
+    }
+    SPBRG = (uint8)((uint32)Baud_Rate_Temp);
+    SPBRGH = (uint8)(((uint32)Baud_Rate_Temp) >> 8);
 }
 
 
 
 
-void EUSART_RX_ISR(void)
+
+static void eusart_async_TX_Init(const eusart_config_t *_eusart)
 {
+    TXSTAbits.TXEN = 0;
+# 285 "MCAL_Layer/EUSART/mcal_eusart.c"
+    if(1 == _eusart->eusart_tx_9bit_enable)
+    {
+        TXSTAbits.TX9 = 1;
+    }
+    else if(0 == _eusart->eusart_tx_9bit_enable)
+    {
+        TXSTAbits.TX9 = 0;
+    }
+    else{ }
+
+    TXSTAbits.TXEN = 1;
+}
 
 
 
-    if(EUSART_RX_InterruptHandler)
+
+
+static void eusart_async_RX_Init(const eusart_config_t *_eusart)
+{
+    RCSTAbits.CREN = 0;
+# 330 "MCAL_Layer/EUSART/mcal_eusart.c"
+    if(1 == _eusart->eusart_rx_9bit_enable)
     {
-        EUSART_RX_InterruptHandler();
+        RCSTAbits.RX9 = 1;
     }
-    else { }
-    if(EUSART_FramingErrorHandler)
+    else if(0 == _eusart->eusart_rx_9bit_enable)
     {
-        EUSART_FramingErrorHandler();
+        RCSTAbits.RX9 = 0;
     }
-    else { }
-    if(EUSART_OverrunErrorHandler)
-    {
-        EUSART_OverrunErrorHandler();
-    }
-    else { }
+    else{ }
+
+    RCSTAbits.CREN = 1;
 }

@@ -16,40 +16,42 @@
 /* Section : Macro Declarations */
 
 /* Selecting EUSART Working Mode */
-#define EUSART_SYNCHRONOUS_MODE                     1
-#define EUSART_ASYNCHRONOUS_MODE                    0
+#define EUSART_SYNCHRONOUS_MODE                         1
+#define EUSART_ASYNCHRONOUS_MODE                        0
 /* Baud Rate Generator Asynchronous Speed Mode */
-#define EUSART_ASYNCHRONOUS_HIGH_SPEED              1
-#define EUSART_ASYNCHRONOUS_LOW_SPEED               0
+#define EUSART_ASYNCHRONOUS_HIGH_SPEED                  1
+#define EUSART_ASYNCHRONOUS_LOW_SPEED                   0
 /* Baud Rate Generator Register Size */
-#define EUSART_16BIT_BAUDRATE_GEN                   1
-#define EUSART_08BIT_BAUDRATE_GEN                   0
+#define EUSART_16BIT_BAUDRATE_GEN                       1
+#define EUSART_8BIT_BAUDRATE_GEN                        0
 
 /* EUSART Transmit Enable */
-#define EUSART_ASYNCHRONOUS_TX_ENABLE               1
-#define EUSART_ASYNCHRONOUS_TX_DISABLE              0
-/* EUSART Transmit Interrupt Enable */
-#define EUSART_ASYNCHRONOUS_INTERRUPT_TX_ENABLE     1
-#define EUSART_ASYNCHRONOUS_INTERRUPT_TX_DISABLE    0
+#define EUSART_ASYNCHRONOUS_TX_ENABLE                   1
+#define EUSART_ASYNCHRONOUS_TX_DISABLE                  0
 /* EUSART 9-Bit Transmit Enable */
-#define EUSART_ASYNCHRONOUS_9Bit_TX_ENABLE          1
-#define EUSART_ASYNCHRONOUS_9Bit_TX_DISABLE         0
+#define EUSART_ASYNCHRONOUS_TX_9Bit_ENABLE              1
+#define EUSART_ASYNCHRONOUS_TX_9Bit_DISABLE             0
+/* EUSART 9-Bit Transmit Mode */
+#define EUSART_ASYNCHRONOUS_TX_9Bit_DATA_MODE           0
+#define EUSART_ASYNCHRONOUS_TX_9Bit_ODD_PARITY_MODE     1
+#define EUSART_ASYNCHRONOUS_TX_9Bit_EVEN_PARITY_MODE    2
 
 /* EUSART Receiver Enable */
-#define EUSART_ASYNCHRONOUS_RX_ENABLE               1
-#define EUSART_ASYNCHRONOUS_RX_DISABLE              0
-/* EUSART Receiver Interrupt Enable */
-#define EUSART_ASYNCHRONOUS_INTERRUPT_RX_ENABLE     1
-#define EUSART_ASYNCHRONOUS_INTERRUPT_RX_DISABLE    0
+#define EUSART_ASYNCHRONOUS_RX_ENABLE                   1
+#define EUSART_ASYNCHRONOUS_RX_DISABLE                  0
 /* EUSART 9-Bit Receiver Enable */
-#define EUSART_ASYNCHRONOUS_9Bit_RX_ENABLE          1
-#define EUSART_ASYNCHRONOUS_9Bit_RX_DISABLE         0
+#define EUSART_ASYNCHRONOUS_RX_9Bit_ENABLE              1
+#define EUSART_ASYNCHRONOUS_RX_9Bit_DISABLE             0
+/* EUSART 9-Bit Transmit Mode */
+#define EUSART_ASYNCHRONOUS_RX_9Bit_DATA_MODE           0
+#define EUSART_ASYNCHRONOUS_RX_9Bit_ODD_PARITY_MODE     1
+#define EUSART_ASYNCHRONOUS_RX_9Bit_EVEN_PARITY_MODE    2
 /* EUSART Framing Error */
-#define EUSART_FRAMING_ERROR_DETECTED               1
-#define EUSART_FRAMING_ERROR_CLEARED                0
+#define EUSART_FRAMING_ERROR_DETECTED                   1
+#define EUSART_FRAMING_ERROR_CLEARED                    0
 /* EUSART Overrun Error */
-#define EUSART_OVERRUN_ERROR_DETECTED               1
-#define EUSART_OVERRUN_ERROR_CLEARED                0
+#define EUSART_OVERRUN_ERROR_DETECTED                   1
+#define EUSART_OVERRUN_ERROR_CLEARED                    0
 
 
 /* Section : Macro Functions Declarations */
@@ -60,7 +62,7 @@ typedef enum
 {
     BAUDRATE_ASYN_8BIT_lOW_SPEED,
     BAUDRATE_ASYN_8BIT_HIGH_SPEED,
-    BAUDRATE_ASYN_16BIT_lOW_SPEED,   
+    BAUDRATE_ASYN_16BIT_LOW_SPEED,   
     BAUDRATE_ASYN_16BIT_HIGH_SPEED,
     BAUDRATE_SYN_8BIT,
     BAUDRATE_SYN_16BIT
@@ -74,6 +76,7 @@ typedef struct
     baudrate_gen_t baudrate_gen_gonfig;  
     #if EUSART_TX_MODULE == EUSART_MODULE_ENABLE
         uint8 eusart_tx_9bit_enable  : 1;
+        uint8 eusart_tx_9bit_mode    : 1; /* unimplemented at initialization */
         #if EUSART_TX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
             /* Call back used for all EUSART TX Modes */
             void (* EUSART_TX_InterruptHandler)(void);   
@@ -85,6 +88,7 @@ typedef struct
     #endif  
     #if EUSART_RX_MODULE == EUSART_MODULE_ENABLE
         uint8 eusart_rx_9bit_enable  : 1;
+        uint8 eusart_rx_9bit_mode    : 1; /* unimplemented at initialization */
         uint8 eusart_ferr            : 1;
         uint8 eusart_oerr            : 1;
         #if EUSART_RX_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
@@ -111,8 +115,8 @@ typedef struct
 
     #if EUSART_RX_MODULE == EUSART_MODULE_ENABLE
 
-        Std_ReturnType eusart_async_ReadByteBlocking(uint8 *_data);
-        Std_ReturnType eusart_async_ReadByteNonBlocking(uint8 *_data);
+        Std_ReturnType eusart_async_ReadByteBlocking(eusart_config_t *_eusart, uint8 *_data);
+        Std_ReturnType eusart_async_ReadByteNonBlocking(eusart_config_t *_eusart, uint8 *_data); /* Used inside ISR */
         Std_ReturnType eusart_async_RX_Restart(void);
 
     #endif

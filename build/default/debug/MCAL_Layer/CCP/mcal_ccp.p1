@@ -5,11 +5,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S273 . port pin direction logic ]
 "96 MCAL_Layer/CCP/mcal_ccp.c
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 96:     Std_ReturnType ccp1_Init(const ccp_config_t *_ccp_obj)
-[c E3057 0 1 2 .. ]
-[n E3057 . CCP1_CCP2_TIMER1 CCP1_TIMER1_CCP2_TIMER3 CCP1_CCP2_TIMER3  ]
-"111 MCAL_Layer/CCP/mcal_ccp.h
-[; ;MCAL_Layer/CCP/mcal_ccp.h: 111: {
-[s S277 `S273 1 `uc 1 `E3057 1 ]
+[c E3061 0 1 2 .. ]
+[n E3061 . CCP1_CCP2_TIMER1 CCP1_TIMER1_CCP2_TIMER3 CCP1_CCP2_TIMER3  ]
+"110 MCAL_Layer/CCP/mcal_ccp.h
+[; ;MCAL_Layer/CCP/mcal_ccp.h: 110: {
+[s S277 `S273 1 `uc 1 `E3061 1 ]
 [n S277 . ccp1_pin ccp1_compare_mode ccp_capture_timer ]
 "4261 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4261:     struct {
@@ -54,16 +54,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2596
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2596: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
 [v _PIR1bits `VS96 ~T0 @X0 0 e@3998 ]
-"87 MCAL_Layer/CCP/mcal_ccp.h
-[; ;MCAL_Layer/CCP/mcal_ccp.h: 87:     {
+"86 MCAL_Layer/CCP/mcal_ccp.h
+[; ;MCAL_Layer/CCP/mcal_ccp.h: 86:     {
 [s S275 `uc 1 `uc 1 ]
 [n S275 . ccpr_low ccpr_high ]
-"92
-[; ;MCAL_Layer/CCP/mcal_ccp.h: 92:     {
+"91
+[; ;MCAL_Layer/CCP/mcal_ccp.h: 91:     {
 [s S276 `us 1 ]
 [n S276 . ccpr_16Bit ]
-"85
-[; ;MCAL_Layer/CCP/mcal_ccp.h: 85: {
+"84
+[; ;MCAL_Layer/CCP/mcal_ccp.h: 84: {
 [u S274 `S275 1 `S276 1 ]
 [n S274 . . . ]
 "4359 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
@@ -534,7 +534,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 101:         {
 {
 "103
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 103:             (CCP1CONbits.CCP1M = ((uint8)0x00));
+[; ;MCAL_Layer/CCP/mcal_ccp.c: 103:             (CCP1CONbits.CCP1M = 0);
 [e = . . _CCP1CONbits 0 0 -> -> 0 `i `uc ]
 "106
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 106:             ret = gpio_pin_initialize(&(_ccp_obj->ccp1_pin));
@@ -588,7 +588,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 137:         {
 {
 "139
-[; ;MCAL_Layer/CCP/mcal_ccp.c: 139:             (CCP1CONbits.CCP1M = ((uint8)0x00));
+[; ;MCAL_Layer/CCP/mcal_ccp.c: 139:             (CCP1CONbits.CCP1M = 0);
 [e = . . _CCP1CONbits 0 0 -> -> 0 `i `uc ]
 "146
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 146:         }
@@ -698,8 +698,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 218:             Std_ReturnType ret = (Std_ReturnType)0x01;
 [v _ret `uc ~T0 @X0 1 a ]
 [e = _ret -> -> 1 `i `uc ]
-[v F3093 `S274 ~T0 @X0 1 s ]
-[i F3093
+[v F3097 `S274 ~T0 @X0 1 s ]
+[i F3097
 :U 0
 :U ..
 :U ..
@@ -714,7 +714,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _capture_temp_value `S274 ~T0 @X0 1 a ]
-[e = _capture_temp_value F3093 ]
+[e = _capture_temp_value F3097 ]
 "221
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 221:             if(((void*)0) != _ccp_obj)
 [e $ ! != -> -> -> 0 `i `*v `*CS277 __ccp_obj 290  ]
@@ -836,7 +836,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "638
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 638:         if(CCP1_CCP2_TIMER3 == _ccp_obj->ccp_capture_timer)
-[e $ ! == -> . `E3057 2 `ui -> . *U __ccp_obj 2 `ui 302  ]
+[e $ ! == -> . `E3061 2 `ui -> . *U __ccp_obj 2 `ui 302  ]
 "639
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 639:         {
 {
@@ -853,7 +853,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "644
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 644:         else if(CCP1_TIMER1_CCP2_TIMER3 == _ccp_obj->ccp_capture_timer){
 [e :U 302 ]
-[e $ ! == -> . `E3057 1 `ui -> . *U __ccp_obj 2 `ui 304  ]
+[e $ ! == -> . `E3061 1 `ui -> . *U __ccp_obj 2 `ui 304  ]
 {
 "647
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 647:             T3CONbits.T3CCP1 = 1;
@@ -868,7 +868,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "650
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 650:         else if(CCP1_CCP2_TIMER1 == _ccp_obj->ccp_capture_timer){
 [e :U 304 ]
-[e $ ! == -> . `E3057 0 `ui -> . *U __ccp_obj 2 `ui 306  ]
+[e $ ! == -> . `E3061 0 `ui -> . *U __ccp_obj 2 `ui 306  ]
 {
 "652
 [; ;MCAL_Layer/CCP/mcal_ccp.c: 652:             T3CONbits.T3CCP1 = 0;

@@ -16,7 +16,6 @@
 /* Section : Macro Declarations */
 
 /* CCP Module Mode Select  */
-#define CCP_MODULE_DISABLE                 ((uint8)0x00)
 #define CCP_CAPTURE_MODE_1_FALLING_EDGE    ((uint8)0x04)
 #define CCP_CAPTURE_MODE_1_RISING_EDGE     ((uint8)0x05)
 #define CCP_CAPTURE_MODE_4_RISING_EDGE     ((uint8)0x06)

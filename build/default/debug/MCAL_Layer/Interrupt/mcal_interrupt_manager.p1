@@ -31,12 +31,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2596
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2596: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
 [v _PIR1bits `VS96 ~T0 @X0 0 e@3998 ]
-"83 MCAL_Layer/Interrupt/mcal_interrupt_manager.h
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 83: void EUSART_TX_ISR(void);
-[v _EUSART_TX_ISR `(v ~T0 @X0 0 ef ]
-"89
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 89: void EUSART_RX_ISR(void);
-[v _EUSART_RX_ISR `(v ~T0 @X0 0 ef ]
+"95 MCAL_Layer/Interrupt/mcal_interrupt_manager.h
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 95: void SPI_ISR(void);
+[v _SPI_ISR `(v ~T0 @X0 0 ef ]
+"2734 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2734:     struct {
+[s S103 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S103 . CCP2IE TMR3IE HLVDIE BCLIE EEIE . CMIE OSCFIE ]
+"2744
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2744:     struct {
+[s S104 :2 `uc 1 :1 `uc 1 ]
+[n S104 . . LVDIE ]
+"2733
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2733: typedef union {
+[u S102 `S103 1 `S104 1 ]
+[n S102 . . . ]
+"2749
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2749: extern volatile PIE2bits_t PIE2bits __attribute__((address(0xFA0)));
+[v _PIE2bits `VS102 ~T0 @X0 0 e@4000 ]
+"2800
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2800:     struct {
+[s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S106 . CCP2IF TMR3IF HLVDIF BCLIF EEIF . CMIF OSCFIF ]
+"2810
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2810:     struct {
+[s S107 :2 `uc 1 :1 `uc 1 ]
+[n S107 . . LVDIF ]
+"2799
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2799: typedef union {
+[u S105 `S106 1 `S107 1 ]
+[n S105 . . . ]
+"2815
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2815: extern volatile PIR2bits_t PIR2bits __attribute__((address(0xFA1)));
+[v _PIR2bits `VS105 ~T0 @X0 0 e@4001 ]
+"101 MCAL_Layer/Interrupt/mcal_interrupt_manager.h
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 101: void I2C_ISR(void);
+[v _I2C_ISR `(v ~T0 @X0 0 ef ]
+"102
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.h: 102: void I2C_BC_ISR(void);
+[v _I2C_BC_ISR `(v ~T0 @X0 0 ef ]
+[t T40 __interrupt low_priority ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -448,54 +482,70 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v $root$_InterruptManager `(v ~T0 @X0 0 e ]
-"216 MCAL_Layer/Interrupt/mcal_interrupt_manager.c
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 216: void __attribute__((picinterrupt(("")))) InterruptManager(void)
-[v _InterruptManager `(v ~T39 @X0 1 ef ]
-"217
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 217: {
+[v $root$_InterruptManagerHigh `(v ~T0 @X0 0 e ]
+"32 MCAL_Layer/Interrupt/mcal_interrupt_manager.c
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 32: void __attribute__((picinterrupt(("")))) InterruptManagerHigh(void)
+[v _InterruptManagerHigh `(v ~T39 @X0 1 ef ]
+"33
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 33: {
 {
-[e :U _InterruptManager ]
+[e :U _InterruptManagerHigh ]
 [f ]
-"355
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 355:     if((1 == PIE1bits.TXIE) && (1 == PIR1bits.TXIF))
-[e $ ! && == -> 1 `i -> . . _PIE1bits 0 4 `i == -> 1 `i -> . . _PIR1bits 0 4 `i 275  ]
-"356
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 356:     {
+"179
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 179:     if((1 == PIE1bits.SSPIE) && (1 == PIR1bits.SSPIF))
+[e $ ! && == -> 1 `i -> . . _PIE1bits 0 3 `i == -> 1 `i -> . . _PIR1bits 0 3 `i 275  ]
+"180
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 180:     {
 {
-"357
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 357:         EUSART_TX_ISR();
-[e ( _EUSART_TX_ISR ..  ]
-"358
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 358:     }
+"181
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 181:         SPI_ISR();
+[e ( _SPI_ISR ..  ]
+"182
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 182:     }
 }
 [e $U 276  ]
-"359
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 359:     else{ }
+"183
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 183:     else{ }
 [e :U 275 ]
 {
 }
 [e :U 276 ]
-"364
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 364:     if((1 == PIE1bits.RCIE) && (1 == PIR1bits.RCIF))
-[e $ ! && == -> 1 `i -> . . _PIE1bits 0 5 `i == -> 1 `i -> . . _PIR1bits 0 5 `i 277  ]
-"365
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 365:     {
+"188
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 188:     if((1 == PIE2bits.BCLIE) && (1 == PIR2bits.BCLIF))
+[e $ ! && == -> 1 `i -> . . _PIE2bits 0 3 `i == -> 1 `i -> . . _PIR2bits 0 3 `i 277  ]
+"189
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 189:     {
 {
-"366
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 366:         EUSART_RX_ISR();
-[e ( _EUSART_RX_ISR ..  ]
-"367
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 367:     }
+"190
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 190:         I2C_ISR();
+[e ( _I2C_ISR ..  ]
+"191
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 191:         I2C_BC_ISR();
+[e ( _I2C_BC_ISR ..  ]
+"192
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 192:     }
 }
 [e $U 278  ]
-"368
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 368:     else{ }
+"193
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 193:     else{ }
 [e :U 277 ]
 {
 }
 [e :U 278 ]
-"388
-[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 388: }
+"195
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 195: }
 [e :UE 274 ]
+}
+[v $root$_InterruptManagerLow `(v ~T0 @X0 0 e ]
+"197
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 197: void __attribute__((picinterrupt(("low_priority")))) InterruptManagerLow(void)
+[v _InterruptManagerLow `(v ~T40 @X0 1 ef ]
+"198
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 198: {
+{
+[e :U _InterruptManagerLow ]
+[f ]
+"213
+[; ;MCAL_Layer/Interrupt/mcal_interrupt_manager.c: 213: }
+[e :UE 279 ]
 }
