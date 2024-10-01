@@ -44,11 +44,11 @@ Std_ReturnType spi_Init(const spi_config_t *Config)
             spi_Slave_Mode_GPIO_PIN_Configurations(Config);
         }
         /* Clock Polarity Select */
-        SSPCON1bits.CKP = Config->spi_config.ClockPolarity;
-        /* SPI Sample Select */
-        SSPSTATbits.SMP = Config->spi_config.SampleSelect;
-        /* SPI Clock Select */
-         SSPSTATbits.CKE = Config->spi_config.ClockSelect;
+        SSPCON1bits.CKP = Config->ClockPolarity;
+        /* SPI Sample time Select */
+        SSPSTATbits.SMP = Config->SampleTime;
+        /* SPI Clock Phase Select */
+         SSPSTATbits.CKE = Config->ClockPhase;
         /* SPI Interrupt Configurations*/
         #if SPI_INTERRUPT_FEATURE == INTERRUPT_FEATURE_ENABLE
         spi_Interrupt_Init(Config);
@@ -81,7 +81,7 @@ Std_ReturnType spi_DeInit(const spi_config_t *Config)
     return ret;
 }
 
-Std_ReturnType spi_Send_Byte(const spi_config_t *Config, const uint8 _data)
+Std_ReturnType spi_Send_Byte_Blocking(const spi_config_t *Config, const uint8 _data)
 {
     Std_ReturnType ret = E_OK;
     
@@ -90,14 +90,27 @@ Std_ReturnType spi_Send_Byte(const spi_config_t *Config, const uint8 _data)
         SSPBUF = _data;
         /* Waiting to transmit */
         while(!(PIR1bits.SSPIF)){} 
-        PIR1bits.SSPIF = 0;
+        SPI_InterruptFlagClear();
     }
     else{ ret = E_NOT_OK; }
     
     return ret;
 }
 
-Std_ReturnType spi_Read_Byte(const spi_config_t *Config, uint8 *_data)
+Std_ReturnType spi_Send_Byte_NonBlocking(const spi_config_t *Config, const uint8 _data)
+{
+    Std_ReturnType ret = E_OK;
+    
+    if(NULL != Config)
+    {
+        SSPBUF = _data;
+    }
+    else{ ret = E_NOT_OK; }
+    
+    return ret;
+}
+
+Std_ReturnType spi_Read_Byte_Blocking(const spi_config_t *Config, uint8 *_data)
 {
     Std_ReturnType ret = E_OK;
     
@@ -112,26 +125,13 @@ Std_ReturnType spi_Read_Byte(const spi_config_t *Config, uint8 *_data)
     return ret;
 }
 
-Std_ReturnType spi_Send_Byte_NonBlocking(const spi_config_t *Config, const uint8 _data)
-{
-    Std_ReturnType ret = E_OK;
-    
-    if(NULL != Config)
-    {
-        
-    }
-    else{ ret = E_NOT_OK; }
-    
-    return ret;
-}
-
 Std_ReturnType spi_Read_Byte_NonBlocking(const spi_config_t *Config, uint8 *_data)
 {
     Std_ReturnType ret = E_OK;
     
     if((NULL != Config) && (NULL != _data))
     {
-        
+        *_data = SSPBUF;
     }
     else{ ret = E_NOT_OK; }
     

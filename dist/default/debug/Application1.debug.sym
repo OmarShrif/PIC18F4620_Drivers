@@ -49,6 +49,7 @@ _PORTD F83 0 ABS 0
 __LRAM 1 0 ABS 0
 _PORTE F84 0 ABS 0
 ttemp5 7F 0 COMRAM 1
+spi_Master_Mode_GPIO_PIN_Configurations@F3114 46 0 COMRAM 1
 ttemp6 82 0 COMRAM 1
 ttemp7 86 0 COMRAM 1
 wtemp8 7F 0 COMRAM 1
@@ -99,7 +100,6 @@ __Lintret 0 0 ABS 0
 __Hramtop 1000 0 RAM 0
 __Lramtop 1000 0 RAM 0
 __Hstruct 0 0 COMRAM 1
-spi_Master_Mode_GPIO_PIN_Configurations@F3115 47 0 COMRAM 1
 __Lstruct 0 0 COMRAM 1
 __Hbigdata 0 0 BIGRAM 1
 __Lbigdata 0 0 BIGRAM 1
@@ -136,6 +136,7 @@ __end_of_application_initialize 146E 0 CODE 0
 stackhi 0 0 ABS 0
 __Hheap 0 0 HEAP 7
 __Lheap 0 0 HEAP 7
+spi_Master_Mode_GPIO_PIN_Configurations@F3116 45 0 COMRAM 1
 __Htemp 7F 0 COMRAM 1
 __Ltemp 7E 0 COMRAM 1
 __end_of_led_initialize 1378 0 CODE 0
@@ -160,7 +161,6 @@ __Hsivt_lo 0 0 ABS 0
 __Lsivt_lo 0 0 ABS 0
 gpio_pin_direction_initialize@ret 74 0 COMRAM 1
 led_initialize@ret 7B 0 COMRAM 1
-spi_Master_Mode_GPIO_PIN_Configurations@F3117 46 0 COMRAM 1
 _RCSTAbits FAB 0 ABS 0
 _TRISCbits F94 0 ABS 0
 _TXSTAbits FAC 0 ABS 0
@@ -243,7 +243,6 @@ __end_of_SPI_ISR 1472 0 CODE 0
 _SSPSTATbits FC7 0 ABS 0
 __H__absolute__ 0 0 ABS 0
 __L__absolute__ 0 0 ABS 0
-spi_Master_Mode_GPIO_PIN_Configurations@F3119 45 0 COMRAM 1
 __Hidata 0 0 CODE 0
 __Lidata 0 0 CODE 0
 __Hrdata 0 0 COMRAM 1
@@ -282,10 +281,10 @@ __Lconst 0 0 CONST 0
 __Hspace_4 60000E 0 ABS 0
 __Lspace_4 0 0 ABS 0
 ___stack_lo 0 0 STACK 2
-spi_Slave_Mode_GPIO_PIN_Configurations@F3130 41 0 COMRAM 1
 _ecu_layer_initialize 144E 0 CODE 0
 _I2C_Report_Write_Collision_InterruptHandler 56 0 COMRAM 1
 __HbssBANK0 0 0 ABS 0
+spi_Slave_Mode_GPIO_PIN_Configurations@F3121 44 0 COMRAM 1
 __LbssBANK0 0 0 ABS 0
 __Hbank10 0 0 ABS 0
 __pbssBANK0 80 0 BANK0 1
@@ -321,6 +320,7 @@ _timer2_preload 64 0 COMRAM 1
 _timer3_preload 5C 0 COMRAM 1
 __end_of_I2C_BC_ISR 147A 0 CODE 0
 ___intlo_sp 0 0 STACK 2
+spi_Slave_Mode_GPIO_PIN_Configurations@F3123 43 0 COMRAM 1
 _INTCONbits FF2 0 ABS 0
 __end_of_InterruptManagerHigh 13C2 0 CODE 0
 __HidataCOMRAM 0 0 ABS 0
@@ -330,7 +330,6 @@ _lat_registers B 0 COMRAM 1
 _gpio_pin_direction_initialize 115A 0 CODE 0
 _gpio_pin_write_logic 1016 0 CODE 0
 __smallconst 1000 0 SMALLCONST 0
-spi_Slave_Mode_GPIO_PIN_Configurations@F3124 44 0 COMRAM 1
 __Hreset_vec 4 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 _led_initialize 1306 0 CODE 0
@@ -341,13 +340,13 @@ __Lintcode_body 0 0 ABS 0
 __pintcode_body 1378 0 CODE 0
 intlevel0 0 0 CODE 0
 intlevel1 0 0 CODE 0
+spi_Slave_Mode_GPIO_PIN_Configurations@F3125 42 0 COMRAM 1
 intlevel2 0 0 CODE 0
 gpio_pin_write_logic@logic 6F 0 COMRAM 1
 intlevel3 0 0 CODE 0
 relay_turn_on@F3065 67 0 COMRAM 1
 _segment1 37 0 COMRAM 1
 led_turn_on@F3067 6B 0 COMRAM 1
-spi_Slave_Mode_GPIO_PIN_Configurations@F3126 43 0 COMRAM 1
 ___inthi_stack_lo 0 0 STACK 2
 __HdataCOMRAM 0 0 ABS 0
 __LdataCOMRAM 0 0 ABS 0
@@ -355,9 +354,10 @@ __pdataCOMRAM 1 0 COMRAM 1
 start_initialization 140C 0 CODE 0
 ___intlo_stack_lo 0 0 STACK 2
 _I2C_Report_Receive_Overflow_InterruptHandle 54 0 COMRAM 1
+spi_Slave_Mode_GPIO_PIN_Configurations@F3127 41 0 COMRAM 1
 _I2C_InterruptHandle 58 0 COMRAM 1
+spi_Master_Mode_GPIO_PIN_Configurations@F3112 47 0 COMRAM 1
 __initialization 140C 0 CODE 0
-spi_Slave_Mode_GPIO_PIN_Configurations@F3128 42 0 COMRAM 1
 __activetblptr 3 0 ABS 0
 __end_of_gpio_pin_initialize 1306 0 CODE 0
 _SPI_InterruptHandler 5A 0 COMRAM 1
@@ -375,7 +375,7 @@ text5 1016 140A CODE 1016 0
 cinit 140C 1479 CODE 140C 0
 %locals
 dist/default/debug\Application1.debug.o
-C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_1.s
+C:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_1.s
 7075 140C 0 CODE 0
 7077 140C 0 CODE 0
 7080 140C 0 CODE 0
@@ -411,15 +411,15 @@ C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_1.s
 7285 1448 0 CODE 0
 7286 144A 0 CODE 0
 Application1.c
-19 145C 0 CODE 0
-21 145C 0 CODE 0
-23 1460 0 CODE 0
-26 1460 0 CODE 0
+20 145C 0 CODE 0
+22 145C 0 CODE 0
+24 1460 0 CODE 0
+27 1460 0 CODE 0
 Application1.c
-31 1468 0 CODE 0
-33 1468 0 CODE 0
+32 1468 0 CODE 0
 34 1468 0 CODE 0
-35 146C 0 CODE 0
+35 1468 0 CODE 0
+36 146C 0 CODE 0
 ECU_Layer/ecu_layer_init.c
 213 144E 0 CODE 0
 215 144E 0 CODE 0
@@ -478,12 +478,12 @@ MCAL_Layer/GPIO/mcal_gpio.c
 51 1288 0 CODE 0
 53 1288 0 CODE 0
 54 128A 0 CODE 0
-C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_1.s
+C:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_1.s
 8826 18 0 CODE 0
 MCAL_Layer/Interrupt/mcal_interrupt_manager.c
 197 18 0 CODE 0
 213 1E 0 CODE 0
-C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_1.s
+C:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_1.s
 8883 8 0 CODE 0
 MCAL_Layer/Interrupt/mcal_interrupt_manager.c
 32 8 0 CODE 0

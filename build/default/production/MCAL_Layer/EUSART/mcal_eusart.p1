@@ -1,0 +1,1272 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"42 MCAL_Layer/EUSART/mcal_eusart.c
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 42:     Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart)
+[c E3047 0 1 2 3 4 5 .. ]
+[n E3047 . BAUDRATE_ASYN_8BIT_lOW_SPEED BAUDRATE_ASYN_8BIT_HIGH_SPEED BAUDRATE_ASYN_16BIT_LOW_SPEED BAUDRATE_ASYN_16BIT_HIGH_SPEED BAUDRATE_SYN_8BIT BAUDRATE_SYN_16BIT  ]
+"74 MCAL_Layer/EUSART/mcal_eusart.h
+[; ;MCAL_Layer/EUSART/mcal_eusart.h: 74: {
+[s S274 `ul 1 `E3047 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S274 . baudrate baudrate_gen_gonfig eusart_tx_9bit_enable eusart_tx_9bit_mode eusart_rx_9bit_enable eusart_rx_9bit_mode eusart_ferr eusart_oerr ]
+"3031 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3031:     struct {
+[s S115 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S115 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3041
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3041:     struct {
+[s S116 :3 `uc 1 :1 `uc 1 ]
+[n S116 . . ADEN ]
+"3045
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3045:     struct {
+[s S117 :5 `uc 1 :1 `uc 1 ]
+[n S117 . . SRENA ]
+"3049
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3049:     struct {
+[s S118 :6 `uc 1 :1 `uc 1 ]
+[n S118 . . RC8_9 ]
+"3053
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3053:     struct {
+[s S119 :6 `uc 1 :1 `uc 1 ]
+[n S119 . . RC9 ]
+"3057
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3057:     struct {
+[s S120 :1 `uc 1 ]
+[n S120 . RCD8 ]
+"3030
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3030: typedef union {
+[u S114 `S115 1 `S116 1 `S117 1 `S118 1 `S119 1 `S120 1 ]
+[n S114 . . . . . . . ]
+"3061
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3061: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0xFAB)));
+[v _RCSTAbits `VS114 ~T0 @X0 0 e@4011 ]
+"1835
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1835:     struct {
+[s S73 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S73 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"1845
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1845:     struct {
+[s S74 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S74 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1834
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1834: typedef union {
+[u S72 `S73 1 `S74 1 ]
+[n S72 . . . ]
+"1856
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1856: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
+[v _TRISCbits `VS72 ~T0 @X0 0 e@3988 ]
+"27 MCAL_Layer/EUSART/mcal_eusart.c
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 27:     static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart);
+[v _eusart_Baud_Rate_Calculation `(v ~T0 @X0 0 sf1`*CS274 ]
+"31
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 31:     static void eusart_async_TX_Init(const eusart_config_t *_eusart);
+[v _eusart_async_TX_Init `(v ~T0 @X0 0 sf1`*CS274 ]
+"35
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 35:     static void eusart_async_RX_Init(const eusart_config_t *_eusart);
+[v _eusart_async_RX_Init `(v ~T0 @X0 0 sf1`*CS274 ]
+"2580 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2580:     struct {
+[s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S97 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF PSPIF ]
+"2590
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2590:     struct {
+[s S98 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S98 . . TX1IF RC1IF ]
+"2579
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2579: typedef union {
+[u S96 `S97 1 `S98 1 ]
+[n S96 . . . ]
+"2596
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2596: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
+[v _PIR1bits `VS96 ~T0 @X0 0 e@3998 ]
+"3498
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3498: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
+[v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"3241
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3241:     struct {
+[s S129 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S129 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3251
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3251:     struct {
+[s S130 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S130 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"3261
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3261:     struct {
+[s S131 :6 `uc 1 :1 `uc 1 ]
+[n S131 . . TX8_9 ]
+"3265
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3265:     struct {
+[s S132 :1 `uc 1 ]
+[n S132 . TXD8 ]
+"3240
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3240: typedef union {
+[u S128 `S129 1 `S130 1 `S131 1 `S132 1 ]
+[n S128 . . . . . ]
+"3269
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3269: extern volatile TXSTAbits_t TXSTAbits __attribute__((address(0xFAC)));
+[v _TXSTAbits `VS128 ~T0 @X0 0 e@4012 ]
+"3486
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3486: extern volatile unsigned char TXREG __attribute__((address(0xFAD)));
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"3994
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3994:     struct {
+[s S159 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S159 . ABDEN WUE . BRG16 TXCKP RXDTP RCIDL ABDOVF ]
+"4004
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4004:     struct {
+[s S160 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S160 . . SCKP RXCKP RCMT ]
+"4010
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4010:     struct {
+[s S161 :1 `uc 1 :1 `uc 1 ]
+[n S161 . . W4E ]
+"3993
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3993: typedef union {
+[u S158 `S159 1 `S160 1 `S161 1 ]
+[n S158 . . . . ]
+"4015
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4015: extern volatile BAUDCONbits_t BAUDCONbits __attribute__((address(0xFB8)));
+[v _BAUDCONbits `VS158 ~T0 @X0 0 e@4024 ]
+"3510
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3510: extern volatile unsigned char SPBRG __attribute__((address(0xFAF)));
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"3522
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3522: extern volatile unsigned char SPBRGH __attribute__((address(0xFB0)));
+[v _SPBRGH `Vuc ~T0 @X0 0 e@4016 ]
+"54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
+[; <" PORTA equ 0F80h ;# ">
+"191
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 191: __asm("PORTB equ 0F81h");
+[; <" PORTB equ 0F81h ;# ">
+"362
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 362: __asm("PORTC equ 0F82h");
+[; <" PORTC equ 0F82h ;# ">
+"537
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 537: __asm("PORTD equ 0F83h");
+[; <" PORTD equ 0F83h ;# ">
+"679
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 679: __asm("PORTE equ 0F84h");
+[; <" PORTE equ 0F84h ;# ">
+"882
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 882: __asm("LATA equ 0F89h");
+[; <" LATA equ 0F89h ;# ">
+"994
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 994: __asm("LATB equ 0F8Ah");
+[; <" LATB equ 0F8Ah ;# ">
+"1106
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1106: __asm("LATC equ 0F8Bh");
+[; <" LATC equ 0F8Bh ;# ">
+"1218
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1218: __asm("LATD equ 0F8Ch");
+[; <" LATD equ 0F8Ch ;# ">
+"1330
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1330: __asm("LATE equ 0F8Dh");
+[; <" LATE equ 0F8Dh ;# ">
+"1382
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1382: __asm("TRISA equ 0F92h");
+[; <" TRISA equ 0F92h ;# ">
+"1387
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1387: __asm("DDRA equ 0F92h");
+[; <" DDRA equ 0F92h ;# ">
+"1604
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1604: __asm("TRISB equ 0F93h");
+[; <" TRISB equ 0F93h ;# ">
+"1609
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1609: __asm("DDRB equ 0F93h");
+[; <" DDRB equ 0F93h ;# ">
+"1826
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1826: __asm("TRISC equ 0F94h");
+[; <" TRISC equ 0F94h ;# ">
+"1831
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 1831: __asm("DDRC equ 0F94h");
+[; <" DDRC equ 0F94h ;# ">
+"2048
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2048: __asm("TRISD equ 0F95h");
+[; <" TRISD equ 0F95h ;# ">
+"2053
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2053: __asm("DDRD equ 0F95h");
+[; <" DDRD equ 0F95h ;# ">
+"2270
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2270: __asm("TRISE equ 0F96h");
+[; <" TRISE equ 0F96h ;# ">
+"2275
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2275: __asm("DDRE equ 0F96h");
+[; <" DDRE equ 0F96h ;# ">
+"2434
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2434: __asm("OSCTUNE equ 0F9Bh");
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2499
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2499: __asm("PIE1 equ 0F9Dh");
+[; <" PIE1 equ 0F9Dh ;# ">
+"2576
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2576: __asm("PIR1 equ 0F9Eh");
+[; <" PIR1 equ 0F9Eh ;# ">
+"2653
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2653: __asm("IPR1 equ 0F9Fh");
+[; <" IPR1 equ 0F9Fh ;# ">
+"2730
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2730: __asm("PIE2 equ 0FA0h");
+[; <" PIE2 equ 0FA0h ;# ">
+"2796
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2796: __asm("PIR2 equ 0FA1h");
+[; <" PIR2 equ 0FA1h ;# ">
+"2862
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2862: __asm("IPR2 equ 0FA2h");
+[; <" IPR2 equ 0FA2h ;# ">
+"2928
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2928: __asm("EECON1 equ 0FA6h");
+[; <" EECON1 equ 0FA6h ;# ">
+"2994
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 2994: __asm("EECON2 equ 0FA7h");
+[; <" EECON2 equ 0FA7h ;# ">
+"3001
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3001: __asm("EEDATA equ 0FA8h");
+[; <" EEDATA equ 0FA8h ;# ">
+"3008
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3008: __asm("EEADR equ 0FA9h");
+[; <" EEADR equ 0FA9h ;# ">
+"3015
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3015: __asm("EEADRH equ 0FAAh");
+[; <" EEADRH equ 0FAAh ;# ">
+"3022
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3022: __asm("RCSTA equ 0FABh");
+[; <" RCSTA equ 0FABh ;# ">
+"3027
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3027: __asm("RCSTA1 equ 0FABh");
+[; <" RCSTA1 equ 0FABh ;# ">
+"3232
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3232: __asm("TXSTA equ 0FACh");
+[; <" TXSTA equ 0FACh ;# ">
+"3237
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3237: __asm("TXSTA1 equ 0FACh");
+[; <" TXSTA1 equ 0FACh ;# ">
+"3488
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3488: __asm("TXREG equ 0FADh");
+[; <" TXREG equ 0FADh ;# ">
+"3493
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3493: __asm("TXREG1 equ 0FADh");
+[; <" TXREG1 equ 0FADh ;# ">
+"3500
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3500: __asm("RCREG equ 0FAEh");
+[; <" RCREG equ 0FAEh ;# ">
+"3505
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3505: __asm("RCREG1 equ 0FAEh");
+[; <" RCREG1 equ 0FAEh ;# ">
+"3512
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3512: __asm("SPBRG equ 0FAFh");
+[; <" SPBRG equ 0FAFh ;# ">
+"3517
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3517: __asm("SPBRG1 equ 0FAFh");
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3524
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3524: __asm("SPBRGH equ 0FB0h");
+[; <" SPBRGH equ 0FB0h ;# ">
+"3531
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3531: __asm("T3CON equ 0FB1h");
+[; <" T3CON equ 0FB1h ;# ">
+"3643
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3643: __asm("TMR3 equ 0FB2h");
+[; <" TMR3 equ 0FB2h ;# ">
+"3650
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3650: __asm("TMR3L equ 0FB2h");
+[; <" TMR3L equ 0FB2h ;# ">
+"3657
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3657: __asm("TMR3H equ 0FB3h");
+[; <" TMR3H equ 0FB3h ;# ">
+"3664
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3664: __asm("CMCON equ 0FB4h");
+[; <" CMCON equ 0FB4h ;# ">
+"3754
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3754: __asm("CVRCON equ 0FB5h");
+[; <" CVRCON equ 0FB5h ;# ">
+"3833
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3833: __asm("ECCP1AS equ 0FB6h");
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3915
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3915: __asm("PWM1CON equ 0FB7h");
+[; <" PWM1CON equ 0FB7h ;# ">
+"3985
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3985: __asm("BAUDCON equ 0FB8h");
+[; <" BAUDCON equ 0FB8h ;# ">
+"3990
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 3990: __asm("BAUDCTL equ 0FB8h");
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4157
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4157: __asm("CCP2CON equ 0FBAh");
+[; <" CCP2CON equ 0FBAh ;# ">
+"4236
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4236: __asm("CCPR2 equ 0FBBh");
+[; <" CCPR2 equ 0FBBh ;# ">
+"4243
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4243: __asm("CCPR2L equ 0FBBh");
+[; <" CCPR2L equ 0FBBh ;# ">
+"4250
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4250: __asm("CCPR2H equ 0FBCh");
+[; <" CCPR2H equ 0FBCh ;# ">
+"4257
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4257: __asm("CCP1CON equ 0FBDh");
+[; <" CCP1CON equ 0FBDh ;# ">
+"4354
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4354: __asm("CCPR1 equ 0FBEh");
+[; <" CCPR1 equ 0FBEh ;# ">
+"4361
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4361: __asm("CCPR1L equ 0FBEh");
+[; <" CCPR1L equ 0FBEh ;# ">
+"4368
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4368: __asm("CCPR1H equ 0FBFh");
+[; <" CCPR1H equ 0FBFh ;# ">
+"4375
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4375: __asm("ADCON2 equ 0FC0h");
+[; <" ADCON2 equ 0FC0h ;# ">
+"4446
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4446: __asm("ADCON1 equ 0FC1h");
+[; <" ADCON1 equ 0FC1h ;# ">
+"4531
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4531: __asm("ADCON0 equ 0FC2h");
+[; <" ADCON0 equ 0FC2h ;# ">
+"4650
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4650: __asm("ADRES equ 0FC3h");
+[; <" ADRES equ 0FC3h ;# ">
+"4657
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4657: __asm("ADRESL equ 0FC3h");
+[; <" ADRESL equ 0FC3h ;# ">
+"4664
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4664: __asm("ADRESH equ 0FC4h");
+[; <" ADRESH equ 0FC4h ;# ">
+"4671
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4671: __asm("SSPCON2 equ 0FC5h");
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4733
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4733: __asm("SSPCON1 equ 0FC6h");
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4803
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 4803: __asm("SSPSTAT equ 0FC7h");
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5024
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5024: __asm("SSPADD equ 0FC8h");
+[; <" SSPADD equ 0FC8h ;# ">
+"5031
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5031: __asm("SSPBUF equ 0FC9h");
+[; <" SSPBUF equ 0FC9h ;# ">
+"5038
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5038: __asm("T2CON equ 0FCAh");
+[; <" T2CON equ 0FCAh ;# ">
+"5109
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5109: __asm("PR2 equ 0FCBh");
+[; <" PR2 equ 0FCBh ;# ">
+"5114
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5114: __asm("MEMCON equ 0FCBh");
+[; <" MEMCON equ 0FCBh ;# ">
+"5219
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5219: __asm("TMR2 equ 0FCCh");
+[; <" TMR2 equ 0FCCh ;# ">
+"5226
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5226: __asm("T1CON equ 0FCDh");
+[; <" T1CON equ 0FCDh ;# ">
+"5329
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5329: __asm("TMR1 equ 0FCEh");
+[; <" TMR1 equ 0FCEh ;# ">
+"5336
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5336: __asm("TMR1L equ 0FCEh");
+[; <" TMR1L equ 0FCEh ;# ">
+"5343
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5343: __asm("TMR1H equ 0FCFh");
+[; <" TMR1H equ 0FCFh ;# ">
+"5350
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5350: __asm("RCON equ 0FD0h");
+[; <" RCON equ 0FD0h ;# ">
+"5483
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5483: __asm("WDTCON equ 0FD1h");
+[; <" WDTCON equ 0FD1h ;# ">
+"5511
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5511: __asm("HLVDCON equ 0FD2h");
+[; <" HLVDCON equ 0FD2h ;# ">
+"5516
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5516: __asm("LVDCON equ 0FD2h");
+[; <" LVDCON equ 0FD2h ;# ">
+"5781
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5781: __asm("OSCCON equ 0FD3h");
+[; <" OSCCON equ 0FD3h ;# ">
+"5858
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5858: __asm("T0CON equ 0FD5h");
+[; <" T0CON equ 0FD5h ;# ">
+"5935
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5935: __asm("TMR0 equ 0FD6h");
+[; <" TMR0 equ 0FD6h ;# ">
+"5942
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5942: __asm("TMR0L equ 0FD6h");
+[; <" TMR0L equ 0FD6h ;# ">
+"5949
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5949: __asm("TMR0H equ 0FD7h");
+[; <" TMR0H equ 0FD7h ;# ">
+"5956
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 5956: __asm("STATUS equ 0FD8h");
+[; <" STATUS equ 0FD8h ;# ">
+"6027
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6027: __asm("FSR2 equ 0FD9h");
+[; <" FSR2 equ 0FD9h ;# ">
+"6034
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6034: __asm("FSR2L equ 0FD9h");
+[; <" FSR2L equ 0FD9h ;# ">
+"6041
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6041: __asm("FSR2H equ 0FDAh");
+[; <" FSR2H equ 0FDAh ;# ">
+"6048
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6048: __asm("PLUSW2 equ 0FDBh");
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6055
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6055: __asm("PREINC2 equ 0FDCh");
+[; <" PREINC2 equ 0FDCh ;# ">
+"6062
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6062: __asm("POSTDEC2 equ 0FDDh");
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6069
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6069: __asm("POSTINC2 equ 0FDEh");
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6076
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6076: __asm("INDF2 equ 0FDFh");
+[; <" INDF2 equ 0FDFh ;# ">
+"6083
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6083: __asm("BSR equ 0FE0h");
+[; <" BSR equ 0FE0h ;# ">
+"6090
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6090: __asm("FSR1 equ 0FE1h");
+[; <" FSR1 equ 0FE1h ;# ">
+"6097
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6097: __asm("FSR1L equ 0FE1h");
+[; <" FSR1L equ 0FE1h ;# ">
+"6104
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6104: __asm("FSR1H equ 0FE2h");
+[; <" FSR1H equ 0FE2h ;# ">
+"6111
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6111: __asm("PLUSW1 equ 0FE3h");
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6118
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6118: __asm("PREINC1 equ 0FE4h");
+[; <" PREINC1 equ 0FE4h ;# ">
+"6125
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6125: __asm("POSTDEC1 equ 0FE5h");
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6132
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6132: __asm("POSTINC1 equ 0FE6h");
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6139
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6139: __asm("INDF1 equ 0FE7h");
+[; <" INDF1 equ 0FE7h ;# ">
+"6146
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6146: __asm("WREG equ 0FE8h");
+[; <" WREG equ 0FE8h ;# ">
+"6158
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6158: __asm("FSR0 equ 0FE9h");
+[; <" FSR0 equ 0FE9h ;# ">
+"6165
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6165: __asm("FSR0L equ 0FE9h");
+[; <" FSR0L equ 0FE9h ;# ">
+"6172
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6172: __asm("FSR0H equ 0FEAh");
+[; <" FSR0H equ 0FEAh ;# ">
+"6179
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6179: __asm("PLUSW0 equ 0FEBh");
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6186
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6186: __asm("PREINC0 equ 0FECh");
+[; <" PREINC0 equ 0FECh ;# ">
+"6193
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6193: __asm("POSTDEC0 equ 0FEDh");
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6200
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6200: __asm("POSTINC0 equ 0FEEh");
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6207
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6207: __asm("INDF0 equ 0FEFh");
+[; <" INDF0 equ 0FEFh ;# ">
+"6214
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6214: __asm("INTCON3 equ 0FF0h");
+[; <" INTCON3 equ 0FF0h ;# ">
+"6306
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6306: __asm("INTCON2 equ 0FF1h");
+[; <" INTCON2 equ 0FF1h ;# ">
+"6376
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6376: __asm("INTCON equ 0FF2h");
+[; <" INTCON equ 0FF2h ;# ">
+"6493
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6493: __asm("PROD equ 0FF3h");
+[; <" PROD equ 0FF3h ;# ">
+"6500
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6500: __asm("PRODL equ 0FF3h");
+[; <" PRODL equ 0FF3h ;# ">
+"6507
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6507: __asm("PRODH equ 0FF4h");
+[; <" PRODH equ 0FF4h ;# ">
+"6514
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6514: __asm("TABLAT equ 0FF5h");
+[; <" TABLAT equ 0FF5h ;# ">
+"6523
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6523: __asm("TBLPTR equ 0FF6h");
+[; <" TBLPTR equ 0FF6h ;# ">
+"6530
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6530: __asm("TBLPTRL equ 0FF6h");
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6537
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6537: __asm("TBLPTRH equ 0FF7h");
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6544
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6544: __asm("TBLPTRU equ 0FF8h");
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6553
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6553: __asm("PCLAT equ 0FF9h");
+[; <" PCLAT equ 0FF9h ;# ">
+"6560
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6560: __asm("PC equ 0FF9h");
+[; <" PC equ 0FF9h ;# ">
+"6567
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6567: __asm("PCL equ 0FF9h");
+[; <" PCL equ 0FF9h ;# ">
+"6574
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6574: __asm("PCLATH equ 0FFAh");
+[; <" PCLATH equ 0FFAh ;# ">
+"6581
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6581: __asm("PCLATU equ 0FFBh");
+[; <" PCLATU equ 0FFBh ;# ">
+"6588
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6588: __asm("STKPTR equ 0FFCh");
+[; <" STKPTR equ 0FFCh ;# ">
+"6694
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6694: __asm("TOS equ 0FFDh");
+[; <" TOS equ 0FFDh ;# ">
+"6701
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6701: __asm("TOSL equ 0FFDh");
+[; <" TOSL equ 0FFDh ;# ">
+"6708
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6708: __asm("TOSH equ 0FFEh");
+[; <" TOSH equ 0FFEh ;# ">
+"6715
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
+[; <" TOSU equ 0FFFh ;# ">
+"42 MCAL_Layer/EUSART/mcal_eusart.c
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 42:     Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart)
+[v _eusart_async_Init `(uc ~T0 @X0 1 ef1`*CS274 ]
+"43
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 43:     {
+{
+[e :U _eusart_async_Init ]
+"42
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 42:     Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart)
+[v __eusart `*CS274 ~T0 @X0 1 r1 ]
+"43
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 43:     {
+[f ]
+"44
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 44:         Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"46
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 46:         if(((void*)0) != _eusart)
+[e $ ! != -> -> -> 0 `i `*v `*CS274 __eusart 276  ]
+"47
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 47:         {
+{
+"49
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 49:             RCSTAbits.SPEN = 0X00;
+[e = . . _RCSTAbits 0 7 -> -> 0 `i `uc ]
+"51
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 51:             TRISCbits.RC6 = 1;
+[e = . . _TRISCbits 1 6 -> -> 1 `i `uc ]
+"53
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 53:             TRISCbits.RC7 = 1;
+[e = . . _TRISCbits 1 7 -> -> 1 `i `uc ]
+"54
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 54:             eusart_Baud_Rate_Calculation(_eusart);
+[e ( _eusart_Baud_Rate_Calculation (1 __eusart ]
+"56
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 56:                 eusart_async_TX_Init(_eusart);
+[e ( _eusart_async_TX_Init (1 __eusart ]
+"60
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 60:                 eusart_async_RX_Init(_eusart);
+[e ( _eusart_async_RX_Init (1 __eusart ]
+"63
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 63:             RCSTAbits.SPEN = 0X01;
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+"64
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 64:         }
+}
+[e $U 277  ]
+"65
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 65:         else{ ret = (Std_ReturnType)0x00; }
+[e :U 276 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 277 ]
+"67
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 67:         return ret;
+[e ) _ret ]
+[e $UE 275  ]
+"68
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 68:     }
+[e :UE 275 ]
+}
+"70
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 70:     Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart)
+[v _eusart_async_DeInit `(uc ~T0 @X0 1 ef1`*CS274 ]
+"71
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 71:     {
+{
+[e :U _eusart_async_DeInit ]
+"70
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 70:     Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart)
+[v __eusart `*CS274 ~T0 @X0 1 r1 ]
+"71
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 71:     {
+[f ]
+"72
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 72:         Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"74
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 74:         if(((void*)0) != _eusart)
+[e $ ! != -> -> -> 0 `i `*v `*CS274 __eusart 279  ]
+"75
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 75:         {
+{
+"76
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 76:             RCSTAbits.SPEN = 0X00;
+[e = . . _RCSTAbits 0 7 -> -> 0 `i `uc ]
+"77
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 77:         }
+}
+[e $U 280  ]
+"78
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 78:         else{ ret = (Std_ReturnType)0x00; }
+[e :U 279 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 280 ]
+"80
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 80:         return ret;
+[e ) _ret ]
+[e $UE 278  ]
+"81
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 81:     }
+[e :UE 278 ]
+}
+"86
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 86:         Std_ReturnType eusart_async_ReadByteBlocking(eusart_config_t *_eusart, uint8 *_data)
+[v _eusart_async_ReadByteBlocking `(uc ~T0 @X0 1 ef2`*S274`*uc ]
+"87
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 87:         {
+{
+[e :U _eusart_async_ReadByteBlocking ]
+"86
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 86:         Std_ReturnType eusart_async_ReadByteBlocking(eusart_config_t *_eusart, uint8 *_data)
+[v __eusart `*S274 ~T0 @X0 1 r1 ]
+[v __data `*uc ~T0 @X0 1 r2 ]
+"87
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 87:         {
+[f ]
+"88
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 88:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"90
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 90:             if((((void*)0) != _eusart) && (((void*)0) != _data))
+[e $ ! && != -> -> -> 0 `i `*v `*S274 __eusart != -> -> -> 0 `i `*v `*uc __data 282  ]
+"91
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 91:             {
+{
+"92
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 92:                 while(!PIR1bits.RCIF){}
+[e $U 283  ]
+[e :U 284 ]
+{
+}
+[e :U 283 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 284  ]
+[e :U 285 ]
+"96
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 96:                 _eusart->eusart_ferr = RCSTAbits.FERR;
+[e = . *U __eusart 6 . . _RCSTAbits 0 2 ]
+"97
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 97:                 _eusart->eusart_oerr = RCSTAbits.OERR;
+[e = . *U __eusart 7 . . _RCSTAbits 0 1 ]
+"98
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 98:                 *_data = RCREG;
+[e = *U __data _RCREG ]
+"99
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 99:             }
+}
+[e $U 286  ]
+"100
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 100:             else{ ret = (Std_ReturnType)0x00; }
+[e :U 282 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 286 ]
+"102
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 102:             return ret;
+[e ) _ret ]
+[e $UE 281  ]
+"103
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 103:         }
+[e :UE 281 ]
+}
+"105
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 105:         Std_ReturnType eusart_async_ReadByteNonBlocking(eusart_config_t *_eusart, uint8 *_data)
+[v _eusart_async_ReadByteNonBlocking `(uc ~T0 @X0 1 ef2`*S274`*uc ]
+"106
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 106:         {
+{
+[e :U _eusart_async_ReadByteNonBlocking ]
+"105
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 105:         Std_ReturnType eusart_async_ReadByteNonBlocking(eusart_config_t *_eusart, uint8 *_data)
+[v __eusart `*S274 ~T0 @X0 1 r1 ]
+[v __data `*uc ~T0 @X0 1 r2 ]
+"106
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 106:         {
+[f ]
+"107
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 107:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"109
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 109:             if((((void*)0) != _eusart) && (((void*)0) != _data))
+[e $ ! && != -> -> -> 0 `i `*v `*S274 __eusart != -> -> -> 0 `i `*v `*uc __data 288  ]
+"110
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 110:             {
+{
+"114
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 114:                 _eusart->eusart_ferr = RCSTAbits.FERR;
+[e = . *U __eusart 6 . . _RCSTAbits 0 2 ]
+"115
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 115:                 _eusart->eusart_oerr = RCSTAbits.OERR;
+[e = . *U __eusart 7 . . _RCSTAbits 0 1 ]
+"116
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 116:                 *_data = RCREG;
+[e = *U __data _RCREG ]
+"117
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 117:             }
+}
+[e $U 289  ]
+"118
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 118:             else{ ret = (Std_ReturnType)0x00; }
+[e :U 288 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 289 ]
+"120
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 120:             return ret;
+[e ) _ret ]
+[e $UE 287  ]
+"121
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 121:         }
+[e :UE 287 ]
+}
+"123
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 123:         Std_ReturnType eusart_async_RX_Restart(void)
+[v _eusart_async_RX_Restart `(uc ~T0 @X0 1 ef ]
+"124
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 124:         {
+{
+[e :U _eusart_async_RX_Restart ]
+[f ]
+"125
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 125:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"127
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 127:             RCSTAbits.CREN = 0;
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+"128
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 128:             RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"130
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 130:             return ret;
+[e ) _ret ]
+[e $UE 290  ]
+"131
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 131:         }
+[e :UE 290 ]
+}
+"137
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 137:         Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data)
+[v _eusart_async_WriteByteBlocking `(uc ~T0 @X0 1 ef1`uc ]
+"138
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 138:         {
+{
+[e :U _eusart_async_WriteByteBlocking ]
+"137
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 137:         Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data)
+[v __data `uc ~T0 @X0 1 r1 ]
+"138
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 138:         {
+[f ]
+"139
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 139:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"141
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 141:             while(!(TXSTAbits.TRMT)){}
+[e $U 292  ]
+[e :U 293 ]
+{
+}
+[e :U 292 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 293  ]
+[e :U 294 ]
+"142
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 142:             TXREG = _data;
+[e = _TXREG __data ]
+"147
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 147:             return ret;
+[e ) _ret ]
+[e $UE 291  ]
+"148
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 148:         }
+[e :UE 291 ]
+}
+"150
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 150:         Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len)
+[v _eusart_async_WriteStringBlocking `(uc ~T0 @X0 1 ef2`*uc`us ]
+"151
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 151:         {
+{
+[e :U _eusart_async_WriteStringBlocking ]
+"150
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 150:         Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len)
+[v __data `*uc ~T0 @X0 1 r1 ]
+[v _str_len `us ~T0 @X0 1 r2 ]
+"151
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 151:         {
+[f ]
+"152
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 152:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"154
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 154:             if(((void*)0) != _data)
+[e $ ! != -> -> -> 0 `i `*v `*uc __data 296  ]
+"155
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 155:             {
+{
+"156
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 156:                 uint16 char_counter = 0;
+[v _char_counter `us ~T0 @X0 1 a ]
+[e = _char_counter -> -> 0 `i `us ]
+"158
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 158:                 for(char_counter = 0 ; char_counter < str_len ; char_counter++)
+{
+[e = _char_counter -> -> 0 `i `us ]
+[e $U 300  ]
+[e :U 297 ]
+"159
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 159:                 {
+{
+"160
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 160:                     ret = eusart_async_WriteByteBlocking(_data[char_counter]);
+[e = _ret ( _eusart_async_WriteByteBlocking (1 *U + __data * -> _char_counter `ux -> -> # *U __data `ui `ux ]
+"161
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 161:                 }
+}
+[e ++ _char_counter -> -> 1 `i `us ]
+[e :U 300 ]
+[e $ < -> _char_counter `ui -> _str_len `ui 297  ]
+[e :U 298 ]
+}
+"162
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 162:             }
+}
+[e $U 301  ]
+"163
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 163:             else{ ret = (Std_ReturnType)0x00; }
+[e :U 296 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 301 ]
+"165
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 165:             return ret;
+[e ) _ret ]
+[e $UE 295  ]
+"166
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 166:         }
+[e :UE 295 ]
+}
+"168
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 168:         Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data)
+[v _eusart_async_WriteByteNonBlocking `(uc ~T0 @X0 1 ef1`uc ]
+"169
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 169:         {
+{
+[e :U _eusart_async_WriteByteNonBlocking ]
+"168
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 168:         Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data)
+[v __data `uc ~T0 @X0 1 r1 ]
+"169
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 169:         {
+[f ]
+"170
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 170:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"172
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 172:             if(1 == PIR1bits.TXIF)
+[e $ ! == -> 1 `i -> . . _PIR1bits 0 4 `i 303  ]
+"173
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 173:             {
+{
+"174
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 174:                 TXREG = _data;
+[e = _TXREG __data ]
+"178
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 178:             }
+}
+[e $U 304  ]
+"179
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 179:             else{ ret = (Std_ReturnType)0x00; }
+[e :U 303 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 304 ]
+"181
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 181:             return ret;
+[e ) _ret ]
+[e $UE 302  ]
+"182
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 182:         }
+[e :UE 302 ]
+}
+"184
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 184:         Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len)
+[v _eusart_async_WriteStringNonBlocking `(uc ~T0 @X0 1 ef2`*uc`us ]
+"185
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 185:         {
+{
+[e :U _eusart_async_WriteStringNonBlocking ]
+"184
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 184:         Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len)
+[v __data `*uc ~T0 @X0 1 r1 ]
+[v _str_len `us ~T0 @X0 1 r2 ]
+"185
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 185:         {
+[f ]
+"186
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 186:             Std_ReturnType ret = (Std_ReturnType)0x01;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 1 `i `uc ]
+"188
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 188:             if(((void*)0) != _data)
+[e $ ! != -> -> -> 0 `i `*v `*uc __data 306  ]
+"189
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 189:             {
+{
+"190
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 190:                 uint16 char_counter = 0;
+[v _char_counter `us ~T0 @X0 1 a ]
+[e = _char_counter -> -> 0 `i `us ]
+"192
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 192:                 for(char_counter = 0 ; char_counter < str_len ; char_counter++)
+{
+[e = _char_counter -> -> 0 `i `us ]
+[e $U 310  ]
+[e :U 307 ]
+"193
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 193:                 {
+{
+"194
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 194:                     ret = eusart_async_WriteByteNonBlocking(_data[char_counter]);
+[e = _ret ( _eusart_async_WriteByteNonBlocking (1 *U + __data * -> _char_counter `ux -> -> # *U __data `ui `ux ]
+"195
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 195:                 }
+}
+[e ++ _char_counter -> -> 1 `i `us ]
+[e :U 310 ]
+[e $ < -> _char_counter `ui -> _str_len `ui 307  ]
+[e :U 308 ]
+}
+"196
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 196:             }
+}
+[e $U 311  ]
+"197
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 197:             else{ ret = (Std_ReturnType)0x00; }
+[e :U 306 ]
+{
+[e = _ret -> -> 0 `i `uc ]
+}
+[e :U 311 ]
+"199
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 199:             return ret;
+[e ) _ret ]
+[e $UE 305  ]
+"200
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 200:         }
+[e :UE 305 ]
+}
+"210
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 210: static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart)
+[v _eusart_Baud_Rate_Calculation `(v ~T0 @X0 1 sf1`*CS274 ]
+"211
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 211: {
+{
+[e :U _eusart_Baud_Rate_Calculation ]
+"210
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 210: static void eusart_Baud_Rate_Calculation(const eusart_config_t *_eusart)
+[v __eusart `*CS274 ~T0 @X0 1 r1 ]
+"211
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 211: {
+[f ]
+"212
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 212:     float Baud_Rate_Temp = 0;
+[v _Baud_Rate_Temp `f ~T0 @X0 1 a ]
+[e = _Baud_Rate_Temp -> -> 0 `i `f ]
+"213
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 213:     switch(_eusart->baudrate_gen_gonfig)
+[e $U 314  ]
+"214
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 214:     {
+{
+"215
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 215:         case BAUDRATE_ASYN_8BIT_lOW_SPEED:
+[e :U 315 ]
+"216
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 216:             TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"217
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 217:             TXSTAbits.BRGH = 0;
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+"218
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 218:             BAUDCONbits.BRG16 = 0;
+[e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
+"219
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 219:             Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 64) - 1;
+[e = _Baud_Rate_Temp - / / -> -> 4000000 `ul `f -> . *U __eusart 0 `f -> -> 64 `i `f -> -> 1 `i `f ]
+"220
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 220:             break;
+[e $U 313  ]
+"221
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 221:         case BAUDRATE_ASYN_8BIT_HIGH_SPEED:
+[e :U 316 ]
+"222
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 222:             TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"223
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 223:             TXSTAbits.BRGH = 1;
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+"224
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 224:             BAUDCONbits.BRG16 = 0;
+[e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
+"225
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 225:             Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 16) - 1;
+[e = _Baud_Rate_Temp - / / -> -> 4000000 `ul `f -> . *U __eusart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
+"226
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 226:             break;
+[e $U 313  ]
+"227
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 227:         case BAUDRATE_ASYN_16BIT_LOW_SPEED:
+[e :U 317 ]
+"228
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 228:             TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"229
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 229:             TXSTAbits.BRGH = 0;
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+"230
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 230:             BAUDCONbits.BRG16 = 1;
+[e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
+"231
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 231:             Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 16) - 1;
+[e = _Baud_Rate_Temp - / / -> -> 4000000 `ul `f -> . *U __eusart 0 `f -> -> 16 `i `f -> -> 1 `i `f ]
+"232
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 232:             break;
+[e $U 313  ]
+"233
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 233:         case BAUDRATE_ASYN_16BIT_HIGH_SPEED:
+[e :U 318 ]
+"234
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 234:             TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"235
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 235:             TXSTAbits.BRGH = 1;
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+"236
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 236:             BAUDCONbits.BRG16 = 1;
+[e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
+"237
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 237:             Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 4) - 1;
+[e = _Baud_Rate_Temp - / / -> -> 4000000 `ul `f -> . *U __eusart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
+"238
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 238:             break;
+[e $U 313  ]
+"239
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 239:         case BAUDRATE_SYN_8BIT:
+[e :U 319 ]
+"240
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 240:             TXSTAbits.SYNC = 1;
+[e = . . _TXSTAbits 0 4 -> -> 1 `i `uc ]
+"241
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 241:             BAUDCONbits.BRG16 = 0;
+[e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
+"242
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 242:             Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 4) - 1;
+[e = _Baud_Rate_Temp - / / -> -> 4000000 `ul `f -> . *U __eusart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
+"243
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 243:             break;
+[e $U 313  ]
+"244
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 244:         case BAUDRATE_SYN_16BIT:
+[e :U 320 ]
+"245
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 245:             TXSTAbits.SYNC = 1;
+[e = . . _TXSTAbits 0 4 -> -> 1 `i `uc ]
+"246
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 246:             BAUDCONbits.BRG16 = 1;
+[e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
+"247
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 247:             Baud_Rate_Temp = ((4000000UL / (float)_eusart->baudrate) / 4) - 1;
+[e = _Baud_Rate_Temp - / / -> -> 4000000 `ul `f -> . *U __eusart 0 `f -> -> 4 `i `f -> -> 1 `i `f ]
+"248
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 248:             break;
+[e $U 313  ]
+"249
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 249:         default : ;
+[e :U 321 ]
+"250
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 250:     }
+}
+[e $U 313  ]
+[e :U 314 ]
+[e [\ -> . *U __eusart 1 `ui , $ -> . `E3047 0 `ui 315
+ , $ -> . `E3047 1 `ui 316
+ , $ -> . `E3047 2 `ui 317
+ , $ -> . `E3047 3 `ui 318
+ , $ -> . `E3047 4 `ui 319
+ , $ -> . `E3047 5 `ui 320
+ 321 ]
+[e :U 313 ]
+"251
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 251:     SPBRG = (uint8)((uint32)Baud_Rate_Temp);
+[e = _SPBRG -> -> _Baud_Rate_Temp `ul `uc ]
+"252
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 252:     SPBRGH = (uint8)(((uint32)Baud_Rate_Temp) >> 8);
+[e = _SPBRGH -> >> -> _Baud_Rate_Temp `ul -> 8 `i `uc ]
+"253
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 253: }
+[e :UE 312 ]
+}
+"259
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 259: static void eusart_async_TX_Init(const eusart_config_t *_eusart)
+[v _eusart_async_TX_Init `(v ~T0 @X0 1 sf1`*CS274 ]
+"260
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 260: {
+{
+[e :U _eusart_async_TX_Init ]
+"259
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 259: static void eusart_async_TX_Init(const eusart_config_t *_eusart)
+[v __eusart `*CS274 ~T0 @X0 1 r1 ]
+"260
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 260: {
+[f ]
+"261
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 261:     TXSTAbits.TXEN = 0;
+[e = . . _TXSTAbits 0 5 -> -> 0 `i `uc ]
+"285
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 285:     if(1 == _eusart->eusart_tx_9bit_enable)
+[e $ ! == -> 1 `i -> . *U __eusart 2 `i 323  ]
+"286
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 286:     {
+{
+"287
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 287:         TXSTAbits.TX9 = 1;
+[e = . . _TXSTAbits 0 6 -> -> 1 `i `uc ]
+"288
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 288:     }
+}
+[e $U 324  ]
+"289
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 289:     else if(0 == _eusart->eusart_tx_9bit_enable)
+[e :U 323 ]
+[e $ ! == -> 0 `i -> . *U __eusart 2 `i 325  ]
+"290
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 290:     {
+{
+"291
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 291:         TXSTAbits.TX9 = 0;
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+"292
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 292:     }
+}
+[e $U 326  ]
+"293
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 293:     else{ }
+[e :U 325 ]
+{
+}
+[e :U 326 ]
+[e :U 324 ]
+"295
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 295:     TXSTAbits.TXEN = 1;
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+"296
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 296: }
+[e :UE 322 ]
+}
+"302
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 302: static void eusart_async_RX_Init(const eusart_config_t *_eusart)
+[v _eusart_async_RX_Init `(v ~T0 @X0 1 sf1`*CS274 ]
+"303
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 303: {
+{
+[e :U _eusart_async_RX_Init ]
+"302
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 302: static void eusart_async_RX_Init(const eusart_config_t *_eusart)
+[v __eusart `*CS274 ~T0 @X0 1 r1 ]
+"303
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 303: {
+[f ]
+"304
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 304:     RCSTAbits.CREN = 0;
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+"330
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 330:     if(1 == _eusart->eusart_rx_9bit_enable)
+[e $ ! == -> 1 `i -> . *U __eusart 4 `i 328  ]
+"331
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 331:     {
+{
+"332
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 332:         RCSTAbits.RX9 = 1;
+[e = . . _RCSTAbits 0 6 -> -> 1 `i `uc ]
+"333
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 333:     }
+}
+[e $U 329  ]
+"334
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 334:     else if(0 == _eusart->eusart_rx_9bit_enable)
+[e :U 328 ]
+[e $ ! == -> 0 `i -> . *U __eusart 4 `i 330  ]
+"335
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 335:     {
+{
+"336
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 336:         RCSTAbits.RX9 = 0;
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+"337
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 337:     }
+}
+[e $U 331  ]
+"338
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 338:     else{ }
+[e :U 330 ]
+{
+}
+[e :U 331 ]
+[e :U 329 ]
+"340
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 340:     RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"341
+[; ;MCAL_Layer/EUSART/mcal_eusart.c: 341: }
+[e :UE 327 ]
+}

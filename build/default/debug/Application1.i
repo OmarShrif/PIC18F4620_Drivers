@@ -5063,6 +5063,59 @@ Std_ReturnType ecu_layer_initialize(void);
 void application_initialize(void);
 # 9 "Application1.c" 2
 
+# 1 "./MCAL_Layer/SPI/mcal_spi.h" 1
+# 13 "./MCAL_Layer/SPI/mcal_spi.h"
+# 1 "./MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h" 2
+# 60 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h"
+typedef enum
+{
+    INTERRUPT_PRIORITY_LOW = 0,
+    INTERRUPT_PRIORITY_HIGH
+
+}interrupt_priority_t;
+
+
+
+
+
+void global_interrupt_Enable(void);
+void global_interrupt_Disable(void);
+# 12 "./MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h" 2
+# 13 "./MCAL_Layer/SPI/mcal_spi.h" 2
+
+# 1 "./MCAL_Layer/SPI/mcal_spi_cfg.h" 1
+# 14 "./MCAL_Layer/SPI/mcal_spi.h" 2
+# 58 "./MCAL_Layer/SPI/mcal_spi.h"
+typedef struct
+{
+
+        void (*SPI_InterruptHandler)(void);
+
+            interrupt_priority_t spi_priority;
+
+
+    uint8 spi_mode : 3;
+    uint8 ClockPolarity : 1;
+    uint8 ClockPhase : 1;
+    uint8 SampleTime : 1;
+    uint8 : 2;
+}spi_config_t;
+
+
+
+Std_ReturnType spi_Init(const spi_config_t *Config);
+Std_ReturnType spi_DeInit(const spi_config_t *Config);
+Std_ReturnType spi_Send_Byte_Blocking(const spi_config_t *Config, const uint8 _data);
+Std_ReturnType spi_Send_Byte_NonBlocking(const spi_config_t *Config, const uint8 _data);
+Std_ReturnType spi_Read_Byte_Blocking(const spi_config_t *Config, uint8 *_data);
+Std_ReturnType spi_Read_Byte_NonBlocking(const spi_config_t *Config, uint8 *_data);
+# 10 "Application1.c" 2
+
 
 
 

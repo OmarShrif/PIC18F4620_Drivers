@@ -6,10 +6,10 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v2.46\pic\dat\20240104201356_en.msgs \
   -cn -h+dist/default/debug\Application1.debug.sym \
   --cmf=dist/default/debug\Application1.debug.cmf -z -Q18F4620 \
-  -oC:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_3.o \
+  -oC:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/debug/Application1.debug.map \
-  --md=C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_0.dat -E1 \
+  --md=C:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
   -ACOMRAM=01h-07Fh -AABS1=00h-0F7Fh -ABIGRAM=01h-0F7Fh \
@@ -28,7 +28,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_9.o \
+  C:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_9.o \
   dist/default/debug\Application1.debug.o 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Machine type is 18F4620
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\pr7\AppData\Local\Temp\xcAs1os.\driver_tmp_9.o
+C:\Users\pr7\AppData\Local\Temp\xcAs2pk.\driver_tmp_9.o
                 config                           300000   300000        E        0       4
                 init                                 26       26        4        C       0
                 reset_vec                             0        0        4        0       0
@@ -564,13 +564,13 @@ led_turn_toggle@F3077                         bssCOMRAM    000069
 relay_initialize@F3060                        bssCOMRAM    000068
 relay_turn_off@F3070                          bssCOMRAM    000066
 relay_turn_on@F3065                           bssCOMRAM    000067
-spi_Master_Mode_GPIO_PIN_Configurations@F3115 dataCOMRAM   000047
-spi_Master_Mode_GPIO_PIN_Configurations@F3117 dataCOMRAM   000046
-spi_Master_Mode_GPIO_PIN_Configurations@F3119 dataCOMRAM   000045
-spi_Slave_Mode_GPIO_PIN_Configurations@F3124  dataCOMRAM   000044
-spi_Slave_Mode_GPIO_PIN_Configurations@F3126  dataCOMRAM   000043
-spi_Slave_Mode_GPIO_PIN_Configurations@F3128  dataCOMRAM   000042
-spi_Slave_Mode_GPIO_PIN_Configurations@F3130  dataCOMRAM   000041
+spi_Master_Mode_GPIO_PIN_Configurations@F3112 dataCOMRAM   000047
+spi_Master_Mode_GPIO_PIN_Configurations@F3114 dataCOMRAM   000046
+spi_Master_Mode_GPIO_PIN_Configurations@F3116 dataCOMRAM   000045
+spi_Slave_Mode_GPIO_PIN_Configurations@F3121  dataCOMRAM   000044
+spi_Slave_Mode_GPIO_PIN_Configurations@F3123  dataCOMRAM   000043
+spi_Slave_Mode_GPIO_PIN_Configurations@F3125  dataCOMRAM   000042
+spi_Slave_Mode_GPIO_PIN_Configurations@F3127  dataCOMRAM   000041
 stackhi                                       (abs)        000000
 stacklo                                       (abs)        000000
 start                                         init         000026

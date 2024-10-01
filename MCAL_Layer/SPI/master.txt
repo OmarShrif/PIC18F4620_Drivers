@@ -1,0 +1,100 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "MCAL_Layer/SPI/mcal_spi.h"
+
+/* Section : Functions Declarations */
+
+void SPI_APP_ISR(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+spi_config_t spi = 
+{
+    .SPI_InterruptHandler = SPI_APP_ISR,
+    .spi_priority = INTERRUPT_PRIORITY_HIGH,
+    .spi_mode = SPI_MASTER_FOSC_DIV4,
+    .ClockPolarity = SPI_IDLE_STATE_LOW_LEVEL,
+    .ClockPhase = SPI_TRANSMIT_IDLE_TO_ACTIVE,
+    .SampleTime = SPI_DATA_SAMPLE_MIDDLE
+};
+pin_config_t slave1 = 
+{
+    .port = GPIO_PORTD,
+    .pin = GPIO_PIN0,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOGIC_HIGH
+};
+pin_config_t slave2 = 
+{
+    .port = GPIO_PORTD,
+    .pin = GPIO_PIN1,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOGIC_HIGH
+};
+
+uint8 data = 0 ;
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize();
+    
+    while(1)
+    {
+        ret = gpio_pin_write_logic(&slave1,GPIO_LOGIC_LOW);
+        ret = spi_Send_Byte_NonBlocking(&spi,'a');
+        ret = gpio_pin_write_logic(&slave1,GPIO_LOGIC_HIGH);
+        __delay_ms(1000);
+
+        ret = gpio_pin_write_logic(&slave2,GPIO_LOGIC_LOW);
+        ret = spi_Send_Byte_NonBlocking(&spi,'b');
+        ret = gpio_pin_write_logic(&slave2,GPIO_LOGIC_HIGH);
+        __delay_ms(1000);
+        
+        ret = gpio_pin_write_logic(&slave1,GPIO_LOGIC_LOW);
+        ret = spi_Send_Byte_NonBlocking(&spi,'c');
+        ret = gpio_pin_write_logic(&slave1,GPIO_LOGIC_HIGH);
+        __delay_ms(1000);
+
+        ret = gpio_pin_write_logic(&slave2,GPIO_LOGIC_LOW);
+        ret = spi_Send_Byte_NonBlocking(&spi,'d');
+        ret = gpio_pin_write_logic(&slave2,GPIO_LOGIC_HIGH);
+        __delay_ms(1000);
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    
+    ret_init = spi_Init(&spi);
+    ret_init = gpio_pin_initialize(&slave1); 
+    ret_init = gpio_pin_initialize(&slave2);
+}
+
+void SPI_APP_ISR(void)
+{
+    spi_Read_Byte_NonBlocking(&spi,&data);
+    
+    if('e' == data)
+    {
+        led_turn_on(&led1);
+    }
+    else if('f' == data)
+    {
+        led_turn_off(&led1);
+    }
+}

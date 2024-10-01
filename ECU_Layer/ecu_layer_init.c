@@ -14,7 +14,7 @@
 led_t led1 = 
 {
     .led_port = GPIO_PORTD,
-    .led_pin = GPIO_PIN0,
+    .led_pin = GPIO_PIN2,
     .led_status = GPIO_LOGIC_LOW
 };
 

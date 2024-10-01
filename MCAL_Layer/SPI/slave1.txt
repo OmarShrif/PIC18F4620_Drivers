@@ -1,0 +1,69 @@
+/* 
+ * File:   Application1.c
+ * Author: Omar Shrif Mohamed
+ * https://www.linkedin.com/in/omar-shrif-982413213/
+ * Created on January 1, 2024, 9:09 PM
+ */
+
+/* Section : Includes */
+#include "Application1.h"
+#include "MCAL_Layer/SPI/mcal_spi.h"
+
+/* Section : Functions Declarations */
+
+void SPI_APP_ISR(void);
+
+/* Section : Global Variables Definition */
+
+Std_ReturnType ret = E_OK;
+
+spi_config_t spi = 
+{
+    .SPI_InterruptHandler = SPI_APP_ISR,
+    .spi_priority = INTERRUPT_PRIORITY_HIGH,
+    .spi_mode = SPI_SLAVE_SS_ENABLE,
+    .ClockPolarity = SPI_IDLE_STATE_LOW_LEVEL,
+    .ClockPhase = SPI_TRANSMIT_IDLE_TO_ACTIVE,
+    .SampleTime = SPI_DATA_SAMPLE_MIDDLE
+};
+
+uint8 data = 0 ;
+
+/* Section : Functions Definition */
+
+int main() 
+{
+    application_initialize();
+    
+    spi_Send_Byte_NonBlocking(&spi,'e');
+
+    while(1)
+    {
+        
+    }
+    
+    return (EXIT_SUCCESS);
+}
+
+void application_initialize(void)
+{
+    Std_ReturnType ret_init = E_OK;
+    ret_init = ecu_layer_initialize();
+    
+    ret_init = spi_Init(&spi);
+}
+
+void SPI_APP_ISR(void)
+{
+    spi_Read_Byte_NonBlocking(&spi,&data);
+    spi_Send_Byte_NonBlocking(&spi,'e');
+    
+    if('a' == data)
+    {
+        led_turn_on(&led1);
+    }
+    else if('c' == data)
+    {
+        led_turn_off(&led1);
+    }
+}

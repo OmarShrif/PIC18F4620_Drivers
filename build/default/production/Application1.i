@@ -5063,15 +5063,15 @@ Std_ReturnType ecu_layer_initialize(void);
 void application_initialize(void);
 # 9 "Application1.c" 2
 
-# 1 "./MCAL_Layer/EUSART/mcal_eusart.h" 1
-# 13 "./MCAL_Layer/EUSART/mcal_eusart.h"
-# 1 "./MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h" 1
-# 12 "./MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h"
-# 1 "./MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h" 1
-# 14 "./MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h"
-# 1 "./MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 14 "./MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h" 2
-# 60 "./MCAL_Layer/EUSART/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/SPI/mcal_spi.h" 1
+# 13 "./MCAL_Layer/SPI/mcal_spi.h"
+# 1 "./MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h" 1
+# 12 "./MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h"
+# 1 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h" 1
+# 14 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h"
+# 1 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 14 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h" 2
+# 60 "./MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h"
 typedef enum
 {
     INTERRUPT_PRIORITY_LOW = 0,
@@ -5085,108 +5085,69 @@ typedef enum
 
 void global_interrupt_Enable(void);
 void global_interrupt_Disable(void);
-# 12 "./MCAL_Layer/EUSART/../Interrupt/mcal_internal_interrupt.h" 2
-# 13 "./MCAL_Layer/EUSART/mcal_eusart.h" 2
+# 12 "./MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h" 2
+# 13 "./MCAL_Layer/SPI/mcal_spi.h" 2
 
-# 1 "./MCAL_Layer/EUSART/mcal_eusart_cfg.h" 1
-# 14 "./MCAL_Layer/EUSART/mcal_eusart.h" 2
-# 59 "./MCAL_Layer/EUSART/mcal_eusart.h"
-typedef enum
-{
-    BAUDRATE_ASYN_8BIT_lOW_SPEED,
-    BAUDRATE_ASYN_8BIT_HIGH_SPEED,
-    BAUDRATE_ASYN_16BIT_LOW_SPEED,
-    BAUDRATE_ASYN_16BIT_HIGH_SPEED,
-    BAUDRATE_SYN_8BIT,
-    BAUDRATE_SYN_16BIT
-}baudrate_gen_t;
-
-
-
+# 1 "./MCAL_Layer/SPI/mcal_spi_cfg.h" 1
+# 14 "./MCAL_Layer/SPI/mcal_spi.h" 2
+# 58 "./MCAL_Layer/SPI/mcal_spi.h"
 typedef struct
 {
-    uint32 baudrate;
-    baudrate_gen_t baudrate_gen_gonfig;
 
-        uint8 eusart_tx_9bit_enable : 1;
+        void (*SPI_InterruptHandler)(void);
 
-
-            void (* EUSART_TX_InterruptHandler)(void);
+            interrupt_priority_t spi_priority;
 
 
-                interrupt_priority_t eusart_tx_priority;
-
-
-
-
-        uint8 eusart_rx_9bit_enable : 1;
-        uint8 eusart_ferr : 1;
-        uint8 eusart_oerr : 1;
-
-
-            void (*EUSART_RX_InterruptHandler)(void);
-            void (*EUSART_FramingErrorHandler)(void);
-            void (*EUSART_OverrunErrorHandler)(void);
-
-
-                interrupt_priority_t eusart_rx_priority;
+    uint8 spi_mode : 3;
+    uint8 ClockPolarity : 1;
+    uint8 ClockPhase : 1;
+    uint8 SampleTime : 1;
+    uint8 : 2;
+}spi_config_t;
 
 
 
-}eusart_config_t;
-
-
-
-
-
-
-
-    Std_ReturnType eusart_async_Init(const eusart_config_t *_eusart);
-    Std_ReturnType eusart_async_DeInit(const eusart_config_t *_eusart);
-
-
-
-        Std_ReturnType eusart_async_ReadByteBlocking(uint8 *_data);
-        Std_ReturnType eusart_async_ReadByteNonBlocking(uint8 *_data);
-        Std_ReturnType eusart_async_RX_Restart(void);
-
-
-
-
-
-        Std_ReturnType eusart_async_WriteByteBlocking(uint8 _data);
-        Std_ReturnType eusart_async_WriteStringBlocking(uint8 *_data, uint16 str_len);
-        Std_ReturnType eusart_async_WriteByteNonBlocking(uint8 _data);
-        Std_ReturnType eusart_async_WriteStringNonBlocking(uint8 *_data, uint16 str_len);
+Std_ReturnType spi_Init(const spi_config_t *Config);
+Std_ReturnType spi_DeInit(const spi_config_t *Config);
+Std_ReturnType spi_Send_Byte_Blocking(const spi_config_t *Config, const uint8 _data);
+Std_ReturnType spi_Send_Byte_NonBlocking(const spi_config_t *Config, const uint8 _data);
+Std_ReturnType spi_Read_Byte_Blocking(const spi_config_t *Config, uint8 *_data);
+Std_ReturnType spi_Read_Byte_NonBlocking(const spi_config_t *Config, uint8 *_data);
 # 10 "Application1.c" 2
 
 
 
 
-void EUSART_TX_APP_ISR(void);
-void EUSART_RX_APP_ISR(void);
-void EUSART_FramingError_APP_ISR(void);
-void EUSART_OverrunError_APP_ISR(void);
+void SPI_APP_ISR(void);
 
 
 
 Std_ReturnType ret = (Std_ReturnType)0x01;
 
-eusart_config_t eusart =
+spi_config_t spi =
 {
-    .baudrate = 9600,
-    .baudrate_gen_gonfig = BAUDRATE_ASYN_8BIT_HIGH_SPEED,
-    .eusart_tx_9bit_enable = 0,
-    .eusart_rx_9bit_enable = 0,
-    .EUSART_TX_InterruptHandler = ((void*)0),
-    .EUSART_RX_InterruptHandler = EUSART_RX_APP_ISR,
-    .EUSART_FramingErrorHandler = ((void*)0),
-    .EUSART_OverrunErrorHandler = ((void*)0),
-    .eusart_tx_priority = INTERRUPT_PRIORITY_HIGH,
-    .eusart_rx_priority = INTERRUPT_PRIORITY_HIGH,
-
+    .SPI_InterruptHandler = SPI_APP_ISR,
+    .spi_priority = INTERRUPT_PRIORITY_HIGH,
+    .spi_mode = 0,
+    .ClockPolarity = 0,
+    .ClockPhase = 0,
+    .SampleTime = 0
 };
-uint8 _data = 0;
+pin_config_t slave1 =
+{
+    .port = GPIO_PORTD,
+    .pin = GPIO_PIN0,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOGIC_HIGH
+};
+pin_config_t slave2 =
+{
+    .port = GPIO_PORTD,
+    .pin = GPIO_PIN1,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOGIC_HIGH
+};
 
 
 
@@ -5194,10 +5155,17 @@ int main()
 {
     application_initialize();
 
+    ret = gpio_pin_write_logic(&slave1,GPIO_LOGIC_LOW);
+    ret = spi_Send_Byte_Blocking(&spi,'a');
+    ret = gpio_pin_write_logic(&slave1,GPIO_LOGIC_HIGH);
+
+    ret = gpio_pin_write_logic(&slave2,GPIO_LOGIC_LOW);
+    ret = spi_Send_Byte_Blocking(&spi,'b');
+    ret = gpio_pin_write_logic(&slave2,GPIO_LOGIC_HIGH);
+
     while(1)
     {
-        ret = eusart_async_WriteStringNonBlocking("omar\r",5);
-        _delay((unsigned long)((5000)*(4000000UL/4000.0)))
+
     }
 
     return (0);
@@ -5207,25 +5175,13 @@ void application_initialize(void)
 {
     Std_ReturnType ret_init = (Std_ReturnType)0x01;
     ret_init = ecu_layer_initialize();
-    ret_init = eusart_async_Init(&eusart);
+
+    ret_init = spi_Init(&spi);
+    ret_init = gpio_pin_initialize(&slave1);
+    ret_init = gpio_pin_initialize(&slave2);
 }
 
-void EUSART_TX_APP_ISR(void)
+void SPI_APP_ISR(void)
 {
-    led_turn_toggle(&led1);
-}
-
-void EUSART_RX_APP_ISR(void)
-{
-    ret = eusart_async_ReadByteNonBlocking(&_data);
-}
-
-void EUSART_FramingError_APP_ISR(void)
-{
-
-}
-
-void EUSART_OverrunError_APP_ISR(void)
-{
-
+    spi_Read_Byte_NonBlocking(&spi , );
 }

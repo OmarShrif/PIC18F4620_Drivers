@@ -21,4 +21,9 @@ ECU_Layer/Seven_Seg/ecu_seven_seg_cfg.h  \
 ECU_Layer/Keypad/ecu_keypad.h  \
 ECU_Layer/Keypad/ecu_keypad_cfg.h  \
 ECU_Layer/LCD/ecu_lcd.h  \
-ECU_Layer/LCD/ecu_lcd_cfg.h 
+ECU_Layer/LCD/ecu_lcd_cfg.h  \
+MCAL_Layer/SPI/mcal_spi.h  \
+MCAL_Layer/SPI/../Interrupt/mcal_internal_interrupt.h  \
+MCAL_Layer/SPI/../Interrupt/mcal_interrupt_cfg.h  \
+MCAL_Layer/SPI/../Interrupt/mcal_interrupt_gen_cfg.h  \
+MCAL_Layer/SPI/mcal_spi_cfg.h 
